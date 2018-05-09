@@ -1,1 +1,10 @@
 /ItemDoc.Web/Web.config
+/ItemDoc.Core/bin
+/ItemDoc.Framework/bin
+/ItemDoc.Plugin/ItemDoc.Upload/bin
+/ItemDoc.Plugin/ItemDoc.Upload/Web.config
+/ItemDoc.Plugin/ItemDoc.Upload/Web.Debug.config
+/ItemDoc.Plugin/ItemDoc.Upload/Web.Release.config
+/ItemDoc.Services/bin
+/Tests/ItemDoc.Framework.Test/bin
+/Tests/ItemDoc.Framework.Test/App.config
