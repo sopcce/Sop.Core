@@ -1,0 +1,22 @@
+﻿ 
+<div class="masthead">
+    <div class="btn-group pull-right">
+
+        <a class="btn btn-link" href="https://github.com/Sopcce/ItemDoc/issues" target="_blank">反馈&建议</a>
+        <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
+            更多 <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">成员管理</a></li>
+            <li><a href="#">项目管理</a></li>
+        </ul>
+    </div>
+    <div class="muted">
+        <img src="~/Content/b_64.png" style="width: 50px; height: 50px; margin-bottom: 15px;" alt="" />
+        <ol class="breadcrumb">
+            <li><a href="@SiteUrls.Instance().HomeIndex()">首页</a></li>
+            <li><a href="@SiteUrls.Instance().ItemIndex()"><i class="fa fa-file"></i>文档首页</a></li>
+            <li class="active">@ViewBag.text</li>
+        </ol>
+    </div>
+</div>
