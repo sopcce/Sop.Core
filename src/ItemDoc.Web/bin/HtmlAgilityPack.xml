@@ -38,6 +38,16 @@
             Gets the column number of this attribute in the document.
             </summary>
         </member>
+        <member name="P:HtmlAgilityPack.HtmlAttribute.ValueStartIndex">
+            <summary>
+            Gets the stream position of the value of this attribute in the document, relative to the start of the document.
+            </summary>
+        </member>
+        <member name="P:HtmlAgilityPack.HtmlAttribute.ValueLength">
+            <summary>
+            Gets the length of the value.
+            </summary>
+        </member>
         <member name="P:HtmlAgilityPack.HtmlAttribute.Name">
             <summary>
             Gets the qualified name of the attribute.
@@ -313,10 +323,16 @@
         <member name="P:HtmlAgilityPack.HtmlDocument.DefaultBuilder">
             <summary>Default builder to use in the HtmlDocument constructor</summary>
         </member>
+        <member name="P:HtmlAgilityPack.HtmlDocument.ParseExecuting">
+            <summary>Action to execute before the Parse is executed</summary>
+        </member>
         <member name="F:HtmlAgilityPack.HtmlDocument._maxDepthLevel">
             <summary>
             Defines the max level we would go deep into the html document
             </summary>
+        </member>
+        <member name="F:HtmlAgilityPack.HtmlDocument.Text">
+            <summary>The HtmlDocument Text. Careful if you modify it.</summary>
         </member>
         <member name="F:HtmlAgilityPack.HtmlDocument.BackwardCompatibility">
             <summary>True to stay backward compatible with previous version of HAP. This option does not guarantee 100% compatibility.</summary>
@@ -376,6 +392,11 @@
         <member name="F:HtmlAgilityPack.HtmlDocument.OptionOutputAsXml">
             <summary>
             Defines if output must conform to XML, instead of HTML.
+            </summary>
+        </member>
+        <member name="F:HtmlAgilityPack.HtmlDocument.OptionPreserveXmlNamespaces">
+            <summary>
+            If used together with <see cref="F:HtmlAgilityPack.HtmlDocument.OptionOutputAsXml"/> and enabled, Xml namespaces in element names are preserved. Default is false.
             </summary>
         </member>
         <member name="F:HtmlAgilityPack.HtmlDocument.OptionOutputOptimizeAttributeValues">
@@ -438,7 +459,7 @@
         <member name="P:HtmlAgilityPack.HtmlDocument.DeclaredEncoding">
             <summary>
             Gets the document's declared encoding.
-            Declared encoding is determined using the meta http-equiv="content-type" content="text/html;charset=XXXXX" html node.
+            Declared encoding is determined using the meta http-equiv="content-type" content="text/html;charset=XXXXX" html node (pre-HTML5) or the meta charset="XXXXX" html node (HTML5).
             </summary>
         </member>
         <member name="P:HtmlAgilityPack.HtmlDocument.DocumentNode">
@@ -866,6 +887,11 @@
             Gets the collection of HTML attributes for the closing tag. May not be null.
             </summary>
         </member>
+        <member name="P:HtmlAgilityPack.HtmlNode.EndNode">
+            <summary>
+            Gets the closing tag of the node, null if the node is self-closing.
+            </summary>
+        </member>
         <member name="P:HtmlAgilityPack.HtmlNode.FirstChild">
             <summary>
             Gets the first child of the node.
@@ -914,6 +940,21 @@
         <member name="P:HtmlAgilityPack.HtmlNode.LinePosition">
             <summary>
             Gets the column number of this node in the document.
+            </summary>
+        </member>
+        <member name="P:HtmlAgilityPack.HtmlNode.InnerStartIndex">
+            <summary>
+            Gets the stream position of the area between the opening and closing tag of the node, relative to the start of the document.
+            </summary>
+        </member>
+        <member name="P:HtmlAgilityPack.HtmlNode.InnerLength">
+            <summary>
+            Gets the length of the area between the opening and closing tag of the node.
+            </summary>
+        </member>
+        <member name="P:HtmlAgilityPack.HtmlNode.OuterLength">
+            <summary>
+            Gets the length of the entire node, opening and closing tag included.
             </summary>
         </member>
         <member name="P:HtmlAgilityPack.HtmlNode.Name">
@@ -1356,6 +1397,22 @@
             <param name="class">The class.</param>
             <returns>True if node class has the parameter class, false if not.</returns>
         </member>
+        <member name="M:HtmlAgilityPack.HtmlNode.GetEncapsulatedData``1(HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Fill an object and go through it's properties and fill them too.
+            </summary>
+            <typeparam name="T">Type of object to want to fill. It should have atleast one property that defined XPath.</typeparam>
+            <param name="htmlDocument">If htmlDocument includes data , leave this parameter null. Else pass your specific htmldocument.</param>
+            <returns>Returns an object of type T including Encapsulated data.</returns>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlNode.GetEncapsulatedData(System.Type,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Fill an object and go through it's properties and fill them too.
+            </summary>
+            <param name="targetType">Type of object to want to fill. It should have atleast one property that defined XPath.</param>
+            <param name="htmlDocument">If htmlDocument includes data , leave this parameter null. Else pass your specific htmldocument.</param>
+            <returns>Returns an object of type targetType including Encapsulated data.</returns>
+        </member>
         <member name="M:HtmlAgilityPack.HtmlNode.CreateNavigator">
             <summary>
             Creates a new XPathNavigator object for navigating this HTML node.
@@ -1375,12 +1432,140 @@
             <param name="xpath">The XPath expression.</param>
             <returns>An <see cref="T:HtmlAgilityPack.HtmlNodeCollection"/> containing a collection of nodes matching the <see cref="P:HtmlAgilityPack.HtmlNode.XPath"/> query, or <c>null</c> if no node matched the XPath expression.</returns>
         </member>
+        <member name="M:HtmlAgilityPack.HtmlNode.SelectNodes(System.Xml.XPath.XPathExpression)">
+            <summary>
+            Selects a list of nodes matching the <see cref="P:HtmlAgilityPack.HtmlNode.XPath"/> expression.
+            </summary>
+            <param name="xpath">The XPath expression.</param>
+            <returns>An <see cref="T:HtmlAgilityPack.HtmlNodeCollection"/> containing a collection of nodes matching the <see cref="P:HtmlAgilityPack.HtmlNode.XPath"/> query, or <c>null</c> if no node matched the XPath expression.</returns>
+        </member>
         <member name="M:HtmlAgilityPack.HtmlNode.SelectSingleNode(System.String)">
             <summary>
             Selects the first XmlNode that matches the XPath expression.
             </summary>
             <param name="xpath">The XPath expression. May not be null.</param>
             <returns>The first <see cref="T:HtmlAgilityPack.HtmlNode"/> that matches the XPath query or a null reference if no matching node was found.</returns>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlNode.SelectSingleNode(System.Xml.XPath.XPathExpression)">
+            <summary>
+            Selects a list of nodes matching the <see cref="P:HtmlAgilityPack.HtmlNode.XPath"/> expression.
+            </summary>
+            <param name="xpath">The XPath expression.</param>
+            <returns>An <see cref="T:HtmlAgilityPack.HtmlNodeCollection"/> containing a collection of nodes matching the <see cref="P:HtmlAgilityPack.HtmlNode.XPath"/> query, or <c>null</c> if no node matched the XPath expression.</returns>
+        </member>
+        <member name="T:HtmlAgilityPack.Tools">
+            <summary>
+            Includes tools that GetEncapsulatedData method uses them.
+            </summary>
+        </member>
+        <member name="M:HtmlAgilityPack.Tools.IsDefinedAttribute(System.Type,System.Type)">
+            <summary>
+            Determine if a type define an attribute or not , supporting both .NetStandard and .NetFramework2.0
+            </summary>
+            <param name="type">Type you want to test it.</param>
+            <param name="attributeType">Attribute that type must have or not.</param>
+            <returns>If true , The type parameter define attributeType parameter.</returns>
+        </member>
+        <member name="M:HtmlAgilityPack.Tools.GetPropertiesDefinedXPath(System.Type)">
+            <summary>
+            Retrive properties of type that defined <see cref="T:HtmlAgilityPack.XPathAttribute"/>.
+            </summary>
+            <param name="type">Type that you want to find it's XPath-Defined properties.</param>
+            <returns>IEnumerable of property infos of a type , that defined specific attribute.</returns>
+        </member>
+        <member name="M:HtmlAgilityPack.Tools.IsIEnumerable(System.Reflection.PropertyInfo)">
+            <summary>
+            Determine if a <see cref="T:System.Reflection.PropertyInfo"/> has implemented <see cref="T:System.Collections.IEnumerable"/> BUT <see cref="T:System.String"/> is considered as NONE-IEnumerable !
+            </summary>
+            <param name="propertyInfo">The property info you want to test.</param>
+            <returns>True if property info is IEnumerable.</returns>
+        </member>
+        <member name="M:HtmlAgilityPack.Tools.GetGenericTypes(System.Reflection.PropertyInfo)">
+            <summary>
+            Returns T type(first generic type) of <see cref="T:System.Collections.Generic.IEnumerable`1"/> or <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <param name="propertyInfo">IEnumerable-Implemented property</param>
+            <returns>List of generic types.</returns>
+        </member>
+        <member name="M:HtmlAgilityPack.Tools.GetMethodByItsName(System.Type,System.String)">
+            <summary>
+            Find and Return a mehtod that defined in a class by it's name.
+            </summary>
+            <param name="type">Type of class include requested method.</param>
+            <param name="methodName">Name of requested method as string.</param>
+            <returns>Method info of requested method.</returns>
+        </member>
+        <member name="M:HtmlAgilityPack.Tools.CreateIListOfType(System.Type)">
+            <summary>
+            Create <see cref="T:System.Collections.IList"/> of given type.
+            </summary>
+            <param name="type">Type that you want to make a List of it.</param>
+            <returns>Returns IList of given type.</returns>
+        </member>
+        <member name="M:HtmlAgilityPack.Tools.GetNodeValueBasedOnXPathReturnType``1(HtmlAgilityPack.HtmlNode,HtmlAgilityPack.XPathAttribute)">
+            <summary>
+            Returns the part of value of <see cref="T:HtmlAgilityPack.HtmlNode"/> you want as .
+            </summary>
+            <param name="htmlNode">A htmlNode instance.</param>
+            <param name="xPathAttribute">Attribute that includes ReturnType</param>
+            <returns>String that choosen from HtmlNode as result.</returns>
+        </member>
+        <member name="M:HtmlAgilityPack.Tools.GetNodesValuesBasedOnXPathReturnType(HtmlAgilityPack.HtmlNodeCollection,HtmlAgilityPack.XPathAttribute,System.Type)">
+            <summary>
+            Returns parts of values of <see cref="T:HtmlAgilityPack.HtmlNode"/> you want as <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <param name="htmlNodeCollection"><see cref="T:HtmlAgilityPack.HtmlNodeCollection"/> that you want to retrive each <see cref="T:HtmlAgilityPack.HtmlNode"/> value.</param>
+            <param name="xPathAttribute">A <see cref="T:HtmlAgilityPack.XPathAttribute"/> instnce incules <see cref="T:HtmlAgilityPack.ReturnType"/>.</param>
+            <param name="listGenericType">Type of IList generic you want.</param>
+            <returns></returns>
+        </member>
+        <member name="T:HtmlAgilityPack.Tools.HAPFunc`2">
+            <summary>
+            Simulate Func method to use in Lambada Expression.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HtmlAgilityPack.Tools.HAPWhere``1(System.Collections.Generic.IEnumerable{``0},HtmlAgilityPack.Tools.HAPFunc{``0,System.Boolean})">
+            <summary>
+            This method works like Where method in LINQ.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HtmlAgilityPack.Tools.IsInstantiable(System.Type)">
+            <summary>
+            Check if the type can instantiated.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HtmlAgilityPack.Tools.CountOfIEnumerable``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns count of elements stored in IEnumerable of T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HtmlAgilityPack.ReturnType">
+            <summary>
+            Specify which part of <see cref="T:HtmlAgilityPack.HtmlNode"/> is requested.
+            </summary>
+        </member>
+        <member name="T:HtmlAgilityPack.HasXPathAttribute">
+            <summary>
+            Just mark and flag classes to show they have properties that defined <see cref="T:HtmlAgilityPack.XPathAttribute"/>.
+            </summary>
+        </member>
+        <member name="T:HtmlAgilityPack.XPathAttribute">
+            <summary>
+            Includes XPath and <see cref="P:HtmlAgilityPack.XPathAttribute.NodeReturnType"/>. XPath for finding html tags and <see cref="P:HtmlAgilityPack.XPathAttribute.NodeReturnType"/> for specify which part of <see cref="T:HtmlAgilityPack.HtmlNode"/> you want to return.
+            </summary>
         </member>
         <member name="T:HtmlAgilityPack.HtmlNodeCollection">
             <summary>
@@ -2012,6 +2197,12 @@
             If this is set to true and document is not found in the cache, nothing will be loaded.
             </summary>
         </member>
+        <member name="P:HtmlAgilityPack.HtmlWeb.UsingCacheIfExists">
+            <summary>
+            Gets or Sets a value indicating whether to get document from the cache if exists, otherwise from the web
+            A value indicating whether to get document from the cache if exists, otherwise from the web
+            </summary>
+        </member>
         <member name="P:HtmlAgilityPack.HtmlWeb.CachePath">
             <summary>
             Gets or Sets the cache path. If null, no caching mechanism will be used.
@@ -2204,6 +2395,142 @@
             </summary>
             <param name="htmlUrl">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
             <param name="writer">The XmlTextWriter to which you want to save to.</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.Text.Encoding)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="encoding">The encoding to use while downloading the document</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.Text.Encoding,System.Threading.CancellationToken)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="encoding">The encoding to use while downloading the document</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.Text.Encoding,System.String,System.String)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="encoding">The encoding to use while downloading the document</param>
+            <param name="userName">Username to use for credentials in the web request</param>
+            <param name="password">Password to use for credentials in the web request</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.Text.Encoding,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="encoding">The encoding to use while downloading the document</param>
+            <param name="userName">Username to use for credentials in the web request</param>
+            <param name="password">Password to use for credentials in the web request</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.Text.Encoding,System.String,System.String,System.String)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="encoding">The encoding to use while downloading the document</param>
+            <param name="userName">Username to use for credentials in the web request</param>
+            <param name="password">Password to use for credentials in the web request</param>
+            <param name="domain">Domain to use for credentials in the web request</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.Text.Encoding,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="encoding">The encoding to use while downloading the document</param>
+            <param name="userName">Username to use for credentials in the web request</param>
+            <param name="password">Password to use for credentials in the web request</param>
+            <param name="domain">Domain to use for credentials in the web request</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="userName">Username to use for credentials in the web request</param>
+            <param name="password">Password to use for credentials in the web request</param>
+            <param name="domain">Domain to use for credentials in the web request</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="userName">Username to use for credentials in the web request</param>
+            <param name="password">Password to use for credentials in the web request</param>
+            <param name="domain">Domain to use for credentials in the web request</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.String,System.String)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="userName">Username to use for credentials in the web request</param>
+            <param name="password">Password to use for credentials in the web request</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="userName">Username to use for credentials in the web request</param>
+            <param name="password">Password to use for credentials in the web request</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.Net.NetworkCredential)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="credentials">The credentials to use for authenticating the web request</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.String,System.Net.NetworkCredential,System.Threading.CancellationToken)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="url">Url to the html document</param>
+            <param name="credentials">The credentials to use for authenticating the web request</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.Uri,System.Text.Encoding,System.Net.NetworkCredential)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="uri">Url to the html document</param>
+            <param name="encoding">The encoding to use while downloading the document</param>
+            <param name="credentials">The credentials to use for authenticating the web request</param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlWeb.LoadFromWebAsync(System.Uri,System.Text.Encoding,System.Net.NetworkCredential,System.Threading.CancellationToken)">
+            <summary>
+            Begins the process of downloading an internet resource
+            </summary>
+            <param name="uri">Url to the html document</param>
+            <param name="encoding">The encoding to use while downloading the document</param>
+            <param name="credentials">The credentials to use for authenticating the web request</param>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         </member>
         <member name="P:HtmlAgilityPack.HtmlWeb.BrowserTimeout">
             <summary>Gets or sets the web browser timeout.</summary>

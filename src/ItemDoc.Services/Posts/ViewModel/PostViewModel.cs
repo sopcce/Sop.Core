@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using ItemDoc.Core.Mvc.Json;
 using ItemDoc.Framework.Repositories;
 using ItemDoc.Services.Model;
+using Newtonsoft.Json;
+using Sop.Common.Serialization.Json;
 
 namespace ItemDoc.Services.ViewModel
 {
@@ -11,8 +14,8 @@ namespace ItemDoc.Services.ViewModel
 
   public class PostViewModel
   {
- 
-   
+
+
     public int Id { get; set; }
 
     public int CatalogId { get; set; }
@@ -35,13 +38,13 @@ namespace ItemDoc.Services.ViewModel
     /// <summary>
     /// Gets or sets the date created.
     /// </summary>
-    public DateTime DateCreated { get; set; } 
+    [JsonConverter(typeof(JsonTimeStampConverter))]
+    public DateTime DateCreated { get; set; }
 
 
+    public DateTime DateCreatedTime { get; set; } = DateTime.Now;
 
- 
- 
-  
+
 
   }
 

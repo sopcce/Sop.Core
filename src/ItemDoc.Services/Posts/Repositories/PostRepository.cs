@@ -47,16 +47,14 @@ namespace ItemDoc.Services.Repositories
     public IPageList<PostViewModel> GetPostList1(PostParameter parameter)
     {
 
-
-
       Sql sql = Sql.Builder
-        .Select("Item_Posts.*,Item_UsersLogin.NickName,Item_Catalog.Name")
+        .Select("Item_Posts.*,Item_UsersLogin.NickName,Item_Catalog.Name ")
         .From(SopTable.Instance().GetTableName<PostInfo>())
         .LeftJoin(SopTable.Instance().GetTableName<UsersLoginInfo>())
-        .On("Item_UsersLogin.UserId=Item_Posts.UserId")
+        .On(" Item_UsersLogin.UserId=Item_Posts.UserId")
         .LeftJoin(SopTable.Instance().GetTableName<CatalogInfo>())
-        .On("Item_Catalog.Id=Item_Posts.CatalogId")
-        .Where("CatalogId=@0", parameter.CatalogId);
+        .On(" Item_Catalog.Id=Item_Posts.CatalogId")
+        .Where(" CatalogId=@0", parameter.CatalogId);
 
       Log.Instance().Write(sql.ToString(), null, null, LogLevel.Info);
       switch (parameter.sortName)

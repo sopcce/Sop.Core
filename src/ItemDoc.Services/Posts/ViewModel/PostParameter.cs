@@ -14,6 +14,8 @@ namespace ItemDoc.Services.ViewModel
     /// 分类
     /// </summary>
     public int CatalogId { get; set; } = 0;
+   
+    
 
     public int pageSize { get; set; } = 10;
 

@@ -7,15 +7,15 @@
  */
 
 ($ => {
-  const Utils = $.fn.bootstrapTable.utils
+  const utils = $.fn.bootstrapTable.utils
 
-  const bootstrap = {
-    3: {
-      icons: {
-        advancedSearchIcon: 'glyphicon-chevron-down'
-      },
-      html: {
-        modalHeader: `
+    const bootstrap = {
+        3: {
+            icons: {
+                advancedSearchIcon: 'glyphicon-chevron-down'
+            },
+            html: {
+                modalHeader: `
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -23,14 +23,14 @@
             <h4 class="modal-title">%s</h4>
           </div>
         `
-      }
-    },
-    4: {
-      icons: {
-        advancedSearchIcon: 'fa-chevron-down'
-      },
-      html: {
-        modalHeader: `
+            }
+        },
+        4: {
+            icons: {
+                advancedSearchIcon: 'fa-chevron-down'
+            },
+            html: {
+                modalHeader: `
           <div class="modal-header">
             <h4 class="modal-title">%s</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -38,9 +38,9 @@
             </button>
           </div>
         `
-      }
-    }
-  }[Utils.bootstrapVersion]
+            }
+        }
+    }[utils.bootstrapVersion];
 
   $.extend($.fn.bootstrapTable.defaults, {
     advancedSearch: false,
@@ -84,7 +84,7 @@
       }
 
       this.$toolbar.find('>.btn-group').append(`
-        <button class="btn btn-default${Utils.sprintf(' btn-%s', o.buttonsClass)}${Utils.sprintf(' btn-%s', o.iconSize)}"
+        <button class="btn btn-default${utils.sprintf(' btn-%s', o.buttonsClass)}${utils.sprintf(' btn-%s', o.iconSize)}"
           type="button"
           name="advancedSearch"
           aria-label="advanced search"
@@ -104,7 +104,7 @@
           <div id="avdSearchModal_${o.idTable}"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xs">
               <div class="modal-content">
-                ${Utils.sprintf(bootstrap.html.modalHeader, o.formatAdvancedSearch())}
+                ${utils.sprintf(bootstrap.html.modalHeader, o.formatAdvancedSearch())}
                 <div class="modal-body modal-body-custom">
                   <div class="container-fluid" id="avdSearchModalContent_${o.idTable}"
                     style="padding-right: 0px; padding-left: 0px;" >
@@ -186,7 +186,7 @@
           const fval = fp[key].toLowerCase()
           let value = item[key]
           const index = this.header.fields.indexOf(key)
-          value = Utils.calculateObjectValue(this.header, this.header.formatters[index], [value, item, i], value)
+          value = utils.calculateObjectValue(this.header, this.header.formatters[index], [value, item, i], value)
 
           if (
             !(index !== -1 &&

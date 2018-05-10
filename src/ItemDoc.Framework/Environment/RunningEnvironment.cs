@@ -28,8 +28,8 @@ namespace ItemDoc.Framework.Environment
     {
       try
       {
-        string a = "asd";
-        int b = Convert.ToInt32(a);
+        //string a = "asd";
+        //int b = Convert.ToInt32(a);
       }
       catch (Exception ex)
       {

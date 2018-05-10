@@ -118,6 +118,7 @@
     <script type="text/javascript">
         $(function () {
             var currentUrl = window.document.location.pathname;
+
             $(".sop-man-nav ul li").each(function () {
                 var $this = $(this);
                 var $html = $this.html();
@@ -131,14 +132,12 @@
                 if (currentUrl.indexOf($href) > -1) {
                     var currentLength = currentUrl.length;
                     var $hrefLength = $href.length;
-
                     $this.addClass('active'); 
-                    return false;
-
+                    return false; 
                 }
                
-                //console.log("currentUrl:" + currentUrl);
-                //console.log("$href:" + $href);
+                console.log("currentUrl:" + currentUrl);
+                console.log("$href:" + $href);
 
 
                 $this.removeClass('active');

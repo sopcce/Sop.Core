@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemDoc.Framework.Test", "T
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sop.Common", "Sop.Common", "{BA97173D-94C8-4208-9D2E-66481AF9FE5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sop.Common.Serialization", "..\.Net-Common-Utility\Sop.Common.Serialization\Sop.Common.Serialization.csproj", "{8E807449-E634-4971-8990-E63DB141ECB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sop.Common.Serialization", "Sop.Common\Sop.Common.Serialization\Sop.Common.Serialization.csproj", "{8E807449-E634-4971-8990-E63DB141ECB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
