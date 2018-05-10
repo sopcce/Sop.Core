@@ -10,3 +10,5 @@
 /src/Tests/ItemDoc.Framework.Test/App.config
 /src/ItemDoc.Core/bin
 /src/packages
+/src/ItemDoc.Web/bin
+/src/.vs
