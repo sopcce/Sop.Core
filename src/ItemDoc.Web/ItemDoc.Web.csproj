@@ -420,7 +420,6 @@
     <Content Include="assets\bootstrap-table\dist\locale\bootstrap-table-zh-CN.min.js" />
     <Content Include="assets\bootstrap-table\dist\locale\bootstrap-table-zh-TW.js" />
     <Content Include="assets\bootstrap-table\dist\locale\bootstrap-table-zh-TW.min.js" />
-    <Content Include="assets\lib\date.format.js" />
     <Content Include="assets\lib\sopdate.format-1.0.js" />
     <Content Include="html\apple-touch-icon.png" />
     <Content Include="html\favicon.ico" />

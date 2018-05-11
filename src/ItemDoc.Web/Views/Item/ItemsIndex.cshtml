@@ -279,10 +279,8 @@
                         //var newDate = new Date();
                         //newDate.setTime(row.datecreated * 1000);
                         //return newDate.format('yyyy-MM-dd hh:mm:ss');
-                       // var dd = stringToDate(value, "-");
-                        "".strformat(value, 'yyyy-MM-dd hh:mm:ss',"-")
-                        var newDate = new Date(value.replace(/-/g, "/"));
-                        var strDate = newDate.format('yyyy-MM-dd hh:mm:ss');
+                        // var dd = stringToDate(value, "-");
+                        var dd = stringToDate(value, "yyyy-MM-dd");
                         return dd;
                     }
                 }
@@ -335,7 +333,7 @@
         return oTableInit;
     };
 
-    
+
 
     function TreeView2() {
 
