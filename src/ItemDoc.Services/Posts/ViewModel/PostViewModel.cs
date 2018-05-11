@@ -38,7 +38,7 @@ namespace ItemDoc.Services.ViewModel
     /// <summary>
     /// Gets or sets the date created.
     /// </summary>
-    [JsonConverter(typeof(JsonTimeStampConverter))]
+    //[JsonConverter(typeof(JsonTimeStampConverter))]
     public DateTime DateCreated { get; set; }
 
 

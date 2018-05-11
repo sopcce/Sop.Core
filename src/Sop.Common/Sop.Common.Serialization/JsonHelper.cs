@@ -25,30 +25,10 @@ namespace Sop.Common.Serialization
     /// To the json.
     /// </summary>
     /// <param name="obj">The object.</param>
-    /// <returns></returns>
-    public static string ToJson(this object obj)
-    {
-      var settings = new JsonSerializerSettings()
-      {
-
-        DateFormatString = "yyyy-MM-dd HH:mm:ss",
-        StringEscapeHandling = StringEscapeHandling.EscapeNonAscii,
-        NullValueHandling = NullValueHandling.Ignore,
-        ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
-      };
-      return JsonConvert.SerializeObject(obj, Formatting.None, settings);
-
-
-
-    }
-    /// <summary>
-    /// To the json.
-    /// </summary>
-    /// <param name="obj">The object.</param>
     /// <param name="dateTimeType">Type of the date time.</param>
     /// <param name="dateFormatString">The date format string.</param>
     /// <returns></returns>
-    public static string ToJson(this object obj, DateTimeType dateTimeType = DateTimeType.Default, string dateFormatString = "yyyy-MM-dd HH:mm:ss")
+    public static string ToJson(this object obj, DateTimeType dateTimeType, string dateFormatString = "yyyy-MM-dd HH:mm:ss")
     {
 
       var settings = new JsonSerializerSettings()
@@ -60,8 +40,8 @@ namespace Sop.Common.Serialization
       switch (dateTimeType)
       {
         case DateTimeType.MicrosoftDateFormatUtc:
-          settings.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
-          settings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+          settings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+          settings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
           break;
 
         case DateTimeType.Default:
@@ -88,17 +68,16 @@ namespace Sop.Common.Serialization
     /// <param name="obj">The object.</param>
     /// <param name="type">The type.</param>
     /// <returns></returns>
-    public static string ToJson(this object obj, PropertyNameType type = PropertyNameType.Default)
+    public static string ToJson(this object obj, PropertyNameType type = PropertyNameType.ToLower)
     {
-      var ssd = new IsoDateTimeConverter()
-      {
-        DateTimeFormat = "yyyy-MM-dd hh:mm:ss"
-      };
-
       var settings = new JsonSerializerSettings()
       {
         StringEscapeHandling = StringEscapeHandling.EscapeNonAscii,
-        NullValueHandling = NullValueHandling.Ignore
+        NullValueHandling = NullValueHandling.Ignore,
+        DateFormatHandling = DateFormatHandling.IsoDateFormat,
+        DateFormatString = "yyyy-MM-dd hh:mm:ss fff",
+        DateTimeZoneHandling = DateTimeZoneHandling.Local
+
       };
       switch (type)
       {
@@ -112,28 +91,11 @@ namespace Sop.Common.Serialization
           settings.ContractResolver = new SopJsonResolver(type);
           break;
       }
-       
+
       return JsonConvert.SerializeObject(obj, Formatting.None, settings);
 
     }
-    /// <summary>
-    /// To the json.
-    /// </summary>
-    /// <param name="obj">The object.</param>
-    /// <param name="formatting">The formatting.</param>
-    /// <returns></returns>
-    public static string ToJson(this object obj, Formatting formatting = Formatting.None)
-    {
 
-      var settings = new JsonSerializerSettings()
-      {
-        ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver(),
-        StringEscapeHandling = StringEscapeHandling.EscapeNonAscii,
-        NullValueHandling = NullValueHandling.Ignore
-      };
-      return JsonConvert.SerializeObject(obj, Formatting.None, settings);
-
-    }
 
 
     /// <summary>

@@ -395,7 +395,7 @@ namespace ItemDoc.Web.Controllers
         UserId = UserContext.GetGetUserId(),
         Title = "测试-" + parameter.CatalogId,
         Content = "测试内容啊啊啊啊" + parameter.CatalogId,
-        DateCreated = DateTime.Now.AddDays(new Random().Next(1000)),
+        DateCreated = DateTime.Now,
         DisplayOrder = 1,
         HtmlContentPath = "",
         ViewCount = 0,

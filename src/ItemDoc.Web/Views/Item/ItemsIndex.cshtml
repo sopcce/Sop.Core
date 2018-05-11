@@ -15,7 +15,7 @@
 <link href="~/assets/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet" />
 <script src="~/assets/bootstrap-table/dist/bootstrap-table.js"></script>
 <script src="~/assets/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
-
+<script src="~/assets/lib/sopdate.format-1.0.js"></script>
 
 <style>
     .casd {
@@ -173,6 +173,10 @@
 
         //eeView3();
     });
+    function open(postId, title) {
+        alert(title);
+
+    }
     function NodeSelected() {
 
 
@@ -269,7 +273,18 @@
                     sortable: true
                 }, {
                     field: 'datecreated',
-                    title: '创建时间'
+                    title: '创建时间',
+                    formatter: function (value, row, index) {
+
+                        //var newDate = new Date();
+                        //newDate.setTime(row.datecreated * 1000);
+                        //return newDate.format('yyyy-MM-dd hh:mm:ss');
+                       // var dd = stringToDate(value, "-");
+                        "".strformat(value, 'yyyy-MM-dd hh:mm:ss',"-")
+                        var newDate = new Date(value.replace(/-/g, "/"));
+                        var strDate = newDate.format('yyyy-MM-dd hh:mm:ss');
+                        return dd;
+                    }
                 }
                     //{
                     //    field: 'Name',
@@ -320,7 +335,7 @@
         return oTableInit;
     };
 
-
+    
 
     function TreeView2() {
 

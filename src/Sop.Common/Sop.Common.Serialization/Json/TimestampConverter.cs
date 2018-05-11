@@ -18,7 +18,7 @@ namespace Sop.Common.Serialization.Json
   /// </summary>  
   public class JsonTimeStampConverter : JsonConverter
   {
-    static readonly DateTime DefaluTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+    static readonly DateTime DefaluTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Local);
     public override bool CanConvert(Type objectType)
     {
       return objectType == typeof(DateTime);
@@ -48,7 +48,7 @@ namespace Sop.Common.Serialization.Json
   }
 
 
-  
-  
+
+
 
 }
