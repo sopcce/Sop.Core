@@ -1,7 +1,7 @@
 ﻿
 $(function () {
 
-    GoTop("sop-nav");
+    GoTop(".sop-nav");
     $(".Dontfriendly").click(function () {
         alert("点我干什么");
     });
@@ -42,7 +42,7 @@ function GoTop(className) {
     slideToTop.on('mouseout', function () {
         $(this).css('opacity', '.7');
     });
-    $('.' + className).append(slideToTop);
+    $(className).append(slideToTop);
     $(window).scroll(function () {
         if ($(window).scrollTop() >= 150) {
             if (!$(slideToTop).is(':visible')) {
