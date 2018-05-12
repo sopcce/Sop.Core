@@ -17,7 +17,7 @@
                 var $this = $(this);
 
                 // 执行代码
-                // 例如： privateFunction();
+                // 例如： privateFunction(); 
             });
         },
         destroy: function () {
