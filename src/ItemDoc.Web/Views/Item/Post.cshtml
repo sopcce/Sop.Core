@@ -1,0 +1,57 @@
+﻿@model PostViewModel
+@{
+    //Layout = null;
+}
+
+<link href="~/Scripts/css/blog.css" rel="stylesheet" />
+
+<div class="blog-post">
+    <div class="row">
+
+        <div class="col-sm-10 blog-main">
+
+            <div class="blog-post">
+                <h2 class="blog-post-title">@Model.Title</h2>
+                <div class="blog-post-meta">
+
+                    <p>@Model.DateCreated</p>
+                    <p>@Model.ViewCount 次</p>
+                    <a href="#">@Model.NickName</a>
+                </div>
+
+                <p class="blog-description">@Model.CatalogId</p>
+                <hr>
+                <div class="blog-content">
+                    @Html.Raw(Model.Content)
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-2">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>Guangao</h4>
+                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            </div>
+            <div class="sidebar-module">
+                <h4>相关介绍</h4>
+                <ol class="list-unstyled">
+
+                    @for (int i = 0; i < 10; i++)
+                    {
+                        <li><a href="#">推荐文章 @i</a></li>
+                    }
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Elsewhere</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ol>
+            </div>
+        </div><!-- /.blog-sidebar -->
+
+    </div>
+</div>
