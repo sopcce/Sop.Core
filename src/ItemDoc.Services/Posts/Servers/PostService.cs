@@ -54,6 +54,7 @@ namespace ItemDoc.Services.Servers
       //todo 不知道会不会出现问题 ，但是当前能够使用
 
       info.DisplayOrder = info.Id;
+      info.Title = info.Title + info.Id;
       _repository.Update(info);
     }
     /// <summary>
@@ -88,7 +89,7 @@ namespace ItemDoc.Services.Servers
       return new PageList<PostViewModel>();
 
 
-     // return _repository.GetPostList(parameter);
+      // return _repository.GetPostList(parameter);
     }
     /// <summary>
     /// 
@@ -100,7 +101,7 @@ namespace ItemDoc.Services.Servers
       //int cataLog, int pageSize, int pageIndex, string keyword, string sortOrder, string sortName 
       //TODO 特殊处理page 数
       parameter.pageIndex = (parameter.pageIndex / parameter.pageSize) + 1;
-      
+
       return _repository.GetPostList1(parameter);
     }
     #endregion
