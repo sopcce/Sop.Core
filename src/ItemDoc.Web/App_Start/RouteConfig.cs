@@ -7,17 +7,31 @@ using System.Web.Routing;
 
 namespace ItemDoc.Web
 {
-  public class RouteConfig
+  /// <summary>
+  /// 路由匹配有特殊到一般  范围有小到大
+  /// </summary>
+  public static class RouteConfig
   {
     public static void RegisterRoutes(RouteCollection routes)
     {
       routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+      routes.MapMvcAttributeRoutes();
+      //匹配特殊路由
+      routes.MapRoute(
+        name: "Item_Post",
+        url: "P/{id}",
+        defaults: new { controller = "Item", action = "Post", id = UrlParameter.Optional }
+      );
+
+      
       //安装模块
       routes.MapRoute(
           name: "Default",
           url: "{controller}/{action}/{id}",
           defaults: new { controller = "Install", action = "Index", id = UrlParameter.Optional }
       );
+
+
 
 
 
