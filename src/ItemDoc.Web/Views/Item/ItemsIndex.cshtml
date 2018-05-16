@@ -173,8 +173,10 @@
 
         //eeView3();
     });
-    function open(postId, title) {
-        alert(title);
+    function openNewPage(postId, title) {
+      
+        window.open("/p/" + postId);
+        //alert(title);
 
     }
     function NodeSelected() {
@@ -260,7 +262,7 @@
                     sortable: true,
                     formatter: function (value, row, index) {
                         //debugger
-                        return '<a href="javascript:open(\'' + row.id + '\',\'' + row.title + '\')">' + value + '</a>';
+                        return '<a href="javascript:openNewPage(\'' + row.id + '\',\'' + row.title + '\')">' + value + '</a>';
                     }
                 }, {
                     field: 'nickname',
@@ -321,7 +323,7 @@
             alert("数据加载失败！");
         };
         oTableInit.customSort = function (params) {
-            debugger
+            //debugger
             var temp = {
                 sortName: params.sortName,
                 sortOrder: params.sortOrder

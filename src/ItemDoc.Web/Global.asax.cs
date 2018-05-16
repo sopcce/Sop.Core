@@ -5,7 +5,6 @@ using Autofac.Integration.WebApi;
 using StackExchange.Profiling;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -21,7 +20,6 @@ using ItemDoc.Core.Mvc.ModelBinder;
 using ItemDoc.Framework.Caching;
 using ItemDoc.Framework.Environment;
 using ItemDoc.Framework.Repositories;
-
 
 namespace ItemDoc.Web
 {
@@ -43,11 +41,11 @@ namespace ItemDoc.Web
 
       //初始化DI容器
       InitializeDiContainer(assemblies);
-
+      //ItemDoc.Services.Mapping.
       //初始化MVC环境
       InitializeMVC();
 
-
+      
 
     }
 
@@ -138,6 +136,7 @@ namespace ItemDoc.Web
         }
 
       }
+    
 
 
       builder.RegisterControllers(typeof(MvcApplication).Assembly);
@@ -158,17 +157,14 @@ namespace ItemDoc.Web
       DiContainer.RegisterContainer(container);
     }
 
-
+ 
     private void InitializeMVC()
     {
 
       ModelBinders.Binders.DefaultBinder = new CustomModelBinder();
 
-
+   
       ValueProviderFactories.Factories.Add(new CookieValueProviderFactory());
-
-
-
       AreaRegistration.RegisterAllAreas();
    
       GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -176,6 +172,7 @@ namespace ItemDoc.Web
       BundleConfig.RegisterBundles(BundleTable.Bundles);
       MvcHandler.DisableMvcResponseHeader = true;
     }
-
+    
+  
   }
 }
