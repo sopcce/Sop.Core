@@ -80,11 +80,12 @@
     <Compile Include="Auth\FormsAuthenticationService.cs" />
     <Compile Include="Auth\IAuthenticationService.cs" />
     <Compile Include="Auth\OwinAuthenticationService.cs" />
-    <Compile Include="Posts\Mapping\PostViewModelMapping.cs" />
+    <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="Mapping\MappingProfile.cs" />
+    <Compile Include="Mapping\PostViewModelMapping.cs" />
     <Compile Include="Posts\Model\PostInfo.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Catalog\Mapping\CatalogViewModelMapping.cs" />
-    <Compile Include="Items\Mapping\ItemsViewModelMapping.cs" />
+    <Compile Include="Mapping\CatalogViewModelMapping.cs" />
+    <Compile Include="Mapping\ItemsViewModelMapping.cs" />
     <Compile Include="Article\Model\ArticleInfo.cs" />
     <Compile Include="Catalog\Model\CatalogInfo.cs" />
     <Compile Include="Items\Model\ItemsInfo.cs" />
@@ -131,12 +132,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Article\Mapping\" />
     <Folder Include="Article\Repositories\" />
     <Folder Include="Article\Servers\" />
     <Folder Include="Article\ViewModel\" />
     <Folder Include="Posts\Parameter\" />
-    <Folder Include="Users\Mapping\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
