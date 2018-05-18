@@ -80,12 +80,8 @@
     <Compile Include="Auth\FormsAuthenticationService.cs" />
     <Compile Include="Auth\IAuthenticationService.cs" />
     <Compile Include="Auth\OwinAuthenticationService.cs" />
-    <Compile Include="Mapping\AutoMapperConfiguration.cs" />
-    <Compile Include="Mapping\MappingProfile.cs" />
-    <Compile Include="Mapping\PostViewModelMapping.cs" />
+    <Compile Include="AutoMapExtensions.cs" />
     <Compile Include="Posts\Model\PostInfo.cs" />
-    <Compile Include="Mapping\CatalogViewModelMapping.cs" />
-    <Compile Include="Mapping\ItemsViewModelMapping.cs" />
     <Compile Include="Article\Model\ArticleInfo.cs" />
     <Compile Include="Catalog\Model\CatalogInfo.cs" />
     <Compile Include="Items\Model\ItemsInfo.cs" />
