@@ -20,6 +20,7 @@ using ItemDoc.Core.Mvc.ModelBinder;
 using ItemDoc.Framework.Caching;
 using ItemDoc.Framework.Environment;
 using ItemDoc.Framework.Repositories;
+using ItemDoc.Services.Mapping;
 
 namespace ItemDoc.Web
 {
@@ -45,7 +46,7 @@ namespace ItemDoc.Web
       //初始化MVC环境
       InitializeMVC();
 
-      
+      //AutoMapperConfiguration.Configure();
 
     }
 

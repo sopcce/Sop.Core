@@ -79,15 +79,15 @@ namespace ItemDoc.Web.Controllers
       ItemsInfo info = new ItemsInfo();
       if (id == 0)
       {
-        return View(info.AsModel());
+        return View(info.MapTo<ItemsViewModel>());
       }
       info = _itemsService.GetById(id.ToString());
       if (info == null)
       {
-        return View(info.AsModel());
+        return View(info.MapTo<ItemsViewModel>());
 
       }
-      var infoVM = info.AsModel();
+      var infoVM = info.MapTo<ItemsViewModel>();
       var infoParent = _itemsService.GetById(info.ParentId.ToString());
       infoVM.ParentName = infoParent == null ? "" : infoParent.Name;
       return View(infoVM);
@@ -99,12 +99,12 @@ namespace ItemDoc.Web.Controllers
       {
         if (ModelState.IsValid)
         {
-          _itemsService.Update(info.AsInfo());
+          _itemsService.Update(info.MapTo<ItemsInfo>());
         }
       }
       else
       {
-        _itemsService.Insert(info.AsInfo());
+        _itemsService.Insert(info.MapTo<ItemsInfo>());
       }
       //todo 后期可以考虑json 提示成功失败
       return RedirectToAction("Index", "Item");
@@ -435,9 +435,9 @@ namespace ItemDoc.Web.Controllers
     {
       ViewBag.Id = id;
       var info = _postService.Get(id);
-      PostViewModel infoModel = info.AsModel();
+      //PostViewModel infoModel = info.AsModel();
 
-      return View(infoModel);
+      return View(info.MapTo<PostInfo, PostViewModel>());
     }
 
     #endregion
