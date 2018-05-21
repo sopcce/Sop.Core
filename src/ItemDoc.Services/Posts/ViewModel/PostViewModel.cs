@@ -25,7 +25,7 @@ namespace ItemDoc.Services.ViewModel
 
     public string NickName { get; set; }
 
-
+    public string Description { get; set; }
 
     public string Title { get; set; }
 

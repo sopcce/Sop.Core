@@ -56,7 +56,7 @@ namespace ItemDoc.Services.Repositories
         .On(" Item_Catalog.Id=Item_Posts.CatalogId")
         .Where(" CatalogId=@0", parameter.CatalogId);
 
-      Log.Instance().Write(sql.ToString(), null, null, LogLevel.Info);
+      //Log.Instance().Write(sql.ToString(), null, null, LogLevel.Info);
       switch (parameter.sortName)
       {
         case SortName.Title:
@@ -80,8 +80,12 @@ namespace ItemDoc.Services.Repositories
             ? sql.OrderBy(" Item_Posts.ViewCount ASC")
             : sql.OrderBy(" Item_Posts.ViewCount DESC");
           break;
+        default:
+          sql = sql.OrderBy(" Item_Posts.DisplayOrder DESC");
+          break;
 
       }
+      Log.Instance().Write(sql.ToString(), null, null, LogLevel.Info);
       var list = Gets<PostViewModel>(parameter.pageIndex, parameter.pageSize, sql.SQL, sql.Arguments);
       return list;
     }

@@ -52,7 +52,8 @@ namespace ItemDoc.Web
 
     protected void Application_BeginRequest()
     {
-      if (Request.IsLocal || _miniProfiler)
+      //Request.IsLocal ||
+      if ( _miniProfiler)
         MiniProfiler.Start();
     }
 

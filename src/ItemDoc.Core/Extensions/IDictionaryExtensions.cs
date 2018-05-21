@@ -1,7 +1,4 @@
-﻿
-
-
-using ItemDoc.Framework.Utilities;
+﻿using ItemDoc.Framework.Utilities;
 
 namespace System.Collections.Generic
 {

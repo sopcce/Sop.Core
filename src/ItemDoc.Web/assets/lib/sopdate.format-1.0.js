@@ -158,7 +158,7 @@ var stringToDate = function (dateStr, format, ymdSeparator, hmsSeparator) {
     var ms = parseInt(dateStrArr.length === 3 ? dateStrArr[2] : 0);
 
     var data = new Date(year, month - 1, date, hours, minutes, seconds, ms).format(format);
-    console.log(data);
+    //console.log(data);
     return data;
 
 }

@@ -2,7 +2,7 @@
 @model UsersRegisterViewModel
 @{
     ViewBag.Title = "注册页面";
-    var systemMessageData = ViewData.Get<SystemMessageData>("msg", new SystemMessageData(SystemMessageType.Success, "ok"));
+    var systemMessageData = ViewData.Get("msg", new SystemMessageData(SystemMessageType.Success, "ok"));
 }
 
 @section heads

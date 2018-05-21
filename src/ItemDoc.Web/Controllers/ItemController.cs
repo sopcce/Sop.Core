@@ -307,8 +307,6 @@ namespace ItemDoc.Web.Controllers
                 list.Add(info);
               }
 
-
-
             }
             else
             {
@@ -344,6 +342,14 @@ namespace ItemDoc.Web.Controllers
     #endregion
 
 
+
+
+
+
+
+
+
+    #region Post
     [HttpGet]
     public JsonResult GetPostList(PostParameter parameter)
     {
@@ -397,7 +403,8 @@ namespace ItemDoc.Web.Controllers
         UserId = UserContext.GetGetUserId(),
         Title = parameter.CatalogId + "-标题 Post-",
         Content = parameter.CatalogId + "<br />" + sb.ToString(),
-        DateCreated = DateTime.Now,
+        DateCreated = DateTime.Now.AddDays(new Random().Next(1000)),
+        Description = "descriptiondescriptiondescriptiondescriptiondescriptiondescription-----" + new Random().Next(1000),
         DisplayOrder = 1,
         HtmlContentPath = "",
         ViewCount = new Random().Next(1000),
@@ -413,7 +420,7 @@ namespace ItemDoc.Web.Controllers
       Stopwatch swStopwatch1 = new Stopwatch();
       swStopwatch1.Start();
       //
-      var list = _postService.GetPostList1(parameter);
+      var list = _postService.GetPostList(parameter);
 
       swStopwatch1.Stop();
 
@@ -424,27 +431,92 @@ namespace ItemDoc.Web.Controllers
 
       return Json(new { total = list.TotalCount, rows = list, data = swStopwatch.ElapsedMilliseconds, data1 = swStopwatch1.ElapsedMilliseconds });
     }
-
-
-
-
-
-
-    #region Post
     [HttpGet]
     public ActionResult Post(int id)
     {
 
 
       var info = _postService.Get(id);
-      var infoVM = info.MapTo<PostViewModel>();
-      var userInfo = _usersService.GetByUserId(info.UserId);
+      PostViewModel infoVM = new PostViewModel();
+      UsersLoginInfo userInfo = new UsersLoginInfo();
+      if (info != null)
+      {
+        infoVM = info.MapTo<PostViewModel>();
+        userInfo = _usersService.GetByUserId(info.UserId);
+        infoVM.NickName = userInfo != null ? "" : userInfo.NickName;
+        return View(infoVM);
+      }
+      else
+      {
+        return Redirect(SiteUrls.Instance().Error404());
+      }
+
+    }
+    [HttpPost]
+    public JsonResult PostDelete(string ids)
+    {
+      var uid = UserContext.GetGetUserId();
 
 
-      infoVM.NickName = userInfo != null ? "" : userInfo.NickName;
-      //PostViewModel infoModel = info.AsModel();
+      bool result = true;
+      List<PostInfo> list = new List<PostInfo>();
+      if (!string.IsNullOrEmpty(ids) && ids.Contains(','))
+      {
+        string[] strIds = ids.Split(',');
 
-      return View(infoVM);
+        foreach (var strid in strIds)
+        {
+          int id = 0;
+          if (!string.IsNullOrEmpty(strid) && int.TryParse(strid, out id))
+          {
+            var info = _postService.Get(id);
+            if (info != null)
+            {
+              //TODO 判断是否具有权限删除
+              if (info.UserId == UserContext.GetGetUserId())
+              {
+                list.Add(info);
+              }
+
+
+
+            }
+            else
+            {
+              //TODO 不存在删除记录
+              result = false;
+              break;
+
+            }
+
+          }
+        }
+      }
+      if (result)
+      {
+        foreach (var item in list)
+        {
+          _postService.Delete(item);
+        }
+
+      }
+      if (result)
+      {
+        return Json(new SystemMessageData() { Content = "删除成功", Type = SystemMessageType.Success });
+
+      }
+      else
+      {
+        return Json(new SystemMessageData() { Content = "删除失败", Type = SystemMessageType.Error });
+
+      }
+
+    }
+
+    [HttpGet]
+    public ActionResult PostEdit(int id = 0)
+    {
+      return View();
     }
 
     #endregion
@@ -468,94 +540,7 @@ namespace ItemDoc.Web.Controllers
       ViewBag.Id = id;
       return View();
     }
-
-
-
-
-
-
-
-
-
-
-    // GET: Item/Create
-    public ActionResult Create()
-    {
-      return View();
-    }
-
-    // POST: Item/Create
-    [HttpPost]
-    public ActionResult Create(FormCollection collection)
-    {
-      try
-      {
-        // TODO: Add insert logic here
-
-        return RedirectToAction("Index");
-      }
-      catch
-      {
-        return View();
-      }
-    }
-
-    // GET: Item/Edit/5
-    public ActionResult Edit(int id)
-    {
-      return View();
-    }
-
-    // POST: Item/Edit/5
-    [HttpPost]
-    public ActionResult Edit(int id, FormCollection collection)
-    {
-      try
-      {
-        // TODO: Add update logic here
-
-        return RedirectToAction("Index");
-      }
-      catch
-      {
-        return View();
-      }
-    }
-
-    // GET: Item/Delete/5
-    public ActionResult Delete(int id)
-    {
-      return View();
-    }
-
-    // POST: Item/Delete/5
-    [HttpPost]
-    public ActionResult Delete(int id, FormCollection collection)
-    {
-      try
-      {
-        // TODO: Add delete logic here
-
-        return RedirectToAction("Index");
-      }
-      catch
-      {
-        return View();
-      }
-    }
-  }
-
-
-  public class Department
-  {
-    public string ID { set; get; }
-
-    public string Name { set; get; }
-
-    public string ParentName { set; get; }
-
-    public string Level { set; get; }
-
-    public string Desc { set; get; }
+     
+ 
   }
 }

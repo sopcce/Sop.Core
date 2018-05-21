@@ -36,6 +36,7 @@ namespace ItemDoc.Web.Controllers
       //SQLiteConnection.CreateFile("E:\\itemdoc4.db");
      
       var info = _usersService.GetByUserId("2");
+      // ReSharper disable once Mvc.ViewNotResolved
       return View();
     }
 
@@ -207,6 +208,7 @@ namespace ItemDoc.Web.Controllers
     [Authorize]
     public ActionResult Setting()
     {
+      // ReSharper disable once Mvc.ViewNotResolved
       return View();
     }
 

@@ -78,25 +78,25 @@ namespace ItemDoc.Services.Servers
 
     }
 
-    public IPageList<PostViewModel> GetPostList(PostParameter parameter)
-    {
-      //int cataLog, int pageSize, int pageIndex, string keyword, string sortOrder, string sortName 
-      //TODO 特殊处理page 数
-      parameter.pageIndex = (parameter.pageIndex / parameter.pageSize) + 1;
+    //public IPageList<PostViewModel> GetPostList(PostParameter parameter)
+    //{
+    //  //int cataLog, int pageSize, int pageIndex, string keyword, string sortOrder, string sortName 
+    //  //TODO 特殊处理page 数
+    //  parameter.pageIndex = (parameter.pageIndex / parameter.pageSize) + 1;
 
 
 
-      return new PageList<PostViewModel>();
+    //  return new PageList<PostViewModel>();
 
 
-      // return _repository.GetPostList(parameter);
-    }
+    //  // return _repository.GetPostList(parameter);
+    //}
     /// <summary>
     /// 
     /// </summary>
     /// <param name="parameter"></param>
     /// <returns></returns>
-    public IPageList<PostViewModel> GetPostList1(PostParameter parameter)
+    public IPageList<PostViewModel> GetPostList(PostParameter parameter)
     {
       //int cataLog, int pageSize, int pageIndex, string keyword, string sortOrder, string sortName 
       //TODO 特殊处理page 数

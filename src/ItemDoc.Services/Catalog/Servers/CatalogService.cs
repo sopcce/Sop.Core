@@ -41,8 +41,8 @@ namespace ItemDoc.Services.Servers
       return _repository.GetByItemId(id);
     }
 
-     
-   
+
+
 
     /// <summary>
     /// 获取顶级栏目
@@ -281,7 +281,7 @@ namespace ItemDoc.Services.Servers
       }
       _repository.Insert(info);
       //todo 不知道会不会出现问题 ，但是当前能够使用
-     
+
       info.DisplayOrder = info.Id;
       _repository.Update(info);
     }
@@ -308,7 +308,9 @@ namespace ItemDoc.Services.Servers
         CatalogInfo parentInfo = Get(info.ParentId);
         if (parentInfo != null)
         {
-          parentInfo.ChildCount -= 1;
+          parentInfo.ChildCount = parentInfo.ChildCount == 0
+            ? 0
+            : parentInfo.ChildCount -= 1;
           _repository.Update(parentInfo);
         }
       }

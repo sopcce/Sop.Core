@@ -50,7 +50,7 @@ namespace ItemDoc.Services.Servers
     /// </summary>
     /// <param name="parameter"></param>
     /// <returns></returns>
-    IPageList<PostViewModel> GetPostList1(PostParameter parameter);
+    //IPageList<PostViewModel> GetPostList1(PostParameter parameter);
     #endregion
 
   }

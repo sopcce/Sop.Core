@@ -23,7 +23,13 @@ namespace ItemDoc.Web
         defaults: new { controller = "Item", action = "Post", id = UrlParameter.Optional }
       );
 
+      //routes.MapRoute(
+      //  name: "Item_Post",
+      //  url: "{controller}/{action}/{id}",
+      //  defaults: new { controller = "Item", action = "PostEdit", id = UrlParameter.Optional }
+      //);
       
+
       //安装模块
       routes.MapRoute(
           name: "Default",

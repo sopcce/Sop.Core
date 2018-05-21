@@ -15,7 +15,9 @@
 <link href="~/assets/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet" />
 <script src="~/assets/bootstrap-table/dist/bootstrap-table.js"></script>
 <script src="~/assets/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
-<script src="~/assets/lib/sopdate.format-1.0.js"></script>
+<script src="~/assets/lib/sopdate.format-1.0.js?b=122"></script>
+<script src="~/assets/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
+<script src="~/assets/bootstrap-table/dist/extensions/export-hhurz/tableExport.js"></script>
 
 <style>
     .casd {
@@ -73,17 +75,17 @@
             <div class="btn-group pull-left" style=" ">
 
                 <div id="toolbar" class="btn-group" style="display: none">
-                    <button id="btn_add" type="button" class="btn btn-default">
+                    <button id="btn_post_add" type="button" class="btn btn-default">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
                     </button>
-                    <button id="btn_edit" type="button" class="btn btn-default">
+                    <button id="btn_post_edit" type="button" class="btn btn-default">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
                     </button>
-                    <button id="btn_delete" type="button" class="btn btn-default">
+                    <button id="btn_post_delete" type="button" class="btn btn-default">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
                     </button>
                 </div>
-                <table id="tb_departments">
+                <table id="tb_post">
                     <tr>
                         <td class="Error">点击树加载数据啊，点 啊</td>
                     </tr>
@@ -114,7 +116,6 @@
                     <div class="form-group">
                         <label for="recipient-name" class="control-label">名称:</label>
                         <input type="text" class="form-control" id="recipient-name">
-                        @*<small class="">出错了</small>*@
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="control-label">描述:</label>
@@ -146,19 +147,18 @@
                 <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
         </div>-->
-
     </div>
 </div>
 <script>
     var $tree;
     var silent1 = false;
-    $(function () {
+    $(function() {
 
         $.post("/Item/GetCataloTree",
             {
                 itemId: $("#hf-itemId").val()
             },
-            function (data) {
+            function(data) {
 
                 TreeView(data);
 
@@ -171,11 +171,62 @@
         TreeView2();
 
 
-        //eeView3();
+        TreeView3();
     });
+
+    //新增添加post
+    function TreeView3() {
+        $('#btn_post_add').on('click', function(e) {
+
+            window.open("/Item/PostEdit");
+        });
+
+
+        //
+        $('#btn_post_delete').on('click', function (e){
+
+            var $this = this;
+            var arrselections = $('#tb_post').bootstrapTable('getSelections');
+            if (arrselections.length <= 0) {
+                layer.msg('请选择有效数据');
+                return false;
+            }
+            var arrIds = "";
+            for (var i = 0; i < arrselections.length; i++) {
+                arrIds += arrselections[i].id + ",";
+            }
+            //console.log(arrIds);
+            $.post("/Item/PostDelete",
+                {
+                    ids: arrIds
+                },
+                function(data) {
+                    console.log(data);
+                    if (data.type == "@((int) SystemMessageType.Success)") {
+                        layer.msg(data.content);
+                        $('#tb_post').bootstrapTable('refresh');
+                      
+                    } else {
+                        layer.msg(data.content);
+                    }
+                },
+                "json");
+            return false;
+        });
+
+
+
+
+
+    }
+
+
+
+
+
     function openNewPage(postId, title) {
-      
-        window.open("/p/" + postId);
+
+        window.open("/P/" + postId);
         //alert(title);
 
     }
@@ -212,21 +263,24 @@
         //$.get("/Item/GetDepartment",
         //    { catalogId: arr[0] },
         //    function (data) {
-        //        $("#tb_departments").bootstrapTable('load',data);
+        //        $("#tb_post").bootstrapTable('load',data);
         //    });
         $("#toolbar").show();
         var obj = new TableInit();
 
         obj.Init();
         obj.cataLogId = arr[0];
-        $("#tb_departments").bootstrapTable('refresh');
+        $("#tb_post").bootstrapTable('refresh');
+
+
+
     }
 
     var TableInit = function () {
         var oTableInit = new Object();
         //初始化Table
         oTableInit.Init = function () {
-            $('#tb_departments').bootstrapTable({
+            $('#tb_post').bootstrapTable({
                 url: '/Item/GetPostList',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -252,6 +306,8 @@
                 showToggle: false,                    //是否显示详细视图和列表视图的切换按钮
                 cardView: false,                    //是否显示详细视图
                 detailView: false,                   //是否显示父子表
+                showExport: true,                     //是否显示导出
+                exportDataType: "basic",              //basic', 'all', 'selected'.
 
                 columns: [{
                     checkbox: true
@@ -266,16 +322,18 @@
                     }
                 }, {
                     field: 'nickname',
+                    sortable: true,
                     title: '用户名称'
 
                 },
                 {
-                    field: 'catalogid',
-                    title: '分类',
+                    field: 'displayorder',
+                    title: '排序',
                     sortable: true
                 }, {
                     field: 'datecreated',
                     title: '创建时间',
+                    sortable: true,
                     formatter: function (value, row, index) {
 
                         //var newDate = new Date();
@@ -286,18 +344,6 @@
                         return dd;
                     }
                 }
-                    //{
-                    //    field: 'Name',
-                    //    title: '组织机构代码',
-                    //    valign: "middle",
-                    //    halign: "center",
-                    //    align: "left",
-                    //    colspan: 1,
-                    //    rowspan: 2,
-                    //    formatter: function (value, row, index) {
-                    //        return '<a href="javascript:open(\'' + row.nat_Org_Code + '\',\'' + row.org_Name + '\')">' + value + '</a>';
-                    //    }
-                    //}
 
                 ]
             });
@@ -330,7 +376,6 @@
             };
             return temp;
         }
-
 
         return oTableInit;
     };
