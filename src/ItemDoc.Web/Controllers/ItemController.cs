@@ -210,7 +210,7 @@ namespace ItemDoc.Web.Controllers
         if (id > 0)
         {
           info = _catalogService.Get(id);
-          var infoVm = info.AsModel();
+          var infoVm = info.MapTo<CatalogViewModel>();
           if (info.ParentId != 0)
           {
             var infoParent = _catalogService.Get(info.ParentId);
@@ -220,12 +220,12 @@ namespace ItemDoc.Web.Controllers
         }
         else
         {
-          return View(info.AsModel());
+          return View(info.MapTo<CatalogViewModel>());
         }
       }
       else
       {
-        var infoVm = info.AsModel();
+        var infoVm = info.MapTo<CatalogViewModel>();
         if (id > 0)
         {
           info = _catalogService.Get(id);
@@ -261,7 +261,7 @@ namespace ItemDoc.Web.Controllers
       {
         if (ModelState.IsValid)
         {
-          var upInfo = info.AsInfo();
+          var upInfo = info.MapTo<CatalogInfo>();
           var oldInfo = _catalogService.Get(upInfo.Id);
           upInfo.ChildCount = oldInfo.ChildCount;
           upInfo.Depth = oldInfo.Depth;
@@ -276,7 +276,7 @@ namespace ItemDoc.Web.Controllers
       }
       else
       {
-        _catalogService.Create(info.AsInfo());
+        _catalogService.Create(info.MapTo<CatalogInfo>());
       }
       return Redirect(SiteUrls.Instance().ItemItemsIndex(info.ItemId));
 
@@ -431,13 +431,20 @@ namespace ItemDoc.Web.Controllers
 
 
     #region Post
+    [HttpGet]
     public ActionResult Post(int id)
     {
-      ViewBag.Id = id;
+
+
       var info = _postService.Get(id);
+      var infoVM = info.MapTo<PostViewModel>();
+      var userInfo = _usersService.GetByUserId(info.UserId);
+
+
+      infoVM.NickName = userInfo != null ? "" : userInfo.NickName;
       //PostViewModel infoModel = info.AsModel();
 
-      return View(info.MapTo<PostInfo, PostViewModel>());
+      return View(infoVM);
     }
 
     #endregion
