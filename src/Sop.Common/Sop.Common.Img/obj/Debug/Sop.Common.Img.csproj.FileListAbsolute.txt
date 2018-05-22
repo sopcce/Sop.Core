@@ -1,6 +1,0 @@
-E:\Item\ItemDoc\src\Sop.Common\Sop.Common.Img\obj\Debug\Sop.Common.Img.csproj.CoreCompileInputs.cache
-E:\Item\ItemDoc\src\Sop.Common\Sop.Common.Img\bin\Debug\Sop.Common.Img.dll
-E:\Item\ItemDoc\src\Sop.Common\Sop.Common.Img\bin\Debug\Sop.Common.Img.pdb
-E:\Item\ItemDoc\src\Sop.Common\Sop.Common.Img\obj\Debug\Sop.Common.Img.dll
-E:\Item\ItemDoc\src\Sop.Common\Sop.Common.Img\obj\Debug\Sop.Common.Img.pdb
-E:\Item\ItemDoc\src\Sop.Common\Sop.Common.Img\obj\Debug\Sop.Common.Img.csprojResolveAssemblyReference.cache
