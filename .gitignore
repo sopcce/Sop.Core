@@ -1,9 +1,7 @@
+*.js linguist-language=c#
+*.css linguist-language=c#
+*.html linguist-language=c#
 
-
-
-
-
-*.swift linguist-language=csharp
 
 
 /src/ItemDoc.Web/Web.config
