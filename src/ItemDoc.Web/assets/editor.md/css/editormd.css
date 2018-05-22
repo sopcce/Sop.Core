@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Editor.md
  *
  * @file        editormd.css 
@@ -670,7 +670,7 @@
   position: absolute;
   top: 35px;
   right: 0;
-  right: -1px\0;
+  right: -1px;
   overflow: auto;
   line-height: 1.6;
   display: none;

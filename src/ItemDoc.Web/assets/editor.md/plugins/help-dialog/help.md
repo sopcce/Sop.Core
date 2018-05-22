@@ -16,6 +16,7 @@
 | F9                                              | 切换实时预览                      | Switch watch/unwatch                               |
 | F10                                             | 全屏HTML预览(按 Shift + ESC 退出) | Full preview HTML (Press Shift + ESC exit)         |
 | F11                                             | 切换全屏状态                      | Switch fullscreen (Press ESC exit)                 |
+| ESC                                             | 退出全屏状态                      | Exit fullscreen                                    |
 | Ctrl + 1~6 / Command + 1~6                      | 插入标题1~6                       | Insert heading 1~6                                 |
 | Ctrl + A / Command + A                          | 全选                              | Select all                                         |
 | Ctrl + B / Command + B                          | 插入粗体                          | Insert bold                                        |

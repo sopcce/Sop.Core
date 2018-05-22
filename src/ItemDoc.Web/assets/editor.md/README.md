@@ -1,5 +1,12 @@
 # Editor.md
 
+--------
+# 主要修改
+1、增加个性化设置，可以设置编辑器的zindex 处理在全屏的时候不现实工具栏
+
+--------
+
+
 ![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
 
 ![](https://img.shields.io/github/stars/pandao/editor.md.svg)

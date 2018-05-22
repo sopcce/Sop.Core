@@ -28,6 +28,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -122,6 +123,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.SQLite, Version=1.0.107.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.107.0\lib\net46\System.Data.SQLite.dll</HintPath>
     </Reference>
@@ -141,17 +143,14 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -193,6 +192,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -438,6 +438,41 @@
     <Content Include="assets\bootstrap-table\dist\locale\bootstrap-table-zh-TW.min.js" />
     <Content Include="assets\lib\base64.js" />
     <Content Include="assets\lib\sopdate.format-1.0.js" />
+    <Content Include="assets\tinymce\langs\zh_CN.js" />
+    <Content Include="assets\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\uploadfile\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\uploadimage\plugin.min.js" />
+    <Content Include="assets\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="assets\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="assets\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="assets\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="assets\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="assets\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="assets\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="assets\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="assets\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="assets\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="assets\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="assets\tinymce\themes\modern\theme.min.js" />
+    <Content Include="assets\tinymce\tinymce.min.js" />
+    <Content Include="fonts\editormd-logo.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="html\apple-touch-icon.png" />
     <Content Include="html\favicon.ico" />
     <Content Include="assets\bootstrap-table\src\bootstrap-table.css" />
@@ -542,76 +577,76 @@
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\ie10-viewport-bug-workaround.js" />
     <Content Include="assets\js\npm.js" />
-    <Content Include="assets\Plupload\i18n\ar.js" />
-    <Content Include="assets\Plupload\i18n\az.js" />
-    <Content Include="assets\Plupload\i18n\bg.js" />
-    <Content Include="assets\Plupload\i18n\bs.js" />
-    <Content Include="assets\Plupload\i18n\ca.js" />
-    <Content Include="assets\Plupload\i18n\cs.js" />
-    <Content Include="assets\Plupload\i18n\cy.js" />
-    <Content Include="assets\Plupload\i18n\da.js" />
-    <Content Include="assets\Plupload\i18n\de.js" />
-    <Content Include="assets\Plupload\i18n\el.js" />
-    <Content Include="assets\Plupload\i18n\en.js" />
-    <Content Include="assets\Plupload\i18n\es.js" />
-    <Content Include="assets\Plupload\i18n\et.js" />
-    <Content Include="assets\Plupload\i18n\fa.js" />
-    <Content Include="assets\Plupload\i18n\fi.js" />
-    <Content Include="assets\Plupload\i18n\fr.js" />
-    <Content Include="assets\Plupload\i18n\he.js" />
-    <Content Include="assets\Plupload\i18n\hr.js" />
-    <Content Include="assets\Plupload\i18n\hu.js" />
-    <Content Include="assets\Plupload\i18n\hy.js" />
-    <Content Include="assets\Plupload\i18n\id.js" />
-    <Content Include="assets\Plupload\i18n\it.js" />
-    <Content Include="assets\Plupload\i18n\ja.js" />
-    <Content Include="assets\Plupload\i18n\ka.js" />
-    <Content Include="assets\Plupload\i18n\kk.js" />
-    <Content Include="assets\Plupload\i18n\km.js" />
-    <Content Include="assets\Plupload\i18n\ko.js" />
-    <Content Include="assets\Plupload\i18n\ku_IQ.js" />
-    <Content Include="assets\Plupload\i18n\lt.js" />
-    <Content Include="assets\Plupload\i18n\lv.js" />
-    <Content Include="assets\Plupload\i18n\mn.js" />
-    <Content Include="assets\Plupload\i18n\ms.js" />
-    <Content Include="assets\Plupload\i18n\nl.js" />
-    <Content Include="assets\Plupload\i18n\pl.js" />
-    <Content Include="assets\Plupload\i18n\pt_BR.js" />
-    <Content Include="assets\Plupload\i18n\ro.js" />
-    <Content Include="assets\Plupload\i18n\ru.js" />
-    <Content Include="assets\Plupload\i18n\sk.js" />
-    <Content Include="assets\Plupload\i18n\sq.js" />
-    <Content Include="assets\Plupload\i18n\sr.js" />
-    <Content Include="assets\Plupload\i18n\sr_RS.js" />
-    <Content Include="assets\Plupload\i18n\sv.js" />
-    <Content Include="assets\Plupload\i18n\th_TH.js" />
-    <Content Include="assets\Plupload\i18n\tr.js" />
-    <Content Include="assets\Plupload\i18n\uk_UA.js" />
-    <Content Include="assets\Plupload\i18n\vi.js" />
-    <Content Include="assets\Plupload\i18n\zh_CN.js" />
-    <Content Include="assets\Plupload\i18n\zh_TW.js" />
-    <Content Include="assets\Plupload\jquery.plupload.queue\css\jquery.plupload.queue.css" />
-    <Content Include="assets\Plupload\jquery.plupload.queue\img\backgrounds.gif" />
-    <Content Include="assets\Plupload\jquery.plupload.queue\img\buttons-disabled.png" />
-    <Content Include="assets\Plupload\jquery.plupload.queue\img\buttons.png" />
-    <Content Include="assets\Plupload\jquery.plupload.queue\img\delete.gif" />
-    <Content Include="assets\Plupload\jquery.plupload.queue\img\done.gif" />
-    <Content Include="assets\Plupload\jquery.plupload.queue\img\error.gif" />
-    <Content Include="assets\Plupload\jquery.plupload.queue\img\throbber.gif" />
-    <Content Include="assets\Plupload\jquery.plupload.queue\img\transp50.png" />
-    <Content Include="assets\Plupload\jquery.plupload.queue\jquery.plupload.queue.js" />
-    <Content Include="assets\Plupload\jquery.plupload.queue\jquery.plupload.queue.min.js" />
-    <Content Include="assets\Plupload\jquery.ui.plupload\css\jquery.ui.plupload.css" />
-    <Content Include="assets\Plupload\jquery.ui.plupload\img\loading.gif" />
-    <Content Include="assets\Plupload\jquery.ui.plupload\img\plupload.png" />
-    <Content Include="assets\Plupload\jquery.ui.plupload\jquery.ui.plupload.js" />
-    <Content Include="assets\Plupload\jquery.ui.plupload\jquery.ui.plupload.min.js" />
-    <Content Include="assets\Plupload\moxie.js" />
-    <Content Include="assets\Plupload\moxie.min.js" />
-    <Content Include="assets\Plupload\Moxie.swf" />
-    <Content Include="assets\Plupload\plupload.dev.js" />
-    <Content Include="assets\Plupload\plupload.full.min.js" />
-    <Content Include="assets\Plupload\plupload.min.js" />
+    <Content Include="assets\plupload\i18n\ar.js" />
+    <Content Include="assets\plupload\i18n\az.js" />
+    <Content Include="assets\plupload\i18n\bg.js" />
+    <Content Include="assets\plupload\i18n\bs.js" />
+    <Content Include="assets\plupload\i18n\ca.js" />
+    <Content Include="assets\plupload\i18n\cs.js" />
+    <Content Include="assets\plupload\i18n\cy.js" />
+    <Content Include="assets\plupload\i18n\da.js" />
+    <Content Include="assets\plupload\i18n\de.js" />
+    <Content Include="assets\plupload\i18n\el.js" />
+    <Content Include="assets\plupload\i18n\en.js" />
+    <Content Include="assets\plupload\i18n\es.js" />
+    <Content Include="assets\plupload\i18n\et.js" />
+    <Content Include="assets\plupload\i18n\fa.js" />
+    <Content Include="assets\plupload\i18n\fi.js" />
+    <Content Include="assets\plupload\i18n\fr.js" />
+    <Content Include="assets\plupload\i18n\he.js" />
+    <Content Include="assets\plupload\i18n\hr.js" />
+    <Content Include="assets\plupload\i18n\hu.js" />
+    <Content Include="assets\plupload\i18n\hy.js" />
+    <Content Include="assets\plupload\i18n\id.js" />
+    <Content Include="assets\plupload\i18n\it.js" />
+    <Content Include="assets\plupload\i18n\ja.js" />
+    <Content Include="assets\plupload\i18n\ka.js" />
+    <Content Include="assets\plupload\i18n\kk.js" />
+    <Content Include="assets\plupload\i18n\km.js" />
+    <Content Include="assets\plupload\i18n\ko.js" />
+    <Content Include="assets\plupload\i18n\ku_IQ.js" />
+    <Content Include="assets\plupload\i18n\lt.js" />
+    <Content Include="assets\plupload\i18n\lv.js" />
+    <Content Include="assets\plupload\i18n\mn.js" />
+    <Content Include="assets\plupload\i18n\ms.js" />
+    <Content Include="assets\plupload\i18n\nl.js" />
+    <Content Include="assets\plupload\i18n\pl.js" />
+    <Content Include="assets\plupload\i18n\pt_BR.js" />
+    <Content Include="assets\plupload\i18n\ro.js" />
+    <Content Include="assets\plupload\i18n\ru.js" />
+    <Content Include="assets\plupload\i18n\sk.js" />
+    <Content Include="assets\plupload\i18n\sq.js" />
+    <Content Include="assets\plupload\i18n\sr.js" />
+    <Content Include="assets\plupload\i18n\sr_RS.js" />
+    <Content Include="assets\plupload\i18n\sv.js" />
+    <Content Include="assets\plupload\i18n\th_TH.js" />
+    <Content Include="assets\plupload\i18n\tr.js" />
+    <Content Include="assets\plupload\i18n\uk_UA.js" />
+    <Content Include="assets\plupload\i18n\vi.js" />
+    <Content Include="assets\plupload\i18n\zh_CN.js" />
+    <Content Include="assets\plupload\i18n\zh_TW.js" />
+    <Content Include="assets\plupload\jquery.plupload.queue\css\jquery.plupload.queue.css" />
+    <Content Include="assets\plupload\jquery.plupload.queue\img\backgrounds.gif" />
+    <Content Include="assets\plupload\jquery.plupload.queue\img\buttons-disabled.png" />
+    <Content Include="assets\plupload\jquery.plupload.queue\img\buttons.png" />
+    <Content Include="assets\plupload\jquery.plupload.queue\img\delete.gif" />
+    <Content Include="assets\plupload\jquery.plupload.queue\img\done.gif" />
+    <Content Include="assets\plupload\jquery.plupload.queue\img\error.gif" />
+    <Content Include="assets\plupload\jquery.plupload.queue\img\throbber.gif" />
+    <Content Include="assets\plupload\jquery.plupload.queue\img\transp50.png" />
+    <Content Include="assets\plupload\jquery.plupload.queue\jquery.plupload.queue.js" />
+    <Content Include="assets\plupload\jquery.plupload.queue\jquery.plupload.queue.min.js" />
+    <Content Include="assets\plupload\jquery.ui.plupload\css\jquery.ui.plupload.css" />
+    <Content Include="assets\plupload\jquery.ui.plupload\img\loading.gif" />
+    <Content Include="assets\plupload\jquery.ui.plupload\img\plupload.png" />
+    <Content Include="assets\plupload\jquery.ui.plupload\jquery.ui.plupload.js" />
+    <Content Include="assets\plupload\jquery.ui.plupload\jquery.ui.plupload.min.js" />
+    <Content Include="assets\plupload\moxie.js" />
+    <Content Include="assets\plupload\moxie.min.js" />
+    <Content Include="assets\plupload\Moxie.swf" />
+    <Content Include="assets\plupload\plupload.dev.js" />
+    <Content Include="assets\plupload\plupload.full.min.js" />
+    <Content Include="assets\plupload\plupload.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\b_64.png" />
@@ -673,7 +708,7 @@
     <Content Include="assets\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="assets\font-awesome\fonts\fontawesome-webfont.woff2_v=4.4.0" />
     <Content Include="assets\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="assets\Plupload\Moxie.xap" />
+    <Content Include="assets\plupload\Moxie.xap" />
     <Content Include="assets\bootstrap-table\src\extensions\accent-neutralise\extension.json" />
     <Content Include="assets\bootstrap-table\src\extensions\accent-neutralise\README.md" />
     <Content Include="assets\bootstrap-table\src\extensions\auto-refresh\extension.json" />
@@ -743,6 +778,21 @@
     <Content Include="assets\bootstrap-table\dist\extensions\export-hhurz\README.md" />
     <Content Include="assets\bootstrap-table\dist\extensions\export-hhurz\tools\minify2.py" />
     <Content Include="assets\bootstrap-table\dist\extensions\export-hhurz\tools\minify3.py" />
+    <Content Include="fonts\editormd-logo.eot" />
+    <Content Include="fonts\editormd-logo.ttf" />
+    <Content Include="fonts\editormd-logo.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="assets\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="assets\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="assets\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="assets\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="assets\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="assets\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="assets\editor.md\plugins\emoji-dialog\emoji_1.json" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="assets\bootstrap\css\bootstrap-responsive.css" />
     <Content Include="assets\bootstrap\css\bootstrap-responsive.min.css" />
@@ -777,7 +827,6 @@
     <Content Include="assets\editor.md\editormd.min.js" />
     <Content Include="assets\editor.md\fonts\editormd-logo.svg" />
     <Content Include="assets\editor.md\fonts\fontawesome-webfont.svg" />
-    <Content Include="assets\editor.md\Gulpfile.js" />
     <Content Include="assets\editor.md\images\loading%402x.gif" />
     <Content Include="assets\editor.md\images\loading%403x.gif" />
     <Content Include="assets\editor.md\images\loading.gif" />
@@ -801,8 +850,6 @@
     <Content Include="assets\editor.md\images\logos\editormd-logo-72x72.png" />
     <Content Include="assets\editor.md\images\logos\editormd-logo-96x96.png" />
     <Content Include="assets\editor.md\images\logos\vi.png" />
-    <Content Include="assets\editor.md\katex.min.css" />
-    <Content Include="assets\editor.md\katex.min.js" />
     <Content Include="assets\editor.md\languages\en.js" />
     <Content Include="assets\editor.md\languages\zh-tw.js" />
     <Content Include="assets\editor.md\lib\codemirror\addons.min.js" />
@@ -1457,12 +1504,6 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -1491,6 +1532,7 @@
     <Content Include="Views\Item\Post.cshtml" />
     <Content Include="Views\Item\PostEdit.cshtml" />
     <Content Include="Views\Tool\Index.cshtml" />
+    <Content Include="Views\Tool\Img.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -1524,6 +1566,10 @@
     <ProjectReference Include="..\ItemDoc.Services\ItemDoc.Services.csproj">
       <Project>{2aac99b5-8252-4018-ae1c-4681bb82e90e}</Project>
       <Name>ItemDoc.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sop.Common\Sop.Common.Img\Sop.Common.Img.csproj">
+      <Project>{6d9c4669-ca00-4838-b190-35f4cc01c7b6}</Project>
+      <Name>Sop.Common.Img</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sop.Common\Sop.Common.Serialization\Sop.Common.Serialization.csproj">
       <Project>{8e807449-e634-4971-8990-e63db141ecb8}</Project>

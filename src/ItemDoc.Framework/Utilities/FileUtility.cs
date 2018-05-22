@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
-namespace ItemDoc.Framework.FileStore
+namespace ItemDoc.Framework.Utilities
 {
   /// <summary>
   /// 通用磁盘(IO)数据访问操作 

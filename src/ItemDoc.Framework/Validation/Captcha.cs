@@ -4,9 +4,8 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.IO;
-using ItemDoc.Framework.Imaging.Gif;
 using ItemDoc.Framework.Utilities;
-
+using Sop.Common.Img.Gif;
 using static ItemDoc.Framework.Utilities.EncryptionUtility;
 
 namespace ItemDoc.Framework.Validation
@@ -131,8 +130,8 @@ namespace ItemDoc.Framework.Validation
         /// <returns>byte数组图片</returns>
         private static byte[] CreateImageGif()
         {
-            AnimatedGifEncoder1 animatedGifEncoder = new AnimatedGifEncoder1();
-            //AnimatedGifEncoder animatedGifEncoder = new AnimatedGifEncoder();
+           
+            AnimatedGifEncoder animatedGifEncoder = new AnimatedGifEncoder();
 
             MemoryStream memoryStream = new MemoryStream();
             animatedGifEncoder.Start();
@@ -294,4 +293,6 @@ namespace ItemDoc.Framework.Validation
         }
 
     }
+
+  
 }

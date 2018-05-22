@@ -1,11 +1,11 @@
 ﻿using ItemDoc.Framework.Environment;
-using ItemDoc.Framework.FileStore;
 using ItemDoc.Framework.SystemLog;
 using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using ItemDoc.Framework.Utilities;
 
 [assembly: PreApplicationStartMethod(typeof(RunningEnvironment), "Initialize")]
 

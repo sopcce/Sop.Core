@@ -4,7 +4,7 @@ using ItemDoc.Framework.Environment;
 using System;
 using System.Configuration;
 using System.IO;
-using ItemDoc.Framework.FileStore;
+using ItemDoc.Framework.Utilities;
 
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", ConfigFileExtension = ".config", Watch = true)]

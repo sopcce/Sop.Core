@@ -95,9 +95,7 @@ namespace Sop.Common.Serialization
       return JsonConvert.SerializeObject(obj, Formatting.None, settings);
 
     }
-
-
-
+     
     /// <summary>
     /// To the json.
     /// </summary>

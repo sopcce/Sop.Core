@@ -52,9 +52,7 @@ namespace ItemDoc.Services.Servers
     {
       _repository.Insert(info);
       //todo 不知道会不会出现问题 ，但是当前能够使用
-
       info.DisplayOrder = info.Id;
-      info.Title = info.Title + info.Id;
       _repository.Update(info);
     }
     /// <summary>

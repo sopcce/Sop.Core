@@ -37,7 +37,7 @@
 <div class="row">
 
     <input type="hidden" id="hf-itemId" value="@ViewBag.itemId" />
-    <input type="hidden" id="hf-tree-checkedvalue" />
+
     <input type="hidden" id="hf-selectedvalue" />
     <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3 ">
         <form class="form-inline">
@@ -177,8 +177,8 @@
     //新增添加post
     function TreeView3() {
         $('#btn_post_add').on('click', function(e) {
-
-            window.open("/Item/PostEdit");
+            var selectedvalue=   $("#hf-selectedvalue").val();
+            window.open("/Item/PostEdit/" + selectedvalue);
         });
 
 
@@ -205,7 +205,7 @@
                     if (data.type == "@((int) SystemMessageType.Success)") {
                         layer.msg(data.content);
                         $('#tb_post').bootstrapTable('refresh');
-                      
+
                     } else {
                         layer.msg(data.content);
                     }
@@ -458,11 +458,7 @@
 
         });
 
-        $("#hf-tree-checkedvalue").on("click", function () {
-            var checkedvalue = $('#catalog-treeview').data("checkedvalue");
-            var selectedvalue = $('#catalog-treeview').data("selectedvalue");
-            $(this).val(checkedvalue + "||" + selectedvalue);
-        });
+
 
         $("#btn-addchild").on("click", function () {
             var checkedvalue = $('#catalog-treeview').data("checkedvalue");

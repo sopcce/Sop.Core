@@ -353,6 +353,8 @@ namespace ItemDoc.Web.Controllers
     [HttpGet]
     public JsonResult GetPostList(PostParameter parameter)
     {
+      #region MyRegion
+
       StringBuilder sb = new StringBuilder();
       sb.Append("                     <p>Cum sociis natoque penatibus et magnis <a href=\"#\">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>");
       sb.Append("                     ");
@@ -395,41 +397,30 @@ namespace ItemDoc.Web.Controllers
       sb.Append("                     <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>");
 
 
+      #endregion
 
 
       _postService.Create(new PostInfo()
       {
         CatalogId = parameter.CatalogId,
+
         UserId = UserContext.GetGetUserId(),
+
         Title = parameter.CatalogId + "-标题 Post-",
         Content = parameter.CatalogId + "<br />" + sb.ToString(),
         DateCreated = DateTime.Now.AddDays(new Random().Next(1000)),
         Description = "descriptiondescriptiondescriptiondescriptiondescriptiondescription-----" + new Random().Next(1000),
+
         DisplayOrder = 1,
         HtmlContentPath = "",
         ViewCount = new Random().Next(1000),
 
       });
 
-      Stopwatch swStopwatch = new Stopwatch();
-      swStopwatch.Start();
-      //
-      //var list = _postService.GetPostList(parameter);
 
-      swStopwatch.Stop();
-      Stopwatch swStopwatch1 = new Stopwatch();
-      swStopwatch1.Start();
-      //
       var list = _postService.GetPostList(parameter);
 
-      swStopwatch1.Stop();
-
-      //var personViews = list.Select(x => x.AsModel<PostViewModel>());
-
-
-
-
-      return Json(new { total = list.TotalCount, rows = list, data = swStopwatch.ElapsedMilliseconds, data1 = swStopwatch1.ElapsedMilliseconds });
+      return Json(new { total = list.TotalCount, rows = list, data = "" });
     }
     [HttpGet]
     public ActionResult Post(int id)
@@ -514,9 +505,50 @@ namespace ItemDoc.Web.Controllers
     }
 
     [HttpGet]
-    public ActionResult PostEdit(int id = 0)
+
+    public ActionResult PostEdit(int catalogId = 0, int id = 0)
     {
-      return View();
+
+      PostViewModel postVM = new PostViewModel();
+      postVM.CatalogId = catalogId;
+
+      if (id != 0)
+      {
+        var info = _postService.Get(id);
+        if (info != null && info.CatalogId == catalogId)
+        {
+          info.MapTo<PostViewModel>();
+        }
+      }
+      return View(postVM);
+    }
+    /// <returns></returns>
+    [HttpPost]
+    [ValidateInput(false)]
+    //[AllowAnonymous]
+    //[ValidateAntiForgeryToken]
+    public ActionResult PostEdit(PostViewModel postView)
+    {
+
+      //
+
+      //Sop.Framework.Utilities.WebUtility.GetIp();
+
+      //CatalogId = parameter.CatalogId,
+      //  Title = parameter.CatalogId + "-标题 Post-",
+      //  Content = parameter.CatalogId + "<br />" + sb.ToString(),
+      //  Description = "descriptiondescriptiondescriptiondescriptiondescriptiondescription-----" + new Random().Next(1000),
+      bool isModel = TryValidateModel(postView);
+      postView.UserId = UserContext.GetGetUserId();
+      postView.DateCreated = DateTime.Now;
+      postView.DisplayOrder = 0;
+      postView.HtmlContentPath = "";
+      postView.ViewCount = 1;
+      var info = postView.MapTo<PostInfo>();
+
+
+      //_postService.Create();
+      return Json(new { isModel = isModel, data = info });
     }
 
     #endregion
@@ -540,7 +572,7 @@ namespace ItemDoc.Web.Controllers
       ViewBag.Id = id;
       return View();
     }
-     
- 
+
+
   }
 }

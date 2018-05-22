@@ -35,6 +35,7 @@
 <body>
 
     @MiniProfiler.RenderIncludes()
+   
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -126,23 +127,23 @@
 
                 if ($href === currentUrl) {
                     //todo:暂时没有判断下拉中选择状态
-                    $this.addClass('active'); 
-                } 
+                    $this.addClass('active');
+                }
                 else if (currentUrl.indexOf($href) > -1) {
                     var currentLength = currentUrl.length;
                     var $hrefLength = $href.length;
-                    $this.addClass('active');  
+                    $this.addClass('active');
                 } else {
                     $this.removeClass('active');
                 }
                 //console.log("currentUrl:" + currentUrl);
                 //console.log("$href:" + $href);
-              
 
 
 
 
-               
+
+
 
             });
 
