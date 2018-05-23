@@ -9,14 +9,14 @@
  * {@link       https://github.com/pandao/editor.md}
  * @updateTime  2015-06-09
  */
-
 //<sopcce.com>
 //--------------------------------------------------------------
-//<version>1.0.1</verion>
+//<version>v1.5.0 </verion>
 //<createdate>2018-3-14</createdate>
 //<author>guojq</author>
 //<email>sopcce@qq.com</email>
-//<log date="2018-3-14" version="1.0">全屏设置z-index</log>
+//<log date="2018-3-14" version="1.5.1">todo:全屏设置z-index</log>
+//<log date="2018-5-14" version="1.5.2"></log>
 //--------------------------------------------------------------
 //<sopcce.com>
 
@@ -50,7 +50,7 @@
     var $ = (typeof (jQuery) !== "undefined") ? jQuery : Zepto;
 
     if (typeof ($) === "undefined") {
-        return;
+        return false;
     }
 
     /**
@@ -66,10 +66,14 @@
     };
 
     editormd.title = editormd.$name = "Editor.md";
-    editormd.version = "1.5.1";
+    editormd.version = Math.random(); //"1.5.2.2" ;
     editormd.homePage = "https://pandao.github.io/editor.md/";
     editormd.classPrefix = "editormd-";
 
+    /**
+     * 工具栏
+     * log:add todo: full demo
+     */
     editormd.toolbarModes = {
         full: [
             "undo", "redo", "|",
@@ -78,8 +82,9 @@
             "list-ul", "list-ol", "hr", "|",
             "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|",
             "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
-            "help", "info"
+            "help", "info" /*, "demo"*/
         ],
+
         simple: [
             "undo", "redo", "|",
             "bold", "del", "italic", "quote", "uppercase", "lowercase", "|",
@@ -95,6 +100,11 @@
         ]
     };
 
+    /**
+     * 默认配置
+     * log ：add todo:fullscreen_z_index
+     * log ：
+     */
     editormd.defaults = {
         mode: "gfm",          //gfm or markdown
         name: "",             // Form element name
@@ -139,7 +149,9 @@
         fontSize: "13px",
         saveHTMLToTextarea: false,
         disabledKeyMaps: [],
-        fullscreen_z_index: 123321, //todo 增加z_index  
+        fullscreen_z_index: 10242048, //todo 增加z_index  
+
+
 
         onload: function () { },
         onresize: function () { },
@@ -231,7 +243,8 @@
             fullscreen: "fa-arrows-alt",
             clear: "fa-eraser",
             help: "fa-question-circle",
-            info: "fa-info-circle"
+            info: "fa-info-circle",
+            demo: "fa-exclamation-circle" //todo demo
         },
         toolbarIconTexts: {},
 
@@ -277,7 +290,8 @@
                 clear: "清空",
                 search: "搜索",
                 help: "使用帮助",
-                info: "关于" + editormd.title
+                info: "关于" + editormd.title,
+                demo: "案例"
             },
             buttons: {
                 enter: "确定",
@@ -2696,6 +2710,9 @@
         }
     };
 
+    /**
+     * 注册工具栏事件
+     */
     editormd.toolbarHandlers = {
         undo: function () {
             this.cm.undo();
@@ -3045,9 +3062,17 @@
 
         info: function () {
             this.showInfoDialog();
+        },
+        demo: function () {
+
+            debugger;
+            console.log(this);
         }
     };
 
+    /**
+     * 鼠标点击事件
+     */
     editormd.keyMaps = {
         "Ctrl-1": "h1",
         "Ctrl-2": "h2",
@@ -3223,6 +3248,7 @@
         twemoji: /:(tw-([\w]+)-?(\w+)?):/g,
         fontAwesome: /:(fa-([\w]+)(-(\w+)){0,}):/g,
         editormdLogo: /:(editormd-logo-?(\w+)?):/g,
+        itemdoc: /:(itemdoc-([\w]+)-?(\w+)?):/g, //TODO:add itemdoc表情
         pageBreak: /^\[[=]{8,}\]$/
     };
 
@@ -3230,8 +3256,8 @@
     editormd.emoji = {
         //path: "http://www.emoji-cheat-sheet.com/graphics/emojis/",
         //path: "https://assets-cdn.github.com/images/icons/emoji/unicode/",      
-        path: "https://assets-cdn.github.com/images/icons/emoji/",        
-       
+        path: "https://assets-cdn.github.com/images/icons/emoji/",
+
         ext: ".png"
     };
 
@@ -3240,6 +3266,14 @@
         path: "http://twemoji.maxcdn.com/36x36/",
         ext: ".png"
     };
+
+    ///assets/editor.md/plugins/emoji-dialog/itemdoc-emoji/36.gif
+    editormd.itemdoc = {
+        path: "/assets/editor.md/plugins/emoji-dialog/itemdoc-emoji/",
+        ext: ".gif"
+    };
+
+
 
     /**
      * 自定义marked的解析器
@@ -3277,6 +3311,8 @@
         var twemojiReg = regexs.twemoji;
         var faIconReg = regexs.fontAwesome;
         var editormdLogoReg = regexs.editormdLogo;
+
+        var itemdocLogoReg = regexs.itemdoc; //TODO 添加表情解析
         var pageBreakReg = regexs.pageBreak;
 
         markedRenderer.emoji = function (text) {
@@ -3310,6 +3346,7 @@
                     else {
                         var emdlogoMathcs = $1.match(editormdLogoReg);
                         var twemojiMatchs = $1.match(twemojiReg);
+                        var itemdocMatchs = $1.match(itemdocLogoReg); //TODO:自定义表情解析
 
                         if (emdlogoMathcs) {
                             for (var x = 0, len2 = emdlogoMathcs.length; x < len2; x++) {
@@ -3323,8 +3360,16 @@
                                 return "<img src=\"" + editormd.twemoji.path + twe + editormd.twemoji.ext + "\" title=\"twemoji-" + twe + "\" alt=\"twemoji-" + twe + "\" class=\"emoji twemoji\" />";
                             }
                         }
+                        else if (itemdocMatchs) {
+                            for (var t1 = 0, len4 = itemdocMatchs.length; t1 < len4; t1++) {
+                                var itemdoc = itemdocMatchs[t1].replace(/:/g, "").replace("itemdoc-", "");
+                                return "<img src=\"" + editormd.itemdoc.path + itemdoc + editormd.itemdoc.ext + "\" title=\"itemdoc-" + itemdoc + "\" alt=\"itemdoc-" + itemdoc + "\" class=\"emoji itemdoc\" />";
+                            }
+                        }
+                        //TODO ：暂时这样 后期在处理
                         else {
-                            var src = (name === "+1") ? "plus1" : name;
+                            var src;
+                            //src = (name === "+1") ? "plus1" : name;
                             src = (src === "black_large_square") ? "black_square" : src;
                             src = (src === "moon") ? "waxing_gibbous_moon" : src;
 
@@ -3933,6 +3978,7 @@
      * @param {String}   fileName              CSS文件名
      * @param {Function} [callback=function()] 加载成功后执行的回调函数
      * @param {String}   [into="head"]         嵌入页面的位置
+     * log: add todo：增加后缀，用于加载
      */
 
     editormd.loadCSS = function (fileName, callback, into) {
@@ -3947,7 +3993,7 @@
             callback();
         };
 
-        css.href = fileName + ".css";
+        css.href = fileName + ".css?v=" + editormd.version;
 
         if (into === "head") {
             document.getElementsByTagName("head")[0].appendChild(css);
@@ -3977,7 +4023,7 @@
         script = document.createElement("script");
         script.id = fileName.replace(/[\./]+/g, "-");
         script.type = "text/javascript";
-        script.src = fileName + ".js";
+        script.src = fileName + ".js?v=" + editormd.version;
 
         if (editormd.isIE8) {
             script.onreadystatechange = function () {

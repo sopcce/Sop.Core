@@ -36,49 +36,16 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">内容</label>
         <div class="col-sm-10">
-            @*@Html.TextAreaFor(n => n.Content, new
+           
+            <div id="richText">
+                @Html.TextAreaFor(n => n.Content, new
                 {
                     @class = "form-control",
                     rows = "3",
                     style = "resize:none;",
-                    placeholder = "内容 "
-                })*@
-            <div id="Content">
-                <textarea style="display:none;">[TOC]
-
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-
-#### Editor.md directory
-
-    editor.md/
-            lib/
-            css/
-            scss/
-            tests/
-            fonts/
-            images/
-            plugins/
-            examples/
-            languages/     
-            editormd.js
-            ...
-
-```html
-&lt;!-- English --&gt;
-&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
-
-&lt;!-- 繁體中文 --&gt;
-&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
-```
-</textarea>
-
-
+                    placeholder = "内容 ",
+                    display="none"
+                })
             </div>
 
 
@@ -92,7 +59,7 @@
 
 
 }
-
+  
 
 <script type="text/javascript">
     var testEditor;
@@ -100,7 +67,7 @@
 
     $(function () {
         var md = "";
-        testEditor = editormd("Content", {
+        testEditor = editormd("richText", {
             width: "100%",
             height: 740,
             path: '/assets/editor.md/lib/',
