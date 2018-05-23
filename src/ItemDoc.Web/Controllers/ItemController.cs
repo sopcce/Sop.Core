@@ -511,7 +511,43 @@ namespace ItemDoc.Web.Controllers
 
       PostViewModel postVM = new PostViewModel();
       postVM.CatalogId = catalogId;
+      postVM.Content = @"
 
+[TOC]
+
+#### Disabled options
+
+- TeX (Based on KaTeX);
+- Emoji;
+- Task lists;
+- HTML tags decode;
+- Flowchart and Sequence Diagram;
+
+#### Editor.md directory
+
+    editor.md/
+            lib/
+            css/
+            scss/
+            tests/
+            fonts/
+            images/
+            plugins/
+            examples/
+            languages/     
+            editormd.js
+            ...
+
+```html
+guojiaqiu test
+<!-- English -->
+<script src=""../dist/js/languages/en.js""></script>
+
+<!-- 繁體中文 -->
+<script src=""../dist/js/languages/zh-tw.js""></script>
+```
+
+       ";
       if (id != 0)
       {
         var info = _postService.Get(id);
@@ -542,7 +578,7 @@ namespace ItemDoc.Web.Controllers
       postView.UserId = UserContext.GetGetUserId();
       postView.DateCreated = DateTime.Now;
       postView.DisplayOrder = 0;
-      postView.HtmlContentPath = "";
+      postView.HtmlContentPath = "HtmlContentPath";
       postView.ViewCount = 1;
       var info = postView.MapTo<PostInfo>();
 
