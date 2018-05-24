@@ -36,10 +36,10 @@ namespace ItemDoc.Core.Auth
       claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, userName));
       claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "User"));
 
+     
 
 
-
-      AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, claimsIdentity);
+        AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, claimsIdentity);
 
 
       var usersService = DiContainer.Resolve<IUsersService>();

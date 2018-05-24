@@ -13,24 +13,19 @@
  * Blog name and description
  */
 
-.blog-post {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    color: #555;
-}
 
-    .blog-post h1, .h1,
-    h2, .h2,
-    h3, .h3,
-    h4, .h4,
-    h5, .h5,
-    h6, .h6 {
-        margin-top: 0;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-weight: normal;
-        color: #333;
-    }
+
+.blog-post h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    margin-top: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    color: #333;
+}
 
 .blog-title {
     margin-top: 30px;
@@ -40,12 +35,16 @@
 }
 
 .blog-description {
-    font-size: 20px;
+    font-size: 18px;
+    width: 100%;
     color: #999;
+    float: left;
+    text-indent: 40px;
+    height: auto;
+    border-bottom: 2px #eee solid;
 }
 
 .blog-content {
-    overflow: hidden;
     color: #626773;
     font-size: 18px;
     line-height: 2;
@@ -58,6 +57,8 @@
 .blog-main {
     font-size: 18px;
     line-height: 1.5;
+    float: none;
+    margin-top: 60px;
 }
 
 /* Sidebar modules for boxing content */
@@ -79,36 +80,29 @@
     }
 
 
-/* Pagination */
-.pager {
-    margin-bottom: 60px;
-    text-align: left;
-}
-
-    .pager > li > a {
-        width: 140px;
-        padding: 10px 20px;
-        text-align: center;
-        border-radius: 30px;
-    }
-
 
 /*
  * Blog posts
  */
 
-.blog-post {
-    margin-bottom: 60px;
-}
+
 
 .blog-post-title {
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     font-size: 40px;
+    float: none;
+    margin-top: 1px;
 }
 
 .blog-post-meta {
-    margin-bottom: 20px;
     color: #999;
+    width: 100%;
+    float: left;
+    margin-top: 1px;
+    height: 36px;
+    border-bottom: 1px #eee dashed;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 20px;
 }
 
     .blog-post-meta p {

@@ -1,12 +1,9 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
-namespace ItemDoc.Framework.Text
+namespace ItemDoc.Framework.Utility
 {
   public static class RegexUtility
   {

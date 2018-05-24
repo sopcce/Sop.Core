@@ -5,55 +5,139 @@
 }
 
 
-<link href="~/Scripts/css/blog.css" rel="stylesheet" />
-
+<link href="~/Scripts/css/blog.css?v=@DateTime.Now" rel="stylesheet" />
+ 
 <div class="blog-post">
     <div class="row">
 
-        <div class="col-sm-10 blog-main">
+        <div class="col-sm-12 blog-main">
 
             <div class="blog-post">
                 <h2 class="blog-post-title">@Model.Title</h2>
                 <div class="blog-post-meta">
-
                     <p>@Model.DateCreated</p>
                     <p>@Model.ViewCount 次</p>
                     <a href="#">@Model.NickName</a>
                 </div>
-
-                <p class="blog-description">@Model.Description</p>
-                <hr>
-                <div class="blog-content">
-                    @Html.Raw(Model.Content)
+                <div class="blog-description">@Model.Description</div>
+                <div class="blog-content" id="blog_content">
+                    <textarea style="display: none;">@Model.Content</textarea>
                 </div>
 
             </div>
         </div>
-
-        <div class="col-sm-2">
-            <div class="sidebar-module sidebar-module-inset">
-                <h4>Guangao</h4>
-                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-            </div>
-            <div class="sidebar-module">
-                <h4>相关介绍</h4>
-                <ol class="list-unstyled">
-
-                    @for (int i = 0; i < 10; i++)
-                    {
-                        <li><a href="#">推荐文章 @i</a></li>
-                    }
-                </ol>
-            </div>
-            <div class="sidebar-module">
-                <h4>Elsewhere</h4>
-                <ol class="list-unstyled">
-                    <li><a href="#">GitHub</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Facebook</a></li>
-                </ol>
-            </div>
-        </div><!-- /.blog-sidebar -->
-
     </div>
 </div>
+<link href="~/assets/editor.md/css/editormd.css" rel="stylesheet" />
+<link href="~/assets/editor.md/css/editormd.preview.css" rel="stylesheet" />
+
+
+<script src="~/assets/js/xss.min.js"></script>
+<script src="~/assets/highlight.js/highlight.min.js"></script>
+<script src="~/assets/editor.md/lib/marked.min.js"></script>
+<script src="~/assets/editor.md/lib/prettify.min.js"></script>
+<script src="~/assets/editor.md/lib/flowchart.min.js"></script>
+<script src="~/assets/editor.md/lib/raphael.min.js"></script>
+<script src="~/assets/editor.md/lib/underscore.min.js"></script>
+<script src="~/assets/editor.md/lib/sequence-diagram.min.js"></script>
+<script src="~/assets/editor.md/lib/jquery.flowchart.min.js"></script>
+<script src="~/assets/editor.md/lib/flowchart.min.js"></script>
+<script src="~/assets/editor.md/editormd.js?v=11"></script>
+
+
+<script type="text/javascript">
+    var EditormdView;
+
+    $(function () {
+        loaddd();
+
+        setTimeout(function () {
+
+        },
+            500);
+
+    });
+
+    function loaddd() {
+
+        var md = "";
+        EditormdView = editormd.markdownToHTML("blog_content", {
+
+            width: "100%",
+            path: '/assets/editor.md/lib/',
+            htmlDecode: "style,script,iframe|filterXSS",  // you can filter tags decode
+            emoji: false,
+            taskList: true,
+            tex: true,  // 默认不解析
+            flowChart: true,  // 默认不解析
+            sequenceDiagram: true,  // 默认不解析
+
+        });
+
+
+        //为所有table标签添加bootstap支持的表格类
+        $("table").addClass("table table-bordered table-hover");
+        $.each($('table'),
+            function () {
+                $(this).prop('outerHTML',
+                    '<div style="width: 100%;overflow-x: auto;">' + $(this).prop('outerHTML') + '</div>');
+            });
+
+        //不是本项目的超链接都在新窗口打开
+        $('a[href^="http"]').each(function () {
+            $(this).attr('target', '_blank');
+            $(this).click(function () {
+                var target_url = $(this).attr("href");
+                if (target_url.indexOf(window.top.location.host + window.top.location.pathname) > -1) {
+                    window.top.location.href = target_url;
+                    return false;
+                }
+
+            });
+
+        });
+
+
+
+        $("table thead tr").css({ "background-color": "#08c", "color": "#fff" });
+        $("table tr").each(function () {
+            if ($(this).find("td").eq(1).html() == "object" || $(this).find("td").eq(1).html() == "array[object]") {
+                $(this).css({ "background-color": "#99CC99", "color": "#000" });
+            }
+
+        });
+
+        //图片点击放大
+        $("#blog_content img").click(function () {
+            var img_url = $(this).attr("src");
+            //如果不在iframe里，则直接当前窗口打开
+            if (self == top) {
+                var json = {
+                    "title": "", //相册标题
+                    "id": 123, //相册id
+                    "start": 0, //初始显示的图片序号，默认0
+                    "data": [//相册包含的图片，数组格式
+                        {
+                            "alt": "",
+                            "pid": 666, //图片id
+                            "src": img_url, //原图地址
+                            "thumb": img_url //缩略图地址
+                        }
+                    ]
+                }
+
+                layer.photos({
+                    photos: json,
+                    anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+                });
+
+            } else {
+                //如果在iframe里，则直接传url给父窗口
+                var message = { "img_url": img_url, "meessage_type": "img_url" };
+                top.postMessage(message, window.location.origin);
+            }
+
+        });
+    }
+
+</script>

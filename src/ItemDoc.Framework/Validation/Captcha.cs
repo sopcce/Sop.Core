@@ -5,8 +5,9 @@ using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.IO;
 using ItemDoc.Framework.Utilities;
+using ItemDoc.Framework.Utility;
 using Sop.Common.Img.Gif;
-using static ItemDoc.Framework.Utilities.EncryptionUtility;
+using static ItemDoc.Framework.Utility.EncryptionUtility;
 
 namespace ItemDoc.Framework.Validation
 {

@@ -123,14 +123,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemLog\Log4NetLogger.cs" />
     <Compile Include="SystemLog\LogLevel.cs" />
-    <Compile Include="Utilities\EncryptionUtility.cs" />
-    <Compile Include="Utilities\FileUtility.cs" />
-    <Compile Include="Utilities\HtmlUtility.cs" />
-    <Compile Include="Utilities\HttpCollects.cs" />
+    <Compile Include="Utility\EncryptionUtility.cs" />
+    <Compile Include="Utility\FileUtility.cs" />
+    <Compile Include="Utility\HtmlUtility.cs" />
+    <Compile Include="Utility\HttpCollects.cs" />
     <Compile Include="Utilities\StringUtility.cs" />
-    <Compile Include="Utilities\TrustedHtml.cs" />
-    <Compile Include="Utilities\ValueUtility.cs" />
-    <Compile Include="Utilities\WebUtility.cs" />
+    <Compile Include="Utility\TrustedHtml.cs" />
+    <Compile Include="Utility\ValueUtility.cs" />
+    <Compile Include="Utility\WebUtility.cs" />
     <Compile Include="Utility\ChineseConverter.cs" />
     <Compile Include="Utility\RegexUtility.cs" />
     <Compile Include="Utility\StringUtility.cs" />
@@ -156,7 +156,7 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
-    <Content Include="Utilities\WebUtilityBBCodeToHtml.xml" />
+    <Content Include="Utility\WebUtilityBBCodeToHtml.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\Domain\" />

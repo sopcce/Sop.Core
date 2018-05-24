@@ -44,6 +44,8 @@ namespace ItemDoc.Services.ViewModel
 
     public DateTime DateCreatedTime { get; set; } = DateTime.Now;
 
+    public string CreatedIP { get; set; }
+
 
 
   }

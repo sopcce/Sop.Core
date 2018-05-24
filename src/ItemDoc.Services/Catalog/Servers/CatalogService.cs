@@ -1,8 +1,8 @@
-﻿using ItemDoc.Framework.Utilities;
-using ItemDoc.Services.Model;
+﻿using ItemDoc.Services.Model;
 using ItemDoc.Services.Repositories;
 using System.Collections.Generic;
 using System.Linq;
+using ItemDoc.Core.Utilities;
 
 namespace ItemDoc.Services.Servers
 {

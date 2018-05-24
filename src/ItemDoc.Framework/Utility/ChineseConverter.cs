@@ -1,10 +1,8 @@
-using System;
+using Microsoft.VisualBasic;
 //using System.Text;
 //using System.Runtime.InteropServices;
 
-using Microsoft.VisualBasic;
-
-namespace ItemDoc.Framework.Text
+namespace ItemDoc.Framework.Utility
 {
 
     #region Win32 API method(commented)

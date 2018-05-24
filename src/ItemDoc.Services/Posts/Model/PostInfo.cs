@@ -39,6 +39,10 @@ namespace ItemDoc.Services.Model
     /// Gets or sets the date created.
     /// </summary>
     public DateTime DateCreated { get; set; } = DateTime.Now;
+
+
+    public string CreatedIP { get; set; }
+
   }
 
 

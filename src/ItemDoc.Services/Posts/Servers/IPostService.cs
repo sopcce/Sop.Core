@@ -28,7 +28,7 @@ namespace ItemDoc.Services.Servers
     /// 创建
     /// </summary>
     /// <param name="info"></param>
-    void Create(PostInfo info);
+    int Create(PostInfo info);
     /// <summary>
     /// 修改
     /// </summary>

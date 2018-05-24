@@ -198,6 +198,13 @@ namespace ItemDoc.Core
         route.Add("ids", ids);
       return CachedUrlHelper.Action("CatalogDelete", "Item", route);
     }
+    public string ItemPost(int? id)
+    {
+      RouteValueDictionary route = new RouteValueDictionary();
+      if (id != null)
+        route.Add("id", id);
+      return CachedUrlHelper.Action("Post", "Item", route);
+    }
     public string ItemCatalogDelete()
     {
 

@@ -5,6 +5,7 @@ using System;
 using System.Configuration;
 using System.IO;
 using ItemDoc.Framework.Utilities;
+using ItemDoc.Framework.Utility;
 
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", ConfigFileExtension = ".config", Watch = true)]

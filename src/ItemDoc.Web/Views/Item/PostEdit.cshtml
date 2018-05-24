@@ -3,22 +3,16 @@
     ViewBag.Title = "PostEdit";
 }
 
-<h2>PostEdit  </h2>
-
 <link href="~/assets/editor.md/css/editormd.css" rel="stylesheet" />
 <script src="~/assets/editor.md/editormd.js?v=@DateTime.Now"></script>
 
 
-
-
-
-
-
 @using (Html.BeginForm("PostEdit", "Item", FormMethod.Post, new { @class = "form-horizontal" }))
 {
+
     @Html.HiddenFor(n => n.CatalogId)
     @Html.HiddenFor(n => n.Id)
-    @*@Html.AntiForgeryToken()*@
+    @Html.AntiForgeryToken()
     <div class="form-group">
         <label class="col-sm-2 control-label">标题</label>
         <div class="col-sm-10">
@@ -29,14 +23,14 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">摘要</label>
         <div class="col-sm-10">
-            @Html.TextAreaFor(n => n.Title, new { @class = "form-control", rows = "3", style = "resize:none;", placeholder = "摘要：不填写则自动截取内容前255字符" })
+            @Html.TextAreaFor(n => n.Description, new { @class = "form-control", rows = "3", style = "resize:none;", placeholder = "摘要：不填写则自动截取内容前255字符" })
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-2 control-label">内容</label>
         <div class="col-sm-10">
-           
+
             <div id="richText">
                 @Html.TextAreaFor(n => n.Content, new
                 {
@@ -44,7 +38,7 @@
                     rows = "3",
                     style = "resize:none;",
                     placeholder = "内容 ",
-                    display="none"
+                    display = "none"
                 })
             </div>
 
@@ -59,7 +53,7 @@
 
 
 }
-  
+
 
 <script type="text/javascript">
     var testEditor;
@@ -79,7 +73,7 @@
             //syncScrolling : false,
             saveHTMLToTextarea: true,    // 保存 HTML 到 Textarea
             searchReplace: true,
-            //watch : false,                // 关闭实时预览
+            watch : false,                // 关闭实时预览
             htmlDecode: "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启
             //toolbar  : false,             //关闭工具栏
             //previewCodeHighlight : false, // 关闭预览 HTML 的代码块高亮，默认开启
@@ -98,6 +92,7 @@
             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
             imageUploadURL: "./php/upload.php",
             onload: function () {
+                //debugger
                 console.log('onload', this);
                 //this.fullscreen();
                 //this.unwatch();
@@ -110,60 +105,7 @@
             }
         });
 
-        $("#goto-line-btn").bind("click", function () {
-            testEditor.gotoLine(90);
-        });
 
-        $("#show-btn").bind('click', function () {
-            testEditor.show();
-        });
-
-        $("#hide-btn").bind('click', function () {
-            testEditor.hide();
-        });
-
-        $("#get-md-btn").bind('click', function () {
-            alert(testEditor.getMarkdown());
-        });
-
-        $("#get-html-btn").bind('click', function () {
-            alert(testEditor.getHTML());
-        });
-
-        $("#watch-btn").bind('click', function () {
-            testEditor.watch();
-        });
-
-        $("#unwatch-btn").bind('click', function () {
-            testEditor.unwatch();
-        });
-
-        $("#preview-btn").bind('click', function () {
-            testEditor.previewing();
-        });
-
-        $("#fullscreen-btn").bind('click', function () {
-            testEditor.fullscreen();
-        });
-
-        $("#show-toolbar-btn").bind('click', function () {
-            testEditor.showToolbar();
-        });
-
-        $("#close-toolbar-btn").bind('click', function () {
-            testEditor.hideToolbar();
-        });
-
-        $("#toc-menu-btn").click(function () {
-            testEditor.config({
-                tocDropdown: true,
-                tocTitle: "目录 Table of Contents",
-            });
-        });
-
-        $("#toc-default-btn").click(function () {
-            testEditor.config("tocDropdown", false);
-        });
     });
 </script>
 

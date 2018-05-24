@@ -1,4 +1,5 @@
 ﻿using ItemDoc.Framework.Utilities;
+using ItemDoc.Framework.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ItemDoc.Framework.Test.Utilities

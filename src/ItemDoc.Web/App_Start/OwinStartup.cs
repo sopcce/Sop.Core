@@ -22,15 +22,19 @@ namespace ItemDoc.Web
       //    context.Response.ContentType = "text/plain";
       //     return context.Response.WriteAsync("Hello, world.");
       // });
+      System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier =
+        System.Security.Claims.ClaimTypes.NameIdentifier;
+
+
       var userInfo = new CookieAuthenticationOptions
       {
         AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
         LoginPath = new PathString("/User/Login"),
         CookieSecure = CookieSecureOption.SameAsRequest,
-        ExpireTimeSpan = TimeSpan.FromDays(1), 
+        ExpireTimeSpan = TimeSpan.FromDays(1),
         SlidingExpiration = true,//当用户保持访问网站的时候再过特定时间（不访问）则失效
       };
-      
+
 
       app.UseCookieAuthentication(userInfo);
 

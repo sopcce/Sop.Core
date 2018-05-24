@@ -48,12 +48,14 @@ namespace ItemDoc.Services.Servers
     /// 创建
     /// </summary>
     /// <param name="info"></param>
-    public void Create(PostInfo info)
+    public int Create(PostInfo info)
     {
       _repository.Insert(info);
       //todo 不知道会不会出现问题 ，但是当前能够使用
       info.DisplayOrder = info.Id;
       _repository.Update(info);
+
+      return info.Id;
     }
     /// <summary>
     /// 修改

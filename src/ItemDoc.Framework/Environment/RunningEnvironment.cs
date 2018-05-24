@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using ItemDoc.Framework.Utilities;
+using ItemDoc.Framework.Utility;
 
 [assembly: PreApplicationStartMethod(typeof(RunningEnvironment), "Initialize")]
 
