@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "郭家秋个人博客友情链接专属页面";
+    Layout = "~/Views/Home/_CommonLayout.cshtml";
+}
+
+
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                friendly link <small>友 情 链 接</small>
+            </h2>
+        </div>
+        <div class="panel-body">
+            
+            <div class="row">
+                @for (int i = 0; i < 5; i++)
+                {
+                    <div class="col-sm-3 col-md-3">
+                        <a class="thumbnail" href="http://www.sopcce.com" target="_blank">
+                            <img data-src="" alt="" src="~/Uploads/bolgs/TitleImg/20160822/2.jpg" 
+                                 data-holder-rendered="true" style="width:100%;">
+                            <div class="caption">
+                                <p class="text-center">
+                                   sopcce @i
+                                </p>
+                               
+                            </div>
+                        </a>
+                    </div>
+                }
+               
+             
+                
+                
+              
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
