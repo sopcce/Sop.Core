@@ -143,6 +143,9 @@ namespace ItemDoc.Core
     public string HomeAbout()
     {
       return CachedUrlHelper.Action("About", "Home");
+    }public string HomeQuestion()
+    {
+      return CachedUrlHelper.Action("Question", "Home");
     }
     public string HomeContact()
     {
@@ -159,17 +162,21 @@ namespace ItemDoc.Core
     }
     #endregion
 
+    #region Tool 
+
+    public string ToolIndex()
+    {
+      return CachedUrlHelper.Action("Index", "Tool");
+    }
+
+    #endregion
 
 
     public string ItemIndex()
     {
       return CachedUrlHelper.Action("Index", "Item");
     }
-
-
-
-
-
+     
     #region ItemCatalog
     public string ItemCatalog(string id)
     {

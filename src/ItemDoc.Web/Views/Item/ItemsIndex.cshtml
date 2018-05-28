@@ -180,7 +180,20 @@
             var selectedvalue=   $("#hf-selectedvalue").val();
             window.open("/Item/PostEdit/" + selectedvalue);
         });
+        $('#btn_post_edit').on('click', function(e) {
+            var selectedvalue = $("#hf-selectedvalue").val();
+            var arrselections = $('#tb_post').bootstrapTable('getSelections');
+            if (arrselections.length <= 0) {
+                layer.msg('请选择有效数据');
+                return false;
+            }
+            if (arrselections.length !== 1) {
+                layer.msg('请选择一条数据');
+                return false;
+            }
 
+            window.open("/Item/PostEdit/" + selectedvalue + "/" + arrselections[0].id);
+        });
 
         //
         $('#btn_post_delete').on('click', function (e){

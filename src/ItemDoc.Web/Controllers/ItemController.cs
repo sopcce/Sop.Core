@@ -507,49 +507,13 @@ namespace ItemDoc.Web.Controllers
 
       PostViewModel postVM = new PostViewModel();
       postVM.CatalogId = catalogId;
-      postVM.Content = @"
-
-[TOC]
-
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-
-#### Editor.md directory
-
-    editor.md/
-            lib/
-            css/
-            scss/
-            tests/
-            fonts/
-            images/
-            plugins/
-            examples/
-            languages/     
-            editormd.js
-            ...
-
-```html
-guojiaqiu test
-<!-- English -->
-<script src=""../dist/js/languages/en.js""></script>
-
-<!-- 繁體中文 -->
-<script src=""../dist/js/languages/zh-tw.js""></script>
-```
-
-       ";
+      postVM.Id = 0;
       if (id != 0)
       {
         var info = _postService.Get(id);
         if (info != null && info.CatalogId == catalogId)
         {
-          info.MapTo<PostViewModel>();
+          postVM = info.MapTo<PostViewModel>();
         }
       }
       return View(postVM);
@@ -573,10 +537,23 @@ guojiaqiu test
 
       var info = postView.MapTo<PostInfo>();
 
-      var id = _postService.Create(info);
+      if (isModel)
+      {
+        if (postView.Id > 0)
+        {
+          _postService.Update(info);
+          return Redirect(SiteUrls.Instance().ItemPost(postView.Id));
 
-     ;
-      return Redirect(SiteUrls.Instance().ItemPost(id));
+        }
+        else
+        {
+          var id = _postService.Create(info);
+          return Redirect(SiteUrls.Instance().ItemPost(id));
+        }
+
+      }
+      return View(postView);
+
     }
 
     #endregion

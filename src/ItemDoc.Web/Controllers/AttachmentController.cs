@@ -57,6 +57,27 @@ namespace ItemDoc.Web.Controllers
 
 
     }
+    [HttpPost]
+    public ActionResult UP(FormCollection form)
+    {
+      var file1 = Request.Files[0];
+      //文件大小不为0
+      HttpPostedFileBase Filedata = Request.Files[0];
+      // 如果没有上传文件
+      if (Filedata == null || string.IsNullOrEmpty(Filedata.FileName) || Filedata.ContentLength <= 0)
+      {
+        return HttpNotFound();
+      }
+      string filename = Guid.NewGuid() + System.IO.Path.GetExtension(Filedata.FileName);
+
+      string path = "~/Uploads/" + DateTime.Now.ToString("yyyy/MM/dd/");
+
+      Filedata.SaveAs(strPath() + filename);
+
+      return Json(new { success = 1, url = path + filename, message = "sss" });
+
+
+    }
 
     /// <summary>
     /// 
@@ -70,7 +91,7 @@ namespace ItemDoc.Web.Controllers
       //如果目录不存在，则创建目录
       if (files1 != null)
       {
-
+       
         for (int i = 0; i < files1.Count; i++)
         {
           files1[i].SaveAs(strPath() + "//" + Guid.NewGuid() + "-1-" + files1[i].FileName);
@@ -100,15 +121,21 @@ namespace ItemDoc.Web.Controllers
       {
         file.SaveAs(strPath() + "//" + Guid.NewGuid() + "-3-" + Path.GetExtension(file.FileName));
       }
-      return Json("");
+      return Json(new { success = 1, url = "123", message = "sss" });
     }
     /// <summary>
     /// 
     /// </summary>
     /// <returns></returns>
-    private string strPath()
+    private string strPath(string path = "")
     {
-      string basePath = Server.MapPath("~/Uploads/" + DateTime.Now.ToString("yyyy/MM/dd/"));
+      if (string.IsNullOrWhiteSpace(path))
+      {
+        path = "~/Uploads/" + DateTime.Now.ToString("yyyy/MM/dd/");
+
+
+      }
+      string basePath = Server.MapPath(path);
       if (!Directory.Exists(basePath))
         Directory.CreateDirectory(basePath);
       return basePath;

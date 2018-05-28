@@ -62,9 +62,10 @@ namespace ItemDoc.Services.Servers
     /// </summary>
     /// <param name="info"></param>
     /// <returns></returns>
-    public void Update(PostInfo info)
+    public int Update(PostInfo info)
     {
       _repository.Update(info);
+      return info.Id;
     }
     /// <summary>
     /// 删除

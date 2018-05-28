@@ -34,7 +34,7 @@ namespace ItemDoc.Services.Servers
     /// </summary>
     /// <param name="info"></param>
     /// <returns></returns>
-    void Update(PostInfo info);
+    int Update(PostInfo info);
 
     /// <summary>
     /// 删除

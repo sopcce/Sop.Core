@@ -1265,6 +1265,8 @@
     <Content Include="assets\highlight.js\tools\node.js" />
     <Content Include="assets\highlight.js\tools\tasks.js" />
     <Content Include="assets\highlight.js\tools\utility.js" />
+    <Content Include="assets\images\Android.png" />
+    <Content Include="assets\images\favicon.png" />
     <Content Include="assets\js\xss.min.js" />
     <Content Include="assets\lib\base64.js" />
     <Content Include="assets\lib\sopdate.format-1.0.js" />
@@ -1480,13 +1482,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\b_64.png" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="assets\bootstrap-treeview\css\bootstrap-treeview.css" />
     <Content Include="assets\bootstrap-treeview\js\bootstrap-treeview.js" />
+    <Content Include="favicon.ico" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -2349,6 +2351,7 @@
     <Content Include="assets\zTree\js\jquery.ztree.exhide.js" />
     <Content Include="assets\zTree\js\jquery.ztree.exhide.min.js" />
     <Content Include="assets\zTree\log v3.x.txt" />
+    <Content Include="wb_51fd6126ac0f1c46.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2381,6 +2384,16 @@
     <Content Include="Views\Item\PostEdit.cshtml" />
     <Content Include="Views\Tool\Index.cshtml" />
     <Content Include="Views\Tool\Img.cshtml" />
+    <Content Include="Views\Home\Question.cshtml" />
+    <Content Include="Views\Home\ChangeLog.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\Feedback.cshtml" />
+    <Content Include="Views\Home\Links.cshtml" />
+    <Content Include="Views\Home\Resume.cshtml" />
+    <Content Include="Views\Home\Sop.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Home\_Footer.cshtml" />
+    <Content Include="Views\Home\_Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
