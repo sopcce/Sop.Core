@@ -5,6 +5,9 @@ using ItemDoc.Framework.Environment;
 
 namespace ItemDoc.Web
 {
+  /// <summary>
+  /// 
+  /// </summary>
   public class BundleConfig
   {
 
@@ -18,12 +21,26 @@ namespace ItemDoc.Web
     public static void RegisterBundles(BundleCollection bundles)
     {
 
-
+      //bundles.Clear();
+      //bundles.ResetAll();
 
       BundleTable.EnableOptimizations = EnableOptimizations;
       bundles.UseCdn = false;   //enable CDN support
+
+
       var jqueryCdnPath = "http://apps.bdimg.com/libs/jquery/1.11.1/jquery.js";
 
+      bundles.Add(new ScriptBundle("~/js/common", jqueryCdnPath).Include(
+        "~/assets/lib/jquery-1.10.2.js",
+        "~/assets/layer/layer.js",
+        "~/assets/scrollup/jquery.scrollUp.min.js",
+        "~/assets/common/common.js"
+        ));
+ 
+      
+      bundles.Add(new StyleBundle("~/css/common").Include(
+        "~/assets/common/common.css"
+      ));
       bundles.Add(new ScriptBundle("~/js/jquery.validate").Include(
         "~/assets/jquery.validate/jquery.validate.js",
         "~/assets/jquery.validate/jquery.validate.unobtrusive.js"
@@ -42,15 +59,14 @@ namespace ItemDoc.Web
 
       bundles.Add(new ScriptBundle("~/js/bootstrap-treeview").Include(
           "~/assets/bootstrap-treeview/js/bootstrap-treeview.js"
-           )); 
+           ));
 
       bundles.Add(new StyleBundle("~/css/bootstrap-treeview").Include(
         "~/assets/bootstrap-treeview/css/bootstrap-treeview.css"
         ));
 
 
-      //bundles.Add(new ScriptBundle("~/sopscript", jqueryCdnPath).Include(
-      //  "~/scripts/jquery/jquery-{version}.js"));
+
 
       //bundles.Add(new StyleBundle("~/sopcss").Include(
       //  //<!-- Bootstrap v3.3.7 -->

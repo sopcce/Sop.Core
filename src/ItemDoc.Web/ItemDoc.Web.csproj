@@ -1267,9 +1267,23 @@
     <Content Include="assets\highlight.js\tools\utility.js" />
     <Content Include="assets\images\Android.png" />
     <Content Include="assets\images\favicon.png" />
-    <Content Include="assets\js\xss.min.js" />
+    <Content Include="assets\lib\xss.min.js" />
     <Content Include="assets\lib\base64.js" />
     <Content Include="assets\lib\sopdate.format-1.0.js" />
+    <Content Include="assets\scrollup\demo\css\labs.css" />
+    <Content Include="assets\scrollup\demo\css\themes\image.css" />
+    <Content Include="assets\scrollup\demo\css\themes\link.css" />
+    <Content Include="assets\scrollup\demo\css\themes\pill.css" />
+    <Content Include="assets\scrollup\demo\css\themes\tab.css" />
+    <Content Include="assets\scrollup\demo\img\top.png" />
+    <Content Include="assets\scrollup\demo\index.html" />
+    <Content Include="assets\scrollup\dist\jquery.scrollUp.js" />
+    <Content Include="assets\scrollup\dist\jquery.scrollUp.min.js" />
+    <Content Include="assets\scrollup\dist\lib\jquery-1.11.1.min.js" />
+    <Content Include="assets\scrollup\dist\lib\jquery.easing.js" />
+    <Content Include="assets\scrollup\jquery.scrollUp.js" />
+    <Content Include="assets\scrollup\jquery.scrollUp.min.js" />
+    <Content Include="assets\scrollup\src\jquery.scrollUp.js" />
     <Content Include="assets\tinymce\langs\zh_CN.js" />
     <Content Include="assets\tinymce\plugins\advlist\plugin.min.js" />
     <Content Include="assets\tinymce\plugins\autolink\plugin.min.js" />
@@ -1404,11 +1418,9 @@
     <Content Include="assets\Cropper\cropper.js" />
     <Content Include="assets\font-awesome\css\font-awesome.css" />
     <Content Include="assets\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="assets\js\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="assets\js\bootstrap.js" />
-    <Content Include="assets\js\bootstrap.min.js" />
-    <Content Include="assets\js\ie10-viewport-bug-workaround.js" />
-    <Content Include="assets\js\npm.js" />
+    <Content Include="fonts\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\bootstrap\js\ie10-viewport-bug-workaround.js" />
+    <Content Include="assets\lib\npm.js" />
     <Content Include="assets\plupload\i18n\ar.js" />
     <Content Include="assets\plupload\i18n\az.js" />
     <Content Include="assets\plupload\i18n\bg.js" />
@@ -1489,8 +1501,6 @@
     <Content Include="assets\bootstrap-treeview\css\bootstrap-treeview.css" />
     <Content Include="assets\bootstrap-treeview\js\bootstrap-treeview.js" />
     <Content Include="favicon.ico" />
-    <Content Include="scripts\bootstrap.js" />
-    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1514,10 +1524,10 @@
     <Content Include="assets\editor.md\plugins\help-dialog\help.md" />
     <Content Include="assets\editor.md\plugins\html-entities-dialog\html-entities.json" />
     <Content Include="assets\editor.md\README.md" />
-    <Content Include="assets\js\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="assets\js\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="assets\js\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="assets\js\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="App_Data\itemdoc2.db" />
     <Content Include="assets\formvalidation\fonts\icomoon.eot" />
     <Content Include="assets\formvalidation\fonts\icomoon.ttf" />
@@ -1646,7 +1656,7 @@
     <Content Include="assets\highlight.js\LICENSE" />
     <Content Include="assets\highlight.js\README.md" />
     <Content Include="assets\highlight.js\test\mocha.opts" />
-    <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="assets\lib\jquery-1.10.2.intellisense.js" />
     <Content Include="assets\bootstrap\css\bootstrap-responsive.css" />
     <Content Include="assets\bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="assets\bootstrap\css\bootstrap.css" />
@@ -1660,6 +1670,7 @@
     <Content Include="scripts\css\item\show.css" />
     <Content Include="scripts\css\item\show_single_page.css" />
     <Content Include="scripts\css\jquery.fullPage.css" />
+    <Content Include="scripts\css\login - 复制.css" />
     <Content Include="scripts\css\login.css" />
     <Content Include="scripts\css\page\edit.css" />
     <Content Include="scripts\css\page\index.css" />
@@ -2256,8 +2267,8 @@
     <Content Include="scripts\img\pic3.jpg" />
     <Content Include="scripts\item\index.js" />
     <Content Include="scripts\item\ItemsIndex.js" />
-    <Content Include="scripts\jquery-1.10.2.js" />
-    <Content Include="scripts\jquery-1.10.2.min.js" />
+    <Content Include="assets\lib\jquery-1.10.2.js" />
+    <Content Include="assets\lib\jquery-1.10.2.min.js" />
     <None Include="assets\jquery.validate\jquery.validate-vsdoc.js" />
     <Content Include="scripts\jquery-qrcode\jquery.qrcode.js" />
     <Content Include="assets\jquery.validate\jquery.validate.js" />
@@ -2298,9 +2309,9 @@
     <Content Include="assets\layer\skin\default\loading-0.gif" />
     <Content Include="assets\layer\skin\default\loading-1.gif" />
     <Content Include="assets\layer\skin\default\loading-2.gif" />
-    <Content Include="assets\lib\common.css" />
-    <Content Include="assets\lib\common.js" />
-    <Content Include="assets\lib\demo.js" />
+    <Content Include="assets\common\common.css" />
+    <Content Include="assets\common\common.js" />
+    <Content Include="assets\common\demo.js" />
     <Content Include="assets\lib\emotions\sinaFaceAndEffec.css" />
     <Content Include="assets\lib\emotions\sinaFaceAndEffec.js" />
     <Content Include="assets\lib\jquery.hidepassword.js" />
@@ -2311,11 +2322,10 @@
     <Content Include="scripts\logo\Entypo_2712%280%29.ico" />
     <Content Include="scripts\logo\w_32.png" />
     <Content Include="scripts\logo\w_64.png" />
-    <Content Include="scripts\modernizr-2.6.2.js" />
-    <Content Include="scripts\respond.js" />
-    <Content Include="scripts\respond.min.js" />
+    <Content Include="assets\lib\modernizr-2.6.2.js" />
+    <Content Include="assets\lib\respond.js" />
+    <Content Include="assets\lib\respond.min.js" />
     <Content Include="scripts\Uploads\index.html" />
-    <Content Include="scripts\verifyCode.php" />
     <Content Include="assets\zTree\css\awesomeStyle\awesome.css" />
     <Content Include="assets\zTree\css\awesomeStyle\img\loading.gif" />
     <Content Include="assets\zTree\css\demo.css" />
@@ -2399,6 +2409,7 @@
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\config\" />
     <Folder Include="Models\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Common\" />
   </ItemGroup>
@@ -2413,7 +2424,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\itemDoc.Core\ItemDoc.Core.csproj">
