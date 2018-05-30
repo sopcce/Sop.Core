@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/assets/stickUp/stickup.css" rel="stylesheet" />
+<script src="~/assets/stickUp/stickUp.js?v=@DateTime.Now"></script>
+<h2>Index</h2>
+
+
+<div id="home" class="carousel">
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>stickUp</h1>
+                    <h3>
+                        a jQuery plugin
+                    </h3>
+                    <p>A simple plugin that <i>"sticks"</i> an element to the top of the browser window while scrolling past it, always keeping it in view.  This plugin works on multi-page sites, but has additional features for one-pager layouts.</p>
+                    <p><a class="btn btn-success" href="http://github.com/LiranCohen/stickUp"><b>Visit GitHub</b></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar-wrapper">
+        <div class="container">
+            <div class="">
+                <div class="navbar navbar-inverse navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">stickUp</a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="menuItem active"><a href="#home">Home</a></li>
+                                <li class="menuItem"><a href="#features">Features</a></li>
+                                <li class="menuItem"><a href="#updates">Updates</a></li>
+                                <li class="menuItem"><a href="#installation">Installation</a></li>
+                                <li class="menuItem"><a href="#one-pager">One Pager</a></li>
+                                <li class="menuItem"><a href="#extras">Extras</a></li>
+                                <li class="menuItem"><a href="#wordpress">Wordpress</a></li>
+                                <li class="menuItem"><a href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End Navbar -->
+
+        </div>
+    </div>
+
+    <div id='contents'>
+
+        <div id="features" class="row featurette">
+            <h1>features</h1>
+        </div>
+
+        <div id="updates" class="row featurette">
+            <h1>updates</h1>
+        </div>
+
+        <div id="installation" class="row featurette">
+            <h1>installation</h1>
+        </div>
+        <div id="one-pager" class="row featurette">
+            <h1>one-pager</h1>
+
+        </div>
+        <div id="extras" class="row featurette">
+            <h1>extras</h1>
+
+        </div>
+
+        <div id="wordpress" class="row featurette">
+            <h1>wordpress</h1>
+
+        </div>
+        <div id="contact" class="row featurette">
+            <h1>contact</h1>
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+<script type="text/javascript">
+    $(function ($) {
+        $(document).ready(function () {
+            $('.navbar-wrapper').stickUp({
+                parts: {
+                    0: 'home',
+                    1: 'features',
+                    2: 'updates',
+                    3: 'installation',
+                    4: 'one-pager',
+                    5: 'extras',
+                    6: 'wordpress',
+                    7: 'contact'
+                },
+                itemClass: 'menuItem',
+                itemHover: 'active',
+                topMargin: '250px'
+            });
+        });
+    });
+
+</script>
