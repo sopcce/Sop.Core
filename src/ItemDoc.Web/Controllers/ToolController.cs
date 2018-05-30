@@ -16,6 +16,17 @@ namespace ItemDoc.Web.Controllers
     {
       return View();
     }
+    public ActionResult Enc()
+    {
+      return View();
+    }
+
+    public ActionResult CodeFormat()
+    {
+      return View();
+    }
+
+
     public ActionResult Img()
     {
 
@@ -62,7 +73,12 @@ namespace ItemDoc.Web.Controllers
     }
 
 
+
+
+
   }
+
+
 
   public class Github_emojiItem
   {
