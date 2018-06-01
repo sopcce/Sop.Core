@@ -26,8 +26,16 @@ namespace ItemDoc.Services.Model
     /// 用户ID  
     /// </summary>
     public string UserId { get; set; }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public string UserName { get; set; }
+    /// <summary>
+    /// 
+    /// </summary>
+    public string UrlToken { get; set; }
+
+
     /// <summary>
     /// 邮箱账号
     /// </summary>

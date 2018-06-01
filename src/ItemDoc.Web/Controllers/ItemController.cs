@@ -143,57 +143,6 @@ namespace ItemDoc.Web.Controllers
     [HttpPost]
     public JsonResult GetCataloTree(string itemId)
     {
-      #region 注释
-      //List<Node> list = new List<Node>
-      //{
-      //  new Node()
-      //  {
-      //    Text = "Parent1",
-      //    Tags = new string [2]{"10","2"},
-      //    Href = "#",
-      //    Nodes = new List<Node>()
-      //    {
-      //      new Node() {
-      //        Text = "Child 1",
-      //        Href ="#",
-      //        Tags = new string [1]{"2"},
-      //        Nodes = new List<Node>()
-      //        {
-      //          new Node() { Text ="Grandchild 1", Href="#", Tags = new string [1]{"1"}},
-      //          new Node() { Text ="Grandchild 2", Href="#", Tags = new string [1]{"1"}}
-      //        }
-      //      },
-      //      new Node()
-      //      {
-      //        Text ="Child 2",
-      //        Href ="#",
-      //        Tags = new string [1]{"2"},
-      //        Nodes = new List<Node>()
-      //        {
-      //          new Node() { Text ="Grandchild 1", Href="#", Tags = new string [1]{"1"}},
-      //          new Node() { Text ="Grandchild 2", Href="#", Tags = new string [1]{"1"}}
-      //        }
-      //      } ,
-      //      new Node()
-      //      {
-      //        Text = "Child 3",
-      //        Href = "#" ,
-      //        Tags = new string [1]{"2"},
-      //        Nodes = new List<Node>()
-      //        {
-      //          new Node() { Text ="Grandchild 1", Href="#", Tags = new string [1]{"1"}},
-      //          new Node() { Text ="Grandchild 2", Href="#", Tags = new string [1]{"1"}}
-      //        }
-      //      }
-      //    }
-      //  },
-
-      //  new Node() { Text = "Parent2", Href = "#", Tags = new string [1]{"2"}  },
-      //  new Node() { Text = "Parent3", Href = "#", Tags = new string [1]{"2"}  },
-      //  new Node() { Text = "Parent4", Href = "#", Tags = new string [1]{"2"}  },
-      //  new Node() { Text = "Parent5", Href = "#", Tags = new string [1]{"2"}}
-      //}; 
-      #endregion
 
       var list = _catalogService.GetByItemId(itemId).OrderByDescending(n => n.DisplayOrder);
 
@@ -343,74 +292,66 @@ namespace ItemDoc.Web.Controllers
 
     #endregion
 
-
-
-
-
-
-
-
-
     #region Post
     [HttpGet]
     public JsonResult GetPostList(PostParameter parameter)
     {
 
 
-      #region Create
+      #region Create 点击自动生成
 
-      //      _postService.Create(new PostInfo()
-      //      {
-      //        CatalogId = parameter.CatalogId,
+      _postService.Create(new PostInfo()
+      {
+        CatalogId = parameter.CatalogId,
 
-      //        UserId = UserContext.GetGetUserId(),
+        UserId = UserContext.GetGetUserId(),
 
-      //        Title = parameter.CatalogId + "-标题 Post-",
-      //        Content = parameter.CatalogId + "<br />" + @"
+        Title = parameter.CatalogId + "-标题 Post-",
+        Content = parameter.CatalogId + "<br />" + @"
 
-      //[TOC]
+      [TOC]
 
-      //#### Disabled options
+      #### Disabled options
 
-      //- TeX (Based on KaTeX);
-      //- Emoji;
-      //- Task lists;
-      //- HTML tags decode;
-      //- Flowchart and Sequence Diagram;
+      - TeX (Based on KaTeX);
+      - Emoji;
+      - Task lists;
+      - HTML tags decode;
+      - Flowchart and Sequence Diagram;
 
-      //#### Editor.md directory
+      #### Editor.md directory
 
-      //    editor.md/
-      //            lib/
-      //            css/
-      //            scss/
-      //            tests/
-      //            fonts/
-      //            images/
-      //            plugins/
-      //            examples/
-      //            languages/     
-      //            editormd.js
-      //            ...
+          editor.md/
+                  lib/
+                  css/
+                  scss/
+                  tests/
+                  fonts/
+                  images/
+                  plugins/
+                  examples/
+                  languages/     
+                  editormd.js
+                  ...
 
-      //```html
-      //guojiaqiu test
-      //<!-- English -->
-      //<script src=""../dist/js/languages/en.js""></script>
+      ```html
+      guojiaqiu test
+      <!-- English -->
+      <script src=""../dist/js/languages/en.js""></script>
 
-      //<!-- 繁體中文 -->
-      //<script src=""../dist/js/languages/zh-tw.js""></script>
-      //```
+      <!-- 繁體中文 -->
+      <script src=""../dist/js/languages/zh-tw.js""></script>
+      ```
 
-      //       ",
-      //        DateCreated = DateTime.Now.AddDays(new Random().Next(1000)),
-      //        Description = "descriptiondescriptiondescriptiondescriptiondescriptiondescription-----" + new Random().Next(1000),
+             ",
+        DateCreated = DateTime.Now.AddDays(new Random().Next(1000)),
+        Description = "descriptiondescriptiondescriptiondescriptiondescriptiondescription-----" + new Random().Next(1000),
 
-      //        DisplayOrder = 1,
-      //        HtmlContentPath = "",
-      //        ViewCount = new Random().Next(1000),
+        DisplayOrder = 1,
+        HtmlContentPath = "",
+        ViewCount = new Random().Next(1000),
 
-      //      }); 
+      });
       #endregion
 
 

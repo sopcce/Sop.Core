@@ -16,6 +16,8 @@ namespace ItemDoc.Web
     {
       routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
       routes.MapMvcAttributeRoutes();
+
+      #region Item
       //匹配特殊路由
       routes.MapRoute(
         name: "Item_Post",
@@ -27,14 +29,28 @@ namespace ItemDoc.Web
       routes.MapRoute(
         name: "Item_PostEdit",
         url: "Item/PostEdit/{catalogId}/{id}",
-        defaults: new
-        {
-          controller = "Item",
-          action = "PostEdit",
-          catalogId = 0,
-          id = UrlParameter.Optional
-        }
+        defaults: new { controller = "Item", action = "PostEdit", catalogId = 0, id = UrlParameter.Optional }
       );
+      #endregion
+
+
+      #region User 
+      //
+      routes.MapRoute(
+        name: "User_Home",
+        url: "U/{userName}",
+        defaults: new { controller = "User", action = "Home", userName = UrlParameter.Optional }
+      );
+
+
+      #endregion
+
+
+
+
+
+
+
 
 
       //安装模块

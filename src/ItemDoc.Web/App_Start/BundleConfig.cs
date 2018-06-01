@@ -30,38 +30,40 @@ namespace ItemDoc.Web
 
       var jqueryCdnPath = "http://apps.bdimg.com/libs/jquery/1.11.1/jquery.js";
 
-      bundles.Add(new ScriptBundle("~/js/common", jqueryCdnPath).Include(
-        "~/assets/lib/jquery-1.10.2.js",
+      bundles.Add(new ScriptBundle("~/assets/commonjs", jqueryCdnPath).Include( 
         "~/assets/layer/layer.js",
-        "~/assets/scrollup/jquery.scrollUp.min.js",
         "~/assets/common/common.js"
         ));
- 
-      
-      bundles.Add(new StyleBundle("~/css/common").Include(
+      //"~/assets/layer/layer.js",
+      //"~/assets/lib/jquery-1.10.2.js",
+      //"~/assets/bootstrap/js/bootstrap.min.js",
+
+      bundles.Add(new StyleBundle("~/assets/commoncss").Include(
+        "~/assets/bootstrap/css/bootstrap.min.css",
+        "~/assets/layer/theme/default/layer.css",
         "~/assets/common/common.css"
       ));
-      bundles.Add(new ScriptBundle("~/js/jquery.validate").Include(
+      bundles.Add(new ScriptBundle("~/assets/jquery.validate").Include(
         "~/assets/jquery.validate/jquery.validate.js",
         "~/assets/jquery.validate/jquery.validate.unobtrusive.js"
       ));
 
 
-      bundles.Add(new ScriptBundle("~/js/formvalidation").Include(
+      bundles.Add(new ScriptBundle("~/assets/formvalidation").Include(
       "~/assets/formvalidation/dist/js/formValidation.js",
       "~/assets/formvalidation/dist/js/framework/bootstrap.js",
       "~/assets/formvalidation/dist/js/language/zh_CN.js"
       ));
 
-      bundles.Add(new StyleBundle("~/css/formvalidation").Include(
+      bundles.Add(new StyleBundle("~/assets/formvalidation").Include(
         "~/assets/formvalidation/dist/css/formValidation.css"
         ));
 
-      bundles.Add(new ScriptBundle("~/js/bootstrap-treeview").Include(
+      bundles.Add(new ScriptBundle("~/assets/bootstrap-treeview").Include(
           "~/assets/bootstrap-treeview/js/bootstrap-treeview.js"
            ));
 
-      bundles.Add(new StyleBundle("~/css/bootstrap-treeview").Include(
+      bundles.Add(new StyleBundle("~/assets/bootstrap-treeview").Include(
         "~/assets/bootstrap-treeview/css/bootstrap-treeview.css"
         ));
 

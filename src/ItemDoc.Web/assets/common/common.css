@@ -1,7 +1,4 @@
-﻿.sop-nav {
-    padding-top: 80px
-}
-
+﻿
 body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
     font-family: Microsoft YaHei,'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif,'\u5b8b\u4f53',Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif
 }
@@ -63,12 +60,6 @@ div.panel > div.list-group > a > img {
     width: 30px;
     height: 30px;
     border-radius: 30px;
-}
-
-
-
-body {
-    padding-top: 30px
 }
 
 .body-content {

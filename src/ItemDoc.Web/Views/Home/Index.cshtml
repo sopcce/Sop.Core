@@ -1,5 +1,9 @@
-﻿@{
+﻿@using ItemDoc.Core.Mvc.SystemMessage
+@{
     ViewBag.Title = "zhuzhuzhuzh";
+
+    var postView = ViewData.Get<List<PostViewModel>>("postView", new List<PostViewModel>());
+
 }
 
 @section heads {
@@ -58,26 +62,25 @@
         </div>
 
         <div class="row">
-            @for (int i = 0; i < 8; i++)
+            @for (int i = 0; i < (postView.Count > 12 ? 12 : postView.Count); i++)
             {
+                var info = postView.ElementAt(i);
                 <div class="col-sm-6 col-md-4 col-lg-3 ">
                     <div class="thumbnail">
-                        <a href="#" title="#" target="_blank">
-                            <img class="" src="https://static.bootcss.com/www/assets/img/expo.png?1527149054823" width="300" height="150" data-src="https://static.bootcss.com/www/assets/img/expo.png?1527149054823" alt="Bootstrap 优站精选">
+                        <a href="/P/@info.Id" title="@info.Title" target="_blank">
+                            <img class="" src="https://static.bootcss.com/www/assets/img/expo.png?1527149054823" width="300" height="150" data-src="https://static.bootcss.com/www/assets/img/expo.png?1527149054823" alt="@info.Title">
                         </a>
                         <div class="caption">
                             <h3>
-                                <a href="#" title="Bootstrap 优站精选" target="_blank">
-                                    Bootstrap 优站精选
+                                <a href="#" title="@info.Title" target="_blank">
+                                    @info.Title
                                 </a>
                             </h3>
-                            <p class="">&nbsp;&nbsp;&nbsp;&nbsp;  Bootstrap 优站精选频道收集了众多基于Bootstrap构建、设计精美的、有创意的网站。众多基于 Bootstrap 构建、设计精美的、有创意的网站。</p>
+                            <p class="">&nbsp;&nbsp;&nbsp;&nbsp; Bootstrap 优站精选频道收集了众多基于Bootstrap构建、设计精美的、有创意的网站。众多基于 Bootstrap 构建、设计精美的、有创意的网站。</p>
                         </div>
                     </div>
                 </div>
             }
-
-
         </div>
 
     </div>

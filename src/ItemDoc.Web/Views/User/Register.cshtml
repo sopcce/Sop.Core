@@ -22,11 +22,8 @@
 }
 @section  scripts {
 
-
-    
-
-    @Scripts.Render("~/js/jquery.validate")
-
+    <script src="~/assets/jquery.validate/jquery.validate.min.js"></script>
+    <script src="~/assets/jquery.validate/jquery.validate.unobtrusive.js"></script>
     <script type="text/javascript">
         $(function () {
             if ('@systemMessageData.Type' == '@SystemMessageType.Error') {

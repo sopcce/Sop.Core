@@ -18,14 +18,14 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
-
     <!--[if lt IE 9]>
         <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    @Styles.Render("~/css/common")
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    @Styles.Render("~/assets/commoncss")
     @RenderSection("heads", false)
-    @Scripts.Render("~/js/common")
 </head>
 <body>
 
@@ -69,19 +69,17 @@
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    @(!string.IsNullOrWhiteSpace(info.User.Identity.GetUserName())
-                                                          ? info.User.Identity.GetUserName()
-                                                          : info.User.Identity.GetUserId())
+                                    @UserContext.GetUsersLoginInfo().NickName
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">我的主页</a></li>
+                                    <li><a href="@SiteUrls.Instance().UserHome(info.User.Identity.GetUserName())">我的主页</a></li>
                                     <li><a href="#">个人设置</a></li>
                                     <li><a href="#">项目设置</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-header">Nav header</li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li><a href="#">One more separated link</a></li>
+                                    <li><a href="#">设置要求</a></li>
+
                                     <li><a href="@SiteUrls.Instance().UserSignOut()">退出</a></li>
                                 </ul>
                             </li>
@@ -105,49 +103,8 @@
         @RenderBody()
         <hr />
         @RenderPage("~/Views/Home/_Footer.cshtml")
-    </div>
-
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-    @RenderSection("scripts", false)
-
-    <script type="text/javascript">
-        $(function () {
-            var currentUrl = window.document.location.pathname;
-            //
-            $(".sop-man-nav ul li").each(function () {
-                var $this = $(this);
-                var $html = $this.html();
-                var $href = $($html).attr("href");
-
-                if ($href === currentUrl) {
-                    //todo:暂时没有判断下拉中选择状态
-                    $this.addClass('active');
-                }
-                else if (currentUrl.indexOf($href) > -1) {
-                    var currentLength = currentUrl.length;
-                    var $hrefLength = $href.length;
-                    $this.addClass('active');
-                } else {
-                    $this.removeClass('active');
-                }
-                //console.log("currentUrl:" + currentUrl);
-                //console.log("$href:" + $href);
-
-
-
-            });
-
-            //$.scrollUp({
-            //    animation: 'fade',
-            //    activeOverlay: '#00FFFF',
-            //    scrollImg: {
-            //        active: true,
-            //        type: 'background',
-            //        src: '~/assets/scrollup/demo/img/top.png'
-            //    }
-            //});
-         });
-    </script>
+    </div> 
+    @Scripts.Render("~/assets/commonjs")
+    @RenderSection("scripts", false) 
 </body>
 </html>

@@ -5,15 +5,30 @@ using System.Web;
 using System.Web.Mvc;
 using ItemDoc.Framework.Utilities;
 using ItemDoc.Framework.Utility;
+using ItemDoc.Services.Servers;
+using ItemDoc.Services.ViewModel;
 using Sop.Common.Img;
 
 namespace ItemDoc.Web.Controllers
 {
   public class ToolController : Controller
   {
+    private readonly IPostService _postService;
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="postService"></param>
+    public ToolController(IPostService postService)
+    {
+      _postService = postService;
+    }
+
     // GET: Tool
     public ActionResult Index()
     {
+
+
+     
       return View();
     }
     public ActionResult Enc()

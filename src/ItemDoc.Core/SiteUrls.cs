@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Routing;
+using ItemDoc.Core.Extensions;
 using ItemDoc.Core.Mvc.SystemMessage;
 
 
@@ -92,6 +93,15 @@ namespace ItemDoc.Core
     {
       return CachedUrlHelper.Action("Home", "User");
     }
+    public string UserHome(string userName)
+    {
+      RouteValueDictionary route = new RouteValueDictionary();
+      if (!string.IsNullOrWhiteSpace(userName))
+        route.Add("userName", userName);
+      return CachedUrlHelper.Action("Home", "User", route);
+    }
+
+
     public string UserLogin()
     {
       return CachedUrlHelper.Action("Login", "User");

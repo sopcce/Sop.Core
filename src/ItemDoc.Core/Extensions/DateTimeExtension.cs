@@ -1,6 +1,7 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
-namespace System
+namespace ItemDoc.Core.Extensions
 {
     /// <summary>
     /// DateTime扩展方法

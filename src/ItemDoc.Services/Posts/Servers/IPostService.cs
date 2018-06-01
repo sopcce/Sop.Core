@@ -41,16 +41,14 @@ namespace ItemDoc.Services.Servers
     /// </summary> 
     /// <param name="info"></param>
     void Delete(PostInfo info);
-
-    IPageList<PostViewModel> GetPostList(PostParameter parameter);
-
-
     /// <summary>
     /// 
     /// </summary>
     /// <param name="parameter"></param>
     /// <returns></returns>
-    //IPageList<PostViewModel> GetPostList1(PostParameter parameter);
+    IPageList<PostViewModel> GetPostList(PostParameter parameter);
+
+     
     #endregion
 
   }

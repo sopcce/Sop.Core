@@ -3,6 +3,7 @@ using ItemDoc.Framework.Environment;
 using ItemDoc.Services.Model;
 using Microsoft.AspNet.Identity;
 using System.Web;
+using ItemDoc.Framework.Caching;
 
 
 namespace ItemDoc.Core
@@ -31,24 +32,33 @@ namespace ItemDoc.Core
         return null;
       return user.UserId;
 
-    }
-
-
-
-
-
+    } 
     /// <summary>
     /// Gets the name of the get user.
     /// </summary>
     /// <returns>
     /// The name of the get user.
     /// </returns>
-    public static string GetGetUserName()
+    public static string GetUserName()
     {
       var user = AuthenticationService().GetCurrentUser();
       if (user == null)
         return null;
       return user.UserName;
     }
+
+
+    public static UsersLoginInfo GetUsersLoginInfo()
+    {
+      var user = AuthenticationService().GetCurrentUser();
+      if (user == null)
+        return null;
+      return user;
+    }
+
+
+
+
+
   }
 }

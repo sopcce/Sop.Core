@@ -9,8 +9,10 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using ItemDoc.Core.Auth;
+using ItemDoc.Services.Mapping;
 using ItemDoc.Services.Model;
 using ItemDoc.Services.Servers;
+using ItemDoc.Services.ViewModel;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
@@ -20,18 +22,22 @@ namespace ItemDoc.Web.Controllers
   {
     private IAuthenticationService _authentication;
     private IUsersService _usersService;
+    private IPostService _postService;
 
     public HomeController(
       IUsersService usersService,
-      IAuthenticationService authentication)
+      IAuthenticationService authentication, 
+      IPostService postService)
     {
       _authentication = authentication;
+      _postService = postService;
       _usersService = usersService;
     }
 
     public ActionResult Index()
     {
-
+      var list = _postService.GetAll().MapToList<PostViewModel>().ToList();
+      ViewData["postView"] = list;
       return View();
     }
 

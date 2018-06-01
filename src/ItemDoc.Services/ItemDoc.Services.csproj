@@ -81,6 +81,7 @@
     <Compile Include="Auth\IAuthenticationService.cs" />
     <Compile Include="Auth\OwinAuthenticationService.cs" />
     <Compile Include="AutoMapExtensions.cs" />
+    <Compile Include="ChangeLog\Model\ChangeLogInfo.cs" />
     <Compile Include="Posts\Model\PostInfo.cs" />
     <Compile Include="Article\Model\ArticleInfo.cs" />
     <Compile Include="Catalog\Model\CatalogInfo.cs" />
@@ -131,6 +132,9 @@
     <Folder Include="Article\Repositories\" />
     <Folder Include="Article\Servers\" />
     <Folder Include="Article\ViewModel\" />
+    <Folder Include="ChangeLog\Repositories\" />
+    <Folder Include="ChangeLog\Servers\" />
+    <Folder Include="ChangeLog\ViewModel\" />
     <Folder Include="Posts\Parameter\" />
   </ItemGroup>
   <ItemGroup>

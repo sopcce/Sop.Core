@@ -10,9 +10,30 @@ $(function () {
         alert("提交之后");
         this.attr("disabled='disabled'");
     });
+    //设置导航选中
+    var currentUrl = window.document.location.pathname;
+    //shezhi 
+    $(".sop-man-nav ul li").each(function () {
+        var $this = $(this);
+        var $html = $this.html();
+        var $href = $($html).attr("href");
 
-
+        if ($href === currentUrl) {
+            //todo:暂时没有判断下拉中选择状态
+            $this.addClass('active');
+        }
+        else if (currentUrl.indexOf($href) > -1) {
+            var currentLength = currentUrl.length;
+            var $hrefLength = $href.length;
+            $this.addClass('active');
+        } else {
+            $this.removeClass('active');
+        }
+        //console.log("currentUrl:" + currentUrl);
+        //console.log("$href:" + $href); 
+    });
 });
+ 
 /*
 滑动到顶部代码
 @param calss 的值

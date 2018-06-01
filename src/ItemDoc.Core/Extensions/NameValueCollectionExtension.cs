@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 
-namespace System.Collections.Specialized
+namespace ItemDoc.Core.Extensions
 {
     /// <summary>
     /// 获取Request.QueryString[key],Request.Form[key],Request.Params[key]并进行类型转换

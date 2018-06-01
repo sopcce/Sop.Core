@@ -1265,8 +1265,26 @@
     <Content Include="assets\highlight.js\tools\node.js" />
     <Content Include="assets\highlight.js\tools\tasks.js" />
     <Content Include="assets\highlight.js\tools\utility.js" />
+    <Content Include="assets\horizontal-timeline\css\reset.css" />
+    <Content Include="assets\horizontal-timeline\css\style.css" />
+    <Content Include="assets\horizontal-timeline\img\cd-arrow.svg" />
+    <Content Include="assets\horizontal-timeline\index.html" />
+    <Content Include="assets\horizontal-timeline\js\jquery.mobile.custom.min.js" />
+    <Content Include="assets\horizontal-timeline\js\main.js" />
+    <Content Include="assets\horizontal-timeline\js\modernizr.js" />
     <Content Include="assets\images\Android.png" />
     <Content Include="assets\images\favicon.png" />
+    <Content Include="assets\layer\layer.js" />
+    <Content Include="assets\layer\mobile\layer.js" />
+    <Content Include="assets\layer\mobile\need\layer.css" />
+    <Content Include="assets\layer\theme\default\icon-ext.png" />
+    <Content Include="assets\layer\theme\default\icon.png" />
+    <Content Include="assets\layer\theme\default\layer.css" />
+    <Content Include="assets\layer\theme\default\loading-0.gif" />
+    <Content Include="assets\layer\theme\default\loading-1.gif" />
+    <Content Include="assets\layer\theme\default\loading-2.gif" />
+    <Content Include="assets\layer\theme\moon\default.png" />
+    <Content Include="assets\layer\theme\moon\style.css" />
     <Content Include="assets\lib\xss.min.js" />
     <Content Include="assets\lib\base64.js" />
     <Content Include="assets\lib\sopdate.format-1.0.js" />
@@ -1726,6 +1744,13 @@
     <Content Include="assets\highlight.js\LICENSE" />
     <Content Include="assets\highlight.js\README.md" />
     <Content Include="assets\highlight.js\test\mocha.opts" />
+    <Content Include="assets\layer\mobile\README.md" />
+    <Content Include="assets\layer\README.md" />
+    <Content Include="assets\horizontal-timeline\partials\_layout.scss" />
+    <Content Include="assets\horizontal-timeline\partials\_mixins.scss" />
+    <Content Include="assets\horizontal-timeline\partials\_variables.scss" />
+    <Content Include="assets\horizontal-timeline\README.md" />
+    <Content Include="assets\horizontal-timeline\scss\style.scss" />
     <None Include="assets\lib\jquery-1.10.2.intellisense.js" />
     <Content Include="assets\bootstrap\css\bootstrap-responsive.css" />
     <Content Include="assets\bootstrap\css\bootstrap-responsive.min.css" />
@@ -2359,15 +2384,6 @@
     <Content Include="scripts\js\member\edit.js" />
     <Content Include="scripts\js\page\edit.js" />
     <Content Include="scripts\js\page\index.js" />
-    <Content Include="assets\layer\layer.js" />
-    <Content Include="assets\layer\mobile\layer.js" />
-    <Content Include="assets\layer\mobile\need\layer.css" />
-    <Content Include="assets\layer\skin\default\icon-ext.png" />
-    <Content Include="assets\layer\skin\default\icon.png" />
-    <Content Include="assets\layer\skin\default\layer.css" />
-    <Content Include="assets\layer\skin\default\loading-0.gif" />
-    <Content Include="assets\layer\skin\default\loading-1.gif" />
-    <Content Include="assets\layer\skin\default\loading-2.gif" />
     <Content Include="assets\common\common.css" />
     <Content Include="assets\common\common.js" />
     <Content Include="assets\common\demo.js" />
@@ -2423,6 +2439,7 @@
     <Content Include="scripts\tool\htmlformat.js" />
     <Content Include="scripts\tool\jquery.format.js" />
     <Content Include="scripts\tool\jsformat.js" />
+    <Content Include="Views\User\Login.cshtml" />
     <Content Include="wb_51fd6126ac0f1c46.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -2438,7 +2455,6 @@
     <Content Include="scripts\README.md" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Item\Index.cshtml" />
     <Content Include="Views\Item\Catalog.cshtml" />
@@ -2468,12 +2484,13 @@
     <Content Include="Views\Home\_Header.cshtml" />
     <Content Include="Views\Tool\Index - 复制.cshtml" />
     <Content Include="Views\Tool\CodeFormat.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\User\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\config\" />
     <Folder Include="Models\" />
-    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Common\" />
   </ItemGroup>

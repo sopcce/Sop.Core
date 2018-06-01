@@ -16,11 +16,7 @@ namespace ItemDoc.Services.Servers
       _repository = repository;
 
     }
-
-
-
-
-
+    
     /// <summary>
     /// 获取所有栏目
     /// </summary>
@@ -79,19 +75,7 @@ namespace ItemDoc.Services.Servers
 
     }
 
-    //public IPageList<PostViewModel> GetPostList(PostParameter parameter)
-    //{
-    //  //int cataLog, int pageSize, int pageIndex, string keyword, string sortOrder, string sortName 
-    //  //TODO 特殊处理page 数
-    //  parameter.pageIndex = (parameter.pageIndex / parameter.pageSize) + 1;
-
-
-
-    //  return new PageList<PostViewModel>();
-
-
-    //  // return _repository.GetPostList(parameter);
-    //}
+    
     /// <summary>
     /// 
     /// </summary>

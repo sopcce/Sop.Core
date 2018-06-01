@@ -34,12 +34,26 @@ namespace ItemDoc.Web.Controllers
     public ActionResult demo()
     {
       //SQLiteConnection.CreateFile("E:\\itemdoc4.db");
-     
+
       var info = _usersService.GetByUserId("2");
       // ReSharper disable once Mvc.ViewNotResolved
       return View();
     }
 
+    public ActionResult Home(string userName)
+    {
+      ViewBag.userName = userName;
+      return View();
+    }
+
+    public ActionResult MyHomepage(string userName)
+    {
+
+      return View();
+    }
+
+
+    #region 注册登陆退出
     /// <summary>
     /// Registers this instance.
     /// </summary>
@@ -63,7 +77,7 @@ namespace ItemDoc.Web.Controllers
             ViewData["msg"] = new SystemMessageData(SystemMessageType.Error, "验证码输入错误");
             return View();
           }
-          
+
 
           UsersLoginInfo info = infoModel.AsUserLoginInfo();
           _usersService.Insert(info);
@@ -71,7 +85,7 @@ namespace ItemDoc.Web.Controllers
           if (loginInfo != null)
           {
             // 注册成功自动登陆
-            _authentication.UserSignIn(loginInfo.UserId, loginInfo.NickName, true);
+            _authentication.UserSignIn(loginInfo.UserId, loginInfo.UserName, true);
             //
             return RedirectToAction("Index", "Home", new { msg = "注册成功", isok = true.ToString() });
           }
@@ -80,7 +94,7 @@ namespace ItemDoc.Web.Controllers
             ViewData["msg"] = new SystemMessageData(SystemMessageType.Error, "注册失败");
             return View();
           }
-        
+
         }
         else
         {
@@ -93,7 +107,7 @@ namespace ItemDoc.Web.Controllers
         ViewData["msg"] = new SystemMessageData(SystemMessageType.Error, ex.Message);
         return View();
       }
-      
+
     }
 
 
@@ -121,7 +135,7 @@ namespace ItemDoc.Web.Controllers
           var info = _usersService.Login(loginModel.UserLoginName, loginModel.UserLoginPassWord, out loginStatus);
           if (loginStatus)
           {
-            _authentication.UserSignIn(info.UserId, info.NickName, loginModel.RememberPassword);
+            _authentication.UserSignIn(info.UserId, info.UserName, loginModel.RememberPassword);
           }
           else
           {
@@ -196,7 +210,7 @@ namespace ItemDoc.Web.Controllers
       var stream = Captcha.SetStreamValidate();
       return new FileStreamResult(stream, "image/gif");
     }
-    
+
     public ActionResult SignOut()
     {
       // AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = rememberme }, claimsIdentity);
@@ -204,6 +218,7 @@ namespace ItemDoc.Web.Controllers
       authenticationManager.SignOut();
       return RedirectToAction("Index", "Home");
     }
+    #endregion
 
     [Authorize]
     public ActionResult Setting()

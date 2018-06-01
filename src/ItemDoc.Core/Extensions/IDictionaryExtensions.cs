@@ -1,7 +1,7 @@
-﻿using ItemDoc.Framework.Utilities;
+﻿using System.Collections.Generic;
 using ItemDoc.Framework.Utility;
 
-namespace System.Collections.Generic
+namespace ItemDoc.Core.Extensions
 {
     /// <summary>
     /// 对IDictionary的扩展方法
