@@ -436,6 +436,10 @@
     <Content Include="assets\bootstrap-table\dist\locale\bootstrap-table-zh-CN.min.js" />
     <Content Include="assets\bootstrap-table\dist\locale\bootstrap-table-zh-TW.js" />
     <Content Include="assets\bootstrap-table\dist\locale\bootstrap-table-zh-TW.min.js" />
+    <Content Include="assets\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="assets\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="assets\bootstrap\css\bootstrap.vertical-tabs.css" />
+    <Content Include="assets\bootstrap\css\bootstrap.vertical-tabs.min.css" />
     <Content Include="assets\editor.md\plugins\emoji-dialog\itemdoc-emoji\0.gif" />
     <Content Include="assets\editor.md\plugins\emoji-dialog\itemdoc-emoji\1.gif" />
     <Content Include="assets\editor.md\plugins\emoji-dialog\itemdoc-emoji\10.gif" />
@@ -1751,6 +1755,10 @@
     <Content Include="assets\horizontal-timeline\partials\_variables.scss" />
     <Content Include="assets\horizontal-timeline\README.md" />
     <Content Include="assets\horizontal-timeline\scss\style.scss" />
+    <Content Include="assets\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap.css.map" />
     <None Include="assets\lib\jquery-1.10.2.intellisense.js" />
     <Content Include="assets\bootstrap\css\bootstrap-responsive.css" />
     <Content Include="assets\bootstrap\css\bootstrap-responsive.min.css" />
@@ -2482,10 +2490,12 @@
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Home\_Footer.cshtml" />
     <Content Include="Views\Home\_Header.cshtml" />
-    <Content Include="Views\Tool\Index - 复制.cshtml" />
-    <Content Include="Views\Tool\CodeFormat.cshtml" />
+    <Content Include="Views\Tool\demo.cshtml" />
+    <Content Include="Views\Tool\_CodeFormat.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\User\Home.cshtml" />
+    <Content Include="Views\Tool\_UserAgent.cshtml" />
+    <Content Include="Views\Tool\_OtherTool.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

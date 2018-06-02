@@ -23,7 +23,6 @@
         <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     @Styles.Render("~/assets/commoncss")
     @RenderSection("heads", false)
 </head>
@@ -103,8 +102,10 @@
         @RenderBody()
         <hr />
         @RenderPage("~/Views/Home/_Footer.cshtml")
-    </div> 
+    </div>
+   
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     @Scripts.Render("~/assets/commonjs")
-    @RenderSection("scripts", false) 
+    @RenderSection("scripts", false)
 </body>
 </html>

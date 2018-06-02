@@ -3,99 +3,41 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<style>
-    section {
-        height: 800px;
-        border: 1px red solid;
-    }
-    .active {
-        color: #fff;
-        text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
-        background-color: #08c;
-    }
-</style>
+<h2>工具详细首页</h2>
+<link href="~/assets/bootstrap/css/bootstrap.vertical-tabs.min.css" rel="stylesheet" />
+<script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
 <div class="row">
-    <div class="col-xs-4 col-md-3">
-        <div class="list-group nav affix">
-            <a class="list-group-item active" href="#overview"> 概览</a>
-            <a class="list-group-item" href="#modals"> 模态对话框（Modal）</a>
-            <a class="list-group-item" href="#confirm"> 确认对话框（Confirm）</a>
-            <a class="list-group-item" href="#collapse"> Collapse</a>
-            <a class="list-group-item" href="#tab"> Tab</a>
-            <a class="list-group-item" href="#tooltip"> Tooltip</a>
-            <a class="list-group-item" href="#message"> Message</a>
-            <a class="list-group-item" href="#valid"> Valid</a>
-            <a class="list-group-item" href="#panes"> Panes</a>
-            <a class="list-group-item" href="#ajax"> Ajax</a>
-            <a class="list-group-item" href="#countdown"> 倒计时（Countdown）</a>
-        </div>
-        
-         
+    <div class="col-xs-2">
+        <ul class="nav nav-tabs tabs-left">
+            <li class="active"><a href="#otherTool" data-toggle="tab">工具网站</a></li>
+            <li><a href="#codeFormat" data-toggle="tab">代码格式化</a></li>
+            <li><a href="#userAgent" data-toggle="tab">浏览器 User-Agent</a></li>
+
+            <li><a href="#messages" data-toggle="tab">Messages</a></li>
+            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+        </ul>
     </div>
-    <div class="col-xs-8 col-md-9">
-        <div class="">
-            <section id="overview">
-                <h1>overview</h1>
-            </section>
-
-
-            <section id="modals">
-                <h1>modals</h1>
-            </section>
-
-
-            <section id="confirm">
-                <h1>confirm</h1>
-            </section>
-
-
-
-            <section id="collapse">
-                <h1>collapse</h1>
-            </section>
-
-
-
-            <section id="tab">
-                <h1>tab</h1>
-            </section>
-
-
-            <section id="tooltip">
-                <h1>tooltip</h1>
-            </section>
-
-            <section id="message">
-                <h1>message</h1>
-            </section>
-
-            <section id="valid">
-                <h1>valid</h1>
-            </section>
-            <section id="panes">
-                <h1>panes</h1>
-            </section>
-            <section id="ajax">
-                <h1>ajax</h1>
-            </section>
-            <section id="countdown">
-                <h1>countdown</h1>
-            </section>
-
-
-
-
-
-
-
+    <div class="col-xs-10">
+        <div class="tab-content">
+            <div class="tab-pane active" id="otherTool">
+                @Html.Partial("_OtherTool")
+            </div>
+            <div class="tab-pane" id="codeFormat">
+                @Html.Partial("_CodeFormat")
+            </div>
+            <div class="tab-pane" id="userAgent">
+                @Html.Partial("_UserAgent")
+            </div>
+            <div class="tab-pane" id="messages">
+                @Html.Partial("_UserAgent")
+            </div>
+            <div class="tab-pane" id="settings">Settings Tab.</div>
         </div>
-
-
     </div>
-
 </div>
 
+
  
+
 
 

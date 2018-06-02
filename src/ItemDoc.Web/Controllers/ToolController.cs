@@ -28,7 +28,7 @@ namespace ItemDoc.Web.Controllers
     {
 
 
-     
+
       return View();
     }
     public ActionResult Enc()
@@ -36,12 +36,18 @@ namespace ItemDoc.Web.Controllers
       return View();
     }
 
-    public ActionResult CodeFormat()
+    public ActionResult _CodeFormat()
     {
       return View();
     }
-
-
+    public ActionResult _UserAgent()
+    {
+      return View();
+    }
+    public ActionResult _OtherTool()
+    {
+      return View();
+    }
     public ActionResult Img()
     {
 

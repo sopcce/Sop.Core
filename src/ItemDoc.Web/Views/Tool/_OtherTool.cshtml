@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "_OtherTool";
+}
+<link href="~/assets/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="media">
+            <div class="media-body">
+                <h4 class="media-heading">工具网址</h4>
+                <div id="desc1">一些处理工具网址</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <ul class="list-inline">
+            @for (int i = 0; i < 20; i++)
+            {
+                <li>
+                    <a href="http://www.ssleye.com/" target="_blank" data-toggle="tooltip" title="" data-original-title="Default tooltip @("ssleye" + i)">
+                        <h2>@("ssleye" + i)</h2>
+                    </a>
+                    
+                </li>
+            }
+
+
+        </ul>
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script>
