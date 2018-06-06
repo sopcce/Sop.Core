@@ -273,3 +273,5 @@ $RECYCLE.BIN/
 /src/ItemDoc.Web/App_Data/sopcce.com/syslogfile
 /src/Sop.Common/Sop.Common.Img/obj
 /src/Sop.Common/Sop.Common.Img/bin
+/src/ItemDoc.Web/assets/plupload
+/src/ItemDoc.Web/scripts
