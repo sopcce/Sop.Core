@@ -36,6 +36,7 @@ namespace ItemDoc.Web.Controllers
       return View();
     }
 
+    #region MyRegion
     public ActionResult _CodeFormat()
     {
       return View();
@@ -48,6 +49,16 @@ namespace ItemDoc.Web.Controllers
     {
       return View();
     }
+    public ActionResult _HttpTools()
+    {
+      return View();
+    }
+
+    #endregion
+
+
+
+
     public ActionResult Img()
     {
 

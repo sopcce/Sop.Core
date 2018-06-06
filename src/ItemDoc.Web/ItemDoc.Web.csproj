@@ -2496,6 +2496,7 @@
     <Content Include="Views\User\Home.cshtml" />
     <Content Include="Views\Tool\_UserAgent.cshtml" />
     <Content Include="Views\Tool\_OtherTool.cshtml" />
+    <Content Include="Views\Tool\_HttpTools.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
