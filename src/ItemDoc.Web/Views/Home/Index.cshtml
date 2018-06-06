@@ -1,9 +1,9 @@
 ﻿@using ItemDoc.Core.Mvc.SystemMessage
 @{
-    ViewBag.Title = "zhuzhuzhuzh";
+    ViewBag.Title = "Sop小秋";
 
     var postView = ViewData.Get<List<PostViewModel>>("postView", new List<PostViewModel>());
-
+    ViewBag.Description = "我是@ViewBag.Description";
 }
 
 @section heads {
@@ -54,7 +54,7 @@
 
 
     <div class="">
-
+       
 
         <div class="projects-header page-header">
             <h2>让我们带上红领巾，供养社会主义价值观</h2>
@@ -63,24 +63,24 @@
 
         <div class="row">
             @for (int i = 0; i < (postView.Count > 12 ? 12 : postView.Count); i++)
-            {
-                var info = postView.ElementAt(i);
-                <div class="col-sm-6 col-md-4 col-lg-3 ">
-                    <div class="thumbnail">
-                        <a href="/P/@info.Id" title="@info.Title" target="_blank">
-                            <img class="" src="https://static.bootcss.com/www/assets/img/expo.png?1527149054823" width="300" height="150" data-src="https://static.bootcss.com/www/assets/img/expo.png?1527149054823" alt="@info.Title">
-                        </a>
-                        <div class="caption">
-                            <h3>
-                                <a href="#" title="@info.Title" target="_blank">
-                                    @info.Title
-                                </a>
-                            </h3>
-                            <p class="">&nbsp;&nbsp;&nbsp;&nbsp; Bootstrap 优站精选频道收集了众多基于Bootstrap构建、设计精美的、有创意的网站。众多基于 Bootstrap 构建、设计精美的、有创意的网站。</p>
-                        </div>
+        {
+            var info = postView.ElementAt(i);
+            <div class="col-sm-6 col-md-4 col-lg-3 ">
+                <div class="thumbnail">
+                    <a href="/P/@info.Id" title="@info.Title" target="_blank">
+                        <img class="" src="https://static.bootcss.com/www/assets/img/expo.png?1527149054823" width="300" height="150" data-src="https://static.bootcss.com/www/assets/img/expo.png?1527149054823" alt="@info.Title">
+                    </a>
+                    <div class="caption">
+                        <h3>
+                            <a href="#" title="@info.Title" target="_blank">
+                                @info.Title
+                            </a>
+                        </h3>
+                        <p class="">&nbsp;&nbsp;&nbsp;&nbsp; Bootstrap 优站精选频道收集了众多基于Bootstrap构建、设计精美的、有创意的网站。众多基于 Bootstrap 构建、设计精美的、有创意的网站。</p>
                     </div>
                 </div>
-            }
+            </div>
+    }
         </div>
 
     </div>
