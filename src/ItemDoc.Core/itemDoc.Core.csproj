@@ -64,6 +64,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Sop.Common.Serialization, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sop.Common.Serialization.1.2.0\lib\net46\Sop.Common.Serialization.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -153,10 +156,6 @@
     <ProjectReference Include="..\ItemDoc.Framework\ItemDoc.Framework.csproj">
       <Project>{d3254f9b-243f-46f7-a96e-abe731089342}</Project>
       <Name>ItemDoc.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sop.Common\Sop.Common.Serialization\Sop.Common.Serialization.csproj">
-      <Project>{8e807449-e634-4971-8990-e63db141ecb8}</Project>
-      <Name>Sop.Common.Serialization</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

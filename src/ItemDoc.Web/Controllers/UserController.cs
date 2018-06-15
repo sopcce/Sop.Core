@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -208,7 +211,15 @@ namespace ItemDoc.Web.Controllers
     public ActionResult CaptchaCode()
     {
       var stream = Captcha.SetStreamValidate();
-      return new FileStreamResult(stream, "image/gif");
+
+      
+      //string newFile = "F:\\444.gif";
+      //Bitmap bt1 = new Bitmap(stream);
+      //bt1.Save(newFile, ImageFormat.Gif);
+      //  return new FileStreamResult(stream, "image/jpeg");
+      return File(stream, "image/gif");
+
+
     }
 
     public ActionResult SignOut()

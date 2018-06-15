@@ -54,6 +54,9 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Sop.Common.Img, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sop.Common.Img.1.0.0.1\lib\net46\Sop.Common.Img.dll</HintPath>
+    </Reference>
     <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StackExchange.Redis.1.2.6\lib\net46\StackExchange.Redis.dll</HintPath>
     </Reference>
@@ -156,20 +159,11 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+    <Content Include="Gif\Readme.txt" />
     <Content Include="Utility\WebUtilityBBCodeToHtml.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\Domain\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Sop.Common\Sop.Common.Img\Sop.Common.Img.csproj">
-      <Project>{6d9c4669-ca00-4838-b190-35f4cc01c7b6}</Project>
-      <Name>Sop.Common.Img</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sop.Common\Sop.Common.Serialization\Sop.Common.Serialization.csproj">
-      <Project>{8e807449-e634-4971-8990-e63db141ecb8}</Project>
-      <Name>Sop.Common.Serialization</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.107.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.107.0\build\net46\System.Data.SQLite.Core.targets')" />
