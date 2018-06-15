@@ -7,7 +7,7 @@
  *
  * License: http://www.plupload.com/license
  * Contributing: http://www.plupload.com/contributing
- *
+ * 
  * Date: 2015-07-03
  */
 /**
