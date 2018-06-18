@@ -10,3 +10,7 @@
 /src/.vs
 /src/ItemDoc.Web/bin
 /src/packages
+/src/ItemDoc.Core/obj
+/src/ItemDoc.Services/obj
+/src/ItemDoc.Services/bin
+/src/ItemDoc.Web/obj
