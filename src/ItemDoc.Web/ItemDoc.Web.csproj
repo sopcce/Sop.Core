@@ -1473,6 +1473,7 @@
     <Content Include="assets\zeroclipboard\test\index.html" />
     <Content Include="assets\zeroclipboard\test\shared\private.tests.js" />
     <Content Include="assets\zeroclipboard\test\shared\private.tests.js.html" />
+    <Content Include="Content\css\user.css" />
     <Content Include="fonts\editormd-logo.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="html\apple-touch-icon.png" />
@@ -2511,6 +2512,7 @@
     <Content Include="script\tool\htmlformat.js" />
     <Content Include="script\tool\jquery.format.js" />
     <Content Include="script\tool\jsformat.js" />
+    <Content Include="upload\bak.jpg" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="wb_51fd6126ac0f1c46.txt" />
     <Content Include="Web.config">
@@ -2559,6 +2561,7 @@
     <Content Include="Views\Tool\_UserAgent.cshtml" />
     <Content Include="Views\Tool\_OtherTool.cshtml" />
     <Content Include="Views\Tool\_HttpTools.cshtml" />
+    <Content Include="Views\User\_ProfileHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

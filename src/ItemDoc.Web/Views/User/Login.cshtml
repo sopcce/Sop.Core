@@ -20,21 +20,33 @@
 
         .checkcodeimg {
             cursor: pointer;
+            width: 76px;
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
         }
     </style>
 
 }
-@section  scripts {
+@section scripts {
 
     <script src="~/assets/jquery.validate/jquery.validate.min.js"></script>
     <script src="~/assets/jquery.validate/jquery.validate.unobtrusive.js"></script>
     <script type="text/javascript">
         $(function() {
-            $(".checkcodeimg").click(function() {
-                $("#checkcodeimg").attr("src", "/User/CaptchaCode?" + Math.random());
-            });
+            $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().UserCaptchaCode()" +
+                "?v=" +Math.random() +")no-repeat center top");
+
+            $(".checkcodeimg,.checkImgRefresh").on("click",
+                function() {
+                    $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().UserCaptchaCode()" +
+                        "?v=" +
+                        Math.random() +
+                        ")no-repeat center top");
+
+                });
+
             if ('@systemMessageData.Type' === '@SystemMessageType.Error') {
-                layer.msg('@systemMessageData.Content', { autoHeight:true });
+                layer.msg('@systemMessageData.Content', { autoHeight: true });
             }
         });
     </script>
@@ -51,35 +63,33 @@
                 @Html.ValidationMessageFor(n => n.UserLoginCaptchaCode)
             </p>
             <div class="form-group">
-                <label for="UserLoginName" class="col-sm-4 control-label">UserName：</label>
+                <label for="UserLoginName" class="col-sm-4 control-label">账号：</label>
                 <div class="col-sm-8">
                     @Html.TextBoxFor(n => n.UserLoginName, new { @class = "form-control", placeholder = "UserName" })
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-4 control-label">Password：</label>
+                <label for="UserLoginPassWord" class="col-sm-4 control-label">密码：</label>
+
                 <div class="col-sm-8">
                     @Html.PasswordFor(n => n.UserLoginPassWord, new { @class = "form-control", @placeholder = "Password" })
 
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword32" class="col-sm-4 control-label">Password：</label>
-                <div class="col-sm-8">
-                    <img id="checkcodeimg" src="@SiteUrls.Instance().UserCaptchaCode()" alt="点击换一张"
-                         title="点击换一张" class="checkcodeimg" />
-                    @Html.TextBoxFor(n => n.UserLoginCaptchaCode, new { minlength = "1", maxlength = "4", @class = "form-control", placeholder = "输入验证码", required = "required" })
 
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-4 col-sm-8">
-                    <div class="checkbox">
-                        <label>
-                            @Html.CheckBoxFor(n => n.RememberPassword, new { @class = "" })
-                            Remember me
-                        </label>
+                <label for="UserLoginCaptchaCode" class="col-sm-4 control-label">验证码：</label>
+
+                <div class="col-sm-8">
+                    <div class="input-group">
+                        <div class="input-group-addon checkcodeimg" title="点击换一换">
+                        </div>
+                        @Html.TextBoxFor(n => n.UserLoginCaptchaCode, new { minlength = "1", maxlength = "4", @class = "form-control", placeholder = "输入验证码", required = "required" })
+                        <div class="input-group-addon checkImgRefresh" style="cursor: pointer;">刷新</div>
                     </div>
+
+
+
                 </div>
             </div>
             <div class="form-group">

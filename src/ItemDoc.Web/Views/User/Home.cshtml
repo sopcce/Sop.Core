@@ -2,10 +2,22 @@
 @{
     ViewBag.Title = "Home";
 }
+<style>
+    .Avatar {
+        float: left;
+        margin-top: 20px;
+        margin-left: 5px;
+    }
+</style>
+@Html.Partial("_ProfileHeader")
+<hr />
 
 
 <div class="row sopred">
-    <div class="col-xs-12 col-md-4 sopred" style="height: 200px;"> </div>
+    <div class="col-xs-12 col-md-4 " style="height: 200px;">
+        <img class="Avatar sopred" width="160" height="160" src="https://pic3.zhimg.com/50/v2-03689478df331e9ef51860be734e3ae9_xl.jpg">
+        asdads
+    </div>
     <div class="col-xs-12 col-md-8">
         <div class="">
             <ul id="myTabs" class="nav nav-tabs" role="tablist">

@@ -49,6 +49,13 @@ namespace ItemDoc.Web.Controllers
       return View();
     }
 
+    public ActionResult _ProfileHeader(string userName)
+    {
+      ViewBag.userName = userName;
+      return View();
+    }
+
+
     public ActionResult MyHomepage(string userName)
     {
 
@@ -212,7 +219,7 @@ namespace ItemDoc.Web.Controllers
     {
       var stream = Captcha.SetStreamValidate();
 
-      
+
       //string newFile = "F:\\444.gif";
       //Bitmap bt1 = new Bitmap(stream);
       //bt1.Save(newFile, ImageFormat.Gif);

@@ -38,7 +38,7 @@ namespace ItemDoc.Web
       //
       routes.MapRoute(
         name: "User_Home",
-        url: "U/{userName}",
+        url: "u/{userName}",
         defaults: new { controller = "User", action = "Home", userName = UrlParameter.Optional }
       );
 
