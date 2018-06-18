@@ -14,3 +14,6 @@
 /src/ItemDoc.Services/obj
 /src/ItemDoc.Services/bin
 /src/ItemDoc.Web/obj
+/src/ItemDoc.Web/App_Data/sopcce.com
+/src/Tests/ItemDoc.Framework.Test/bin
+/src/Tests/ItemDoc.Framework.Test/obj
