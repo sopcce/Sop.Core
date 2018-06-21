@@ -100,7 +100,13 @@ namespace ItemDoc.Core
         route.Add("userName", userName);
       return CachedUrlHelper.Action("Home", "User", route);
     }
-
+    public string UserPost(string userName)
+    {
+      RouteValueDictionary route = new RouteValueDictionary();
+      if (!string.IsNullOrWhiteSpace(userName))
+        route.Add("userName", userName);
+      return CachedUrlHelper.Action("Post", "User", route);
+    }
 
     public string UserLogin()
     {

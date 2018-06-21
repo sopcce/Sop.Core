@@ -85,38 +85,38 @@
     <Compile Include="Auth\IAuthenticationService.cs" />
     <Compile Include="Auth\OwinAuthenticationService.cs" />
     <Compile Include="AutoMapExtensions.cs" />
-    <Compile Include="ChangeLog\Model\ChangeLogInfo.cs" />
-    <Compile Include="Posts\Model\PostInfo.cs" />
-    <Compile Include="Article\Model\ArticleInfo.cs" />
-    <Compile Include="Catalog\Model\CatalogInfo.cs" />
+    <Compile Include="Model\ChangeLogInfo.cs" />
+    <Compile Include="Model\PostInfo.cs" />
+    <Compile Include="Model\ArticleInfo.cs" />
+    <Compile Include="Model\CatalogInfo.cs" />
     <Compile Include="Items\Model\ItemsInfo.cs" />
-    <Compile Include="Posts\Repositories\PostRepository.cs" />
-    <Compile Include="Posts\Repositories\IPostRepository.cs" />
-    <Compile Include="Posts\Servers\PostService.cs" />
-    <Compile Include="Posts\Servers\IPostService.cs" />
-    <Compile Include="Posts\ViewModel\PostParameter.cs" />
-    <Compile Include="Posts\ViewModel\PostViewModel.cs" />
+    <Compile Include="Repositories\PostRepository.cs" />
+    <Compile Include="IRepositories\IPostRepository.cs" />
+    <Compile Include="Servers\PostService.cs" />
+    <Compile Include="IServers\IPostService.cs" />
+    <Compile Include="Parameter\PostParameter.cs" />
+    <Compile Include="ViewModel\PostViewModel.cs" />
     <Compile Include="Treeview\Nodes.cs" />
     <Compile Include="Treeview\NodesExtension.cs" />
     <Compile Include="UserContext.cs" />
-    <Compile Include="Users\Model\UsersLoginInfo.cs" />
+    <Compile Include="Model\UsersLoginInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Catalog\Repositories\ICatalogRepository.cs" />
+    <Compile Include="IRepositories\ICatalogRepository.cs" />
     <Compile Include="Items\Repositories\IItemsRepository.cs" />
-    <Compile Include="Catalog\Repositories\CatalogRepository.cs" />
+    <Compile Include="Repositories\CatalogRepository.cs" />
     <Compile Include="Items\Repositories\ItemsRepository.cs" />
-    <Compile Include="Users\Repositories\UsersRepository.cs" />
-    <Compile Include="Users\Repositories\IUsersRepository.cs" />
-    <Compile Include="Catalog\Servers\CatalogService.cs" />
-    <Compile Include="Catalog\Servers\ICatalogService.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
+    <Compile Include="IRepositories\IUsersRepository.cs" />
+    <Compile Include="Servers\CatalogService.cs" />
+    <Compile Include="IServers\ICatalogService.cs" />
     <Compile Include="Items\Servers\IItemsService.cs" />
     <Compile Include="Items\Servers\ItemsService.cs" />
-    <Compile Include="Users\Servers\UsersService.cs" />
-    <Compile Include="Users\Servers\IUsersService.cs" />
-    <Compile Include="Catalog\ViewModel\CatalogViewModel.cs" />
+    <Compile Include="Servers\UsersService.cs" />
+    <Compile Include="IServers\IUsersService.cs" />
+    <Compile Include="ViewModel\CatalogViewModel.cs" />
     <Compile Include="Items\ViewModel\ItemsViewModel.cs" />
-    <Compile Include="Users\ViewModel\UsersLoginViewModel.cs" />
-    <Compile Include="Users\ViewModel\UsersRegisterViewModel.cs" />
+    <Compile Include="ViewModel\UsersLoginViewModel.cs" />
+    <Compile Include="ViewModel\UsersRegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\itemDoc.Core\ItemDoc.Core.csproj">
@@ -128,15 +128,7 @@
       <Name>ItemDoc.Framework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Article\Repositories\" />
-    <Folder Include="Article\Servers\" />
-    <Folder Include="Article\ViewModel\" />
-    <Folder Include="ChangeLog\Repositories\" />
-    <Folder Include="ChangeLog\Servers\" />
-    <Folder Include="ChangeLog\ViewModel\" />
-    <Folder Include="Posts\Parameter\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

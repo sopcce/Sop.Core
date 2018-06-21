@@ -61,6 +61,8 @@ namespace ItemDoc.Web.Controllers
     public ActionResult UP(FormCollection form)
     {
       var file1 = Request.Files[0];
+      var vlaue = Request.Form["ownerid"];
+     
       //文件大小不为0
       HttpPostedFileBase Filedata = Request.Files[0];
       // 如果没有上传文件
@@ -70,11 +72,11 @@ namespace ItemDoc.Web.Controllers
       }
       string filename = Guid.NewGuid() + System.IO.Path.GetExtension(Filedata.FileName);
 
-      string path = "~/Uploads/" + DateTime.Now.ToString("yyyy/MM/dd/");
+      string path = "/Uploads/" + DateTime.Now.ToString("yyyy/MM/dd/");
 
       Filedata.SaveAs(strPath() + filename);
 
-      return Json(new { success = 1, url = path + filename, message = "sss" });
+      return Json(new { success = 1, url = path + filename, message = "sss", ownerId = vlaue });
 
 
     }
@@ -91,7 +93,7 @@ namespace ItemDoc.Web.Controllers
       //如果目录不存在，则创建目录
       if (files1 != null)
       {
-       
+
         for (int i = 0; i < files1.Count; i++)
         {
           files1[i].SaveAs(strPath() + "//" + Guid.NewGuid() + "-1-" + files1[i].FileName);

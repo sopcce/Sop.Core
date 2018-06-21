@@ -296,65 +296,6 @@ namespace ItemDoc.Web.Controllers
     [HttpGet]
     public JsonResult GetPostList(PostParameter parameter)
     {
-
-
-      #region Create 点击自动生成
-
-      _postService.Create(new PostInfo()
-      {
-        CatalogId = parameter.CatalogId,
-
-        UserId = UserContext.GetGetUserId(),
-
-        Title = parameter.CatalogId + "-标题 Post-",
-        Content = parameter.CatalogId + "<br />" + @"
-
-      [TOC]
-
-      #### Disabled options
-
-      - TeX (Based on KaTeX);
-      - Emoji;
-      - Task lists;
-      - HTML tags decode;
-      - Flowchart and Sequence Diagram;
-
-      #### Editor.md directory
-
-          editor.md/
-                  lib/
-                  css/
-                  scss/
-                  tests/
-                  fonts/
-                  images/
-                  plugins/
-                  examples/
-                  languages/     
-                  editormd.js
-                  ...
-
-      ```html
-      guojiaqiu test
-      <!-- English -->
-      <script src=""../dist/js/languages/en.js""></script>
-
-      <!-- 繁體中文 -->
-      <script src=""../dist/js/languages/zh-tw.js""></script>
-      ```
-
-             ",
-        DateCreated = DateTime.Now.AddDays(new Random().Next(1000)),
-        Description = "descriptiondescriptiondescriptiondescriptiondescriptiondescription-----" + new Random().Next(1000),
-
-        DisplayOrder = 1,
-        HtmlContentPath = "",
-        ViewCount = new Random().Next(1000),
-
-      });
-      #endregion
-
-
       var list = _postService.GetPostList(parameter);
 
       return Json(new { total = list.TotalCount, rows = list, data = "" });
@@ -446,18 +387,19 @@ namespace ItemDoc.Web.Controllers
     public ActionResult PostEdit(int catalogId = 0, int id = 0)
     {
 
-      PostViewModel postVM = new PostViewModel();
-      postVM.CatalogId = catalogId;
-      postVM.Id = 0;
+      PostViewModel postVm = new PostViewModel();
+      postVm.TitleImg = Guid.NewGuid().ToString("N");
+      postVm.CatalogId = catalogId;
+      postVm.Id = 0;
       if (id != 0)
       {
         var info = _postService.Get(id);
         if (info != null && info.CatalogId == catalogId)
         {
-          postVM = info.MapTo<PostViewModel>();
+          postVm = info.MapTo<PostViewModel>();
         }
       }
-      return View(postVM);
+      return View(postVm);
     }
     /// <returns></returns>
     [HttpPost]
@@ -500,7 +442,68 @@ namespace ItemDoc.Web.Controllers
     #endregion
 
 
+    ///api/v3/feed/topstory?action_feed=True&limit=7
+    /// &session_token=7ac1a3098fadbe9afa09b9cc06967b1f&action=down&after_id=6&desktop=true
+    public ActionResult dd(int CatalogId)
+    {
+      #region Create 点击自动生成
 
+      _postService.Create(new PostInfo()
+      {
+        CatalogId = CatalogId,
+
+        UserId = UserContext.GetGetUserId(),
+
+        Title = CatalogId + "-标题 Post-",
+        Content = CatalogId + "<br />" + @"
+
+      [TOC]
+
+      #### Disabled options
+
+      - TeX (Based on KaTeX);
+      - Emoji;
+      - Task lists;
+      - HTML tags decode;
+      - Flowchart and Sequence Diagram;
+
+      #### Editor.md directory
+
+          editor.md/
+                  lib/
+                  css/
+                  scss/
+                  tests/
+                  fonts/
+                  images/
+                  plugins/
+                  examples/
+                  languages/     
+                  editormd.js
+                  ...
+
+      ```html
+      guojiaqiu test
+      <!-- English -->
+      <script src=""../dist/js/languages/en.js""></script>
+
+      <!-- 繁體中文 -->
+      <script src=""../dist/js/languages/zh-tw.js""></script>
+      ```
+
+             ",
+        DateCreated = DateTime.Now.AddDays(new Random().Next(1000)),
+        Description = "descriptiondescriptiondescriptiondescriptiondescriptiondescription-----" + new Random().Next(1000),
+
+        DisplayOrder = 1,
+        HtmlContentPath = "",
+        ViewCount = new Random().Next(1000),
+
+      });
+      #endregion
+
+      return View();
+    }
 
 
 

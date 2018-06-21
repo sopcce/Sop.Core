@@ -11,6 +11,7 @@ using ItemDoc.Core.Auth;
 using ItemDoc.Core.Mvc;
 using ItemDoc.Core.Mvc.SystemMessage;
 using ItemDoc.Framework.Validation;
+using ItemDoc.Services.Mapping;
 using ItemDoc.Services.Model;
 using ItemDoc.Services.Servers;
 using ItemDoc.Services.ViewModel;
@@ -21,12 +22,14 @@ namespace ItemDoc.Web.Controllers
   {
     private readonly IAuthenticationService _authentication;
     private readonly IUsersService _usersService;
-
+    private IPostService _postService;
     public UserController(
       IUsersService usersService,
-      IAuthenticationService authentication)
+      IAuthenticationService authentication,
+      IPostService postService)
     {
       _authentication = authentication;
+      _postService = postService;
       _usersService = usersService;
     }
 
@@ -59,6 +62,13 @@ namespace ItemDoc.Web.Controllers
     public ActionResult MyHomepage(string userName)
     {
 
+      return View();
+    }
+
+    public ActionResult Post(string userName)
+    {
+      var list = _postService.GetAll().MapToList<PostViewModel>().ToList();
+      ViewData["postView"] = list;
       return View();
     }
 
