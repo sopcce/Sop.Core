@@ -1,12 +1,8 @@
 ﻿using ItemDoc.Core.Auth;
 using ItemDoc.Framework.Environment;
 using ItemDoc.Services.Model;
-using Microsoft.AspNet.Identity;
-using System.Web;
-using ItemDoc.Framework.Caching;
 
-
-namespace ItemDoc.Core
+namespace ItemDoc.Services
 {
   /// <summary>
   /// 用户上下文
@@ -28,9 +24,7 @@ namespace ItemDoc.Core
     {
 
       var user = AuthenticationService().GetCurrentUser();
-      if (user == null)
-        return null;
-      return user.UserId;
+      return user?.UserId;
 
     } 
     /// <summary>
@@ -42,17 +36,13 @@ namespace ItemDoc.Core
     public static string GetUserName()
     {
       var user = AuthenticationService().GetCurrentUser();
-      if (user == null)
-        return null;
-      return user.UserName;
+      return user?.UserName;
     }
 
 
     public static UsersLoginInfo GetUsersLoginInfo()
     {
       var user = AuthenticationService().GetCurrentUser();
-      if (user == null)
-        return null;
       return user;
     }
 

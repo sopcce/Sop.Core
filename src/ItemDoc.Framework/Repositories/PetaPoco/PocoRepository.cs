@@ -272,7 +272,7 @@ namespace ItemDoc.Framework.Repositories
              .Select("COUNT(*)")
              .From(tableName);
 
-          var pageSize = 100;
+          var pageSize = 500;
           //bool LoadCache = true;
           List<T> lists = new List<T>();
           var TotalCount = Database().ExecuteScalar<int>(sqlcount);

@@ -179,7 +179,7 @@
     function uploadfile() {
         var $ = jQuery,
             $list = $('#fileList'),
-            $hflist = $("#TitleImg"),
+
             // 优化retina, 在retina下这个值是2
             ratio = window.devicePixelRatio || 1,
             // 缩略图大小
@@ -191,7 +191,7 @@
             runtimes: 'html5,flash,silverlight,html4',
             browse_button: 'uploadfile',
             container: 'uploadbox',
-            url: '@Url.Content("~/Attachment/UP")',
+            url: '@Url.Content("~/Attachment/UP1")',
             flash_swf_url: '@Url.Content("~/assets/plupload/js/Moxie.swf")',
             silverlight_xap_url: '@Url.Content("~/assets/plupload/js/Moxie.xap")',
             filters: {
@@ -205,7 +205,8 @@
             unique_names: true,
             multipart_params: {
                 __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
-                ownerid: $("#TitleImg").val()
+                ownerid: $("#TitleImg").val(),
+                fileId: ''
             },
             //resize: {
             //    width: 100,
@@ -223,7 +224,7 @@
                 UploadFile: function(up, file) {
                     //console.log('[UploadFile]', file);
 
-                    //up.setOption('ownerid', 'upload' + file.id);
+                    //up.setOption('fileId', file.id);
                     // You can override settings before the file is uploaded
                     // up.setOption('url', 'upload.php?id=' + file.id);
                     // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
@@ -232,7 +233,7 @@
             init: {
                 BeforeUpload:function(up,file){
                     //重点在这里，上传的时候自定义参数信息
-
+                    up.setOption('fileId', file.id);
                 },
                 FilesAdded: function (up, files) {
                     uploader.start();
@@ -247,14 +248,15 @@
                     var $li = '' +
                         '<div class="titile_img"' +
                         ' id="' + file.id+'" >'+
-                        '<img  src="' + json.url
-                        +'"  >' +
+                        '<img  src="' + json.url +
+                        '"  >' +
+                        //' <input name="titleImgURL" id="' + file.id +'" value="' + json.url +'" type="hidden"/> "'+
                         '<div class="titile_img_remove"  style="display: none;"></div></div>';
 
                     // $list为容器jQuery实例
                     $list.append($li);
-                    var value = $hflist.val();
-                    $hflist.val(value + json.url);
+
+
                 },
                 //所有文件上传完成后事件
                 UploadComplete: function (up, files) {
@@ -296,7 +298,7 @@
                     uploader.removeFile(uploaderFiles[i]);
                 }
             }
-
+            //
 
 
         });

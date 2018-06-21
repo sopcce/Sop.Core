@@ -20,7 +20,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44364</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -29,6 +29,7 @@
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -314,6 +315,7 @@
     <Content Include="App_Data\Lang\zh-cn.php" />
     <Content Include="App_Data\Lang\zh-cn.xml" />
     <Content Include="App_Data\log4net.config" />
+    <Content Include="App_README.txt" />
     <Content Include="assets\bootstrap-table\dist\bootstrap-table-locale-all.js" />
     <Content Include="assets\bootstrap-table\dist\bootstrap-table-locale-all.min.js" />
     <Content Include="assets\bootstrap-table\dist\bootstrap-table.css" />
@@ -1565,6 +1567,7 @@
     <Content Include="Content\images\progress.png" />
     <Content Include="Content\images\qrcode.jpg" />
     <Content Include="Content\images\success.png" />
+    <Content Include="Content\Office.css" />
     <Content Include="Content\understanding-flexbox-3.gif" />
     <Content Include="fonts\editormd-logo.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -2510,6 +2513,7 @@
     <Content Include="assets\zTree\js\jquery.ztree.exhide.js" />
     <Content Include="assets\zTree\js\jquery.ztree.exhide.min.js" />
     <Content Include="assets\zTree\log v3.x.txt" />
+    <Content Include="Scripts\Office\MicrosoftAjax.js" />
     <Content Include="script\item\index.js" />
     <Content Include="script\item\ItemsIndex.js" />
     <Content Include="script\js\attorn\index.js" />
@@ -2533,7 +2537,7 @@
     <Content Include="script\tool\htmlformat.js" />
     <Content Include="script\tool\jquery.format.js" />
     <Content Include="script\tool\jsformat.js" />
-    <Content Include="upload\bak.jpg" />
+    <Content Include="Content\bak.jpg" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="wb_51fd6126ac0f1c46.txt" />
     <Content Include="Web.config">

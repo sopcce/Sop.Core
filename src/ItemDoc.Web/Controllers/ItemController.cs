@@ -17,6 +17,7 @@ using System.Text;
 using System.Web.Mvc;
 using ItemDoc.Framework.Utilities;
 using ItemDoc.Framework.Utility;
+using ItemDoc.Services;
 using ItemDoc.Services.Treeview;
 
 namespace ItemDoc.Web.Controllers
@@ -417,7 +418,7 @@ namespace ItemDoc.Web.Controllers
       postView.HtmlContentPath = "HtmlContentPath";
       postView.ViewCount = 1;
       postView.CreatedIP = WebUtility.GetIp();
-
+     
       var info = postView.MapTo<PostInfo>();
 
       if (isModel)
