@@ -20,3 +20,6 @@
 /src/ItemDoc.Core/bin
 /src/ItemDoc.Framework/obj
 /src/ItemDoc.Web/Uploads
+/src/ItemDoc.Plugin/ItemDoc.Upload/bin
+/src/ItemDoc.Plugin/ItemDoc.Upload/obj
+/src/ItemDoc.Framework/bin
