@@ -1,11 +1,5 @@
-﻿using System;
+﻿using ItemDoc.Services.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ItemDoc.Framework.Repositories;
-using ItemDoc.Services.Model;
-using ItemDoc.Services.ViewModel;
 
 namespace ItemDoc.Services.Servers
 {

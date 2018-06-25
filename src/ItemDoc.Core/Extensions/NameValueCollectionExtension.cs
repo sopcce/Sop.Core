@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 
-namespace ItemDoc.Core.Extensions
+namespace System
 {
     /// <summary>
     /// 获取Request.QueryString[key],Request.Form[key],Request.Params[key]并进行类型转换

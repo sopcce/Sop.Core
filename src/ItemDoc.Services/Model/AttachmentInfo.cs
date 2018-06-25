@@ -7,7 +7,7 @@ namespace ItemDoc.Services.Model
   /// 
   /// </summary>
 
-  [SopTableName("Item_Attachment")]
+  [SopTableName("Item_FileAttachment")]
   [SopTablePrimaryKey("Id", AutoIncrement = true)]
   public class AttachmentInfo
   {
@@ -29,7 +29,9 @@ namespace ItemDoc.Services.Model
     /// </summary>
     public string ServerId { get; set; }
 
-    public AttachmentType FileType { get; set; }
+    public string ServerUrlPath { get; set; }
+
+
     /// <summary>
     /// 
     /// </summary>
@@ -42,7 +44,7 @@ namespace ItemDoc.Services.Model
     /// 
     /// </summary>
     public string Filenames { get; set; }
-    public string FriendlyFilenames { get; set; }
+
     /// <summary>
     /// 
     /// </summary>
@@ -51,10 +53,7 @@ namespace ItemDoc.Services.Model
     /// 
     /// </summary>
     public string MimeType { get; set; }
-    /// <summary>
-    /// 
-    /// </summary>
-    public string MediaType { get; set; }
+
     /// <summary>
     /// 
     /// </summary>
@@ -64,7 +63,7 @@ namespace ItemDoc.Services.Model
     /// <summary>
     /// 
     /// </summary>
-    public string IP { get; set; }
+    public string Ip { get; set; }
     /// <summary>
     /// 
     /// </summary>
@@ -73,42 +72,28 @@ namespace ItemDoc.Services.Model
 
   }
 
-  public enum AttachmentType
-  {
-    /// <summary>
-    /// 未使用（不及格数据）
-    /// </summary>
-    Fail = 1,
-
-    /// <summary>
-    /// 提交
-    /// </summary>
-    Submit = 2,
-
-    /// <summary>
-    /// 删除
-    /// </summary>
-    Delete = 3,
-  }
 
   /// <summary>
-  /// 附加状态
+  /// 附件状态
   /// </summary>
   public enum AttachmentStatus
   {
     /// <summary>
-    /// 未使用（不及格数据）
+    /// 失败
     /// </summary>
     Fail = 1,
-
+    /// <summary>
+    /// 成功
+    /// </summary>
+    Success = 10,
     /// <summary>
     /// 提交
     /// </summary>
-    Submit = 2,
+    Submit = 20,
 
     /// <summary>
     /// 删除
     /// </summary>
-    Delete = 3,
+    Delete = 30,
   }
 }

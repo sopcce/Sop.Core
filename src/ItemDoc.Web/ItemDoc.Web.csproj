@@ -299,7 +299,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="App_Code\ImageServerInfo.cs" />
     <Compile Include="Controllers\InstallController.cs" />
-    <Compile Include="Controllers\AttachmentController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ToolController.cs" />
     <Compile Include="Controllers\UserController.cs" />

@@ -43,7 +43,7 @@ namespace ItemDoc.Framework.Test
         catch (Exception ex)
         {
           //todo: 写入日志文件 
-
+          Console.Write(ex.Message);
         }
       }
       Autofac.IContainer container = builder.Build();

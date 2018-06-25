@@ -805,8 +805,11 @@ namespace ItemDoc.Framework.Utility
           filePath = filePath.Replace('/', System.IO.Path.DirectorySeparatorChar).Replace("~", "");
           result = Combine(System.AppDomain.CurrentDomain.BaseDirectory, filePath);
         }
+        if (!Directory.Exists(result))
+          Directory.CreateDirectory(result);
+
       }
-      catch
+      catch (Exception ex)
       {
         result = filePath;
       }

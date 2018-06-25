@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 
-namespace ItemDoc.Core.Extensions
+namespace System
 {
     // <summary>
     /// 枚举类扩展

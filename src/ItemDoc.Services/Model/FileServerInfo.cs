@@ -22,14 +22,20 @@ namespace ItemDoc.Services.Model
 
     }
     public int Id { get; set; }
-    
+
     public string ServerId { get; set; }
     public string ServerName { get; set; }
     public string ServerUrl { get; set; }
-    public string PicRootPath { get; set; }
-    public string MaxPicAmount { get; set; }
-    public string CurPicAmount { get; set; }
-    public bool Usable { get; set; }
+    public string RootPath { get; set; }
+    public string VirtualPath { get; set; }
+    public string WebPath { get; set; }
+
+
+    public long MaxAmount { get; set; }
+    public long CurAmount { get; set; }
+  
+    public long Size { get; set; }
+
     public bool Enabled { get; set; }
 
     public int DisplayOrder { get; set; }

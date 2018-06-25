@@ -93,6 +93,7 @@
     <Compile Include="Model\ItemsInfo.cs" />
     <Compile Include="Model\AttachmentInfo.cs" />
     <Compile Include="Model\PostInfo.cs" />
+    <Compile Include="Parameter\ImgServerParameter.cs" />
     <Compile Include="Repositories\IFileServerRepository.cs" />
     <Compile Include="Repositories\Repository\FileServerRepository.cs" />
     <Compile Include="Repositories\Repository\AttachmentRepository.cs" />

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ItemDoc.Core.Extensions
+namespace System
 {
     public class ReaderConvert
     {

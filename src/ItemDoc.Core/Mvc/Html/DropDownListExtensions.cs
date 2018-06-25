@@ -5,15 +5,14 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using ItemDoc.Core.Extensions;
 
 
 namespace ItemDoc.Core.Mvc.Html
 {
-    /// <summary>
-    /// 联动下拉列表
-    /// </summary>
-    public static class DropDownListExtensions
+  /// <summary>
+  /// 联动下拉列表
+  /// </summary>
+  public static class DropDownListExtensions
     {
         
 
