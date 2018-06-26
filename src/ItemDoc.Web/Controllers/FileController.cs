@@ -75,34 +75,12 @@ namespace ItemDoc.Web.Controllers
 
 
     }
-    [HttpPost]
-    public ActionResult UP(FormCollection form)
-    {
-      var file1 = Request.Files[0];
-      var vlaue = Request.Form["ownerid"];
-
-      //文件大小不为0
-      HttpPostedFileBase Filedata = Request.Files[0];
-      // 如果没有上传文件
-      if (Filedata == null || string.IsNullOrEmpty(Filedata.FileName) || Filedata.ContentLength <= 0)
-      {
-        return HttpNotFound();
-      }
-      string filename = Guid.NewGuid() + System.IO.Path.GetExtension(Filedata.FileName);
-
-      string path = "/Uploads/" + DateTime.Now.ToString("yyyy/MM/dd/");
-
-      Filedata.SaveAs(strPath() + filename);
-
-      return Json(new { success = 1, url = path + filename, message = "sss", ownerId = vlaue });
-
-
-    }
+  
 
 
     #region 图片上传
     [HttpPost]
-    public ActionResult UP1()
+    public ActionResult UP()
     {
       //_attachmentService.GetAll()
 
@@ -111,6 +89,7 @@ namespace ItemDoc.Web.Controllers
       HttpPostedFileBase file = Request.Files[0];//接收用户传递的文件数据.
       if (file != null)
       {
+        var ownerid = Request.Form["ownerid"];
         string fileName = Path.GetFileName(file.FileName);//获取文件名.
         string fileExt = Path.GetExtension(fileName);//获取文件扩展名.
         ImgServerParameter imgServer = new ImgServerParameter();
@@ -124,6 +103,10 @@ namespace ItemDoc.Web.Controllers
 
         imgServer.ServerUrl = list[i].ServerUrl;
         imgServer.ServerId = list[i].ServerId;
+        imgServer.ServerName = list[i].ServerName;
+        imgServer.ServerEnName = list[i].ServerEnName;
+        imgServer.OwnerId = ownerid;
+
         imgServer.FileName = file.FileName;
         imgServer.FileExtension = Path.GetExtension(fileName);
         imgServer.ContentType = file.ContentType;

@@ -191,7 +191,7 @@
             runtimes: 'html5,flash,silverlight,html4',
             browse_button: 'uploadfile',
             container: 'uploadbox',
-            url: '@Url.Content("~/File/UP1")',
+            url: '@Url.Content("~/File/UP")',
             flash_swf_url: '@Url.Content("~/assets/plupload/js/Moxie.swf")',
             silverlight_xap_url: '@Url.Content("~/assets/plupload/js/Moxie.xap")',
             filters: {
@@ -264,7 +264,7 @@
 
                 },
                 Error: function (up, err) {
-                    if (err.code == -600) {
+                    if (err.code === -600) {
                         alert("附件大小不可超过20M！");
                     }
                     else {

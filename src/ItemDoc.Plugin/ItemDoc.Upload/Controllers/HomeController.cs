@@ -74,7 +74,7 @@ namespace ItemDoc.Upload.Controllers
 
         info.ServerId = imgServer.ServerId;
         info.AttachmentId = Guid.NewGuid().ToString("N");
-        info.OwnerId = "aa";
+        info.OwnerId = imgServer.OwnerId;
         info.ServerUrlPath = serverUrlPath;
         info.Status = AttachmentStatus.Fail;
         info.Filenames = newFileName;

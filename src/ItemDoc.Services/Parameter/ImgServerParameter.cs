@@ -11,6 +11,11 @@ namespace ItemDoc.Services.Parameter
     public string ServerId { get; set; }
     public string ServerUrl { get; set; }
 
+    public string ServerName { get; set; }
+
+    public string ServerEnName { get; set; }
+
+    public string OwnerId { get; set; }
 
     public string Token { get; set; }
 
