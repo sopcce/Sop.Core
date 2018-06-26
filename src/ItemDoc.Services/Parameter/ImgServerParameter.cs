@@ -21,5 +21,6 @@ namespace ItemDoc.Services.Parameter
     public int ContentLength { get; set; }
     public long Date { get; set; }
     public string IP { get; set; }
+    public string VirtualPath { get; set; }
   }
 }

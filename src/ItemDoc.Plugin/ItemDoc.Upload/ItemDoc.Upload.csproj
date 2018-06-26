@@ -101,6 +101,7 @@
     <Reference Include="MiniProfiler">
       <HintPath>..\..\ItemDoc.Web\bin\MiniProfiler.dll</HintPath>
     </Reference>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -108,6 +109,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ItemDoc.Web\bin\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Polly">
+      <HintPath>..\..\packages\Polly.6.0.1\lib\netstandard2.0\Polly.dll</HintPath>
     </Reference>
     <Reference Include="RouteDebugger">
       <HintPath>..\..\ItemDoc.Web\bin\RouteDebugger.dll</HintPath>

@@ -25,10 +25,12 @@ namespace ItemDoc.Services.Model
 
     public string ServerId { get; set; }
     public string ServerName { get; set; }
+    
+    public string ServerEnName { get; set; }
     public string ServerUrl { get; set; }
     public string RootPath { get; set; }
     public string VirtualPath { get; set; }
-    public string WebPath { get; set; }
+    public string DiskPath { get; set; }
 
 
     public long MaxAmount { get; set; }

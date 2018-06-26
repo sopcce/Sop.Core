@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
+using Polly;
 
 namespace ItemDoc.Upload.Controllers
 {
@@ -47,55 +48,64 @@ namespace ItemDoc.Upload.Controllers
       {
         return Json(new { code = 001, status = "err" }, JsonRequestBehavior.AllowGet);
       }
-      ImgServerParameter imgServer = new ImgServerParameter();
-      data = EncryptionUtility.AES_Decrypt(data, token);
-      imgServer = data.FromJson<ImgServerParameter>();
-      string newToken = EncryptionUtility.Sha512Encode(imgServer.Key + imgServer.ServerUrl + imgServer.Date);
-      if (token != imgServer.Token || token != newToken)
+      var info = new AttachmentInfo(); 
+      try
       {
-        return Json(new { code = 002, status = "err" }, JsonRequestBehavior.AllowGet);
+        Stopwatch sw = new Stopwatch();
+        sw.Start();
+        ImgServerParameter imgServer = new ImgServerParameter();
+        data = EncryptionUtility.AES_Decrypt(data, token);
+        imgServer = data.FromJson<ImgServerParameter>();
+        string newToken = EncryptionUtility.Sha512Encode(imgServer.Key + imgServer.ServerUrl + imgServer.Date);
+        if (token != imgServer.Token || token != newToken)
+        {
+          return Json(new { code = 002, status = "err" }, JsonRequestBehavior.AllowGet);
+        }
+        string upPath = imgServer.VirtualPath;
+        string newFileName = Guid.NewGuid().ToString("N") + imgServer.FileExtension.ToLower();
+        upPath = Format(newFileName, upPath);
+        string diskPath = FileUtility.GetDiskFilePath(upPath) + newFileName;
+        string serverUrlPath = imgServer.ServerUrl + upPath.Replace("~", "") + newFileName;
+        using (FileStream fileStream = System.IO.File.OpenWrite(diskPath))
+        {
+          context.Request.InputStream.CopyTo(fileStream);
+        }
+        //存储数据库
+
+        info.ServerId = imgServer.ServerId;
+        info.AttachmentId = Guid.NewGuid().ToString("N");
+        info.OwnerId = "aa";
+        info.ServerUrlPath = serverUrlPath;
+        info.Status = AttachmentStatus.Fail;
+        info.Filenames = newFileName;
+        info.Extension = imgServer.FileExtension;
+        info.Size = imgServer.ContentLength;
+        info.MimeType = imgServer.ContentType;
+        info.UploadFileName = imgServer.FileName;
+        info.DateCreated = DateTime.Now;
+        info.Ip = imgServer.IP;
+
+        info.Id = _attachmentService.Create(info);
+
+        sw.Stop();
+        return Json(new { data = "", Path = info.ServerUrlPath, status = "ok", Message = "" }, JsonRequestBehavior.AllowGet);
       }
-      string upPath = "~/Uploads/1File/{yyyy}/{MM}/{dd}/";
-      Stopwatch sw = new Stopwatch();
-      sw.Start();
-      string newFileName = Guid.NewGuid().ToString("N") + imgServer.FileExtension.ToLower();
-
-
-      upPath = Format(newFileName, upPath);
-
-      string diskPath = FileUtility.GetDiskFilePath(upPath) + newFileName;
-
-      string serverUrlPath = imgServer.ServerUrl + upPath.Replace("~", "") + newFileName;
-
-      using (FileStream fileStream = System.IO.File.OpenWrite(diskPath))
+      catch (Exception e)
       {
-        context.Request.InputStream.CopyTo(fileStream);
+        return Json(new { data = "", Path = info.ServerUrlPath, status = "ok", Message = e.Message }, JsonRequestBehavior.AllowGet);
       }
-      //存储数据库
-      var info = new AttachmentInfo();
-      info.ServerId = imgServer.ServerId;
-      info.AttachmentId = Guid.NewGuid().ToString("N");
-      info.OwnerId = "asd";
-      info.ServerUrlPath = serverUrlPath;
-      info.Status = AttachmentStatus.Fail;
-      info.Filenames = newFileName;
-      info.Extension = imgServer.FileExtension;
-      info.Size = imgServer.ContentLength;
-      info.MimeType = imgServer.ContentType;
-      info.UploadFileName = imgServer.FileName;
-      info.DateCreated = DateTime.Now;
-      info.Ip = imgServer.IP;
 
-      _attachmentService.Create(info);
-
-
-      //upload/image/{yyyy}{mm}{dd}/{time}{rand:6}
-
-
-
-      sw.Stop();
-      return Json(new { data = "", Path = serverUrlPath, status = "ok" }, JsonRequestBehavior.AllowGet);
     }
+    
+
+
+
+
+
+
+
+
+
 
     private string strPath(object str)
     {

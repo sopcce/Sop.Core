@@ -131,7 +131,7 @@ namespace ItemDoc.Web.Controllers
         imgServer.Key = Guid.NewGuid().ToString("N");
         imgServer.Date = DateTime.Now.ToTimestamp();
         imgServer.IP = Framework.Utility.WebUtility.GetIp();
-
+        imgServer.VirtualPath = list[i].VirtualPath;
         imgServer.Token = EncryptionUtility.Sha512Encode(imgServer.Key + imgServer.ServerUrl + imgServer.Date);
 
 
@@ -151,9 +151,19 @@ namespace ItemDoc.Web.Controllers
 
         string data = Encoding.GetEncoding("UTF-8").GetString(responseArray);
         sw.Stop();
-        return Json(new { code = 200, oldData = imageServerUrl, data = data });
+        var dddata = data.FromJson<Data>();
+        return Json(new { code = 200, oldData = imageServerUrl, url = dddata.path, message = "" });
+
+
       }
       return Json(new { code = 404 });
+    }
+
+    public class Data
+    {
+      public string data { get; set; }
+      public string path { get; set; }
+      public string status { get; set; }
     }
     private byte[] StreamToBytes(Stream stream)
     {

@@ -373,7 +373,7 @@ namespace ItemDoc.Framework.Utility
         Array.Copy(keyArray, bKey, bKey.Length);
 
         byte[] toEncryptArray = Convert.FromBase64String(decryptStr);
-
+ 
         var aes = new AesManaged()
         {
           Mode = CipherMode.ECB,

@@ -23,3 +23,7 @@
 /src/ItemDoc.Plugin/ItemDoc.Upload/bin
 /src/ItemDoc.Plugin/ItemDoc.Upload/obj
 /src/ItemDoc.Framework/bin
+/src/ItemDoc.Plugin/ItemDoc.Upload/Uploads
+/src/ItemDoc.Plugin/ItemDoc.Upload/Web.config
+/src/ItemDoc.Plugin/ItemDoc.Upload/Web.Debug.config
+/src/ItemDoc.Plugin/ItemDoc.Upload/Web.Release.config
