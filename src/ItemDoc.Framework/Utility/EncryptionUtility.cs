@@ -338,7 +338,7 @@ namespace ItemDoc.Framework.Utility
         aes.Clear();
         return Convert.ToBase64String(resultArray, 0, resultArray.Length);
       }
-      catch (Exception ex)
+      catch (Exception)
       {
         return encryptStr;
       }

@@ -101,6 +101,8 @@
     <Compile Include="Repositories\IAttachmentRepository.cs" />
     <Compile Include="Repositories\Repository\PostRepository.cs" />
     <Compile Include="Repositories\IPostRepository.cs" />
+    <Compile Include="Servers\ITestService.cs" />
+    <Compile Include="Servers\Server\TestService.cs" />
     <Compile Include="Servers\Server\FileServerService.cs" />
     <Compile Include="Servers\IFileServerService.cs" />
     <Compile Include="Servers\IAttachmentService.cs" />

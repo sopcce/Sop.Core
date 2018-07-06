@@ -742,7 +742,7 @@ namespace Com.Alipay
                 RSACryptoServiceProvider rsa = DecodeRSAPrivateKey(data);
                 return rsa;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //    throw new AopException("EncryptContent = woshihaoren,zheshiyigeceshi,wanerde", ex);
             }
