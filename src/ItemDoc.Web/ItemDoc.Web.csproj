@@ -59,9 +59,8 @@
     <Reference Include="Autofac.Integration.WebApi, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.WebApi2.4.1.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Bin\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
@@ -201,6 +200,9 @@
     <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net46\System.Security.Cryptography.X509Certificates.dll</HintPath>
     </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -297,7 +299,6 @@
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="App_Code\ImageServerInfo.cs" />
     <Compile Include="Controllers\InstallController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
@@ -309,6 +310,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\read.txt" />
     <Content Include="App_Data\Lang\en-us.php" />
     <Content Include="App_Data\Lang\installation.zhs.xml" />
     <Content Include="App_Data\Lang\zh-cn-1.xml" />
@@ -2585,19 +2587,17 @@
     <Content Include="assets\plupload\bower.json" />
     <Content Include="assets\plupload\js\Moxie.xap" />
     <Content Include="assets\plupload\readme.md" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\User\Home.cshtml" />
     <Content Include="Views\Tool\_UserAgent.cshtml" />
     <Content Include="Views\Tool\_OtherTool.cshtml" />
     <Content Include="Views\Tool\_HttpTools.cshtml" />
     <Content Include="Views\User\_ProfileHeader.cshtml" />
     <Content Include="Views\User\Post.cshtml" />
+    <Content Include="Views\Common\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\config\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\Common\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
