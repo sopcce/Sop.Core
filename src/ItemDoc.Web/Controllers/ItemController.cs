@@ -3,7 +3,6 @@ using ItemDoc.Core;
 using ItemDoc.Core.Auth;
 using ItemDoc.Core.Mvc;
 using ItemDoc.Core.Mvc.SystemMessage;
-using ItemDoc.Services.Mapping;
 using ItemDoc.Services.Model;
 using ItemDoc.Services.Servers;
 using ItemDoc.Services.ViewModel;
@@ -15,6 +14,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using AutoMapper;
 using ItemDoc.Framework.Utilities;
 using ItemDoc.Framework.Utility;
 using ItemDoc.Services;
@@ -308,7 +308,7 @@ namespace ItemDoc.Web.Controllers
 
       var info = _postService.Get(id);
       PostViewModel infoVM = new PostViewModel();
-      UsersLoginInfo userInfo = new UsersLoginInfo();
+      UsersInfo userInfo = new UsersInfo();
       if (info != null)
       {
         infoVM = info.MapTo<PostViewModel>();

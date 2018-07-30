@@ -155,13 +155,13 @@ namespace ItemDoc.Framework.Test.Repositories
     }
     #endregion
 
-    #region Insert
+    #region Insert&&Table 50000
     /// <summary>
     /// 测试Repository<T> Insert的功能
     /// </summary>
     [Description("测试Repository<T> Insert的功能")]
     [TestMethod]
-    public void Insert()
+    public void Insert_Table_50000()
     {
       List<TestInfo> infos = new List<TestInfo>();
       for (int i = 0; i < 100; i++)
@@ -182,6 +182,10 @@ namespace ItemDoc.Framework.Test.Repositories
       repository.Insert(infos);
       var count = repository.Table.Count();
       Assert.AreEqual(count > 100 ? true : false, true);
+
+
+
+
     }
     #endregion
     /// <summary>

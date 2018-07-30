@@ -1,10 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
-using ItemDoc.Framework.Utilities;
-using ItemDoc.Framework.Utility;
+﻿using ItemDoc.Framework.Utility;
 using ItemDoc.Framework.Validation;
 using ItemDoc.Services.Model;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace ItemDoc.Services.ViewModel
 {
@@ -13,46 +12,57 @@ namespace ItemDoc.Services.ViewModel
   /// </summary>
   public class UsersRegisterViewModel
   {
+
+
+    [Required]
+    [StringLength(100, ErrorMessage = "{0} 至少大于{2}位数", MinimumLength = 6)]
+    [DataType(DataType.Password)]
+    public string Password { get; set; }
+
+    [DataType(DataType.Password)]
+    [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "密码与确认密码不一致")]
+    public string ConfirmPassword { get; set; }
+
+
     /// <summary>
     /// 用户登录名
     /// </summary>
     [Required(ErrorMessage = "登录名不能为空!")]
-    [Remote("ValidateLoginName", "User", ErrorMessage = "登录名重复，请重新输入")]
-    public string UserLoginName { get; set; }
-    /// <summary>
-    /// 用户登录密码
-    /// </summary>
-    [Required(ErrorMessage = "登录密码不能为空!")]
-    //[System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "两次密码输入不一致")]
-    public string UserLoginPassWord { get; set; }
-    /// <summary>
+    [Remote("ValidateLoginName", "User", ErrorMessage = "{0}重复，请重新输入")]
+    public string UserName { get; set; }
+    
+ 
     /// 用户昵称
     /// </summary>
-    public string UserLoginNickName { get; set; }
+    public string NickName { get; set; }
     /// <summary>
     /// 验证码
     /// </summary>
     [Required(ErrorMessage = "验证码不能为空!")]
     [Remote("ValidateCaptchaCode", "User", ErrorMessage = "验证码不正确")]
-    public string UserLoginCaptchaCode { get; set; }
+    public string CaptchaCode { get; set; }
 
 
 
-    public UsersLoginInfo AsUserLoginInfo()
+
+
+
+
+    public UsersInfo AsUserLoginInfo()
     {
-      var isok = Captcha.ValidateCheckCode(UserLoginCaptchaCode);
+      var isok = Captcha.ValidateCheckCode(CaptchaCode);
 
       //再一次验证验证码是否正确
-      UsersLoginInfo info = new UsersLoginInfo();
+      var info = new UsersInfo();
       info.UserId = Guid.NewGuid().ToString();
     
-      info.UserName = UserLoginName;
-      info.NickName = UserLoginNickName;
+      info.UserName = UserName;
+      info.NickName = NickName;
       info.AccountEmail = "";
       info.AccountMobile = "";
       info.LastActivityIp = WebUtility.GetIp();
       info.CreatedIp = WebUtility.GetIp();
-      info.PassWord = UserLoginPassWord;
+      info.PassWord = Password;
       info.DateCreated = DateTime.Now;
       info.LastActivityTime = DateTime.Now;
       return info;

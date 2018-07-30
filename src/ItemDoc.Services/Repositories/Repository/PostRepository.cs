@@ -50,7 +50,7 @@ namespace ItemDoc.Services.Repositories
       Sql sql = Sql.Builder
         .Select("Item_Posts.*,Item_UsersLogin.NickName,Item_Catalog.Name ")
         .From(SopTable.Instance().GetTableName<PostInfo>())
-        .LeftJoin(SopTable.Instance().GetTableName<UsersLoginInfo>())
+        .LeftJoin(SopTable.Instance().GetTableName<UsersInfo>())
         .On(" Item_UsersLogin.UserId=Item_Posts.UserId")
         .LeftJoin(SopTable.Instance().GetTableName<CatalogInfo>())
         .On(" Item_Catalog.Id=Item_Posts.CatalogId")

@@ -6,17 +6,17 @@ namespace ItemDoc.Services.Repositories
   /// <summary>
   /// 
   /// </summary>
-  public interface IUsersRepository : IRepository<UsersLoginInfo>
+  public interface IUsersRepository : IRepository<UsersInfo>
   {
     /// <summary>
     /// Gets the by userid.
     /// </summary>
-    /// <param name="primaryKey">The primary key.</param>
+    /// <param name="userName">The primary key.</param>
     /// <returns></returns>
-    UsersLoginInfo GetByUserName(string primaryKey);
+    UsersInfo GetByUserName(string userName);
 
 
-    UsersLoginInfo GetByUserId(string primaryKey);
+    UsersInfo GetByUserId(string primaryKey);
   }
 
 

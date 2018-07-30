@@ -304,9 +304,11 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\OwinStartup.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -318,6 +320,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2597,11 +2601,21 @@
     <Content Include="Views\User\_ProfileHeader.cshtml" />
     <Content Include="Views\User\Post.cshtml" />
     <Content Include="Views\Common\Index.cshtml" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\config\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -2646,6 +2660,14 @@
     <ProjectReference Include="..\ItemDoc.Framework\ItemDoc.Framework.csproj">
       <Project>{d3254f9b-243f-46f7-a96e-abe731089342}</Project>
       <Name>ItemDoc.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ItemDoc.Plugin\Microsoft.Owin.Security.QQ\Microsoft.Owin.Security.QQ.csproj">
+      <Project>{3839ee9c-f0c8-471a-8f81-de9b9e24aaf0}</Project>
+      <Name>Microsoft.Owin.Security.QQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ItemDoc.Plugin\Microsoft.Owin.Security.Weixin\Microsoft.Owin.Security.Weixin.csproj">
+      <Project>{3f97ad7c-9295-45b8-8fba-e2b5d83bcfbf}</Project>
+      <Name>Microsoft.Owin.Security.Weixin</Name>
     </ProjectReference>
     <ProjectReference Include="..\ItemDoc.Services\ItemDoc.Services.csproj">
       <Project>{2aac99b5-8252-4018-ae1c-4681bb82e90e}</Project>

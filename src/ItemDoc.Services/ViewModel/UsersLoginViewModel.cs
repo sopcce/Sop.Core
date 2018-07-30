@@ -44,9 +44,9 @@ namespace ItemDoc.Services.ViewModel
 
 
 
-    public UsersLoginInfo AsUserLoginInfo()
+    public UsersInfo AsUserLoginInfo()
     {
-      UsersLoginInfo info = new UsersLoginInfo();
+      var info = new UsersInfo();
       info.UserId = Guid.NewGuid().ToString();
       info.UserName = UserLoginName;
       info.NickName = "";

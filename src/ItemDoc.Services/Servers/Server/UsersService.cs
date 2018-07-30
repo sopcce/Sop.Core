@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ItemDoc.Framework.Environment;
 using ItemDoc.Framework.Repositories;
-using ItemDoc.Framework.Utilities;
 using ItemDoc.Framework.Utility;
 using ItemDoc.Services.Model;
 using ItemDoc.Services.Repositories;
@@ -22,21 +18,44 @@ namespace ItemDoc.Services.Servers
     }
 
 
+
+
+
+
+    public object Delete(UsersInfo info)
+    {
+      return _usersRepository.Delete(info);
+
+    }
+
+    public object Create(UsersInfo info)
+    {
+      _usersRepository.Insert(info);
+      info.DisplayOrder = info.Id;
+      return _usersRepository.Update(info);
+    }
+
+
+    public UsersInfo GetByUserName(string userName)
+    {
+      return _usersRepository.GetByUserName(userName);
+    }
+
     /// <summary>
     /// Gets the by userid.
     /// </summary>
     /// <param name="primaryKey">The primary key.</param>
     /// <returns></returns>
-    public UsersLoginInfo GetByUserId(string primaryKey)
+    public UsersInfo GetByUserId(string primaryKey)
     {
 
       if (primaryKey == "2")
       {
-        _usersRepository.Execute("truncate table " + SopTable.Instance().GetTableName<UsersLoginInfo>());
+        _usersRepository.Execute("truncate table " + SopTable.Instance().GetTableName<UsersInfo>());
         for (int i = 0; i < 100; i++)
         {
           //再一次验证验证码是否正确
-          UsersLoginInfo info = new UsersLoginInfo();
+          UsersInfo info = new UsersInfo();
           info.UserId = Guid.NewGuid().ToString();
           info.UserName = i.ToString();
           info.NickName = "测试账号_" + i;
@@ -56,22 +75,17 @@ namespace ItemDoc.Services.Servers
       return _usersRepository.GetByUserId(primaryKey);
     }
 
-    public UsersLoginInfo GetByUserid(string primaryKey)
-    {
-      throw new NotImplementedException();
-    }
-
     /// <summary>
     /// Inserts the specified information.
     /// </summary>
     /// <param name="info">The information.</param>
-    public void Insert(UsersLoginInfo info)
+    public void Insert(UsersInfo info)
     {
-      info.PassWord = GetPassWord(info.UserName, info.PassWord, info.PassWordEncryption);
+      //info.PassWord = SetPassword(info.UserName, info.PassWord, info.PassWordEncryption);
       _usersRepository.Insert(info);
-      info.DisplayOrder = info.Id;
-      _usersRepository.Update(info);
+      
     }
+
     /// <summary>
     /// Determines whether [is account exsit] [the specified u name].
     /// </summary>
@@ -102,15 +116,15 @@ namespace ItemDoc.Services.Servers
     /// <param name="passWord">The pass word.</param>
     /// <param name="isExsit">if set to <c>true</c> [is exsit].</param>
     /// <returns></returns>
-    public UsersLoginInfo Login(string uName, string passWord, out bool isExsit)
+    public UsersInfo Login(string uName, string passWord, out bool isExsit)
     {
       isExsit = false;
       if (string.IsNullOrWhiteSpace(uName) || string.IsNullOrWhiteSpace(passWord))
         return null;
-      UsersLoginInfo info = _usersRepository.GetByUserName(uName);
+      UsersInfo info = _usersRepository.GetByUserName(uName);
       if (info != null)
       {
-        isExsit = (GetPassWord(uName, passWord, info.PassWordEncryption) == info.PassWord) ? true : false;
+        isExsit = (SetPassword(uName, passWord, info.PassWordEncryption) == info.PassWord) ? true : false;
       }
       return info;
     }
@@ -122,7 +136,7 @@ namespace ItemDoc.Services.Servers
     /// <param name="passWord">The pass word.</param>
     /// <param name="passWordEncryptionType">Type of the pass word encryption.</param>
     /// <returns></returns>
-    public string GetPassWord(string userName, string passWord, PassWordEncryptionType passWordEncryptionType = PassWordEncryptionType.None)
+    public string SetPassword(string userName, string passWord, PassWordEncryptionType passWordEncryptionType = PassWordEncryptionType.None)
     {
       string value = string.Empty;
       switch (passWordEncryptionType)
@@ -158,6 +172,9 @@ namespace ItemDoc.Services.Servers
 
       return value;
     }
+
+
+
 
   }
 

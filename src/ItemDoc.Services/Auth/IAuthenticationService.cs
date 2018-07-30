@@ -25,18 +25,18 @@ namespace ItemDoc.Core.Auth
     /// Gets the current user.
     /// </summary>
     /// <returns></returns>
-    UsersLoginInfo GetCurrentUser();
+    UsersInfo GetCurrentUser();
 
     /// <summary>
     /// Gets the current account.
     /// </summary>
     /// <returns></returns>
-    UsersLoginInfo GetCurrentAccount();
+    UsersInfo GetCurrentAccount();
     /// <summary>
     /// Sets the current user.
     /// </summary>
     /// <param name="user">The user.</param>
-    void SetCurrentAccount(UsersLoginInfo user);
+    void SetCurrentAccount(UsersInfo user);
   
 
   }

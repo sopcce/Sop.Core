@@ -1,9 +1,10 @@
 ﻿using ItemDoc.Core.Auth;
-using ItemDoc.Services.Mapping;
 using ItemDoc.Services.Servers;
 using ItemDoc.Services.ViewModel;
 using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
+using ItemDoc.Services;
 
 namespace ItemDoc.Web.Controllers
 {

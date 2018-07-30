@@ -36,10 +36,7 @@ namespace ItemDoc.Core.Auth
       claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, userName));
       claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "User"));
 
-     
-
-
-        AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, claimsIdentity);
+      AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, claimsIdentity);
 
 
       var usersService = DiContainer.Resolve<IUsersService>();
@@ -55,10 +52,10 @@ namespace ItemDoc.Core.Auth
 
       //
       var aaa = AuthenticationManager.User.Identity.GetUserId();
-      var asdaa = cacheManager.Get<UsersLoginInfo>(key);
+      var asdaa = cacheManager.Get<UsersInfo>(key);
 
     }
-    public UsersLoginInfo GetCurrentUser()
+    public UsersInfo GetCurrentUser()
     {
       string userId = AuthenticationManager.User.Identity.GetUserId();
       if (string.IsNullOrWhiteSpace(userId))
@@ -67,7 +64,7 @@ namespace ItemDoc.Core.Auth
       }
       var cacheManager = DiContainer.Resolve<ICacheManager>();
       string key = string.Format("{0}:{1}", CurrentUserCookie, userId);
-      var info = cacheManager.Get<UsersLoginInfo>(key);
+      var info = cacheManager.Get<UsersInfo>(key);
 
       if (info == null)
       {
@@ -77,7 +74,7 @@ namespace ItemDoc.Core.Auth
         {
           return loginInfo;
         }
-        return new UsersLoginInfo() { UserId = userId };
+        return new UsersInfo() { UserId = userId };
       }
       return info;
     }
@@ -106,12 +103,12 @@ namespace ItemDoc.Core.Auth
 
 
 
-    public UsersLoginInfo GetCurrentAccount()
+    public UsersInfo GetCurrentAccount()
     {
       throw new NotImplementedException();
     }
 
-    public void SetCurrentAccount(UsersLoginInfo user)
+    public void SetCurrentAccount(UsersInfo user)
     {
       throw new NotImplementedException();
     }

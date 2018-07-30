@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.Configuration;
 
-namespace ItemDoc.Services.Mapping
+namespace AutoMapper
 {
   /// <summary>
   /// AutoMapper扩展
@@ -74,7 +70,7 @@ namespace ItemDoc.Services.Mapping
     /// <param name="source">源对象</param>
     /// <param name="destination">目标对象</param>
     /// <returns></returns>
-    private static TDestination MapTo<TDestination>(object source, TDestination destination)
+    public static TDestination MapTo<TDestination>(object source, TDestination destination)
     {
       if (source == null)
       {
@@ -107,11 +103,14 @@ namespace ItemDoc.Services.Mapping
             config.CreateMap(item.SourceType, item.DestinationType);
           }
           config.CreateMap(sourceType, destinationType);
+
         });
         Mapper.AssertConfigurationIsValid();
       }
       return Mapper.Map(source, destination);
     }
+
+ 
 
     /// <summary>
     /// 获取映射配置
@@ -170,8 +169,8 @@ namespace ItemDoc.Services.Mapping
     }
 
 
-    
 
-    
+
+
   }
 }

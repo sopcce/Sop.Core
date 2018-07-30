@@ -37,6 +37,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Biggy, Version=1.0.5468.21366, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Biggy.Core.0.1.0.1\lib\net40\Biggy.dll</HintPath>
+    </Reference>
+    <Reference Include="Biggy.Data.Json, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Biggy.Data.Json.0.1.0.1\lib\net40\Biggy.Data.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Inflector, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Inflector.1.0.0.0\lib\net45\Inflector.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -58,7 +67,10 @@
     <Reference Include="Microsoft.Owin.Security.OAuth">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -84,6 +96,14 @@
   <ItemGroup>
     <Compile Include="Auth\FormsAuthenticationService.cs" />
     <Compile Include="Auth\IAuthenticationService.cs" />
+    <Compile Include="Auth\Model\Role.cs" />
+    <Compile Include="Auth\Identity\RoleManager.cs" />
+    <Compile Include="Auth\Identity\RoleStore.cs" />
+    <Compile Include="Auth\Identity\SignInService.cs" />
+    <Compile Include="Auth\Model\User.cs" />
+    <Compile Include="Auth\Model\UserClaim.cs" />
+    <Compile Include="Auth\Identity\UserManager.cs" />
+    <Compile Include="Auth\Identity\UserStore.cs" />
     <Compile Include="Auth\OwinAuthenticationService.cs" />
     <Compile Include="AutoMapExtensions.cs" />
     <Compile Include="Model\FileServerInfo.cs" />
@@ -94,6 +114,7 @@
     <Compile Include="Model\ItemsInfo.cs" />
     <Compile Include="Model\AttachmentInfo.cs" />
     <Compile Include="Model\PostInfo.cs" />
+    <Compile Include="Model\TestInfo.cs" />
     <Compile Include="Parameter\ImgServerParameter.cs" />
     <Compile Include="Repositories\IFileServerRepository.cs" />
     <Compile Include="Repositories\Repository\FileServerRepository.cs" />
@@ -101,8 +122,6 @@
     <Compile Include="Repositories\IAttachmentRepository.cs" />
     <Compile Include="Repositories\Repository\PostRepository.cs" />
     <Compile Include="Repositories\IPostRepository.cs" />
-    <Compile Include="Servers\ITestService.cs" />
-    <Compile Include="Servers\Server\TestService.cs" />
     <Compile Include="Servers\Server\FileServerService.cs" />
     <Compile Include="Servers\IFileServerService.cs" />
     <Compile Include="Servers\IAttachmentService.cs" />
@@ -114,7 +133,7 @@
     <Compile Include="Treeview\Nodes.cs" />
     <Compile Include="Treeview\NodesExtension.cs" />
     <Compile Include="UserContext.cs" />
-    <Compile Include="Model\UsersLoginInfo.cs" />
+    <Compile Include="Model\UsersInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICatalogRepository.cs" />
     <Compile Include="Repositories\IItemsRepository.cs" />
@@ -145,6 +164,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Auth\Identity\app.config" />
+    <None Include="Auth\Identity\packages.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

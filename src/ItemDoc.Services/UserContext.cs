@@ -40,7 +40,7 @@ namespace ItemDoc.Services
     }
 
 
-    public static UsersLoginInfo GetUsersLoginInfo()
+    public static UsersInfo GetUsersLoginInfo()
     {
       var user = AuthenticationService().GetCurrentUser();
       return user;

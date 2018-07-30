@@ -20,7 +20,6 @@ using ItemDoc.Core.Mvc.ModelBinder;
 using ItemDoc.Framework.Caching;
 using ItemDoc.Framework.Environment;
 using ItemDoc.Framework.Repositories;
-using ItemDoc.Services.Mapping;
 
 namespace ItemDoc.Web
 {
@@ -114,12 +113,11 @@ namespace ItemDoc.Web
 
       builder.RegisterGeneric(typeof(PocoRepository<>)).As(typeof(IRepository<>)).SingleInstance().PropertiesAutowired();
 
-
+      //TODO 去除form 登陆，改用owin 
       //builder.Register(c => new FormsAuthenticationService()).As<IAuthenticationService>()
       //  .PropertiesAutowired().InstancePerRequest();
-
-      builder.Register(c => new OwinAuthenticationService()).As<IAuthenticationService>()
-        .PropertiesAutowired().InstancePerRequest();
+      //////简单的使用 todo:修改使用Owin授权，这里废弃使用
+      //builder.Register(c => new OwinAuthenticationService()).As<IAuthenticationService>().PropertiesAutowired().InstancePerRequest();
 
 
       builder.Register(c => new MemoryCacheManager()).As<ICacheManager>().SingleInstance().PropertiesAutowired();

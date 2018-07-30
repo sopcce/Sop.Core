@@ -24,7 +24,7 @@ namespace ItemDoc.Core.Auth
     /// <summary>
     /// The user information
     /// </summary>
-    private UsersLoginInfo _usersLoginInfo;
+    private UsersInfo _usersLoginInfo;
 
 
     /// <summary>
@@ -49,7 +49,7 @@ namespace ItemDoc.Core.Auth
     /// Gets the current account.
     /// </summary>
     /// <returns></returns>
-    public UsersLoginInfo GetCurrentAccount()
+    public UsersInfo GetCurrentAccount()
     {
       if (_usersLoginInfo != null)
         return _usersLoginInfo;
@@ -70,7 +70,7 @@ namespace ItemDoc.Core.Auth
     /// Sets the current user.
     /// </summary>
     /// <param name="user">The user.</param>
-    public void SetCurrentAccount(UsersLoginInfo user)
+    public void SetCurrentAccount(UsersInfo user)
     {
       if (HttpContext.Current == null || HttpContext.Current.Request.IsAuthenticated)
         return;
@@ -91,7 +91,7 @@ namespace ItemDoc.Core.Auth
     /// Gets the current user.
     /// </summary>
     /// <returns></returns>
-    public UsersLoginInfo GetCurrentUser()
+    public UsersInfo GetCurrentUser()
     {
       if (HttpContext.Current == null || !HttpContext.Current.Request.IsAuthenticated)
         return null;

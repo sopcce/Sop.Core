@@ -14,9 +14,9 @@ namespace ItemDoc.Web.Controllers
 
       //判断是否为第一次安装
       //第一次安装判断环境权限、数据库是否设置等操作。 
-      return RedirectToAction("Index", "Home");
-
-
+      // return RedirectToAction("Index", "Home");
+      return RedirectToAction("About", "Home");
+      //About
       //return RedirectToAction("Index", "User");
       //return View();
 

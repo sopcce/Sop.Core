@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using AutoMapper;
 using ItemDoc.Core.Auth;
 using ItemDoc.Core.Mvc;
 using ItemDoc.Core.Mvc.SystemMessage;
 using ItemDoc.Framework.Validation;
-using ItemDoc.Services.Mapping;
 using ItemDoc.Services.Model;
 using ItemDoc.Services.Servers;
 using ItemDoc.Services.ViewModel;
+using System;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace ItemDoc.Web.Controllers
 {
@@ -72,6 +67,7 @@ namespace ItemDoc.Web.Controllers
       return View();
     }
 
+     
 
     #region 注册登陆退出
     /// <summary>
@@ -91,7 +87,7 @@ namespace ItemDoc.Web.Controllers
         if (ModelState.IsValid)
         {
           //判断验证码
-          bool isok = Captcha.ValidateCheckCode(infoModel.UserLoginCaptchaCode);
+          bool isok = Captcha.ValidateCheckCode(infoModel.CaptchaCode);
           if (!isok)
           {
             ViewData["msg"] = new SystemMessageData(SystemMessageType.Error, "验证码输入错误");
@@ -99,7 +95,7 @@ namespace ItemDoc.Web.Controllers
           }
 
 
-          UsersLoginInfo info = infoModel.AsUserLoginInfo();
+          UsersInfo info = infoModel.AsUserLoginInfo();
           _usersService.Insert(info);
           var loginInfo = _usersService.GetByUserId(info.UserId);
           if (loginInfo != null)
