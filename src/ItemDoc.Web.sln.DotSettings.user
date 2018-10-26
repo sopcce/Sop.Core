@@ -1,0 +1,7 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
+  &lt;Assembly Path="E:\ItemDoc.Web\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll" /&gt;&#xD;
+  &lt;Assembly Path="E:\ItemDoc.Web\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll" /&gt;&#xD;
+  &lt;Assembly Path="E:\ItemDoc.Web\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll" /&gt;&#xD;
+  &lt;Assembly Path="E:\ItemDoc.Web\packages\MiniProfiler.Shared.4.0.133\lib\net461\MiniProfiler.Shared.dll" /&gt;&#xD;
+&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
