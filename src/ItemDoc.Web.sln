@@ -7,15 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemDoc.Web", "ItemDoc.Web\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BC571BC0-406C-465A-89F0-C0C82CB0BDD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemDoc.Web.Tests", "ItemDoc.Web.Tests\ItemDoc.Web.Tests.csproj", "{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParty", "ThirdParty", "{AE67689A-1769-420E-8C70-E3770180B45B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate.Cache.DynamicCacheBuster", "ThirdParty\NHibernate.Cache.DynamicCacheBuster\NHibernate.Cache.DynamicCacheBuster.csproj", "{32F38F68-5622-4984-9B13-D7C1A1FA2222}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate.Caches.Redis", "ThirdParty\NHibernate.Caches.Redis\NHibernate.Caches.Redis.csproj", "{1B50164C-DB00-4109-A0D4-E2868ABFEDAF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ItemDoc.Plugin", "ItemDoc.Plugin", "{37E7B4DE-1D60-4F21-9D3E-311FEEEC9355}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugin", "Plugin", "{37E7B4DE-1D60-4F21-9D3E-311FEEEC9355}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Owin.Security.Weixin", "ThirdParty\Microsoft.Owin.Security.Weixin\Microsoft.Owin.Security.Weixin.csproj", "{3F97AD7C-9295-45B8-8FBA-E2B5D83BCFBF}"
 EndProject
@@ -29,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemDoc.Core", "ItemDoc.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Owin.Security.Github", "ThirdParty\Microsoft.Owin.Security.Github\Microsoft.Owin.Security.Github.csproj", "{7EF640E7-7E31-4387-ACBE-C914C5FFBC04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemDoc.Web.Tests", "Tests\ItemDoc.Web.Tests\ItemDoc.Web.Tests.csproj", "{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemDoc.Upload", "Plugin\ItemDoc.Upload\ItemDoc.Upload.csproj", "{6472C66A-843B-4C71-85C8-BB2586736536}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,10 +41,6 @@ Global
 		{67524C99-D044-4DD3-ABDC-6F94DB5E984A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67524C99-D044-4DD3-ABDC-6F94DB5E984A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67524C99-D044-4DD3-ABDC-6F94DB5E984A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{32F38F68-5622-4984-9B13-D7C1A1FA2222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{32F38F68-5622-4984-9B13-D7C1A1FA2222}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32F38F68-5622-4984-9B13-D7C1A1FA2222}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,17 +73,26 @@ Global
 		{7EF640E7-7E31-4387-ACBE-C914C5FFBC04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EF640E7-7E31-4387-ACBE-C914C5FFBC04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EF640E7-7E31-4387-ACBE-C914C5FFBC04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6472C66A-843B-4C71-85C8-BB2586736536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6472C66A-843B-4C71-85C8-BB2586736536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6472C66A-843B-4C71-85C8-BB2586736536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6472C66A-843B-4C71-85C8-BB2586736536}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9} = {BC571BC0-406C-465A-89F0-C0C82CB0BDD5}
 		{32F38F68-5622-4984-9B13-D7C1A1FA2222} = {AE67689A-1769-420E-8C70-E3770180B45B}
 		{1B50164C-DB00-4109-A0D4-E2868ABFEDAF} = {AE67689A-1769-420E-8C70-E3770180B45B}
 		{3F97AD7C-9295-45B8-8FBA-E2B5D83BCFBF} = {AE67689A-1769-420E-8C70-E3770180B45B}
 		{3839EE9C-F0C8-471A-8F81-DE9B9E24AAF0} = {AE67689A-1769-420E-8C70-E3770180B45B}
 		{7EF640E7-7E31-4387-ACBE-C914C5FFBC04} = {AE67689A-1769-420E-8C70-E3770180B45B}
+		{5EBC4FA3-2D53-4AA7-9517-B7850265C7B9} = {BC571BC0-406C-465A-89F0-C0C82CB0BDD5}
+		{6472C66A-843B-4C71-85C8-BB2586736536} = {37E7B4DE-1D60-4F21-9D3E-311FEEEC9355}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C36005FD-A283-40EB-B500-35AA7C376872}

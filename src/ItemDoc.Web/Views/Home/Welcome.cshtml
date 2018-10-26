@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "我是一个小小的提示页面";
+    
+}
+
+<div>
+    <h1>
+        @ViewBag.msg
+    </h1>
+   
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            alert('@ViewBag.msg');
+        });
+
+    </script>
+}

@@ -1,0 +1,116 @@
+﻿
+@using ItemDoc.Core.Mvc.SystemMessage
+@model UsersRegisterViewModel
+@{
+    ViewBag.Title = "注册页面";
+    var systemMessageData = ViewData.Get("msg", new SystemMessageData(SystemMessageType.Success, "ok"));
+}
+
+@section heads
+{
+    <style type="text/css">
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #fff;
+        }
+
+
+
+        .checkcodeimg {
+            cursor: pointer;
+            width: 76px;
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+        }
+
+        .form-signin {
+            max-width: 60%;
+            margin: 0 auto;
+        }
+
+        .checkImgRefresh {
+            color: #
+        }
+    </style>
+}
+
+@section  scripts {
+
+    <script src="~/assets/jquery.validate/jquery.validate.min.js"></script>
+    <script src="~/assets/jquery.validate/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if ('@systemMessageData.Type' == '@SystemMessageType.Error') {
+                alert("@systemMessageData.Content");
+            } else if ('@systemMessageData.Type' == '@SystemMessageType.Default') {
+                alert("@systemMessageData.Content");
+            }
+            $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().UserCaptchaCode()" +
+                "?v=" +Math.random() +")no-repeat center top");
+
+            $(".checkcodeimg,.checkImgRefresh").on("click",function() {
+                    $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().UserCaptchaCode()" +
+                        "?v=" +
+                        Math.random() +
+                        ")no-repeat center top");
+
+                });
+        });
+
+    </script>
+}
+
+<h2>@ViewBag.Title.</h2>
+<h4>注册一个新的账号</h4>
+<hr />
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal form-signin", role = "form", autocomplete = "off" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">UserName</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(n => n.UserName, new { minlength = "1", maxlength = "50", @class = "form-control", placeholder = "手机号码/邮箱账号/登录名称" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">NickName</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(n => n.NickName, new { minlength = "1", @class = "form-control", placeholder = "昵称" })
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Password</label>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Password</label>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">验证码</label>
+        <div class="col-sm-10">
+            <div class="input-group">
+                <div class="input-group-addon checkcodeimg" title="点击换一换">
+                </div>
+                @Html.TextBoxFor(n => n.CaptchaCode, new { minlength = "1", maxlength = "4", @class = "form-control", placeholder = "输入验证码", required = "required" })
+                <div class="input-group-addon checkImgRefresh" style="cursor: pointer;">刷新</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="注 册" />
+        </div>
+    </div>
+}
+

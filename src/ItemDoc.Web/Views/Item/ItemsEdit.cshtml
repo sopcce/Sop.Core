@@ -1,0 +1,126 @@
+﻿@model ItemsViewModel
+@{
+    ViewBag.Title = "Catalog";
+    Layout = null;
+}
+<style>
+    .modal-title-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 300px;
+    }
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+@using (Html.BeginForm("ItemsEdit", "Item", FormMethod.Post, new { @class = "form-horizontal", @id = "defaultForm" }))
+{
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title modal-title-text" id="EditCategoriesModal" style="">
+                @(Model != null && Model.Id > 0 ? "编辑" + Model.Name : "创建")
+            </h4>
+        </div>
+        <div class="modal-body">
+            @Html.HiddenFor(n => n.Id)
+            @Html.HiddenFor(n => n.ParentId)
+
+            @if (Model != null && Model.ParentId > 0)
+            {
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        父栏目名称
+                    </label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">
+                            @if (Model != null)
+                            {
+                                @(Model.ParentName ?? "")
+                            }
+                        </p>
+
+                    </div>
+                </div>
+
+            }
+
+            <div class="form-group">
+
+                <label class="col-sm-3 control-label">名称</label>
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(n => n.Name, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">是否启用</label>
+                <div class="col-sm-8">
+                    @Html.RadioButtonFor(n => n.Enabled, true)
+                    是
+                    @Html.RadioButtonFor(n => n.Enabled, false)
+                    否
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">栏目描述</label>
+                <div class="col-sm-8">
+                    @Html.TextAreaFor(n => n.Description, htmlAttributes: new { @class = "form-control", style = "resize:none" })
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="reset" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary">保存</button>
+        </div>
+    </div>
+}
+
+
+<script>
+
+    $(function () {
+        //表单验证formvalidation
+        $('#defaultForm').formValidation({
+            framework: 'bootstrap',
+            fields: {
+                CategoryName: {
+                    validators: {
+                        notEmpty: {
+                            message: '栏目名称不能为空'
+                        }
+                    }
+                },
+                Description: {
+                    validators: {
+                        notEmpty: {
+                            message: '栏目描述不能为空'
+                        }
+                    }
+                }
+            }
+        });
+
+    })
+</script>
+
+
+
+
+
+
+
+@*<div class="modal-content ">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">@(Model.Id > 0 ? "编辑栏目" : "创建栏目")</h4>
+        </div>
+        <div class="modal-body ">
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>*@

@@ -1,0 +1,69 @@
+﻿
+body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
+    font-family: Microsoft YaHei,'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif,'\u5b8b\u4f53',Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif
+}
+
+.sop-red, .sopred {
+    border: 2px solid red;
+}
+
+.sop-avatar-small img {
+    width: 32px;
+    height: 32px
+}
+
+.sop-btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px
+}
+
+.sop-post img {
+    -webkit-transition: all .6s ease-in-out;
+    -moz-transition: all .6s ease-in-out;
+    -o-transition: all .6s ease-in-out;
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    transform: scaleY(1);
+    -ms-transition: all .7s ease-in-out;
+    transition: all .6s ease-in-out;
+}
+
+.sop-post:hover img {
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    transform: scale(1.4);
+    -ms-transform: scale(1.4)
+}
+
+
+div.panel > div.list-group > a > img {
+    margin-right: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+}
+
+.body-content {
+    margin-top: 80px;
+}
+  
+ 
