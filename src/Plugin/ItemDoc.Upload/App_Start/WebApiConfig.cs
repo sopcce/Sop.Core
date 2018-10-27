@@ -5,20 +5,20 @@ using System.Web.Http;
 
 namespace ItemDoc.Upload
 {
-  public static class WebApiConfig
-  {
-    public static void Register(HttpConfiguration config)
+    public static class WebApiConfig
     {
-      // Web API configuration and services
+        public static void Register(HttpConfiguration config)
+        {
+            // Web API 配置和服务
 
-      // Web API routes
-      config.MapHttpAttributeRoutes();
+            // Web API 路由
+            config.MapHttpAttributeRoutes();
 
-      config.Routes.MapHttpRoute(
-          name: "DefaultApi",
-          routeTemplate: "api/{controller}/{id}",
-          defaults: new { id = RouteParameter.Optional }
-      );
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+        }
     }
-  }
 }

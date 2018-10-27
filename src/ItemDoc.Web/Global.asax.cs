@@ -163,12 +163,6 @@ namespace ItemDoc.Web
             //注册缓存服务，每次请求都是一个新的实例
             builder.Register(c => new MemoryCacheManager()).As<ICacheManager>().SingleInstance().PropertiesAutowired();
 
-
-
-
-            //TODO 去除form 登陆，改用owin 
-            //builder.Register(c => new FormsAuthenticationService()).As<IAuthenticationService>()
-            //  .PropertiesAutowired().InstancePerRequest();
             //IAuthenticationService
             builder.Register(c => new OwinAuthenticationService()).As<IAuthenticationService>().PropertiesAutowired().InstancePerRequest();
 

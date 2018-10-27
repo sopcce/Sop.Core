@@ -13,10 +13,6 @@ namespace ItemDoc.Web.Controllers.Base
     {
       return _propertyNameType;
     }
-
-
-
-
     public void SetPropertyNameType(PropertyNameType value)
     {
       _propertyNameType = value;

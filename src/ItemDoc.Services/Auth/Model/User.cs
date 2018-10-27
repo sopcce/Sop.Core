@@ -37,9 +37,9 @@ namespace ItemDoc.Services.Auth.Model
 
         public IList<UserLoginInfo> Logins { get; set; }
 
-        public long Id { get; set; }
+        public override long Id { get; set; }
 
-        public string UserName { get; set; }
+        public override string UserName { get; set; }
 
 
 
