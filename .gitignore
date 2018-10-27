@@ -45,3 +45,6 @@
 /src/ThirdParty/Owin.Security.Providers.GitHub/bin
 /src/ThirdParty/Owin.Security.Providers.LinkedIn/obj
 /src/ThirdParty/Owin.Security.Providers.LinkedIn/bin
+/src/Tests/ItemDoc.Web.Tests/bin
+/src/Tests/ItemDoc.Web.Tests/obj
+/src/packages
