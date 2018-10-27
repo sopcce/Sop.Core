@@ -8,7 +8,7 @@ using ItemDoc.Framework.Environment;
 using ItemDoc.Framework.Repositories;
 using ItemDoc.Framework.Repositories.NHibernate;
 using ItemDoc.Services.Auth;
-using StackExchange.Profiling;
+//using StackExchange.Profiling;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
