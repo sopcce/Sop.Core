@@ -48,3 +48,5 @@
 /src/Tests/ItemDoc.Web.Tests/bin
 /src/Tests/ItemDoc.Web.Tests/obj
 /src/packages
+/src/Plugin/ItemDoc.Upload/obj
+/src/Plugin/ItemDoc.Upload/bin
