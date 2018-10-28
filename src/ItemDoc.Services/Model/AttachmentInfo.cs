@@ -8,7 +8,7 @@ namespace ItemDoc.Services.Model
     /// <summary>
     /// 
     /// </summary> 
-    public abstract class AttachmentInfo
+    public class AttachmentInfo
     {
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace ItemDoc.Services.Model
         /// <summary>
         /// 
         /// </summary>
-        public virtual string Filenames { get; set; }
+        public virtual string FileNames { get; set; }
 
         /// <summary>
         /// 
