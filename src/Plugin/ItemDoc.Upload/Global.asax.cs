@@ -115,7 +115,8 @@ namespace ItemDoc.Upload
             //option.EndPoints.Add("127.0.0.1", 6380);
             //option.EndPoints.Add("127.0.0.1", 6381);
             //option.EndPoints.Add("127.0.0.1", 6382);
-            builder.Register(c => ConnectionMultiplexer.Connect(option)).SingleInstance();
+            //防止多个单利
+            builder.Register(c => ConnectionMultiplexer.Connect(option)).SingleInstance().PropertiesAutowired();
 
             builder.Register(c => new RedisCacheManager(option)).As<ICacheManager>().SingleInstance().PropertiesAutowired();
             //注册缓存服务，每次请求都是一个新的实例

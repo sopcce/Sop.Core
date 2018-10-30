@@ -111,6 +111,7 @@
     <Compile Include="Mvc\SystemMessage\SystemMessageData.cs" />
     <Compile Include="Mvc\SystemMessage\SystemMessageType.cs" />
     <Compile Include="Mvc\TempDataCookieProvider.cs" />
+    <Compile Include="Mvc\SopControllerFactory.cs" />
     <Compile Include="Mvc\UrlBodyProcessor.cs" />
     <Compile Include="Mvc\Validation\DateRangeAttribute.cs" />
     <Compile Include="Mvc\Validation\DateRangeValidationRule.cs" />
@@ -139,8 +140,6 @@
       <Name>ItemDoc.Framework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mvc\TempData\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

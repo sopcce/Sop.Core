@@ -150,7 +150,7 @@
             //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
             imageUpload: true,
             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL: "/Attachment/UP",
+            imageUploadURL: "/upload/files",
             onload: function () {
                 //debugger
                 //console.log('onload', this);
@@ -191,13 +191,12 @@
             runtimes: 'html5,flash,silverlight,html4',
             browse_button: 'uploadfile',
             container: 'uploadbox',
-            url: '@Url.Content("~/File/UP")',
+            url: '@Url.Content("~/upload/files")',
             flash_swf_url: '@Url.Content("~/assets/plupload/js/Moxie.swf")',
             silverlight_xap_url: '@Url.Content("~/assets/plupload/js/Moxie.xap")',
             filters: {
                 mime_types : [ //只允许上传图片和zip文件
-                    { title : "Image files", extensions : "jpg,gif,png" },
-                    { title : "Zip files", extensions : "zip" }
+                    { title: "Image files", extensions: "jpg,gif,png,jpeg,webp,bmp" }
                 ],
                 max_file_size: '20mb', //最大只能上传400kb的文件
                 prevent_duplicates : true //不允许选取重复文件

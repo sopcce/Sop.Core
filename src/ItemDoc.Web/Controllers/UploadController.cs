@@ -18,8 +18,8 @@ namespace ItemDoc.Web.Controllers
 {
     public class UploadController : BaseController
     {
-        private AttachmentService _attachmentService { get; set; }
-        private FileServerService _fileServerService { get; set; }
+        public AttachmentService _attachmentService { get; set; }
+        public FileServerService _fileServerService { get; set; }
 
 
 
@@ -79,65 +79,73 @@ namespace ItemDoc.Web.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult upload_images()
+        // ReSharper disable once IdentifierTypo
+        public ActionResult Files()
         {
             //_attachmentService.GetAll()
 
             Stopwatch sw = new Stopwatch();
-
-            HttpPostedFileBase file = Request.Files[0];//接收用户传递的文件数据.
-            if (file != null)
+            try
             {
-                var ownerid = Request.Form["ownerid"];
-                string fileName = Path.GetFileName(file.FileName);//获取文件名.
-                string fileExt = Path.GetExtension(fileName);//获取文件扩展名.
-                ImgServerParameter imgServer = new ImgServerParameter();
+                HttpPostedFileBase file = Request.Files[0];//接收用户传递的文件数据.
+                if (file != null)
+                {
+                    var ownerid = Request.Form["ownerid"] ?? Guid.NewGuid().ToString("N");
+                    string fileName = Path.GetFileName(file.FileName);//获取文件名.
+                    string fileExt = Path.GetExtension(fileName);//获取文件扩展名.
+                    ImgServerParameter imgServer = new ImgServerParameter();
 
 
-                var list = _fileServerService.GetAll().Where(c => c.Enabled == true).ToList();
+                    var list = _fileServerService.GetAll().Where(c => c.Enabled == true).ToList();
 
-                int imageServerCount = list.Count();//获取可用的图片服务器数量.
-                Random random = new Random();
-                int i = random.Next(imageServerCount);
+                    int imageServerCount = list.Count();//获取可用的图片服务器数量.
+                    Random random = new Random();
+                    int i = random.Next(imageServerCount);
 
-                imgServer.ServerUrl = list[i].ServerUrl;
-                imgServer.ServerId = list[i].ServerId;
-                imgServer.ServerName = list[i].ServerName;
-                imgServer.ServerEnName = list[i].ServerEnName;
-                imgServer.OwnerId = ownerid;
+                    imgServer.ServerUrl = list[i].ServerUrl;
+                    imgServer.ServerId = list[i].ServerId;
+                    imgServer.ServerName = list[i].ServerName;
+                    imgServer.ServerEnName = list[i].ServerEnName;
+                    imgServer.OwnerId = ownerid;
 
-                imgServer.FileName = file.FileName;
-                imgServer.FileExtension = Path.GetExtension(fileName);
-                imgServer.ContentType = file.ContentType;
-                imgServer.ContentLength = file.ContentLength;
-                imgServer.Key = Guid.NewGuid().ToString("N");
-                imgServer.Date = DateTime.Now.ToTimestamp();
-                imgServer.IP = Framework.Utility.WebUtility.GetIp();
-                imgServer.VirtualPath = list[i].VirtualPath;
-                imgServer.Token = EncryptionUtility.Sha512Encode(imgServer.Key + imgServer.ServerUrl + imgServer.Date);
-
-
-                string urlData = HttpUtility.UrlEncode(EncryptionUtility.AES_Encrypt(imgServer.ToJson(), imgServer.Token));
-                string imageServerUrl = $"{imgServer.ServerUrl}/home/upload?token={HttpUtility.UrlEncode(imgServer.Token)}&data={urlData}&_={imgServer.Date}";
+                    imgServer.FileName = file.FileName;
+                    imgServer.FileExtension = Path.GetExtension(fileName);
+                    imgServer.ContentType = file.ContentType;
+                    imgServer.ContentLength = file.ContentLength;
+                    imgServer.Key = Guid.NewGuid().ToString("N");
+                    imgServer.Date = DateTime.Now.ToTimestamp();
+                    imgServer.IP = Framework.Utility.WebUtility.GetIp();
+                    imgServer.VirtualPath = list[i].VirtualPath;
+                    imgServer.Token = EncryptionUtility.Sha512Encode(imgServer.Key + imgServer.ServerUrl + imgServer.Date);
 
 
+                    string urlData = HttpUtility.UrlEncode(EncryptionUtility.AES_Encrypt(imgServer.ToJson(), imgServer.Token));
+                    string imageServerUrl = $"{imgServer.ServerUrl}?token={HttpUtility.UrlEncode(imgServer.Token)}&data={urlData}&_={imgServer.Date}";
 
 
-                sw.Start();
-
-                WebClient client = new WebClient();
-                var responseArray = client.UploadData(imageServerUrl, StreamToBytes(file.InputStream));//向图片服务器发送文件数据.
-
-                //ItemDoc.Core.Web.HttpWebHelper httpWeb = new Core.Web.HttpWebHelper();
-                //var responseArray1 = httpWeb.PostFile(imageServerUrl, new List<Stream>() { file.InputStream });
-
-                string data = Encoding.GetEncoding("UTF-8").GetString(responseArray);
-                sw.Stop();
-                var dddata = data.FromJson<Data>();
-                return Json(new { code = 200, oldData = imageServerUrl, url = dddata.path, message = "" });
 
 
+                    sw.Start();
+
+                    WebClient client = new WebClient();
+                    var responseArray = client.UploadData(imageServerUrl, StreamToBytes(file.InputStream));//向图片服务器发送文件数据.
+
+                    //ItemDoc.Core.Web.HttpWebHelper httpWeb = new Core.Web.HttpWebHelper();
+                    //var responseArray1 = httpWeb.PostFile(imageServerUrl, new List<Stream>() { file.InputStream });
+
+                    string data = Encoding.GetEncoding("UTF-8").GetString(responseArray);
+                    sw.Stop();
+                    var dddata = data.FromJson<Data>();
+                    return Json(new { code = 200, oldData = imageServerUrl, url = dddata.path, message = "" });
+
+
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                 
+            } 
             return Json(new { code = 404 });
         }
 

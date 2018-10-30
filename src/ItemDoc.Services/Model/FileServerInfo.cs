@@ -4,10 +4,8 @@ using ItemDoc.Framework.Repositories;
 namespace ItemDoc.Services.Model
 {
     /// <summary>
-    /// 用户登录实体
+    /// 文件服务器实体
     /// </summary>
-    //[SopTableName("Item_FileServer")]
-    //[SopTablePrimaryKey("Id", AutoIncrement = true)]
     public class FileServerInfo
     {
 
