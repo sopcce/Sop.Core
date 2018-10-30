@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\DataPackage.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Extensions\AlipayHelper.cs" />

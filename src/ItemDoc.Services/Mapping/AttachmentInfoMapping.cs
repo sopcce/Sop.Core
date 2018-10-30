@@ -8,17 +8,24 @@ namespace ItemDoc.Services.Mapping
     {
         public AttachmentInfoMapping()
         {
-            Table("Item_Article");
+            Table("item_fileattachment");
             Cache(map => map.Usage(CacheUsage.ReadWrite));
             Id(t => t.Id, map => map.Generator(Generators.Native));
-            //Property(t => t.Name);
-            //Property(t => t.Description);
-            //Property(t => t.UserId);
-            //Property(t => t.PassWord);
-            //Property(t => t.LastUpdateTime);
-            //Property(t => t.DisplayOrder);
-            //Property(t => t.DateCreated);
-
+            Property(t => t.AttachmentId);
+            Property(t => t.OwnerId);
+            Property(t => t.ServerId);
+            Property(t => t.ServerUrlPath);
+            Property(t => t.Extension);
+            Property(t => t.Size);
+            Property(t => t.FileNames);
+            Property(t => t.UploadFileName);
+            Property(t => t.MimeType);
+            Property(t => t.Status);
+            Property(t => t.DisplayOrder);
+            Property(t => t.Ip);
+            Property(t => t.DateCreated);
+         
+        
         }
     }
 }

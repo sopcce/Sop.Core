@@ -26,5 +26,21 @@ namespace ItemDoc.Upload.Controllers
 
             return View();
         }
+
+
+        public ActionResult Test()
+        {
+            ViewBag.Message = "这是接口测试";
+
+            return View();
+        }
+        public ActionResult Doc()
+        {
+            ViewBag.Message = "这是接口文档";
+
+            return View();
+        }
+
+
     }
 }

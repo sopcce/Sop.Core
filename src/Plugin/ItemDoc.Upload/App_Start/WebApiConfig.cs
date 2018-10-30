@@ -17,9 +17,9 @@ namespace ItemDoc.Upload
         {
             #region 跨域访问
 
-            var allowedMethods =Config.AppSettings<string>("cors:allowedMethods","*"); 
+            var allowedMethods = Config.AppSettings<string>("cors:allowedMethods", "*");
             var allowedOrigin = Config.AppSettings<string>("cors:allowedOrigin", "*");
-            var allowedHeaders = Config.AppSettings<string>("cors:allowedHeaders", "*"); 
+            var allowedHeaders = Config.AppSettings<string>("cors:allowedHeaders", "*");
             var gedCors = new EnableCorsAttribute(allowedOrigin, allowedHeaders, allowedMethods)
             {
                 SupportsCredentials = true
@@ -32,6 +32,7 @@ namespace ItemDoc.Upload
             //// Web API 特性路由
             config.MapHttpAttributeRoutes();
 
+          
             //新加的规则
             config.Routes.MapHttpRoute(
                 name: "DefaultApi2",

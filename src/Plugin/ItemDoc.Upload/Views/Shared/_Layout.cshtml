@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -24,6 +25,8 @@
                     <li>@Html.ActionLink("主页", "Index", "Home")</li>
                     <li>@Html.ActionLink("关于", "About", "Home")</li>
                     <li>@Html.ActionLink("日志", "Log", "Home")</li>
+                    <li>@Html.ActionLink("测试", "Test", "Home")</li>
+                    <li>@Html.ActionLink("文档", "Doc", "Home")</li>
                 </ul>
             </div>
         </div>
@@ -32,7 +35,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - 文件服务应用系统</p>
+            <p>&copy; 2014-@DateTime.Now.Year - 文件服务应用系统</p>
         </footer>
     </div>
 

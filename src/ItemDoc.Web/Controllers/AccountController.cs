@@ -272,7 +272,7 @@ namespace ItemDoc.Web.Controllers
                 if (model.IsLogin)
                 {
                     #region Login 
-                    var result = await SignInManager.PasswordSignInAsync(model.UserName, model.PassWord, false, shouldLockout: true);
+                    var result = await SignInManager.PasswordSignInAsync(model.UserName, model.PassWord, true, shouldLockout: true);
                     switch (result)
                     {
                         case SignInStatus.Success:
@@ -330,7 +330,7 @@ namespace ItemDoc.Web.Controllers
                         result = await UserManager.AddLoginAsync(user.Id, info.Login);
                         if (result.Succeeded)
                         {
-                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: true);
                             return RedirectToLocal(returnUrl);
                         }
                     }
