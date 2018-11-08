@@ -63,7 +63,7 @@ namespace ItemDoc.Framework.Repositories.NHibernate
                     Session.Update(entity);
                     transaction.Commit();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     transaction?.Rollback();
                     throw;

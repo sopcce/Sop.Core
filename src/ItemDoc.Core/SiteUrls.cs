@@ -255,9 +255,10 @@ namespace ItemDoc.Core
         #endregion
 
 
-        public string ItemIndex()
+        #region Item
+        public string ItemCrawler()
         {
-            return CachedUrlHelper.Action("Index", "Item");
+            return CachedUrlHelper.Action("Crawler", "Item");
         }
 
         #region ItemCatalog
@@ -300,6 +301,12 @@ namespace ItemDoc.Core
 
             return CachedUrlHelper.Action("CatalogDelete", "Item");
         }
+        public string ItemIndex()
+        {
+            return CachedUrlHelper.Action("Index", "Item");
+        }
+
+        #endregion
 
         #endregion
         #region ItemItems  
