@@ -17,6 +17,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using ItemDoc.Core.WebCrawler;
+using ItemDoc.Framework.Utility;
 
 [assembly: OwinStartup(typeof(ItemDoc.Web.Startup))]
 namespace ItemDoc.Web
@@ -27,7 +29,7 @@ namespace ItemDoc.Web
         private readonly bool _miniProfiler = Config.AppSettings<bool>("MiniProfiler.Enabled", true);
         private static readonly bool RedisCache = Config.AppSettings<bool>("RedisCaching.Enabled", false);
         private static readonly string RedisServer = Config.AppSettings<string>("RedisServerConnectionString", "");
-
+        private static readonly string ServerProxy = Config.AppSettings<string>("ServerProxy", null);
 
         public void Configuration(IAppBuilder app)
         {
@@ -71,8 +73,8 @@ namespace ItemDoc.Web
             //IAuthenticationService
             builder.Register(c => new OwinAuthenticationService()).As<IAuthenticationService>().PropertiesAutowired().InstancePerRequest();
 
-            //注册爬虫服务
-
+            //注册爬虫服务App_Data 必须含有phantomjs.exe.程序
+            builder.Register(c => new Crawler()).As<ICrawler>().SingleInstance().PropertiesAutowired();
 
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);

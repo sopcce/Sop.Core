@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Configuration;
+using System.Text;
 
-
-namespace Sop.Framework.Helper
+namespace ItemDoc.Core.Helper
 {
     /// <summary>
     ///  通用磁盘(IO)数据访问操作工具类

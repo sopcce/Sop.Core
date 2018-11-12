@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ItemDoc.Core.WebCrawler.Events;
 using ItemDoc.Core.WebCrawler.Models;
+using ItemDoc.Framework.Utility;
 using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Support.UI;
 
@@ -35,31 +36,42 @@ namespace ItemDoc.Core.WebCrawler
 
         public CrawlSettings Settings { get; private set; }
 
-        public Crawler(string proxy = null)
+        public Crawler()
         {
-            this._options = new PhantomJSOptions();//定义PhantomJS的参数配置对象
-
-            var path = Environment.CurrentDirectory;
-
-
-            this._service = PhantomJSDriverService.CreateDefaultService();//初始化Selenium配置，传入存放phantomjs.exe文件的目录
-            _service.IgnoreSslErrors = true;//忽略证书错误
-            _service.WebSecurity = false;//禁用网页安全
-            _service.HideCommandPromptWindow = true;//隐藏弹出窗口
-            _service.LoadImages = false;//禁止加载图片
-            _service.LocalToRemoteUrlAccess = true;//允许使用本地资源响应远程 URL
-            _options.AddAdditionalCapability(@"phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36");
-            if (proxy != null)
+            Settings = new CrawlSettings();
+            switch (Settings.CrawlerType)
             {
-                _service.ProxyType = "HTTP";//使用HTTP代理
-                _service.Proxy = proxy;//代理IP及端口
-            }
-            else
-            {
-                _service.ProxyType = "none";//不使用代理
-            }
+                case CrawlerType.HttpWebRequest:
+                    break;
+                case CrawlerType.PhantomJS:
+                    this._options = new PhantomJSOptions();//定义PhantomJS的参数配置对象
+                    if (string.IsNullOrEmpty(Settings.Path))
+                    {
+                        Settings.Path = FileUtility.GetDiskFilePath("~/App_Data");
+                    }
+                    this._service = PhantomJSDriverService.CreateDefaultService(Settings.Path);//初始化Selenium配置，传入存放phantomjs.exe文件的目录
+                    _service.IgnoreSslErrors = true;//忽略证书错误
+                    _service.WebSecurity = false;//禁用网页安全
+                    _service.HideCommandPromptWindow = true;//隐藏弹出窗口
+                    _service.LoadImages = false;//禁止加载图片
+                    _service.LocalToRemoteUrlAccess = true;//允许使用本地资源响应远程 URL
+                    _options.AddAdditionalCapability(@"phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36");
+                    if (Settings.Proxy != null)
+                    {
+                        _service.ProxyType = "HTTP";//使用HTTP代理
+                        _service.Proxy = Settings.Proxy;//代理IP及端口
+                    }
+                    else
+                    {
+                        _service.ProxyType = "none";//不使用代理
+                    }
 
+                    break;
+            }
         }
+
+
+
 
         /// <summary>
         /// 高级爬虫
@@ -118,7 +130,7 @@ namespace ItemDoc.Core.WebCrawler
                     OnStart?.Invoke(this, new OnStartEventArgs(uri));
                     var watch = new Stopwatch();
                     // 1~5 秒随机间隔的自动限速
-                    if (this.Settings.AutoSpeedLimit)
+                    if (Settings.AutoSpeedLimit)
                         Thread.Sleep(new Random().Next(1000, 5000));
                     watch.Start();
                     //处理HttpWebRequest访问https有安全证书的问题（ 请求被中止: 未能创建 SSL/TLS 安全通道。）

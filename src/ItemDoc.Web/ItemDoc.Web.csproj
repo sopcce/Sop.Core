@@ -301,6 +301,7 @@
     <Content Include="App_Data\Lang\en-us.php" />
     <Content Include="App_Data\Lang\installation.zhs.xml" />
     <Content Include="App_Data\Lang\zh-cn.xml" />
+    <Content Include="App_Data\phantomjs.exe" />
     <Content Include="App_Data\sopcce.com\syslogfile\2018\0706\061645.txt" />
     <Content Include="App_Data\sopcce.com\syslogfile\2018\0706\061648.txt" />
     <Content Include="App_Data\sopcce.com\syslogfile\2018\0706\061650.txt" />
