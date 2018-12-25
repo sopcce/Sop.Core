@@ -298,6 +298,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\read.txt" />
+    <Content Include="App_Data\Database\MySql\itemdoc.sql" />
+    <Content Include="App_Data\Database\SqlServer\SQLQuery1.sql" />
+    <Content Include="App_Data\Database\SqlServer\tiemdoc.sql" />
     <Content Include="App_Data\Lang\en-us.php" />
     <Content Include="App_Data\Lang\installation.zhs.xml" />
     <Content Include="App_Data\Lang\zh-cn.xml" />
