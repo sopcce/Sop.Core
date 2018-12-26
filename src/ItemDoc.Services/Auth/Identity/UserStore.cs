@@ -104,10 +104,7 @@ namespace ItemDoc.Services.Auth.Identity
 
         public Task SetPasswordHashAsync(User user, string password)
         {
-            var type = (PassWordEncryptionType)new Random().Next(1, 5);
-            var newPassword = _usersService?.SetPassword(user.UserName, user.PassWord, type) ?? password;
-
-
+          
             // TODO 对密码加密方式，这里使用默认，不做处理。
             user.PassWord = password;
             return Task.FromResult(0);

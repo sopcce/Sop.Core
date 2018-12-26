@@ -1,4 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Web.Script.Serialization;
+using ItemDoc.Core.API;
 
 namespace ItemDoc.Core.Mvc.SystemMessage
 {
@@ -8,6 +13,7 @@ namespace ItemDoc.Core.Mvc.SystemMessage
     public class SystemMessage
     {
         public const string TempDataKey = "_SopSystemMessage";
+
 
         /// <summary>
         /// 构造函数
@@ -48,5 +54,24 @@ namespace ItemDoc.Core.Mvc.SystemMessage
         /// 消息发送状态（根据状态的不同改变图标）
         /// </summary>
         public SystemMessageType SystemMessageType { get; set; }
+
+
+        /// <summary>
+        /// 返回逻辑错误
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="code"></param>
+        /// <param name="desc"></param>
+        /// <returns></returns>
+        public static HttpResponseMessage Result(object result, HttpStatusCode code = HttpStatusCode.OK, string desc = "")
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+            var content = new DataPackage(code, result, desc);
+
+            var response = new HttpResponseMessage { Content = new StringContent(serializer.Serialize(content), Encoding.UTF8, "application/json") };
+
+            return response;
+        }
     }
 }

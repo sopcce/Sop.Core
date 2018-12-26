@@ -11,11 +11,22 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Web.Http;
 using System.Web.Script.Serialization;
+using ItemDoc.Core.Mvc.SystemMessage;
 
 namespace ItemDoc.Upload.Controllers
 {
+    /// <summary>
+    /// 1、数据是以文件的形式存在，提供 Open、Read、Write、Seek、Close 等API 进行访问；
+    /// 2、文件以树形目录进行组织，提供原子的重命名（Rename）操作改变文件或者目录的位置。 
+    /// 
+    /// 
+    /// 
+    /// 
+    /// 
+    /// </summary>
     public class V1Controller : ApiController
     {
 
@@ -28,7 +39,7 @@ namespace ItemDoc.Upload.Controllers
         [HttpGet]
         public HttpResponseMessage Test()
         {
-            return SuccessResult("Test is SuccessResult"); 
+            return  SystemMessage.Result("Test is SuccessResult"); 
         }
         [HttpPost]
         public HttpResponseMessage Upload()
@@ -44,7 +55,7 @@ namespace ItemDoc.Upload.Controllers
             string date = context.Request["_"];
             if (string.IsNullOrWhiteSpace(token) || string.IsNullOrWhiteSpace(data) || string.IsNullOrWhiteSpace(date))
             { 
-                return ErrorResult("token is err ");
+                return SystemMessage.Result("token is err ");
             }
             AttachmentInfo info = new AttachmentInfo();
             try
@@ -58,7 +69,7 @@ namespace ItemDoc.Upload.Controllers
                 if (token != imgServer.Token || token != newToken)
                 {
                     //return Json(new { code = 002, status = "err" }, JsonRequestBehavior.AllowGet);
-                    return ErrorResult("err");
+                    return SystemMessage.Result("err",HttpStatusCode.BadRequest);
                 }
                 string upPath = imgServer.VirtualPath;
                 string newFileName = Guid.NewGuid().ToString("N") + imgServer.FileExtension.ToLower();
@@ -86,12 +97,12 @@ namespace ItemDoc.Upload.Controllers
                 info.Id = _attachmentService.Create(info);
 
                 sw.Stop();
-                return SuccessResult(new { Path = info.ServerUrlPath });
+                return SystemMessage.Result(new { Path = info.ServerUrlPath });
             }
             catch (Exception e)
             {
              
-                return ErrorResult(new {  Path = info.ServerUrlPath, Message = e.Message });
+                return SystemMessage.Result(new {  Path = info.ServerUrlPath, Message = e.Message },HttpStatusCode.BadRequest);
             }
 
         }
@@ -175,39 +186,7 @@ namespace ItemDoc.Upload.Controllers
         }
         #region private Result
 
-        /// <summary>
-        /// 返回逻辑错误
-        /// </summary>
-        /// <param name="result"></param>
-        /// <param name="type"></param>
-        /// <param name="desc"></param>
-        /// <returns></returns>
-        private HttpResponseMessage ErrorResult(object result, HttpStatusCode code = HttpStatusCode.BadRequest, string desc = "")
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-            var content = new DataPackage(code, result, desc);
-
-            var response = new HttpResponseMessage { Content = new StringContent(serializer.Serialize(content), Encoding.UTF8, "application/json") };
-
-            return response;
-        }
-        /// <summary>
-        /// 返回成功信息
-        /// </summary>
-        /// <param name="result"></param>
-        /// <param name="desc"></param>
-        /// <returns></returns>
-        private HttpResponseMessage SuccessResult(object result, string desc = "")
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-            var content = new DataPackage(HttpStatusCode.OK, result, desc);
-
-            var response = new HttpResponseMessage { Content = new StringContent(serializer.Serialize(content), Encoding.UTF8, "application/json") };
-
-            return response;
-        }
+   
 
         #endregion private Result
 

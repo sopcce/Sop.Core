@@ -24,13 +24,17 @@ namespace ItemDoc.Services.Model
         /// </summary>		
 
         public virtual string UserName { get; set; }
+        /// <summary>
+        /// UrlToken
+        /// </summary>		 
+        public virtual string UrlToken { get; set; }
 
         /// <summary>
         /// Email
         /// </summary>		
 
         public virtual string Email { get; set; }
-
+        
         /// <summary>
         /// EmailConfirmed
         /// </summary>		
@@ -55,11 +59,7 @@ namespace ItemDoc.Services.Model
 
         public virtual string AccountIDcard { get; set; }
 
-        /// <summary>
-        /// UrlToken
-        /// </summary>		
 
-        public virtual string UrlToken { get; set; }
 
         /// <summary>
         /// PassWord
@@ -67,16 +67,11 @@ namespace ItemDoc.Services.Model
 
         public virtual string PassWord { get; set; }
 
-        /// <summary>
-        /// PassWordEncryption
-        /// </summary>		
-
-        public virtual PassWordEncryptionType PassWordEncryption { get; set; }
+ 
 
         /// <summary>
         /// SecurityStamp
-        /// </summary>		
-
+        /// </summary>
         public virtual string SecurityStamp { get; set; }
 
         /// <summary>

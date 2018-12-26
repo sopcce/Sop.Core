@@ -151,7 +151,6 @@ namespace ItemDoc.Web.Controllers
                     NickName = model.NickName,
                     TrueName = model.NickName,
                     PassWord = model.Password,
-                    PassWordEncryption = (PassWordEncryptionType)new Random().Next(1, 5),
                     SecurityStamp = Guid.NewGuid().ToString(),
 
                     Status = Status.NoActivated,
@@ -311,7 +310,6 @@ namespace ItemDoc.Web.Controllers
                         NickName = model.NickName,
                         TrueName = model.NickName,
                         PassWord = model.PassWord,
-                        PassWordEncryption = (PassWordEncryptionType)new Random().Next(1, 5),
                         SecurityStamp = Guid.NewGuid().ToString(),
                         Status = Status.NoActivated,
                         CreatedIP = WebUtility.GetIp(),

@@ -58,12 +58,16 @@ namespace ItemDoc.Web
             {
                 AllowAdmin = true,
                 AbortOnConnectFail = false,
-                SyncTimeout = 6000
+                SyncTimeout = 6000,
+                Password = "sopcce.com.cc2018"
             };
-            option.EndPoints.Add("47.93.18.104", 6379);
+            option.EndPoints.Add("127.0.0.1", 6379);
             //option.EndPoints.Add("127.0.0.1", 6380);
             //option.EndPoints.Add("127.0.0.1", 6381);
             //option.EndPoints.Add("127.0.0.1", 6382);
+            //判断redis DB时候可以来了解，不可以不要启用
+
+
             builder.Register(c => ConnectionMultiplexer.Connect(option)).SingleInstance().PropertiesAutowired();
 
             builder.Register(c => new RedisCacheManager(option)).As<ICacheManager>().SingleInstance().PropertiesAutowired();

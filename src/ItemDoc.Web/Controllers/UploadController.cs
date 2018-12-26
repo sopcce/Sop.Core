@@ -11,11 +11,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using ItemDoc.Core.API;
+using Microsoft.Net.Http.Headers;
+using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
 
 namespace ItemDoc.Web.Controllers
 {
@@ -24,6 +28,70 @@ namespace ItemDoc.Web.Controllers
         public AttachmentService _attachmentService { get; set; }
         public FileServerService _fileServerService { get; set; }
 
+
+        public ActionResult Test()
+        {
+
+            System.Web.Script.Serialization.JavaScriptSerializer json = new System.Web.Script.Serialization.JavaScriptSerializer();
+
+            using (var client = new HttpClient())//httpclient的post方式, 需要被实体接收..
+            {
+                string apiurl = "http://192.168.1.225:9090/api/V3ImageUploadApi/posttestform2";
+                //3个枚举, stringContent,ByteArrayContent,和FormUrlContent, 一般的post用StringContent就可以了
+                using (var content = new StringContent(
+                    "Email=321a&Name=kkfew", Encoding.UTF8, "application/x-www-form-urlencoded"))
+                {
+                    content.Headers.Add("aa", "11"); //默认会使用
+                    var result = client.PostAsync(apiurl, content).Result;
+                    Console.WriteLine(result);
+                }
+            }
+            using (var client = new HttpClient())
+            {
+                string apiurl = "http://192.168.1.225:9090/api/V3ImageUploadApi/posttestform";
+                using (var content = new StringContent(json.Serialize(new { Email = "1", Name = "2" })))
+                {
+                    content.Headers.Add("aa", "11");
+                    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    var result = client.PostAsync(apiurl, content).Result;
+                    Console.WriteLine(result);
+                }
+            }
+            using (WebClient webclient = new WebClient())
+            {
+
+                string apiurl = "http://192.168.1.225:9090/api/V3ImageUploadApi/posttestform2";
+
+                webclient.Encoding = UTF8Encoding.UTF8;
+                webclient.Headers.Add("Custom-Auth-Key", "11");
+                webclient.Headers.Add("Content-Type", "application/x-www-form-urlencoded");//x-www-form-urlencoded
+                //如果webapi的接收参数对象是dynamic, 则请求的头是json, 如果是用实体接收, 那么则是上面这个
+
+
+                var re = webclient.UploadData(apiurl, Encoding.UTF8.GetBytes("Email=321a&Name=kkfew"));
+
+                Console.Write(System.Text.Encoding.UTF8.GetString(re));
+            }
+
+            using (WebClient webclient = new WebClient())
+            {
+
+                string apiurl = "http://192.168.1.225:9090/api/V3ImageUploadApi/posttestform";
+
+                webclient.Encoding = UTF8Encoding.UTF8;
+                webclient.Headers.Add("Custom-Auth-Key", "11");
+                webclient.Headers.Add("Content-Type", "application/json");//x-www-form-urlencoded
+                //如果webapi的接收参数对象是dynamic, 则请求的头是json, 如果是用实体接收, 那么则是上面这个
+
+
+                var re = webclient.UploadData(apiurl,
+                    System.Text.Encoding.UTF8.GetBytes(json.Serialize(new { email = "123456@qq.com", password = "111111" })));
+
+                Console.Write(System.Text.Encoding.UTF8.GetString(re));
+            }
+
+            return View();
+        }
 
 
         /// <summary>
@@ -94,27 +162,29 @@ namespace ItemDoc.Web.Controllers
 
             try
             {
-                HttpPostedFileBase file = Request.Files[0];//接收用户传递的文件数据.
-                if (file != null)
+                ////接收用户传递的文件数据.
+                foreach (HttpPostedFileBase file in Request.Files)
                 {
-                    var ownerid = Request.Form["ownerId"] ?? Guid.NewGuid().ToString("N");
-                    string fileName = Path.GetFileName(file.FileName);//获取文件名.
-                    string fileExt = Path.GetExtension(fileName);//获取文件扩展名.
-                    Stopwatch sw = new Stopwatch();
-                    sw.Start();
-                    var result = await UploadFile(ownerid, fileName, file.ContentType, file.ContentLength, StreamToBytes(file.InputStream));
-                    sw.Stop();
-                    var ElapsedMilliseconds = sw.ElapsedMilliseconds;
-                    
-                    var cc = result.FromJson<DataPackage>();
-                    var path = cc.data?.ToJson()?.FromJson<DataInfo>()?.path;
-                    if (string.IsNullOrWhiteSpace(path))
+                    if (file != null)
                     {
-                        return JsonErrorResult(null, "操作失败");
-                    } 
-                    return JsonSuccessResult(new DataInfo { path= path }, "操作成功");
-                }
+                        var ownerid = Request.Form["ownerId"] ?? Guid.NewGuid().ToString("N");
+                        string fileName = Path.GetFileName(file.FileName);//获取文件名.
+                        string fileExt = Path.GetExtension(fileName);//获取文件扩展名.
+                        Stopwatch sw = new Stopwatch();
+                        sw.Start();
+                        var result = await UploadFile(ownerid, fileName, file.ContentType, file.ContentLength, StreamToBytes(file.InputStream));
+                        sw.Stop();
+                        var ElapsedMilliseconds = sw.ElapsedMilliseconds;
 
+                        var cc = result.FromJson<DataPackage>();
+                        var path = cc.data?.ToJson()?.FromJson<DataInfo>()?.path;
+                        if (string.IsNullOrWhiteSpace(path))
+                        {
+                            return JsonErrorResult(null, "操作失败");
+                        }
+                        return JsonSuccessResult(new DataInfo { path = path }, "操作成功");
+                    }
+                } 
             }
             catch (Exception e)
             {
@@ -169,6 +239,18 @@ namespace ItemDoc.Web.Controllers
             string result = string.Empty;
             try
             {
+
+
+                //HttpClient client = new HttpClient();
+                //var content = new MultipartFormDataContent();
+                //string fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                //content.Add(new StreamContent(file.InputStream), "file", fileName);
+                //content.Add(new StringContent(server.ServerID.ToString()), "serverID");
+                //var html = client.PostAsync(address, content).Result;
+                //context.Response.Write(html.Content.ReadAsStringAsync().Result);
+
+
+
                 WebClient client = new WebClient();
                 var responseArray = client.UploadData(imageServerUrl, data);//向图片服务器发送文件数据.
                 result = Encoding.GetEncoding("UTF-8").GetString(responseArray);

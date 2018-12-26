@@ -22,7 +22,6 @@ namespace ItemDoc.Services.Mapping
             Property(t => t.AccountIDcard);
             Property(t => t.UrlToken);
             Property(t => t.PassWord);
-            Property(t => t.PassWordEncryption);
             Property(t => t.SecurityStamp);
             Property(t => t.TrueName);
             Property(t => t.NickName);
