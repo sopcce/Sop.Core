@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Common.Logging;
 using ItemDoc.Core.Mvc;
 using ItemDoc.Core.Mvc.SystemMessage;
 using ItemDoc.Framework.Environment;
@@ -11,6 +13,7 @@ using ItemDoc.Framework.Validation;
 using ItemDoc.Services.Auth.Identity;
 using ItemDoc.Services.Auth.Model;
 using ItemDoc.Services.Model;
+using ItemDoc.Services.Servers;
 using ItemDoc.Services.ViewModel;
 using ItemDoc.Web.Models;
 using Microsoft.AspNet.Identity;
@@ -24,6 +27,8 @@ namespace ItemDoc.Web.Controllers
     {
         private SignInService _signInManager;
         private UserManager _userManager;
+        public UsersService UsersService { get; set; }
+        private static readonly ILog Logger = LogManager.GetLogger<ItemController>();
         public AccountController()
         {
         }
@@ -352,6 +357,46 @@ namespace ItemDoc.Web.Controllers
         }
         #endregion
 
+
+        #region Validate
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UserName"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public JsonResult ValidateLoginName(string UserName)
+        {
+            if (string.IsNullOrEmpty(UserName))
+                return Json(true, JsonRequestBehavior.AllowGet);
+            var isExsit = UsersService.IsAccountExsit(UserName);
+            return Json(!isExsit, JsonRequestBehavior.AllowGet);
+        }
+        /// <summary>
+        /// 验证码验证
+        /// </summary>
+        /// <param name="CaptchaCode"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public JsonResult ValidateCaptchaCode(string CaptchaCode)
+        {
+            if (string.IsNullOrEmpty(CaptchaCode))
+                return Json(CaptchaCode == null, JsonRequestBehavior.AllowGet);
+            bool isok = Captcha.ValidateCheckCode(CaptchaCode);
+            return Json(isok, JsonRequestBehavior.AllowGet);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [AcceptVerbs(HttpVerbs.Get)]
+        [AllowAnonymous]
+        public ActionResult CaptchaCode()
+        { 
+            var stream = Captcha.SetStreamValidate(); 
+            return File(stream, "image/gif"); 
+        }
+        #endregion
 
 
 

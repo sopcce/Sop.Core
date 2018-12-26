@@ -14,8 +14,8 @@ namespace ItemDoc.Services.ViewModel
     {
 
 
-        [Required]
-        [StringLength(100, ErrorMessage = "{0} 至少大于{2}位数", MinimumLength = 6)]
+        [Required(ErrorMessage = "密码不能为空!")]
+        //[StringLength(100, ErrorMessage = "{0} 至少大于{2}位数", MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
@@ -28,7 +28,7 @@ namespace ItemDoc.Services.ViewModel
         /// 用户登录名
         /// </summary>
         [Required(ErrorMessage = "登录名不能为空!")]
-        [Remote("ValidateLoginName", "User", ErrorMessage = "{0}重复，请重新输入")]
+        [Remote("ValidateLoginName", "Account", ErrorMessage = "{0}重复，请重新输入")]
         public string UserName { get; set; }
 
 
@@ -40,7 +40,7 @@ namespace ItemDoc.Services.ViewModel
         /// 验证码
         /// </summary>
         [Required(ErrorMessage = "验证码不能为空!")]
-        [Remote("ValidateCaptchaCode", "User", ErrorMessage = "验证码不正确")]
+        [Remote("ValidateCaptchaCode", "Account", ErrorMessage = "验证码不正确")]
         public string CaptchaCode { get; set; }
         
     }
