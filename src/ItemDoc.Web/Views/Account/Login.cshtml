@@ -30,12 +30,12 @@
     <script src="~/assets/jquery.validate/jquery.validate.unobtrusive.js"></script>
     <script type="text/javascript">
         $(function() {
-            $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().UserCaptchaCode()" +
+            $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().AccountCaptchaCode()" +
                 "?v=" +Math.random() +")no-repeat center top");
 
             $(".checkcodeimg,.checkImgRefresh").on("click",
                 function() {
-                    $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().UserCaptchaCode()" +
+                    $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().AccountCaptchaCode()" +
                         "?v=" +
                         Math.random() +
                         ")no-repeat center top");
@@ -65,10 +65,8 @@
                 @Html.AntiForgeryToken()
                 <h4>使用账号登录</h4>
                 <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-
-
+                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                <div class="form-group"> 
                     <label class="col-sm-2 control-label">UserName：</label>
                     <div class="col-md-10">
                         @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
@@ -93,9 +91,8 @@
                             @Html.TextBoxFor(n => n.CaptchaCode, new { minlength = "1", maxlength = "4", @class = "form-control", placeholder = "输入验证码", required = "required" })
                             <div class="input-group-addon checkImgRefresh" style="cursor: pointer;">刷新</div>
                         </div>
-
-
-
+                        @Html.ValidationMessageFor(model => model.CaptchaCode, "",new { @class = "text-danger" })
+                         
                     </div>
                 </div>
                 <div class="form-group">
@@ -123,7 +120,7 @@
     </div>
     <div class="col-md-4">
         <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            @Html.Partial("_ExternalLoginsListPartial", new { ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
 </div>

@@ -21,7 +21,7 @@ namespace ItemDoc.Web
       //匹配特殊路由
       routes.MapRoute(
         name: "Item_Post",
-        url: "P/{id}",
+        url: "p/{id}",
         defaults: new { controller = "Item", action = "Post", id = UrlParameter.Optional }
 
       );
@@ -32,14 +32,13 @@ namespace ItemDoc.Web
         defaults: new { controller = "Item", action = "PostEdit", catalogId = 0, id = UrlParameter.Optional }
       );
       #endregion
-
-
+  
       #region User 
       //
       routes.MapRoute(
-        name: "User_Home",
-        url: "u/{userName}",
-        defaults: new { controller = "User", action = "Home", userName = UrlParameter.Optional }
+        name: "Account_Home",
+        url: "{userName}/Home",
+        defaults: new { controller = "Account", action = "Home", userName = "" }
       );
 
 
