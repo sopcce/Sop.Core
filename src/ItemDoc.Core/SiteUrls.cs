@@ -163,16 +163,14 @@ namespace ItemDoc.Core
             return CachedUrlHelper.Action("Register", "Account");
         }
 
-        public string AccountHome()
-        {
-            return CachedUrlHelper.Action("Home", "Account");
-        }
+      
         public string AccountHome(string userName)
         {
             RouteValueDictionary route = new RouteValueDictionary();
             if (!string.IsNullOrWhiteSpace(userName))
                 route.Add("userName", userName);
-            return CachedUrlHelper.Action("Home", "Account", route);
+            //return CachedUrlHelper.Action("Home", "Account", route);
+            return CachedUrlHelper.RouteUrl("Account_Home", route);
         }
         public string AccountPost(string userName)
         {
