@@ -27,11 +27,14 @@ namespace ItemDoc.Web.Controllers
     {
         private SignInService _signInManager;
         private UserManager _userManager;
-        public UsersService UsersService { get; set; }
+
+
+        public UsersService _usersService { get; set; }
         private static readonly ILog Logger = LogManager.GetLogger<ItemController>();
         public AccountController()
         {
         }
+
         public AccountController(UserManager userManager, SignInService signInManager)
         {
             UserManager = userManager;
@@ -369,7 +372,7 @@ namespace ItemDoc.Web.Controllers
         {
             if (string.IsNullOrEmpty(UserName))
                 return Json(true, JsonRequestBehavior.AllowGet);
-            var isExsit = UsersService.IsAccountExsit(UserName);
+            var isExsit = _usersService.IsAccountExsit(UserName);
             return Json(!isExsit, JsonRequestBehavior.AllowGet);
         }
         /// <summary>
@@ -392,13 +395,25 @@ namespace ItemDoc.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         [AllowAnonymous]
         public ActionResult CaptchaCode()
-        { 
-            var stream = Captcha.SetStreamValidate(); 
-            return File(stream, "image/gif"); 
+        {
+            var stream = Captcha.SetStreamValidate();
+            return File(stream, "image/gif");
         }
         #endregion
 
 
+
+        public ActionResult Home()
+        {
+
+            return View();
+        }
+
+        public ActionResult _ProfileHeader()
+        {
+
+            return View();
+        }
 
         public ActionResult Settings()
         {
@@ -406,7 +421,7 @@ namespace ItemDoc.Web.Controllers
         }
         public ActionResult _SettingsHeader()
         {
-           
+
             return View();
         }
 
@@ -536,7 +551,7 @@ namespace ItemDoc.Web.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return  View();
+            return View();
         }
 
         //
@@ -629,7 +644,7 @@ namespace ItemDoc.Web.Controllers
 
         }
 
-    
+
 
 
 
