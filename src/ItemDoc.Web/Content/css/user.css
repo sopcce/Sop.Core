@@ -120,7 +120,7 @@ button {
                 width: 33px;
                 height: 33px;
                 position: absolute;
-                background: url("../images/edit_photo.png") no-repeat;
+                /*background: url("../images/edit_photo.png") no-repeat;*/
                 left: 59px;
                 top: 110px;
                 display: none;

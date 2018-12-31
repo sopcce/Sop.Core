@@ -10,6 +10,7 @@ using ItemDoc.Core.Mvc.SystemMessage;
 using ItemDoc.Framework.Environment;
 using ItemDoc.Framework.Utility;
 using ItemDoc.Framework.Validation;
+using ItemDoc.Services;
 using ItemDoc.Services.Auth.Identity;
 using ItemDoc.Services.Auth.Model;
 using ItemDoc.Services.Model;
@@ -414,6 +415,13 @@ namespace ItemDoc.Web.Controllers
 
             return View();
         }
+
+        public ActionResult Demo()
+        {
+           
+            return View();
+        }
+
 
         public ActionResult Settings()
         {
