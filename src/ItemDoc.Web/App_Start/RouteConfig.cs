@@ -7,60 +7,64 @@ using System.Web.Routing;
 
 namespace ItemDoc.Web
 {
-  /// <summary>
-  /// 路由匹配有特殊到一般  范围有小到大
-  /// </summary>
-  public static class RouteConfig
-  {
-    public static void RegisterRoutes(RouteCollection routes)
+    /// <summary>
+    /// 路由匹配有特殊到一般  范围有小到大
+    /// </summary>
+    public static class RouteConfig
     {
-      routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-      routes.MapMvcAttributeRoutes();
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapMvcAttributeRoutes();
 
-      #region Item
-      //匹配特殊路由
-      routes.MapRoute(
-        name: "Item_Post",
-        url: "p/{id}",
-        defaults: new { controller = "Item", action = "Post", id = UrlParameter.Optional }
+            #region Item
+            //匹配特殊路由
+            routes.MapRoute(
+              name: "Item_Post",
+              url: "p/{id}",
+              defaults: new { controller = "Item", action = "Post", id = UrlParameter.Optional }
 
-      );
-      //编辑
-      routes.MapRoute(
-        name: "Item_PostEdit",
-        url: "Item/PostEdit/{catalogId}/{id}",
-        defaults: new { controller = "Item", action = "PostEdit", catalogId = 0, id = UrlParameter.Optional }
-      );
-      #endregion
-  
-      #region User 
-      //
-      routes.MapRoute(
-        name: "Account_Home",
-        url: "{userName}/Home",
-        defaults: new { controller = "Account", action = "Home", userName = "" }
-      );
+            );
+            //编辑
+            routes.MapRoute(
+              name: "Item_PostEdit",
+              url: "Item/PostEdit/{catalogId}/{id}",
+              defaults: new { controller = "Item", action = "PostEdit", catalogId = 0, id = UrlParameter.Optional }
+            );
+            #endregion
 
+            #region Account 
+            ////
+            //routes.MapRoute(
+            //name: "Account_Home",
+            //url: "{userName}/Home",
+            //defaults: new { controller = "Account", action = "Home", userName = "" }
+            //);
+            routes.MapRoute(
+                name: "Account_Home_Short",
+                url: "{userName}",
+                defaults: new { controller = "Account", action = "Home", userName = "" }
+            );
 
-      #endregion
-
-
-
-
-
-
+            #endregion
 
 
 
-      //安装模块
-      routes.MapRoute(
+
+
+
+
+
+
+            //安装模块
+            routes.MapRoute(
           name: "Default",
           url: "{controller}/{action}/{id}",
           defaults: new
           {
-            controller = "Install",
-            action = "Index",
-            id = UrlParameter.Optional
+              controller = "Install",
+              action = "Index",
+              id = UrlParameter.Optional
           }
       );
 
@@ -68,6 +72,6 @@ namespace ItemDoc.Web
 
 
 
+        }
     }
-  }
 }
