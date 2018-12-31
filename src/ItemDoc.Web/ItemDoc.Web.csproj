@@ -4117,6 +4117,7 @@
     <Content Include="assets\lib\jquery.hidepassword.js" />
     <Content Include="assets\lib\jquery.sopcategory-1.4.2.js" />
     <Content Include="assets\lib\jquery.soppagination-1.4.3.js" />
+    <Content Include="assets\lib\main.js" />
     <Content Include="assets\lib\modernizr-2.6.2.js" />
     <Content Include="assets\lib\npm.js" />
     <Content Include="assets\lib\respond.js" />
@@ -4809,9 +4810,12 @@
     <Content Include="Views\Account\Home.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Post.cshtml" />
+    <Content Include="Views\Account\Demo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\config\" />
+    <Folder Include="assets\element-ui\" />
+    <Folder Include="assets\vue\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
