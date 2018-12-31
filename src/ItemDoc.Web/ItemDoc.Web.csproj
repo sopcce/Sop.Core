@@ -4122,6 +4122,7 @@
     <Content Include="assets\lib\npm.js" />
     <Content Include="assets\lib\respond.js" />
     <Content Include="assets\lib\respond.min.js" />
+    <Content Include="assets\lib\sopcce.com\main.js" />
     <Content Include="assets\lib\sopdate.format-1.0.js" />
     <Content Include="assets\lib\xss.min.js" />
     <Content Include="assets\plupload\examples\custom.html" />
