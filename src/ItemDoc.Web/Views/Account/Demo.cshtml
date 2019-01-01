@@ -10,15 +10,6 @@
     <meta name="viewport" content="width=device-width" />
     <title>Demo</title>
     <meta charset="UTF-8">
-  
-    <!--vue 开发环境版本，包含了有帮助的命令行警告 -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!--vue 生产环境版本，优化了尺寸和速度
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
-    <!-- 引入组件库 -->   
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 <body>
@@ -52,7 +43,71 @@
             <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
         </el-upload>
     </div>
+    <!--vue 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--vue 生产环境版本，优化了尺寸和速度
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+    <!-- 引入组件库 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="~/assets/lib/sopcce.com/main.js"></script>
+    <script>
+        app();
+        function app() {
 
-   
+            new Vue({
+                el: '#app',
+                data: function () {
+                    return { visible: false }
+                }
+            })
+            var Ctor1 = Vue.extend({
+                data() {
+                    return {
+                        dialogImageUrl: '',
+                        dialogVisible: false
+                    };
+                },
+                methods: {
+                    handleRemove(file, fileList) {
+                        console.log(file, fileList);
+                    },
+                    handlePictureCardPreview(file) {
+                        debugger
+                        console.log(file);
+                        this.dialogImageUrl = file.url;
+                        this.dialogVisible = true;
+                    }
+                }
+            });
+            new Ctor1().$mount('#app_1');
+
+            var Ctor2 = Vue.extend({
+                data() {
+                    return {
+                        fileList2: [{
+                            name: 'food.jpeg',
+                            url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+                        }, {
+                            name: 'food2.jpeg',
+                            url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+                        }]
+                    };
+                },
+                methods: {
+                    handleRemove(file, fileList) {
+                        console.log(file, fileList);
+                    },
+                    handlePreview(file) {
+                        console.log(file);
+                    }
+                }
+            });
+            new Ctor2().$mount('#app_2');
+        }
+
+    </script>
 </body>
+
 </html>
