@@ -163,6 +163,9 @@
     <Compile Include="Web\HtmlHelper.cs" />
     <Compile Include="Web\HttpHelper.cs" />
     <Compile Include="Web\HttpWebHelper.cs" />
+    <Compile Include="Web\WebClientEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Xml\KeyValueHelper.cs" />
   </ItemGroup>
   <ItemGroup>

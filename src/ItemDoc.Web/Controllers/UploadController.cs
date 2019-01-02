@@ -13,12 +13,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using Common.Logging;
 using ItemDoc.Core.API;
+using ItemDoc.Core.Web;
 using ItemDoc.Framework.Caching;
 using Microsoft.Net.Http.Headers;
 using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
@@ -230,14 +232,23 @@ namespace ItemDoc.Web.Controllers
                 //var html = client.PostAsync(address, content).Result;
                 //context.Response.Write(html.Content.ReadAsStringAsync().Result);
 
-                WebClient client = new WebClient();
-                var responseArray = client.UploadData(imageServerUrl, StreamToBytes(file.InputStream));//向图片服务器发送文件数据.
-                result = Encoding.GetEncoding("UTF-8").GetString(responseArray);
+                using (WebClientEx client = new WebClientEx())
+                {
+                    client.Proxy = null;
+                    client.Timeout = 1000 * 60 * 10; //10分钟
+                    client.Encoding = Encoding.UTF8; 
+                    var responseArray = await client.UploadDataTaskAsync(imageServerUrl, StreamToBytes(file.InputStream));//向图片服务器发送文件数据.
+                    result = Encoding.GetEncoding("UTF-8").GetString(responseArray);
+
+                }
+                System.GC.Collect();
+
             }
             catch (Exception ex)
             {
                 Logger.Error(ex.Message);
                 Logger.Error(imageServerUrl);
+                System.GC.Collect();
             }
 
 
