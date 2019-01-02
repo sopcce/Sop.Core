@@ -9,8 +9,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Demo</title>
-    <meta charset="UTF-8">
-
+    <meta charset="UTF-8"> 
+    <link href="~/assets/element-ui/index.css" rel="stylesheet" />
 </head>
 <body>
     <div id="app">
@@ -43,14 +43,12 @@
             <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
         </el-upload>
     </div>
-    <!--vue 开发环境版本，包含了有帮助的命令行警告 -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!--vue 生产环境版本，优化了尺寸和速度
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+
+    <script src="~/assets/vue/vue.min.js"></script>
     <!-- 引入组件库 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="~/assets/element-ui/index.js"></script>
+    <script src="~/assets/axios/axios.min.js"></script>
     <script src="~/assets/lib/sopcce.com/main.js"></script>
     <script>
         app();

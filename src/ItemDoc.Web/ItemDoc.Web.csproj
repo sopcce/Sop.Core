@@ -466,6 +466,7 @@
     <Content Include="App_Data\sopcce.com\syslogfile\2018\0813\131640.txt" />
     <Content Include="App_Data\sopcce.com\syslogfile\2018\0814\141616.txt" />
     <Content Include="App_Data\sopcce.com\syslogfile\2018\0814\141637.txt" />
+    <Content Include="assets\axios\axios.min.js" />
     <Content Include="assets\bootstrap-switch\bootstrapSwitch.js" />
     <Content Include="assets\bootstrap-switch\dist\css\bootstrap2\bootstrap-switch.css" />
     <Content Include="assets\bootstrap-switch\dist\css\bootstrap2\bootstrap-switch.min.css" />
@@ -3108,6 +3109,8 @@
     <Content Include="assets\editor.md\tests\marked-todo-list-test.html" />
     <Content Include="assets\editor.md\tests\qunit\qunit-1.16.0.css" />
     <Content Include="assets\editor.md\tests\qunit\qunit-1.16.0.js" />
+    <Content Include="assets\element-ui\index.css" />
+    <Content Include="assets\element-ui\index.js" />
     <Content Include="assets\font-awesome\css\font-awesome.css" />
     <Content Include="assets\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\formvalidation\css\default.css" />
@@ -4090,6 +4093,8 @@
     <Content Include="assets\bootstrap-switch\src\less\bootstrap3\mixins\text-overflow.less" />
     <Content Include="assets\bootstrap-switch\src\less\bootstrap3\mixins\vendor-prefixes.less" />
     <Content Include="assets\bootstrap-switch\src\less\bootstrap3\variables.less" />
+    <Content Include="assets\element-ui\fonts\element-icons.ttf" />
+    <Content Include="assets\element-ui\fonts\element-icons.woff" />
     <None Include="assets\jquery.validate\jquery.validate-vsdoc.js" />
     <Content Include="assets\jquery.validate\jquery.validate.js" />
     <Content Include="assets\jquery.validate\jquery.validate.min.js" />
@@ -4322,6 +4327,8 @@
     <Content Include="assets\tinymce\skins\lightgray\skin.min.css" />
     <Content Include="assets\tinymce\themes\modern\theme.min.js" />
     <Content Include="assets\tinymce\tinymce.min.js" />
+    <Content Include="assets\vue\vue.js" />
+    <Content Include="assets\vue\vue.min.js" />
     <Content Include="assets\zeroclipboard\dist\ZeroClipboard.Core.js" />
     <Content Include="assets\zeroclipboard\dist\ZeroClipboard.Core.min.js" />
     <Content Include="assets\zeroclipboard\dist\ZeroClipboard.js" />
@@ -4815,8 +4822,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\config\" />
-    <Folder Include="assets\element-ui\" />
-    <Folder Include="assets\vue\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

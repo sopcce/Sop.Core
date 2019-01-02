@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Common.Logging;
 using ItemDoc.Core.API;
 using ItemDoc.Core.Mvc.Json;
 using Sop.Common.Serialization.Json;
@@ -11,6 +12,9 @@ namespace ItemDoc.Web.Controllers.Base
 {
     public class BaseController : Controller
     {
+       
+
+
         #region MyRegion
         private PropertyNameType _propertyNameType = PropertyNameType.Default;
 

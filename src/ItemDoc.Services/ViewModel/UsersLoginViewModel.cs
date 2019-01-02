@@ -31,7 +31,7 @@ namespace ItemDoc.Services.ViewModel
         /// 用户注册验证码
         /// </summary>
         [Required(ErrorMessage = "验证码不能为空!")]
-        [Remote("ValidateCaptchaCode", " Account", ErrorMessage = "验证码不正确")] 
+        [Remote("ValidateCaptchaCode", "Account", ErrorMessage = "验证码不正确")] 
         public string CaptchaCode { get; set; }
 
 

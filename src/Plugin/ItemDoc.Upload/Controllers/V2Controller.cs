@@ -22,6 +22,9 @@ using ItemDoc.Core.Mvc.SystemMessage;
 
 namespace ItemDoc.Upload.Controllers
 {
+    /// <summary>
+    /// Test
+    /// </summary>
     public class V2Controller : ApiController
     {
         // GET api/<controller>
