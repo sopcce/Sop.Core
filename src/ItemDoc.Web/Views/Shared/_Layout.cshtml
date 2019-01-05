@@ -18,25 +18,14 @@
     <!-- @ItemDoc.Framework.Utility.WebUtility.GetIp() -->
     <!-- Bootstrap core CSS -->
 
-    <link href="~/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-
+    <link href="~/assets/bootstrap/css/bootstrap.css?v=11" rel="stylesheet" />
+    <link href="~/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/assets/element-ui/index.css" rel="stylesheet" />
     <!--[if lt IE 9]>
-        <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+       <script src="~/assets/html5shiv/html5shiv.min.js"></script>
+       <script src="~/assets/respond.js/respond.min.js"></script>
     <![endif]-->
-    <script src="~/assets/lib/jquery-1.10.2.js"></script>
 
-
-    <!--vue 开发环境版本，包含了有帮助的命令行警告 -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!--vue 生产环境版本，优化了尺寸和速度
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
-    <!-- 引入样式 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <!-- 引入组件库 -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script src="~/assets/lib/main.js"></script>
 
     @Styles.Render("~/assets/common-css")
     @RenderSection("heads", false)
@@ -88,10 +77,10 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="@SiteUrls.Instance().AccountHome(info.User.Identity.GetUserName())">我的主页</a></li>
                                     <li><a href="@SiteUrls.Instance().AccountPost(info.User.Identity.GetUserName())">内容管理</a></li>
-                                   
+
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-header">帮助</li>
-                                    <li><a href="@SiteUrls.Instance().AccountSettings()">设置</a></li> 
+                                    <li><a href="@SiteUrls.Instance().AccountSettings()">设置</a></li>
                                     <li><a href="@SiteUrls.Instance().AccountSignOut()">退出</a></li>
                                 </ul>
                             </li>
@@ -116,7 +105,13 @@
         <hr />
         @RenderPage("~/Views/Home/_Footer.cshtml")
     </div>
+    <script src="~/assets/lib/jquery-1.10.2.js"></script>
     <script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/vue/vue.min.js"></script>
+    <!-- 引入组件库 -->
+    <script src="~/assets/element-ui/index.js"></script>
+    <script src="~/assets/axios/axios.min.js"></script>
+    <script src="~/assets/lib/sopcce.com/main.js"></script>
     @Scripts.Render("~/assets/common-js")
     @RenderSection("scripts", false)
 </body>
