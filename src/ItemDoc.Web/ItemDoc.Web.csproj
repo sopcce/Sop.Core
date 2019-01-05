@@ -773,13 +773,8 @@
     <Content Include="assets\bootstrap-treeview\css\bootstrap-treeview.css" />
     <Content Include="assets\bootstrap-treeview\js\bootstrap-treeview.js" />
     <Content Include="assets\bootstrap\css\bootstrap-responsive.css" />
-    <Content Include="assets\bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="assets\bootstrap\css\bootstrap-theme.css" />
-    <Content Include="assets\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="assets\bootstrap\css\bootstrap.css" />
-    <Content Include="assets\bootstrap\css\bootstrap.min.css" />
-    <Content Include="assets\bootstrap\css\bootstrap.vertical-tabs.css" />
-    <Content Include="assets\bootstrap\css\bootstrap.vertical-tabs.min.css" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\bootstrap\img\glyphicons-halflings-white.png" />
     <Content Include="assets\bootstrap\img\glyphicons-halflings.png" />
@@ -4040,6 +4035,7 @@
     <Content Include="assets\horizontal-timeline\js\jquery.mobile.custom.min.js" />
     <Content Include="assets\horizontal-timeline\js\main.js" />
     <Content Include="assets\horizontal-timeline\js\modernizr.js" />
+    <Content Include="assets\html5shiv\html5shiv.min.js" />
     <Content Include="assets\images\Android.png" />
     <Content Include="assets\images\favicon.png" />
     <Content Include="assets\jquery-qrcode\jquery.qrcode.js" />
@@ -4209,6 +4205,7 @@
     <Content Include="assets\plupload\js\plupload.full.min.js" />
     <Content Include="assets\plupload\js\plupload.min.js" />
     <Content Include="assets\plupload\license.txt" />
+    <Content Include="assets\respond.js\respond.min.js" />
     <Content Include="assets\sco.js\css\styles.css" />
     <Content Include="assets\scrollup\demo\css\labs.css" />
     <Content Include="assets\scrollup\demo\css\themes\image.css" />
@@ -4553,10 +4550,6 @@
     <Content Include="assets\bootstrap-table\src\locale\bootstrap-table-en-US.js.template" />
     <Content Include="assets\bootstrap-table\src\locale\README.md" />
     <Content Include="assets\bootstrap-table\_config.yml" />
-    <Content Include="assets\bootstrap\css\bootstrap-theme.css.map" />
-    <Content Include="assets\bootstrap\css\bootstrap-theme.min.css.map" />
-    <Content Include="assets\bootstrap\css\bootstrap.css.map" />
-    <Content Include="assets\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />

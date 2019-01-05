@@ -38,8 +38,7 @@ namespace ItemDoc.Web
       //"~/assets/lib/jquery-1.10.2.js",
       //"~/assets/bootstrap/js/bootstrap.min.js",
 
-      bundles.Add(new StyleBundle("~/assets/common-css").Include(
-        "~/assets/bootstrap/css/bootstrap.min.css",
+      bundles.Add(new StyleBundle("~/assets/common-css").Include( 
         "~/assets/layer/theme/default/layer.css",
         "~/assets/common/common.css"
       ));
