@@ -142,6 +142,7 @@
     <Compile Include="SiteUrls.cs" />
     <Compile Include="UEditor\UeditorAttachmentInfo.cs" />
     <Compile Include="UEditor\UEditorHelper.cs" />
+    <Compile Include="Utilities\ConvertUtility.cs" />
     <Compile Include="Utilities\RegexUtility.cs" />
     <Compile Include="Utilities\StringUtility.cs" />
     <Content Include="phantomjs-license.txt">

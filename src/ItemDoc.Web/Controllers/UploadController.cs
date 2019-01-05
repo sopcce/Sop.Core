@@ -20,6 +20,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using Common.Logging;
 using ItemDoc.Core.API;
+using ItemDoc.Core.Utilities;
 using ItemDoc.Core.Web;
 using ItemDoc.Framework.Caching;
 using Microsoft.Net.Http.Headers;
@@ -123,9 +124,10 @@ namespace ItemDoc.Web.Controllers
                         var ownerid = Request.Form["ownerId"] ?? Guid.NewGuid().ToString("N");
                         Stopwatch sw = new Stopwatch();
                         sw.Start();
-                        var result = await UploadFile(ownerid, file);
+                        //var result = await UploadFile(ownerid, file);
+                        var result = null;
                         sw.Stop();
-                        var ElapsedMilliseconds = sw.ElapsedMilliseconds;
+                        var elapsedMilliseconds = sw.ElapsedMilliseconds;
 
                         var cc = result.FromJson<DataPackage>();
 
@@ -136,7 +138,7 @@ namespace ItemDoc.Web.Controllers
                         {
                             return JsonErrorResult(null, "操作失败");
                         }
-                        return JsonSuccessResult(new DataInfo { path = path }, "操作成功" + ElapsedMilliseconds.ToString());
+                        return JsonSuccessResult(new DataInfo { path = path }, "操作成功" + elapsedMilliseconds.ToString());
                     }
                 }
 
@@ -154,34 +156,7 @@ namespace ItemDoc.Web.Controllers
 
         //{"code":200,"data":{"data":"","Path":" http://localhost:8014/Upload3//Uploads/3File/2018/10/30/138f076b24eb442bb8ccbabcab7f1bd2.jpg","status":"ok","Message":""},"paging":null,"description":""}
 
-        private byte[] StreamToBytes(Stream stream)
-        {
-            byte[] buffer = new byte[stream.Length];
-            stream.Read(buffer, 0, buffer.Length);
-            stream.Seek(0, SeekOrigin.Begin);
-            return buffer;
-        }
-
-
-        public string Base()
-        {
-            using (MemoryStream memStream = new MemoryStream())
-            {
-                memStream.Seek(0, SeekOrigin.Begin);
-                memStream.Seek(0, SeekOrigin.Begin);
-                byte[] bytes = memStream.ToArray();
-                return Convert.ToBase64String(bytes);
-            }
-        }
-
-
-
-        public class DataInfo
-        {
-            public string path { get; set; }
-
-        }
-
+       
         public async Task<string> UploadFile(string ownerId, HttpPostedFileBase file)
         {
 
@@ -214,7 +189,7 @@ namespace ItemDoc.Web.Controllers
             ////string url = redisService.Get<ImgServerParameter>(cacheKey);
             //redisService.Set(ownerId, list[i], TimeSpan.FromDays(30));
 
-            var d = StreamToBytes(file.InputStream);
+            var d = ConvertUtility.StreamToBytes(file.InputStream);
             var ba = Convert.ToBase64String(d);
 
 
@@ -237,26 +212,24 @@ namespace ItemDoc.Web.Controllers
                     client.Proxy = null;
                     client.Timeout = 1000 * 60 * 10; //10分钟
                     client.Encoding = Encoding.UTF8; 
-                    var responseArray = await client.UploadDataTaskAsync(imageServerUrl, StreamToBytes(file.InputStream));//向图片服务器发送文件数据.
+                    var responseArray = await client.UploadDataTaskAsync(imageServerUrl, ConvertUtility.StreamToBytes(file.InputStream));//向图片服务器发送文件数据.
                     result = Encoding.GetEncoding("UTF-8").GetString(responseArray);
-
                 }
-                System.GC.Collect();
-
             }
             catch (Exception ex)
             {
                 Logger.Error(ex.Message);
                 Logger.Error(imageServerUrl);
-                System.GC.Collect();
+              
             }
-
-
-
             return await Task.FromResult<string>(result);
         }
 
+        public class DataInfo
+        {
+            public string path { get; set; }
 
+        }
 
         public void ddd()
         {
