@@ -1,32 +1,24 @@
-﻿using ItemDoc.Core.Extensions;
+﻿using Common.Logging;
+using ItemDoc.Core.API;
+using ItemDoc.Core.Extensions;
+using ItemDoc.Core.Utilities;
+using ItemDoc.Core.Web;
 using ItemDoc.Framework.Utility;
 using ItemDoc.Services.Parameter;
 using ItemDoc.Services.Servers;
-using ItemDoc.Web.Controllers.Base;
 using Microsoft.Win32;
 using Sop.Common.Serialization;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
-using Common.Logging;
-using ItemDoc.Core.API;
-using ItemDoc.Core.Utilities;
-using ItemDoc.Core.Web;
-using ItemDoc.Framework.Caching;
-using Microsoft.Net.Http.Headers;
 using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
-using ItemDoc.Framework.Environment;
-using ItemDoc.Framework.SystemLog;
 
 namespace ItemDoc.Web.Controllers
 {
@@ -124,21 +116,21 @@ namespace ItemDoc.Web.Controllers
                         var ownerid = Request.Form["ownerId"] ?? Guid.NewGuid().ToString("N");
                         Stopwatch sw = new Stopwatch();
                         sw.Start();
-                        //var result = await UploadFile(ownerid, file);
-                        var result = null;
+                        var result = await SaveUploadFile(ownerid, file);
+
                         sw.Stop();
                         var elapsedMilliseconds = sw.ElapsedMilliseconds;
 
                         var cc = result.FromJson<DataPackage>();
+                        var paths = Framework.Utility.WebUtility.GetRootPath();
 
 
-
-                        var path = cc.data?.ToJson()?.FromJson<DataInfo>()?.path;
-                        if (string.IsNullOrWhiteSpace(path))
+                        var Data = cc?.Data?.ToJson()?.FromJson<DataInfo>();
+                        if (string.IsNullOrWhiteSpace(cc?.Data?.ToJson()))
                         {
                             return JsonErrorResult(null, "操作失败");
                         }
-                        return JsonSuccessResult(new DataInfo { path = path }, "操作成功" + elapsedMilliseconds.ToString());
+                        return JsonSuccessResult(Data, "操作成功" + elapsedMilliseconds.ToString());
                     }
                 }
 
@@ -154,9 +146,14 @@ namespace ItemDoc.Web.Controllers
         #endregion
 
 
-        //{"code":200,"data":{"data":"","Path":" http://localhost:8014/Upload3//Uploads/3File/2018/10/30/138f076b24eb442bb8ccbabcab7f1bd2.jpg","status":"ok","Message":""},"paging":null,"description":""}
+        #region 异步保存图片
 
-       
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ownerId"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
         public async Task<string> UploadFile(string ownerId, HttpPostedFileBase file)
         {
 
@@ -211,7 +208,7 @@ namespace ItemDoc.Web.Controllers
                 {
                     client.Proxy = null;
                     client.Timeout = 1000 * 60 * 10; //10分钟
-                    client.Encoding = Encoding.UTF8; 
+                    client.Encoding = Encoding.UTF8;
                     var responseArray = await client.UploadDataTaskAsync(imageServerUrl, ConvertUtility.StreamToBytes(file.InputStream));//向图片服务器发送文件数据.
                     result = Encoding.GetEncoding("UTF-8").GetString(responseArray);
                 }
@@ -220,15 +217,59 @@ namespace ItemDoc.Web.Controllers
             {
                 Logger.Error(ex.Message);
                 Logger.Error(imageServerUrl);
-              
+
             }
             return await Task.FromResult<string>(result);
         }
+
+        public async Task<string> SaveUploadFile(string ownerId, HttpPostedFileBase file)
+        {
+
+            string fileName = Path.GetFileName(file.FileName);//获取文件名.
+            string fileExt = Path.GetExtension(fileName);//获取文件扩展名.
+            //
+            string upPath = "~/Uploads/LocalFile/{yyyy}/{MM}/{dd}/";
+            string newFileName = Guid.NewGuid().ToString("N") + fileExt?.ToLower();
+            upPath = CommonUtility.Format(newFileName, upPath);
+            string diskPath = FileUtility.GetDiskFilePath(upPath) + newFileName;
+            string serverUrlPath = upPath.Replace("~", "") + newFileName;
+
+
+
+            string result = string.Empty;
+            try
+            {
+                file.SaveAs(diskPath);
+                result = new DataPackage
+                {
+                    Code = HttpStatusCode.OK,
+                    Data = new DataInfo()
+                    {
+                        path = serverUrlPath,
+                        ServerPath = Request.RawUrl + serverUrlPath
+                    },
+                    Msg = "保存成功"
+                }.ToJson();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message);
+                Logger.Error(serverUrlPath);
+
+            }
+            return await Task.FromResult<string>(result);
+        }
+
+
+
+        #endregion
+
 
         public class DataInfo
         {
             public string path { get; set; }
 
+            public string ServerPath { get; set; }
         }
 
         public void ddd()

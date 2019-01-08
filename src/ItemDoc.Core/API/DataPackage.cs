@@ -11,38 +11,43 @@ namespace ItemDoc.Core.API
         /// <summary>
         /// 类型
         /// </summary>
-        public HttpStatusCode code { get; set; }
+        public HttpStatusCode Code { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Status { get; set; }
         /// <summary>
         /// 数据
         /// </summary>
-        public object data { get; set; }
+        public object Data { get; set; }
 
         /// <summary>
         /// 分页
         /// </summary>
-        public object paging { get; set; }
+        public object Paging { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>
-        public string description { get; set; }
+        public string Msg { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Token { get; set; }
 
-        public DataPackage()
-        {
-        }
 
         /// <summary>
         /// 数据包
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="code"></param>
         /// <param name="data"></param>
-        /// <param name="desc"></param>
-        public DataPackage(HttpStatusCode code, object data = null, string desc = null)
+        /// <param name="msg"></param>
+        public DataPackage(HttpStatusCode code, object data = null, string msg = null)
         {
-            this.code = code;
-            this.data = data;
-            this.description = desc;
+            this.Code = code;
+            this.Data = data;
+            this.Msg = msg;
         }
 
         /// <summary>
@@ -50,12 +55,12 @@ namespace ItemDoc.Core.API
         /// </summary>
         /// <param name="data"></param>
         /// <param name="paging"></param>
-        /// <param name="desc"></param>
-        public DataPackage(object data = null, object paging = null, string desc = null)
+        /// <param name="msg"></param>
+        public DataPackage(object data = null, object paging = null, string msg = null)
         {
-            this.data = data;
-            this.paging = paging;
-            this.description = desc;
+            this.Data = data;
+            this.Paging = paging;
+            this.Msg = msg;
         }
     }
 

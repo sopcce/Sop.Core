@@ -286,8 +286,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Base\BaseController.cs" />
-    <Compile Include="Controllers\Base\DefaultController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -4815,6 +4815,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\config\" />
+    <Folder Include="Controllers\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

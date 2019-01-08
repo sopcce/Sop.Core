@@ -26,6 +26,7 @@ namespace ItemDoc.Web.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        #region private
         private SignInService _signInManager;
         private UserManager _userManager;
 
@@ -66,7 +67,8 @@ namespace ItemDoc.Web.Controllers
             {
                 _userManager = value;
             }
-        }
+        } 
+        #endregion
 
 
 

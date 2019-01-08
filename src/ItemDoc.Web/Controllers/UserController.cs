@@ -7,13 +7,15 @@ using ItemDoc.Services.Servers;
 using ItemDoc.Services.ViewModel;
 using System;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.ApplicationServices;
 using System.Web.Mvc;
+using ItemDoc.Core.API;
 
 namespace ItemDoc.Web.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         public AuthenticationService Authentication { get; set; }
         public UsersService UsersService { get; set; }
@@ -82,6 +84,7 @@ namespace ItemDoc.Web.Controllers
                     if (!isok)
                     {
                         ViewData["msg"] = new SystemMessageData(SystemMessageType.Error, "验证码输入错误");
+
                         return View();
                     }
 
