@@ -54,3 +54,5 @@
 /bak
 /src/Plugin/ItemDoc.Upload/App_Data/sopcce.com
 /src/Plugin/ItemDoc.Upload/Uploads
+/src/ItemDoc.ConsoleBot/bin
+/src/ItemDoc.ConsoleBot/obj
