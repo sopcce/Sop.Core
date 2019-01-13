@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 
-namespace ItemDoc.Core.WebCrawler.Events
+namespace ItemDoc.ConsoleBot.WebCrawler.Events
 {
     /// <summary>
     /// 爬虫完成事件

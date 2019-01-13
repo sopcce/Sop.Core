@@ -145,9 +145,6 @@
     <Compile Include="Utilities\ConvertUtility.cs" />
     <Compile Include="Utilities\RegexUtility.cs" />
     <Compile Include="Utilities\CommonUtility.cs" />
-    <Content Include="phantomjs-license.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="WebCrawler\readme.txt" />
     <Compile Include="WebCrawler\Events\OnCompletedEventArgs.cs" />
     <Compile Include="WebCrawler\Events\OnErrorEventArgs.cs" />

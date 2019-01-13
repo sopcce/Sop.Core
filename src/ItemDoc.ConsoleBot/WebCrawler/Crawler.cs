@@ -7,13 +7,15 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using ItemDoc.ConsoleBot.WebCrawler.Events;
+using ItemDoc.Core.WebCrawler;
 using ItemDoc.Core.WebCrawler.Events;
 using ItemDoc.Core.WebCrawler.Models;
 using ItemDoc.Framework.Utility;
 using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Support.UI;
 
-namespace ItemDoc.Core.WebCrawler
+namespace ItemDoc.ConsoleBot.WebCrawler
 {
     /// <summary>
     /// 基于Selenium+PhantomJS实现的爬虫

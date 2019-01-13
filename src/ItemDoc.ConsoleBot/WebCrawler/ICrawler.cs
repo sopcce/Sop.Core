@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Threading.Tasks;
+using ItemDoc.ConsoleBot.WebCrawler.Events;
+using ItemDoc.Core.WebCrawler;
+using ItemDoc.Core.WebCrawler.Events;
 //using OpenQA.Selenium;
 //using OpenQA.Selenium.PhantomJS;
- 
-using System.Threading.Tasks;
-using ItemDoc.Core.WebCrawler.Events;
-using Wesley.Crawler.StrongCrawler;
 
-namespace ItemDoc.Core.WebCrawler
+namespace ItemDoc.ConsoleBot.WebCrawler
 {
     public interface ICrawler
     {
