@@ -56,3 +56,5 @@
 /src/Plugin/ItemDoc.Upload/Uploads
 /src/ItemDoc.ConsoleBot/bin
 /src/ItemDoc.ConsoleBot/obj
+/src/Plugin/ItemDoc.ConsoleBot/bin
+/src/Plugin/ItemDoc.ConsoleBot/obj
