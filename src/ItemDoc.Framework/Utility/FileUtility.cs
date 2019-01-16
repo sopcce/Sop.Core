@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using NHibernate.Util;
 
 namespace ItemDoc.Framework.Utility
 {
@@ -691,38 +692,6 @@ namespace ItemDoc.Framework.Utility
 
 
         /// <summary>
-        /// 获取文件扩展名 TODO:
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        public static string GetFileExtension(string fileName)
-        {
-            string fileExtension = fileName.Substring(fileName.LastIndexOf(".", StringComparison.Ordinal) + 1);
-
-            //return fileExtension.ToLowerInvariant();
-
-            string text = Path.GetExtension(fileName);
-            if (text == null)
-            {
-                text = string.Empty;
-            }
-            return text.ToLowerInvariant();
-        }
-
-        /// <summary>
-        /// 获取文件名称
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        public static string GetFileNameWithoutExtension(string fileName)
-        {
-            string fileNameWithoutExtension = fileName.Substring(0, fileName.LastIndexOf(".", StringComparison.Ordinal));
-            return fileNameWithoutExtension;
-        }
-
-
-
-        /// <summary>
         /// 友好的文件大小信息
         /// </summary>
         /// <param name="fileSize">文件字节数</param>
@@ -805,8 +774,15 @@ namespace ItemDoc.Framework.Utility
                     filePath = filePath.Replace('/', System.IO.Path.DirectorySeparatorChar).Replace("~", "");
                     result = Combine(System.AppDomain.CurrentDomain.BaseDirectory, filePath);
                 }
-                if (!Directory.Exists(result))
-                    Directory.CreateDirectory(result);
+                string fileName = Path.GetFileName(result);
+                string newResult = result?.Replace(fileName, "");
+                if (!string.IsNullOrWhiteSpace(result) && !Directory.Exists(newResult))
+                {
+                    var info = string.IsNullOrWhiteSpace(fileName)
+                         ? Directory.CreateDirectory(result)
+                         : Directory.CreateDirectory(newResult);
+                }
+
 
             }
             catch (Exception ex)
