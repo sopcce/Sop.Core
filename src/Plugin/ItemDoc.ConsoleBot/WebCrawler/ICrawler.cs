@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using ItemDoc.ConsoleBot.Events;
-using ItemDoc.ConsoleBot.WebCrawler.Events;
+﻿using ItemDoc.ConsoleBot.Events;
 using ItemDoc.Core.WebCrawler;
 using ItemDoc.Core.WebCrawler.Events;
-//using OpenQA.Selenium;
-//using OpenQA.Selenium.PhantomJS;
+using System;
+using System.Threading.Tasks;
+using ItemDoc.ConsoleBot.Models;
+
 
 namespace ItemDoc.ConsoleBot.WebCrawler
 {
@@ -26,13 +25,13 @@ namespace ItemDoc.ConsoleBot.WebCrawler
         /// <summary>
         /// //启动爬虫进程
         /// </summary>
-        /// <param name="uri"></param>
+        /// <param name="url"></param>
         /// <param name="script"></param>
         /// <param name="operation"></param>
         /// <returns></returns>
-        Task Start(Uri uri, Script script, Operation operation);
+        Task Start(string url, Script script, Operation operation);
 
-        Task<string> Start(Uri uri, string proxy = null);
+        Task<string> Start(string url, ProxyOptions proxyOptions = null);
 
     }
 }

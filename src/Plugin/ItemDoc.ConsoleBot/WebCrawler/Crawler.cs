@@ -9,7 +9,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using ItemDoc.ConsoleBot.Events;
 using ItemDoc.ConsoleBot.Models;
-using ItemDoc.ConsoleBot.WebCrawler.Events;
 using ItemDoc.Core.WebCrawler;
 using ItemDoc.Core.WebCrawler.Events;
 using ItemDoc.Framework.Utility;
@@ -80,21 +79,21 @@ namespace ItemDoc.ConsoleBot.WebCrawler
         /// <summary>
         /// 高级爬虫
         /// </summary>
-        /// <param name="uri">抓取地址URL</param>
+        /// <param name="url">抓取地址URL</param>
         /// <param name="script">要执行的Javascript脚本代码</param>
         /// <param name="operation">要执行的页面操作</param>
         /// <returns></returns>
-        public async Task Start(Uri uri, Script script, Operation operation)
+        public async Task Start(string url, Script script, Operation operation)
         {
             await Task.Run(() =>
             {
-                if (OnStart != null) this.OnStart(this, new OnStartEventArgs(uri));
+                OnStart?.Invoke(this, new OnStartEventArgs(url));
 
                 var driver = new PhantomJSDriver(_service, _options);//实例化PhantomJS的WebDriver
                 try
                 {
                     var watch = DateTime.Now;
-                    driver.Navigate().GoToUrl(uri.ToString());//请求URL地址
+                    driver.Navigate().GoToUrl(url);//请求URL地址
                     if (script != null) driver.ExecuteScript(script.Code, script.Args);//执行Javascript代码
                     if (operation.Action != null) operation.Action.Invoke(driver);
                     //var driverWait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(operation.Timeout));//设置超时时间为x毫秒
@@ -102,11 +101,11 @@ namespace ItemDoc.ConsoleBot.WebCrawler
                     var threadId = System.Threading.Thread.CurrentThread.ManagedThreadId;//获取当前任务线程ID
                     var milliseconds = DateTime.Now.Subtract(watch).Milliseconds;//获取请求执行时间;
                     var pageSource = driver.PageSource;//获取网页Dom结构
-                    this.OnCompleted?.Invoke(this, new OnCompletedEventArgs(uri, threadId, milliseconds, pageSource, driver));
+                    this.OnCompleted?.Invoke(this, new OnCompletedEventArgs(url, threadId, milliseconds, pageSource, driver));
                 }
                 catch (Exception ex)
                 {
-                    this.OnError?.Invoke(this, new OnErrorEventArgs(uri, ex));
+                    this.OnError?.Invoke(this, new OnErrorEventArgs(url, ex));
                 }
                 finally
                 {
@@ -119,7 +118,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
         /// <summary>
         /// 异步创建爬虫
         /// </summary> 
-        /// <param name="Url">爬虫URL地址</param>
+        /// <param name="url">爬虫URL地址</param>
         /// <param name="proxyOptions">代理服务器</param>
         /// <returns>网页源代码</returns>
         public async Task<string> Start(string url, ProxyOptions proxyOptions = null)
@@ -142,7 +141,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
                     ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
                     // 创建并配置Web请求  
                     request = WebRequest.Create("") as HttpWebRequest;
-                   
+
                     //设置配合着
                     if (request != null)
                     {
@@ -176,7 +175,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
                                 currentWebProxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
                             //设置代理
                             request.Proxy = currentWebProxy;
-                        } 
+                        }
                         response = request.GetResponse() as HttpWebResponse;
                     }
                     if (response != null)
@@ -262,15 +261,15 @@ namespace ItemDoc.ConsoleBot.WebCrawler
 
                     }
 
-                   
+
                     watch.Stop();
                     var threadId = System.Threading.Thread.CurrentThread.ManagedThreadId;//获取当前任务线程ID
                     var milliseconds = watch.ElapsedMilliseconds;//获取请求执行时间
-                    this.OnCompleted?.Invoke(this, new OnCompletedEventArgs(uri, threadId, milliseconds, pageSource));
+                    this.OnCompleted?.Invoke(this, new OnCompletedEventArgs(url, threadId, milliseconds, pageSource));
                 }
                 catch (Exception ex)
                 {
-                    OnError?.Invoke(this, new OnErrorEventArgs(uri, ex));
+                    OnError?.Invoke(this, new OnErrorEventArgs(url, ex));
                 }
                 finally
                 {
@@ -284,9 +283,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
             });
         }
 
-
-
-
+         
     }
 
 }
