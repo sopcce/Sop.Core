@@ -1,0 +1,77 @@
+# pdf2htmlEX manifest 
+# Copyright (C) 2012,2013 Lu Wang <coolwanglu@gmail.com>
+#
+# Syntax
+# The first char of each line is the command
+# Empty lines are ignored
+#
+# # - comment
+# @ - embed or link to a file from data dir, depending on the value of --single-html
+# $ - special use for pdf2htmlEX
+#
+# Special
+# If a line contains """ only, all text until next """ will be included
+
+"""
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<link rel="stylesheet" type="text/css" href="/assets/pdf2htmlEX/pdf2htmlEX.css" />
+<link rel="stylesheet" type="text/css" href="/assets/pdf2htmlEX/pdf2htmlEX-fancy.css" />
+<link rel="stylesheet" type="text/css" href="/assets/pdf2htmlEX/pdf2htmlEX-customized.css" />
+"""
+# PDF specific CSS styles
+$css
+"""
+<script type="text/javascript" src="/assets/pdf2htmlEX/jquery.js"></script>
+<script type="text/javascript" src="/assets/pdf2htmlEX/pdf2htmlEX.js"></script>
+<script type="text/javascript" src="/assets/pdf2htmlEX/pdf2htmlEX-customized.js"></script>
+"""
+
+"""
+</head>
+<body>
+"""
+
+# The sidebar
+# By default this is hidden, pdf2htmlEX.js will add the 'opened' class if it is not empty
+# You can add a class 'opened' here if you want it always opened or you don't use pdf2htmlEX.js
+# e.g. 
+# <div id="sidebar" class="opened">
+"""
+<div id="sidebar">
+"""
+# container of outlines
+"""
+<div id="outline">
+"""
+$outline
+"""
+</div>
+</div>
+"""
+
+# The container of PDF pages
+# check base.css for an example and requirements of its CSS styles
+"""
+<div id="page-container">
+<div id="pdfPages">
+"""
+$pages
+"""
+</div>
+</div>
+"""
+
+ 
+"""
+</body>
+</html>
+"""
+
+# MANIFEST END
+#BY sopcce.com
