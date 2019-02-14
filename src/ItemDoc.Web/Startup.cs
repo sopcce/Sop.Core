@@ -4,6 +4,7 @@ using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Common.Logging;
 using ItemDoc.Core.Mvc.ModelBinder;
+using ItemDoc.Core.WebCrawler;
 using ItemDoc.Framework.Caching;
 using ItemDoc.Framework.Environment;
 using ItemDoc.Framework.Repositories;
@@ -17,8 +18,6 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using ItemDoc.Core.WebCrawler;
-using ItemDoc.Framework.Utility;
 
 [assembly: OwinStartup(typeof(ItemDoc.Web.Startup))]
 namespace ItemDoc.Web
@@ -27,7 +26,7 @@ namespace ItemDoc.Web
     {
         private static readonly ILog Logger = LogManager.GetLogger<MvcApplication>();
         private readonly bool _miniProfiler = Config.AppSettings<bool>("MiniProfiler.Enabled", true);
-        private static readonly bool RedisCache = Config.AppSettings<bool>("RedisCaching.Enabled", false);
+        private static readonly bool RedisCache = Config.AppSettings<bool>("RedisCaching.Enabled", true);
         private static readonly string RedisServer = Config.AppSettings<string>("RedisServerConnectionString", "");
         private static readonly string ServerProxy = Config.AppSettings<string>("ServerProxy", null);
 
@@ -53,7 +52,10 @@ namespace ItemDoc.Web
             //注册NHibernate的SessionManager
             builder.Register(@delegate: c => new SessionManager(assemblies)).SingleInstance().PropertiesAutowired();
 
+            //注册缓存服务，每次请求都是一个新的实例
+            builder.Register(c => new MemoryCacheManager()).As<ICacheManager>().SingleInstance().PropertiesAutowired();
             //注册Redis服务
+            //TODO: 记录redis 服务异常不能启动的时候，应该测试是否可以使用。
             ConfigurationOptions option = new ConfigurationOptions
             {
                 AllowAdmin = true,
@@ -62,17 +64,18 @@ namespace ItemDoc.Web
                 Password = "sopcce.com.cc2018"
             };
             option.EndPoints.Add("127.0.0.1", 6379);
+
             //option.EndPoints.Add("127.0.0.1", 6380);
             //option.EndPoints.Add("127.0.0.1", 6381);
             //option.EndPoints.Add("127.0.0.1", 6382);
-            //判断redis DB时候可以来了解，不可以不要启用
+            
 
 
             builder.Register(c => ConnectionMultiplexer.Connect(option)).SingleInstance().PropertiesAutowired();
 
             builder.Register(c => new RedisCacheManager(option)).As<ICacheManager>().SingleInstance().PropertiesAutowired();
-            //注册缓存服务，每次请求都是一个新的实例
-            builder.Register(c => new MemoryCacheManager()).As<ICacheManager>().SingleInstance().PropertiesAutowired();
+             
+           
 
             //IAuthenticationService
             builder.Register(c => new OwinAuthenticationService()).As<IAuthenticationService>().PropertiesAutowired().InstancePerRequest();
@@ -118,6 +121,7 @@ namespace ItemDoc.Web
 
             //禁止Response的header信息包含X-AspNetMvc-Version
             MvcHandler.DisableMvcResponseHeader = true;
+           
         }
 
 

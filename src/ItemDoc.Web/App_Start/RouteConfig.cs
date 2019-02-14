@@ -15,7 +15,7 @@ namespace ItemDoc.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapMvcAttributeRoutes();
+            //routes.MapMvcAttributeRoutes();
 
             #region Item
             //匹配特殊路由
@@ -31,15 +31,20 @@ namespace ItemDoc.Web
               url: "Item/PostEdit/{catalogId}/{id}",
               defaults: new { controller = "Item", action = "PostEdit", catalogId = 0, id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Item_Index",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Item", action = "Index" }
+            );
             #endregion
 
             #region Account 
-            ////
-            //routes.MapRoute(
-            //name: "Account_Home",
-            //url: "{userName}/Home",
-            //defaults: new { controller = "Account", action = "Home", userName = "" }
-            //);
+            //
+            routes.MapRoute(
+            name: "Account_Home",
+            url: "{userName}/Home",
+            defaults: new { controller = "Account", action = "Home", userName = "" }
+            );
             routes.MapRoute(
                 name: "Account_Home_Short",
                 url: "{userName}",
@@ -48,25 +53,26 @@ namespace ItemDoc.Web
 
             #endregion
 
+ 
 
 
 
 
 
-
-
+            routes.MapRoute(
+                name: "Home_Default",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "Index"  }
+            );
+            
 
             //安装模块
             routes.MapRoute(
-          name: "Default",
-          url: "{controller}/{action}/{id}",
-          defaults: new
-          {
-              controller = "Install",
-              action = "Index",
-              id = UrlParameter.Optional
-          }
-      );
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Install", action = "Index", id = UrlParameter.Optional }
+            );
+            
 
 
 

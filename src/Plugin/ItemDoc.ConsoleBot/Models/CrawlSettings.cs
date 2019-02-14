@@ -1,4 +1,5 @@
 ﻿using System;
+using OpenQA.Selenium;
 
 namespace ItemDoc.ConsoleBot.Models
 {
@@ -12,29 +13,46 @@ namespace ItemDoc.ConsoleBot.Models
 
         public CrawlSettings()
         {
-            this.Options = new RequestOptions();
-       
+            this.RequestOption = new RequestOptions();
+            this.ProxyOption = new ProxyOptions();
         }
+        public string Url { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public CrawlerType CrawlerType { get; set; } = CrawlerType.PhantomJS;
+        public CrawlerType CrawlerType { get; set; } = CrawlerType.PhantomJs;
         /// <summary>
         /// 
         /// </summary>
-        public string Path { get; set; }
+    
         /// <summary>
         /// 延时时间
         /// </summary>
         public bool AutoSpeedLimit { get; set; } = false;
+
+
+        public Action<IWebDriver> Action { get; set; }
+
+        public Func<IWebDriver, bool> Condition { get; set; }
+
+
+
+        public string ScriptCode { get; set; }
+
+        public object[] ScriptArgs { get; set; }
+
+
+        public int Timeout { get; set; }
+
+        public string Path { get; set; }
         /// <summary>
-        /// 
+        /// 请求参数
         /// </summary>
-        public RequestOptions Options { get; set; }
+        public RequestOptions RequestOption { get; set; }
         /// <summary>
-        /// 代理
+        /// 代理设置
         /// </summary>
-        public string Proxy { get; set; }
+        public ProxyOptions ProxyOption { get; set; }
     }
 
     public enum CrawlerType
@@ -42,7 +60,7 @@ namespace ItemDoc.ConsoleBot.Models
         /// <summary>
         /// 
         /// </summary>
-        PhantomJS = 1,
+        PhantomJs = 1,
         /// <summary>
         /// 
         /// </summary>

@@ -21,7 +21,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
             QA.IWebDriver theDriver = null;
             switch (this._browser)
             {
-                case Browsers.IE:
+                case Browsers.Ie:
                     {
                         QA.IE.InternetExplorerOptions _ieOptions = new QA.IE.InternetExplorerOptions();
                         _ieOptions.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
@@ -39,7 +39,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
                     {
                         theDriver = new QA.Safari.SafariDriver();
                     }; break;
-                case Browsers.PhantomJS:
+                case Browsers.PhantomJs:
                     {
                         theDriver = new QA.PhantomJS.PhantomJSDriver();
                     }; break;
@@ -142,7 +142,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
             Dictionary<string, string> cookies = new Dictionary<string, string>();
             switch (this._browser)
             {
-                case Browsers.IE:
+                case Browsers.Ie:
                     {
                         var allCookies = ((QA.IE.InternetExplorerDriver)wd).Manage().Cookies.AllCookies;
                         foreach (QA.Cookie cookie in allCookies)
@@ -174,7 +174,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
                             cookies[cookie.Name] = cookie.Value;
                         }
                     }; break;
-                case Browsers.PhantomJS:
+                case Browsers.PhantomJs:
                     {
                         var allCookies = ((QA.PhantomJS.PhantomJSDriver)wd).Manage().Cookies.AllCookies;
                         foreach (QA.Cookie cookie in allCookies)
@@ -202,7 +202,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
         {
             switch (this._browser)
             {
-                case Browsers.IE:
+                case Browsers.Ie:
                     {
                         ((QA.IE.InternetExplorerDriver)wd).Manage().Cookies.DeleteAllCookies();
                     }; break;
@@ -218,7 +218,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
                     {
                         ((QA.Safari.SafariDriver)wd).Manage().Cookies.DeleteAllCookies();
                     }; break;
-                case Browsers.PhantomJS:
+                case Browsers.PhantomJs:
                     {
                         ((QA.PhantomJS.PhantomJSDriver)wd).Manage().Cookies.DeleteAllCookies();
                     }; break;
@@ -349,7 +349,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
             var js = "document.documentElement.scrollTop=10000";
             switch (this._browser)
             {
-                case Browsers.IE:
+                case Browsers.Ie:
                     {
                         ((QA.IE.InternetExplorerDriver)wd).ExecuteScript(js, null);
                     }; break;
@@ -365,7 +365,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
                     {
                         ((QA.Safari.SafariDriver)wd).ExecuteScript(js, null);
                     }; break;
-                case Browsers.PhantomJS:
+                case Browsers.PhantomJs:
                     {
                         ((QA.PhantomJS.PhantomJSDriver)wd).ExecuteScript(js, null);
                     }; break;
@@ -388,7 +388,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
             var js = "document.documentElement.scrollLeft=10000";
             switch (this._browser)
             {
-                case Browsers.IE:
+                case Browsers.Ie:
                     {
                         ((QA.IE.InternetExplorerDriver)wd).ExecuteScript(js, null);
                     }; break;
@@ -404,7 +404,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
                     {
                         ((QA.Safari.SafariDriver)wd).ExecuteScript(js, null);
                     }; break;
-                case Browsers.PhantomJS:
+                case Browsers.PhantomJs:
                     {
                         ((QA.PhantomJS.PhantomJSDriver)wd).ExecuteScript(js, null);
                     }; break;
@@ -434,7 +434,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
             }
             switch (this._browser)
             {
-                case Browsers.IE:
+                case Browsers.Ie:
                     {
                         ((QA.IE.InternetExplorerDriver)wd).ExecuteScript(js, null);
                     }; break;
@@ -450,7 +450,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
                     {
                         ((QA.Safari.SafariDriver)wd).ExecuteScript(js, null);
                     }; break;
-                case Browsers.PhantomJS:
+                case Browsers.PhantomJs:
                     {
                         ((QA.PhantomJS.PhantomJSDriver)wd).ExecuteScript(js, null);
                     }; break;
@@ -470,7 +470,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
             QA.Screenshot theScreenshot = null;
             switch (this._browser)
             {
-                case Browsers.IE:
+                case Browsers.Ie:
                     {
                         theScreenshot = ((QA.IE.InternetExplorerDriver)wd).GetScreenshot();
                     }; break;
@@ -486,7 +486,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
                     {
                         theScreenshot = ((QA.Safari.SafariDriver)wd).GetScreenshot();
                     }; break;
-                case Browsers.PhantomJS:
+                case Browsers.PhantomJs:
                     {
                         theScreenshot = ((QA.PhantomJS.PhantomJSDriver)wd).GetScreenshot();
                     }; break;
@@ -595,11 +595,11 @@ namespace ItemDoc.ConsoleBot.WebCrawler
         /// Executes javascript
         /// </summary>
         /// <param name="js"></param>
-        public void ExecuteJS(string js)
+        public void ExecuteJs(string js)
         {
             switch (this._browser)
             {
-                case Browsers.IE:
+                case Browsers.Ie:
                     {
                         ((QA.IE.InternetExplorerDriver)wd).ExecuteScript(js, null);
                     }; break;
@@ -615,7 +615,7 @@ namespace ItemDoc.ConsoleBot.WebCrawler
                     {
                         ((QA.Safari.SafariDriver)wd).ExecuteScript(js, null);
                     }; break;
-                case Browsers.PhantomJS:
+                case Browsers.PhantomJs:
                     {
                         ((QA.PhantomJS.PhantomJSDriver)wd).ExecuteScript(js, null);
                     }; break;
@@ -668,11 +668,11 @@ namespace ItemDoc.ConsoleBot.WebCrawler
 
     public enum Browsers
     {
-        IE,
+        Ie,
         Firefox,
         Chrome,
         Safari,
-        PhantomJS,
+        PhantomJs,
         Opera
     }
 }

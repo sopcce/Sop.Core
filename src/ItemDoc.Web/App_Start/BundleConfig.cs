@@ -12,6 +12,7 @@ namespace ItemDoc.Web
   {
 
 
+
     private static readonly bool EnableOptimizations = Config.AppSettings<bool>("BundleTable.EnableOptimizations", false);
 
     private static readonly string EnableMin = Config.AppSettings<string>("BundleTable.EnableMin", "");

@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ItemDoc.ConsoleBot.Helper;
+using ItemDoc.ConsoleBot.Models;
 using ItemDoc.ConsoleBot.Proxy;
+using ItemDoc.ConsoleBot.WebCrawler;
 using ItemDoc.Framework.Environment;
 using ItemDoc.Framework.Utility;
 using OpenQA.Selenium;
@@ -30,23 +32,11 @@ namespace ItemDoc.ConsoleBot
             Console.ForegroundColor = ConsoleColor.Green;
             Console.SetCursorPosition(10, 1);
             Console.Write("欢迎使用ConsoleBot监控内容爬虫");
-            Console.WriteLine();
+            //Console.WriteLine(); 
 
-
-
-
-            var path = Config.AppSettings<string>("RemoteConfig", "BotConfig.config");
-            Console.Write(path);
-            var local = FileUtility.GetDiskFilePath(path);
-
-
-
-
-
-
-
-
-
+            //var path = Config.AppSettings<string>("RemoteConfig", "BotConfig.config");
+            //Console.Write(path);
+            //var local = FileUtility.GetDiskFilePath(path);
 
 
 
@@ -63,8 +53,8 @@ namespace ItemDoc.ConsoleBot
 
             //}
             var url = "https://www.baidu.com";
-            int prot = 42825;
-            string ip = "131.161.68.2";
+            int prot = 8123;
+            string ip = "39.107.84.185";
             string proxyAddr = $"http://{ip}:{prot}";
 
             var proxyUser = "";
@@ -73,6 +63,34 @@ namespace ItemDoc.ConsoleBot
 
 
             var isok = FreeProxy.CheckProxy(url, proxyAddr, proxyUser, proxyPassWord, proxyDomain);
+
+            var vae = Crawler.Instance();
+            vae.OnStart += (s, e) =>
+            {
+                Console.WriteLine("爬虫开始抓取地址：" + e.Url);
+            };
+            vae.OnError += (s, e) =>
+            {
+                Console.WriteLine("爬虫抓取出现错误：" + e.Url + "，异常消息：" + e.Exception.ToString());
+            };
+            vae.OnCompleted += async (s, e) =>
+            {
+                var str = await vae.StartHttpTask(e.URL, new CrawlSettings()
+                {
+                    CrawlerType = CrawlerType.HttpWebRequest,
+                    AutoSpeedLimit = false,
+                    ProxyOption = new ProxyOptions()
+                    {
+                        Address = proxyAddr
+                    },
+                    RequestOption = new RequestOptions()
+                    {
+                        Method = "post"
+                    }
+
+                });
+                Console.WriteLine(str);
+            };
 
 
 

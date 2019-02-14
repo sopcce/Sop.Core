@@ -69,10 +69,7 @@ namespace ItemDoc.Web.Controllers
             }
         } 
         #endregion
-
-
-
-
+        
         #region Login
 
         //

@@ -22,40 +22,35 @@
             -moz-background-size: 100% 100%;
         }
     </style>
-
+    
 }
 @section scripts {
+ 
 
     <script src="~/assets/jquery.validate/jquery.validate.min.js"></script>
     <script src="~/assets/jquery.validate/jquery.validate.unobtrusive.js"></script>
     <script type="text/javascript">
+        //debugger
+        $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().AccountCaptchaCode()" +
+            "?v=" +Math.random() +") no-repeat center top");
         $(function() {
-            $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().AccountCaptchaCode()" +
-                "?v=" +Math.random() +")no-repeat center top");
-
             $(".checkcodeimg,.checkImgRefresh").on("click",
                 function() {
                     $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().AccountCaptchaCode()" +
                         "?v=" +
                         Math.random() +
                         ")no-repeat center top");
-
                 });
 
             if ('@systemMessageData.Type' === '@SystemMessageType.Error') {
                 layer.msg('@systemMessageData.Content', { autoHeight: true });
             }
-        });
+        }) 
     </script>
 
 
 }
-<style>
-    .form-signin {
-        max-width: 60%;
-        margin: 0 auto;
-    }
-</style>
+
 <h2>@ViewBag.Title.</h2>
 <div class="row">
     <div class="col-md-8">
@@ -66,7 +61,7 @@
                 <h4>使用账号登录</h4>
                 <hr />
                 @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
-                <div class="form-group"> 
+                <div class="form-group">
                     <label class="col-sm-2 control-label">UserName：</label>
                     <div class="col-md-10">
                         @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
@@ -91,8 +86,8 @@
                             @Html.TextBoxFor(n => n.CaptchaCode, new { minlength = "1", maxlength = "4", @class = "form-control", placeholder = "输入验证码", required = "required" })
                             <div class="input-group-addon checkImgRefresh" style="cursor: pointer;">刷新</div>
                         </div>
-                        @Html.ValidationMessageFor(model => model.CaptchaCode, "",new { @class = "text-danger" })
-                         
+                        @Html.ValidationMessageFor(model => model.CaptchaCode, "", new { @class = "text-danger" })
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -111,10 +106,6 @@
                 <p>
                     @Html.ActionLink("注册一个新的账号", "Register")
                 </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
             }
         </section>
     </div>

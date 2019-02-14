@@ -286,8 +286,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\Base\BasePublicController.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\Base\AppApiController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -491,7 +492,6 @@
     <Content Include="assets\bootstrap-switch\src\js\bootstrap-switch.js" />
     <Content Include="assets\bootstrap-switch\src\js\bootstrap-switch.test.js" />
     <Content Include="assets\bootstrap-switch\src\setup-test.js" />
-    <Content Include="assets\bootstrap-table\.eslintrc.js" />
     <Content Include="assets\bootstrap-table\dist\bootstrap-table-locale-all.js" />
     <Content Include="assets\bootstrap-table\dist\bootstrap-table-locale-all.min.js" />
     <Content Include="assets\bootstrap-table\dist\bootstrap-table.css" />
@@ -678,7 +678,6 @@
     <Content Include="assets\bootstrap-table\dist\locale\bootstrap-table-zh-CN.min.js" />
     <Content Include="assets\bootstrap-table\dist\locale\bootstrap-table-zh-TW.js" />
     <Content Include="assets\bootstrap-table\dist\locale\bootstrap-table-zh-TW.min.js" />
-    <Content Include="assets\bootstrap-table\Gruntfile.js" />
     <Content Include="assets\bootstrap-table\src\bootstrap-table.css" />
     <Content Include="assets\bootstrap-table\src\bootstrap-table.js" />
     <Content Include="assets\bootstrap-table\src\extensions\accent-neutralise\bootstrap-table-accent-neutralise.js" />
@@ -4123,7 +4122,7 @@
     <Content Include="assets\lib\npm.js" />
     <Content Include="assets\lib\respond.js" />
     <Content Include="assets\lib\respond.min.js" />
-    <Content Include="assets\lib\sopcce.com\main.js" />
+    <Content Include="assets\sopcce.com\main.js" />
     <Content Include="assets\lib\sopdate.format-1.0.js" />
     <Content Include="assets\lib\xss.min.js" />
     <Content Include="assets\plupload\examples\custom.html" />
@@ -4464,30 +4463,19 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="html\21.jpg" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="assets\_bak\bootstrap.js" />
+    <Content Include="assets\_bak\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\itemdoc2.db" />
     <Content Include="App_Data\log4net.config" />
-    <Content Include="assets\bootstrap-table\.gitignore" />
-    <Content Include="assets\bootstrap-table\.travis.yml" />
-    <Content Include="assets\bootstrap-table\bootstrap-table.jquery.json" />
-    <Content Include="assets\bootstrap-table\bower.json" />
-    <Content Include="assets\bootstrap-table\CHANGELOG.md" />
-    <Content Include="assets\bootstrap-table\composer.json" />
-    <Content Include="assets\bootstrap-table\CONTRIBUTING.md" />
     <Content Include="assets\bootstrap-table\dist\extensions\export-hhurz\libs\FileSaver\LICENSE.md" />
     <Content Include="assets\bootstrap-table\dist\extensions\export-hhurz\libs\html2canvas\LICENSE" />
     <Content Include="assets\bootstrap-table\dist\extensions\export-hhurz\libs\js-xlsx\LICENSE" />
     <Content Include="assets\bootstrap-table\dist\extensions\export-hhurz\libs\pdfmake\LICENSE" />
     <Content Include="assets\bootstrap-table\dist\extensions\export-hhurz\LICENSE" />
     <Content Include="assets\bootstrap-table\dist\extensions\export-hhurz\README.md" />
-    <Content Include="assets\bootstrap-table\DONATORS.md" />
-    <Content Include="assets\bootstrap-table\LICENSE" />
-    <Content Include="assets\bootstrap-table\package.json" />
-    <Content Include="assets\bootstrap-table\README.md" />
     <Content Include="assets\bootstrap-table\src\extensions\accent-neutralise\extension.json" />
     <Content Include="assets\bootstrap-table\src\extensions\accent-neutralise\README.md" />
     <Content Include="assets\bootstrap-table\src\extensions\auto-refresh\extension.json" />
@@ -4549,7 +4537,6 @@
     <Content Include="assets\bootstrap-table\src\extensions\treegrid\README.md" />
     <Content Include="assets\bootstrap-table\src\locale\bootstrap-table-en-US.js.template" />
     <Content Include="assets\bootstrap-table\src\locale\README.md" />
-    <Content Include="assets\bootstrap-table\_config.yml" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
@@ -4708,34 +4695,32 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\script\item\index.js" />
-    <Content Include="Scripts\script\item\ItemsIndex.js" />
-    <Content Include="Scripts\script\js\dialog.js" />
-    <Content Include="Scripts\script\js\item\boostrap-treeview.js" />
-    <Content Include="Scripts\script\js\item\delete.js" />
-    <Content Include="Scripts\script\js\item\export.js" />
-    <Content Include="Scripts\script\js\item\index.js" />
-    <Content Include="Scripts\script\js\item\setting.js" />
-    <Content Include="Scripts\script\js\item\show.js" />
-    <Content Include="Scripts\script\js\item\show_single_page.js" />
-    <Content Include="Scripts\script\js\member\edit.js" />
-    <Content Include="Scripts\script\js\page\edit.js" />
-    <Content Include="Scripts\script\js\page\index.js" />
-    <Content Include="Scripts\script\tool\base.js" />
-    <Content Include="Scripts\script\tool\htmlformat.js" />
-    <Content Include="Scripts\script\tool\jquery.format.js" />
-    <Content Include="Scripts\script\tool\jsformat.js" />
+    <None Include="assets\_bak\jquery-3.3.1.intellisense.js" />
+    <Content Include="assets\_bak\jquery-3.3.1.js" />
+    <Content Include="assets\_bak\jquery-3.3.1.min.js" />
+    <Content Include="assets\_bak\jquery-3.3.1.slim.js" />
+    <Content Include="assets\_bak\jquery-3.3.1.slim.min.js" />
+    <None Include="assets\_bak\jquery.validate-vsdoc.js" />
+    <Content Include="assets\_bak\jquery.validate.js" />
+    <Content Include="assets\_bak\jquery.validate.min.js" />
+    <Content Include="assets\_bak\jquery.validate.unobtrusive.js" />
+    <Content Include="assets\_bak\jquery.validate.unobtrusive.min.js" />
+    <Content Include="assets\_bak\modernizr-2.8.3.js" />
+    <Content Include="assets\_bak\Scripts\js\dialog.js" />
+    <Content Include="assets\_bak\Scripts\js\item\boostrap-treeview.js" />
+    <Content Include="assets\_bak\Scripts\js\item\delete.js" />
+    <Content Include="assets\_bak\Scripts\js\item\export.js" />
+    <Content Include="assets\_bak\Scripts\js\item\index.js" />
+    <Content Include="assets\_bak\Scripts\js\item\setting.js" />
+    <Content Include="assets\_bak\Scripts\js\item\show.js" />
+    <Content Include="assets\_bak\Scripts\js\item\show_single_page.js" />
+    <Content Include="assets\_bak\Scripts\js\member\edit.js" />
+    <Content Include="assets\_bak\Scripts\js\page\edit.js" />
+    <Content Include="assets\_bak\Scripts\js\page\index.js" />
+    <Content Include="assets\sopcce.com\tool\base.js" />
+    <Content Include="assets\sopcce.com\tool\htmlformat.js" />
+    <Content Include="assets\sopcce.com\tool\jquery.format.js" />
+    <Content Include="assets\sopcce.com\tool\jsformat.js" />
     <Content Include="wb_51fd6126ac0f1c46.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -4753,7 +4738,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\script\README.md" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -4801,8 +4785,6 @@
     <Content Include="Views\User\Post.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\_ProfileHeader.cshtml" />
-    <Content Include="_Storage\Indentity\Roles.json" />
-    <Content Include="_Storage\Indentity\Users.json" />
     <Content Include="Views\Account\SendCode - 复制.cshtml" />
     <Content Include="Views\Account\Settings.cshtml" />
     <Content Include="Views\Account\_SettingsHeader.cshtml" />
@@ -4812,10 +4794,11 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Post.cshtml" />
     <Content Include="Views\Account\Demo.cshtml" />
+    <Content Include="Views\Shared\_NavMenu.cshtml" />
+    <Content Include="Views\Tool\Enc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\config\" />
-    <Folder Include="Controllers\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -4826,11 +4809,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="assets\bootstrap-table\index.d.ts" />
+    <Content Include="assets\_bak\jquery-3.3.1.slim.min.map" />
+    <Content Include="assets\_bak\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

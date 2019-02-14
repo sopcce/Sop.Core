@@ -22,12 +22,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using NHibernate.Proxy;
 
 
 namespace ItemDoc.Web.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ItemController : BaseController
     {
 

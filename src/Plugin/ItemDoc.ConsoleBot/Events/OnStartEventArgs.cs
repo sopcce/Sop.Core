@@ -5,11 +5,11 @@
     /// </summary>
     public class OnStartEventArgs
     {
-        public string URL { get; set; }// 爬虫URL地址
+        public string Url { get; set; }// 爬虫URL地址
 
         public OnStartEventArgs(string url)
         {
-            this.URL = url;
+            this.Url = url;
         }
     }
 }

@@ -18,7 +18,10 @@ namespace ItemDoc.Web.Controllers
 
             return View();
         }
-
+        public ActionResult Demo()
+        {
+            return View();
+        }
         // GET: Tool
         public ActionResult Index()
         {
@@ -91,14 +94,14 @@ namespace ItemDoc.Web.Controllers
             //
 
 
-           // string asd = new DownImg().GetRemoteImg("http://img1.3lian.com/2015/w7/98/d/21.jpg", "/html/");
+            // string asd = new DownImg().GetRemoteImg("http://img1.3lian.com/2015/w7/98/d/21.jpg", "/html/");
 
 
             ViewBag.cc = string.Format("github_emoji:{0}-{3}-{4},twemoji:{1},font_awesome:{2}",
               list.github_emoji.Count, list.twemoji.Count, list.font_awesome.Count,
             value, count
               );
-           // ViewBag.imgUrl = asd;
+            // ViewBag.imgUrl = asd;
 
             return View();
         }

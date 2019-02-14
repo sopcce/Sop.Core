@@ -56,12 +56,8 @@
     <Compile Include="Events\OnStopEventArgs.cs" />
     <Compile Include="Models\ProxyOptions.cs" />
     <Compile Include="WebCrawler\WebDriver.cs" />
-    <Compile Include="WebCrawler\ICrawler.cs" />
     <Compile Include="Models\CrawlSettings.cs" />
-    <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\RequestOptions.cs" />
-    <Compile Include="WebCrawler\Operation.cs" />
-    <Compile Include="WebCrawler\Script.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

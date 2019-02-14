@@ -83,7 +83,7 @@ namespace ItemDoc.Framework.Caching
         {
             if (_db != null)
             {
-                var value = _db.StringGetAsync(key);
+                var value = _db?.StringGetAsync(key);
                 var obj = Instance.Wait(value);
                 if (obj.IsNull)
                     return default(T);
