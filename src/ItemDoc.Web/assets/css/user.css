@@ -1,0 +1,292 @@
+
+button {
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.Button {
+    display: inline-block;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 32px;
+    color: #8590a6;
+    text-align: center;
+    cursor: pointer;
+    background: none;
+    border: 1px solid;
+    border-radius: 3px;
+}
+.ProfileCard {
+    /* margin-bottom: 10px; */
+    background: #fff;
+    overflow: hidden;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    box-sizing: border-box;
+}
+
+.ProfileUserCoverEditor {
+    position: relative;
+}
+
+.UserCoverEditor-EditButton {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 7;
+}
+
+.ProfileUserCover {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    background: #f6f6f6;
+    border-top-right-radius: 1px;
+    border-top-left-radius: 1px;
+    transition: height .3s
+}
+
+.ProfileUserCover-image {
+    transition: -webkit-transform 6s ease-out;
+    transition: transform 6s ease-out;
+    transition: transform 6s ease-out,-webkit-transform 6s ease-out
+}
+
+    .ProfileUserCover-image, .ProfileUserCover-image img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover
+    }
+
+
+.person_info_con {
+    /* background: #fff; */
+    border: 1px solid #dcdcdc;
+    /* margin: 10px auto 0; */
+    overflow: hidden;
+    position: relative;
+}
+
+    .person_info_con:hover .person-info-edit {
+        display: block;
+    }
+
+.person-info-edit {
+    display: block;
+    color: #5C9BF3;
+    cursor: pointer;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+}
+
+.person-photo {
+    width: 150px;
+    height: 200px;
+    float: left;
+    margin: 15px 30px 15px 20px;
+}
+
+    .person-photo img {
+        width: 150px;
+        height: 150px;
+        border: none;
+    }
+
+    .person-photo dt {
+        width: 150px;
+        height: 160px;
+        float: left;
+    }
+
+        .person-photo dt a {
+            display: block;
+            width: 150px;
+            height: 150px;
+            position: relative;
+            cursor: default;
+        }
+
+            .person-photo dt a .edit_person_pic {
+                display: block;
+                width: 33px;
+                height: 33px;
+                position: absolute;
+                /*background: url("../images/edit_photo.png") no-repeat;*/
+                left: 59px;
+                top: 110px;
+                display: none;
+                cursor: pointer;
+            }
+
+            .person-photo dt a:hover .edit_person_pic {
+                display: block;
+            }
+
+    .person-photo .focus_num {
+        width: 72px;
+        height: 32px;
+        border-right: 1px solid #f0f0f0;
+        float: left;
+        font-size: 14px;
+        color: #999;
+        text-align: center;
+        overflow: hidden;
+    }
+
+        .person-photo .focus_num b {
+            color: #333;
+            display: block;
+            width: 72px;
+            text-align: center;
+            line-height: 14px;
+            float: left;
+        }
+
+            .person-photo .focus_num b a {
+                color: #000;
+                text-decoration: none;
+            }
+
+    .person-photo .fans_num {
+        width: 72px;
+        height: 32px;
+        float: left;
+        font-size: 14px;
+        color: #999;
+        text-align: center;
+        overflow: hidden;
+    }
+
+        .person-photo .fans_num b {
+            color: #333;
+            display: block;
+            width: 72px;
+            text-align: center;
+            line-height: 14px;
+            float: left;
+        }
+
+            .person-photo .fans_num b a {
+                color: #000;
+                text-decoration: none;
+            }
+
+.person-info {
+    float: left;
+    /*width: 950px;*/
+    margin-top: 30px;
+}
+
+    .person-info dt {
+        overflow: hidden;
+    }
+
+    .person-info .person-nick-name span {
+        display: block;
+        float: left;
+        font-size: 24px;
+        color: #333;
+        font-weight: normal;
+    }
+
+    .person-info .person-nick-name .cto {
+        display: block;
+        float: left;
+        width: 25px;
+        height: 17px;
+        background: url("../images/cto.png");
+        margin: 8px 0 0 10px;
+    }
+
+    .person-info .person-nick-name .pro {
+        display: block;
+        float: left;
+        width: 55px;
+        height: 17px;
+        background: url("../images/pro.png");
+        margin: 8px 0 0 10px;
+    }
+
+    .person-info .person-detail {
+        overfolw: hidden;
+        font-size: 16px;
+        color: #333;
+        margin-top: 10px;
+    }
+
+        .person-info .person-detail span {
+            font-size: 14px;
+            color: #999;
+            padding: 0 15px;
+        }
+
+    .person-info .person-sign {
+        overflow: hidden;
+        font-size: 14px;
+        color: #999;
+        border-top: 1px solid #f0f0f0;
+        padding-top: 8px;
+        margin-top: 10px;
+        line-height: 22px;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+
+.person_deliver_letter {
+    display: block;
+    height: 22px;
+    line-height: 22px;
+    background: #79b51f;
+    color: #fff;
+    font-size: 12px;
+    padding: 0px 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 29px;
+    top: 23px;
+}
+
+    .person_deliver_letter:hover {
+        text-decoration: none;
+        color: #fff;
+        background: #89c530;
+    }
+
+.person_add_focus {
+    display: block;
+    height: 22px;
+    line-height: 22px;
+    background: #e96f5d;
+    color: #fff;
+    font-size: 12px;
+    padding: 0px 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 114px;
+    top: 23px;
+}
+
+    .person_add_focus:hover {
+        text-decoration: none;
+        color: #fff;
+        background: #eb8171;
+    }
+
+.persion_section,
+.persion_article {
+    float: left;
+}
+
+.persion_section {
+    width: 1170px;
+    margin-bottom: 0;
+}
