@@ -35,6 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AppData\VideoEncoder.cs" />
+    <Compile Include="AppData\VideoFile.cs" />
     <Compile Include="Helper\ConsileBot.cs" />
     <Compile Include="Helper\ProxyForm.cs">
       <SubType>Form</SubType>
@@ -61,10 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="AppData\pdf2htmlEX\data\manifest" />
     <None Include="packages.config" />
-    <None Include="phantomjs\ChangeLog" />
-    <None Include="phantomjs\LICENSE.BSD" />
-    <None Include="phantomjs\README.md" />
+    <None Include="AppData\phantomjs\ChangeLog" />
+    <None Include="AppData\phantomjs\LICENSE.BSD" />
+    <None Include="AppData\phantomjs\README.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\packages\PhantomJS.2.1.1\tools\phantomjs\phantomjs.exe">
@@ -72,56 +75,62 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="BotConfig.config" />
-    <Content Include="phantomjs\exe\phantomjs-license.txt">
+    <Content Include="AppData\Aspose\Aspose.Cells.dll" />
+    <Content Include="AppData\Aspose\Aspose.Pdf.dll" />
+    <Content Include="AppData\Aspose\Aspose.Slides.dll" />
+    <Content Include="AppData\Aspose\Aspose.Words.dll" />
+    <Content Include="AppData\FFmpeg\ffmpeg.exe" />
+    <Content Include="AppData\pdf2htmlEX\pdf2htmlEX.exe" />
+    <Content Include="AppData\phantomjs\exe\phantomjs-license.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="phantomjs\examples\arguments.js" />
-    <Content Include="phantomjs\examples\child_process-examples.js" />
-    <Content Include="phantomjs\examples\colorwheel.js" />
-    <Content Include="phantomjs\examples\countdown.js" />
-    <Content Include="phantomjs\examples\detectsniff.js" />
-    <Content Include="phantomjs\examples\echoToFile.js" />
-    <Content Include="phantomjs\examples\features.js" />
-    <Content Include="phantomjs\examples\fibo.js" />
-    <Content Include="phantomjs\examples\hello.js" />
-    <Content Include="phantomjs\examples\injectme.js" />
-    <Content Include="phantomjs\examples\loadspeed.js" />
-    <Content Include="phantomjs\examples\loadurlwithoutcss.js" />
-    <Content Include="phantomjs\examples\modernizr.js" />
-    <Content Include="phantomjs\examples\module.js" />
-    <Content Include="phantomjs\examples\netlog.js" />
-    <Content Include="phantomjs\examples\netsniff.js" />
-    <Content Include="phantomjs\examples\openurlwithproxy.js" />
-    <Content Include="phantomjs\examples\outputEncoding.js" />
-    <Content Include="phantomjs\examples\pagecallback.js" />
-    <Content Include="phantomjs\examples\page_events.js" />
-    <Content Include="phantomjs\examples\phantomwebintro.js" />
-    <Content Include="phantomjs\examples\post.js" />
-    <Content Include="phantomjs\examples\postjson.js" />
-    <Content Include="phantomjs\examples\postserver.js" />
-    <Content Include="phantomjs\examples\printenv.js" />
-    <Content Include="phantomjs\examples\printheaderfooter.js" />
-    <Content Include="phantomjs\examples\printmargins.js" />
-    <Content Include="phantomjs\examples\rasterize.js" />
-    <Content Include="phantomjs\examples\render_multi_url.js" />
-    <Content Include="phantomjs\examples\responsive-screenshot.js" />
-    <Content Include="phantomjs\examples\run-jasmine.js" />
-    <Content Include="phantomjs\examples\run-jasmine2.js" />
-    <Content Include="phantomjs\examples\run-qunit.js" />
-    <Content Include="phantomjs\examples\scandir.js" />
-    <Content Include="phantomjs\examples\server.js" />
-    <Content Include="phantomjs\examples\serverkeepalive.js" />
-    <Content Include="phantomjs\examples\simpleserver.js" />
-    <Content Include="phantomjs\examples\sleepsort.js" />
-    <Content Include="phantomjs\examples\stdin-stdout-stderr.js" />
-    <Content Include="phantomjs\examples\universe.js" />
-    <Content Include="phantomjs\examples\unrandomize.js" />
-    <Content Include="phantomjs\examples\useragent.js" />
-    <Content Include="phantomjs\examples\version.js" />
-    <Content Include="phantomjs\examples\waitfor.js" />
-    <Content Include="phantomjs\examples\walk_through_frames.js" />
-    <Content Include="phantomjs\phantomjs.exe" />
-    <Content Include="phantomjs\third-party.txt" />
+    <Content Include="AppData\phantomjs\examples\arguments.js" />
+    <Content Include="AppData\phantomjs\examples\child_process-examples.js" />
+    <Content Include="AppData\phantomjs\examples\colorwheel.js" />
+    <Content Include="AppData\phantomjs\examples\countdown.js" />
+    <Content Include="AppData\phantomjs\examples\detectsniff.js" />
+    <Content Include="AppData\phantomjs\examples\echoToFile.js" />
+    <Content Include="AppData\phantomjs\examples\features.js" />
+    <Content Include="AppData\phantomjs\examples\fibo.js" />
+    <Content Include="AppData\phantomjs\examples\hello.js" />
+    <Content Include="AppData\phantomjs\examples\injectme.js" />
+    <Content Include="AppData\phantomjs\examples\loadspeed.js" />
+    <Content Include="AppData\phantomjs\examples\loadurlwithoutcss.js" />
+    <Content Include="AppData\phantomjs\examples\modernizr.js" />
+    <Content Include="AppData\phantomjs\examples\module.js" />
+    <Content Include="AppData\phantomjs\examples\netlog.js" />
+    <Content Include="AppData\phantomjs\examples\netsniff.js" />
+    <Content Include="AppData\phantomjs\examples\openurlwithproxy.js" />
+    <Content Include="AppData\phantomjs\examples\outputEncoding.js" />
+    <Content Include="AppData\phantomjs\examples\pagecallback.js" />
+    <Content Include="AppData\phantomjs\examples\page_events.js" />
+    <Content Include="AppData\phantomjs\examples\phantomwebintro.js" />
+    <Content Include="AppData\phantomjs\examples\post.js" />
+    <Content Include="AppData\phantomjs\examples\postjson.js" />
+    <Content Include="AppData\phantomjs\examples\postserver.js" />
+    <Content Include="AppData\phantomjs\examples\printenv.js" />
+    <Content Include="AppData\phantomjs\examples\printheaderfooter.js" />
+    <Content Include="AppData\phantomjs\examples\printmargins.js" />
+    <Content Include="AppData\phantomjs\examples\rasterize.js" />
+    <Content Include="AppData\phantomjs\examples\render_multi_url.js" />
+    <Content Include="AppData\phantomjs\examples\responsive-screenshot.js" />
+    <Content Include="AppData\phantomjs\examples\run-jasmine.js" />
+    <Content Include="AppData\phantomjs\examples\run-jasmine2.js" />
+    <Content Include="AppData\phantomjs\examples\run-qunit.js" />
+    <Content Include="AppData\phantomjs\examples\scandir.js" />
+    <Content Include="AppData\phantomjs\examples\server.js" />
+    <Content Include="AppData\phantomjs\examples\serverkeepalive.js" />
+    <Content Include="AppData\phantomjs\examples\simpleserver.js" />
+    <Content Include="AppData\phantomjs\examples\sleepsort.js" />
+    <Content Include="AppData\phantomjs\examples\stdin-stdout-stderr.js" />
+    <Content Include="AppData\phantomjs\examples\universe.js" />
+    <Content Include="AppData\phantomjs\examples\unrandomize.js" />
+    <Content Include="AppData\phantomjs\examples\useragent.js" />
+    <Content Include="AppData\phantomjs\examples\version.js" />
+    <Content Include="AppData\phantomjs\examples\waitfor.js" />
+    <Content Include="AppData\phantomjs\examples\walk_through_frames.js" />
+    <Content Include="AppData\phantomjs\phantomjs.exe" />
+    <Content Include="AppData\phantomjs\third-party.txt" />
     <Content Include="WebCrawler\readme.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -155,7 +164,7 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Polly, Version=6.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
+    <Reference Include="Polly">
       <HintPath>..\..\packages\Polly.6.1.2\lib\netstandard2.0\Polly.dll</HintPath>
     </Reference>
     <Reference Include="Selenium.WebDriverBackedSelenium, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">

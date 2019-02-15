@@ -1,22 +1,11 @@
-﻿using System;
-
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ItemDoc.ConsoleBot.Helper;
+﻿using ItemDoc.ConsoleBot.Helper;
 using ItemDoc.ConsoleBot.Models;
 using ItemDoc.ConsoleBot.Proxy;
 using ItemDoc.ConsoleBot.WebCrawler;
-using ItemDoc.Framework.Environment;
-using ItemDoc.Framework.Utility;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;
 using Polly;
+using System;
 
 namespace ItemDoc.ConsoleBot
 {
