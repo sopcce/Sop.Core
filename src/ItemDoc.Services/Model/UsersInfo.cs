@@ -8,9 +8,7 @@ namespace ItemDoc.Services.Model
     /// 用户登录实体
     /// </summary>
     public class UsersInfo
-    {
-
-
+    { 
         /// <summary>
         /// auto_increment
         /// </summary>		

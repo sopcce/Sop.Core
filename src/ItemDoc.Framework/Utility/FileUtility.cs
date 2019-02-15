@@ -207,7 +207,33 @@ namespace ItemDoc.Framework.Utility
             }
             return len;
         }
+ 
+        public static string GetFileNameWithoutExtension(string fileName)
+        {
+            string fileNameWithoutExtension = fileName.Substring(0, fileName.LastIndexOf("."));
+            return fileNameWithoutExtension;
+        }
 
+        /// <summary>
+        /// 友好的文件大小信息
+        /// </summary>
+        /// <param name="fileSize">文件字节数</param>
+        public static string FormatSize(double fileSize)
+        {
+            if (fileSize > 0)
+            {
+                if (fileSize > 1024 * 1024 * 1024)
+                    return string.Format("{0:F2}GB", (fileSize / (1024 * 1024 * 1024F)));
+                else if (fileSize > 1024 * 1024)
+                    return string.Format("{0:F2}MB", (fileSize / (1024 * 1024F)));
+                else if (fileSize > 1024)
+                    return string.Format("{0:F2}KB", (fileSize / (1024F)));
+                else
+                    return string.Format("{0:F2}B", fileSize);
+            }
+            else
+                return string.Empty;
+        }
         /// <summary>
         /// 是否允许的文件类型
         /// </summary>

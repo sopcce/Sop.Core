@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemDoc.Web", "ItemDoc.Web\ItemDoc.Web.csproj", "{67524C99-D044-4DD3-ABDC-6F94DB5E984A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BC571BC0-406C-465A-89F0-C0C82CB0BDD5}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParty", "ThirdParty", "{AE67689A-1769-420E-8C70-E3770180B45B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate.Cache.DynamicCacheBuster", "ThirdParty\NHibernate.Cache.DynamicCacheBuster\NHibernate.Cache.DynamicCacheBuster.csproj", "{32F38F68-5622-4984-9B13-D7C1A1FA2222}"

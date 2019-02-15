@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="API\DataPackage.cs" />
     <Compile Include="Application\Startup.cs" />
+    <Compile Include="Attachment\Class1.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Extensions\AlipayHelper.cs" />
@@ -174,6 +175,10 @@
     <ProjectReference Include="..\ItemDoc.Framework\ItemDoc.Framework.csproj">
       <Project>{7B4FF94A-7018-42E5-ADBE-277E9B39ED5B}</Project>
       <Name>ItemDoc.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ItemDoc.Services\ItemDoc.Services.csproj">
+      <Project>{5245EDD5-6A59-4C6B-B501-F7525A137C53}</Project>
+      <Name>ItemDoc.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

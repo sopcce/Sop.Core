@@ -48,9 +48,9 @@ namespace ItemDoc.Web
 
             //注册Repository
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).SingleInstance().PropertiesAutowired();
-
             //注册NHibernate的SessionManager
-            builder.Register(@delegate: c => new SessionManager(assemblies)).SingleInstance().PropertiesAutowired();
+            builder.Register(@delegate: c => new SessionManager(assemblies)).AsSelf().SingleInstance().PropertiesAutowired();
+
 
             //注册缓存服务，每次请求都是一个新的实例
             builder.Register(c => new MemoryCacheManager()).As<ICacheManager>().SingleInstance().PropertiesAutowired();
@@ -68,14 +68,31 @@ namespace ItemDoc.Web
             //option.EndPoints.Add("127.0.0.1", 6380);
             //option.EndPoints.Add("127.0.0.1", 6381);
             //option.EndPoints.Add("127.0.0.1", 6382);
-            
+
+            try
+            {
+
+                var test = ConnectionMultiplexer.Connect(option, null);
+                var nn = test.GetStatus();
+                if (test.IsConnected == true)
+                {
+
+                    builder.Register(c => ConnectionMultiplexer.Connect(option)).SingleInstance().PropertiesAutowired();
+
+                    builder.Register(c => new RedisCacheManager(option)).As<ICacheManager>().SingleInstance().PropertiesAutowired();
+                }
+                else
+                {
+                    throw new System.Exception("Redis服务不可用，请启动Redis服务");
+
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new System.Exception(ex.Message);
+            }
 
 
-            builder.Register(c => ConnectionMultiplexer.Connect(option)).SingleInstance().PropertiesAutowired();
-
-            builder.Register(c => new RedisCacheManager(option)).As<ICacheManager>().SingleInstance().PropertiesAutowired();
-             
-           
 
             //IAuthenticationService
             builder.Register(c => new OwinAuthenticationService()).As<IAuthenticationService>().PropertiesAutowired().InstancePerRequest();
@@ -121,7 +138,7 @@ namespace ItemDoc.Web
 
             //禁止Response的header信息包含X-AspNetMvc-Version
             MvcHandler.DisableMvcResponseHeader = true;
-           
+
         }
 
 

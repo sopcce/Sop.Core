@@ -30,10 +30,8 @@ namespace ItemDoc.Services.Model
 
         public virtual string ServerUrlPath { get; set; }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
+        public virtual string Path { get; set; }        
+                                                                  
         public virtual string Extension { get; set; }
         /// <summary>
         /// 
@@ -67,8 +65,9 @@ namespace ItemDoc.Services.Model
         /// 
         /// </summary>
         public virtual DateTime DateCreated { get; set; }
-
-
+        public virtual bool HasThumbnail { get; set; }
+        public virtual bool HtmlPreview { get; set; }
+        public virtual int PageCount { get; set; }
     }
 
 
