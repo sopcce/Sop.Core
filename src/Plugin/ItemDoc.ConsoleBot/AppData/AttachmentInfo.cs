@@ -1,0 +1,4 @@
+﻿namespace ItemDoc.ConsoleBot.AppData
+{
+   
+}

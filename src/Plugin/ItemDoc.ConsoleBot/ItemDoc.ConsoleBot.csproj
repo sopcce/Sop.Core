@@ -35,8 +35,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AppData\AttachmentInfo.cs" />
+    <Compile Include="AppData\pdf2html.cs" />
     <Compile Include="AppData\VideoEncoder.cs" />
     <Compile Include="AppData\VideoFile.cs" />
+    <Compile Include="GhostScriptSharp\GhostScript32.cs" />
+    <Compile Include="GhostScriptSharp\GhostScript64.cs" />
+    <Compile Include="GhostScriptSharp\GhostscriptSharp.cs" />
     <Compile Include="Helper\ConsileBot.cs" />
     <Compile Include="Helper\ProxyForm.cs">
       <SubType>Form</SubType>
@@ -131,12 +136,18 @@
     <Content Include="AppData\phantomjs\examples\walk_through_frames.js" />
     <Content Include="AppData\phantomjs\phantomjs.exe" />
     <Content Include="AppData\phantomjs\third-party.txt" />
+    <Content Include="gsdll32.dll" />
+    <Content Include="gsdll64.dll" />
     <Content Include="WebCrawler\readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ItemDoc.Framework\ItemDoc.Framework.csproj">
       <Project>{7b4ff94a-7018-42e5-adbe-277e9b39ed5b}</Project>
       <Name>ItemDoc.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ItemDoc.Services\ItemDoc.Services.csproj">
+      <Project>{5245EDD5-6A59-4C6B-B501-F7525A137C53}</Project>
+      <Name>ItemDoc.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +156,22 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=7.4.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AppData\Aspose\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Pdf, Version=7.7.0.0, Culture=neutral, PublicKeyToken=47b2d0fcacdd3eb6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AppData\Aspose\Aspose.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Slides, Version=7.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AppData\Aspose\Aspose.Slides.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words, Version=14.7.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AppData\Aspose\Aspose.Words.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
@@ -156,6 +183,9 @@
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
