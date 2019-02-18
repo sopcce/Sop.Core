@@ -64,3 +64,5 @@
 /src/Plugin/ItemDoc.ConsoleBotServer/AppData/Aspose/Aspose.Pdf.dll
 /src/Plugin/ItemDoc.ConsoleBotServer/AppData/Aspose/Aspose.Slides.dll
 /src/Plugin/ItemDoc.ConsoleBotServer/AppData/Aspose/Aspose.Words.dll
+/src/Plugin/ItemDoc.ConsoleBotServer/obj
+/src/Plugin/ItemDoc.ConsoleBotServer/bin
