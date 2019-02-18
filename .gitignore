@@ -60,3 +60,7 @@
 /src/Plugin/ItemDoc.ConsoleBot/obj
 /src/Plugin/ItemDoc.FileServer/obj
 /src/Plugin/ItemDoc.ConsoleBot/AppData/Aspose
+/src/Plugin/ItemDoc.ConsoleBotServer/AppData/Aspose/Aspose.Cells.dll
+/src/Plugin/ItemDoc.ConsoleBotServer/AppData/Aspose/Aspose.Pdf.dll
+/src/Plugin/ItemDoc.ConsoleBotServer/AppData/Aspose/Aspose.Slides.dll
+/src/Plugin/ItemDoc.ConsoleBotServer/AppData/Aspose/Aspose.Words.dll
