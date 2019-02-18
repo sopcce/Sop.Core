@@ -2,7 +2,7 @@
 using System.Net;
 using OpenQA.Selenium;
 
-namespace ItemDoc.ConsoleBot.Events
+namespace ItemDoc.ConsoleBotServer.Events
 {
     /// <summary>
     /// 爬虫完成事件

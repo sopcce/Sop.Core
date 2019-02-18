@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace ItemDoc.ConsoleBot.AppData.FFmpeg
+namespace ItemDoc.ConsoleBotServer.AppData.FFmpeg
 {
     /// <summary>
     /// 视频编码器，使用FFmpeg获取视频信息，进行视频转码，获取缩略图等

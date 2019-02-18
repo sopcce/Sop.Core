@@ -66,3 +66,5 @@
 /src/Plugin/ItemDoc.ConsoleBotServer/AppData/Aspose/Aspose.Words.dll
 /src/Plugin/ItemDoc.ConsoleBotServer/obj
 /src/Plugin/ItemDoc.ConsoleBotServer/bin
+/src/Plugin/ItemDoc.ConsoleBotServer/AppData/Aspose.Total.lic
+/src/Plugin/ItemDoc.ConsoleBotServer/AppData/*.lic

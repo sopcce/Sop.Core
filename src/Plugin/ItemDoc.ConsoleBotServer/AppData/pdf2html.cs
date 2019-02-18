@@ -9,33 +9,73 @@ using GhostscriptSharp;
 using System.Reflection;
 using System.Timers;
 using iTextSharp.text.pdf;
+using Aspose.Cells;
 
-namespace ItemDoc.ConsoleBot.AppData
+namespace ItemDoc.ConsoleBotServer.AppData
 {
     /// <summary>
     /// 
     /// </summary>
-    public class pdf2html
+    public class Pdf2Html
     {
         private string homePath;
         private string tempPath;
-        public pdf2html()
+        private readonly ILog logger = LogManager.GetLogger<Pdf2Html>();
+        private static volatile Pdf2Html _instance = null;
+        private static readonly object Lock = new object();
+        public static Pdf2Html Instance()
+        {
+            if (_instance == null)
+            {
+                lock (Lock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new Pdf2Html();
+                    }
+                }
+            }
+            return _instance;
+        }
+
+
+
+        public Pdf2Html()
         {
             //初始化临时目录
             this.homePath = Assembly.GetExecutingAssembly().Location;
             this.homePath = homePath.Substring(0, homePath.LastIndexOf('\\'));
-            this.tempPath = Path.Combine(homePath, "temp");
-
+            this.tempPath = Path.Combine(homePath, "pdf2temp");
             if (!Directory.Exists(this.tempPath))
             {
                 Directory.CreateDirectory(this.tempPath);
             }
+
+            //获取所有的lic文件。
+            try
+            {
+                DirectoryInfo folder = new DirectoryInfo(homePath);
+                foreach (FileInfo file in folder.GetFiles("*.lic"))
+                {
+                    new Aspose.Cells.License().SetLicense(file.FullName);
+                    new Aspose.Words.License().SetLicense(file.FullName);
+                    new Aspose.Slides.License().SetLicense(file.FullName);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("解析Aspose组件授权失败：" + ex.Message);
+            }
+
+
+
+
         }
-        private readonly ILog logger = LogManager.GetLogger<pdf2html>();
+
         /// <summary>
         /// PDF转换为HTML
         /// </summary>
-        private void PDF2HTML(AttachmentInfo attachment)
+        public void PDF2HTML(AttachmentInfo attachment)
         {
             string fileName = attachment.Path.Substring(attachment.Path.LastIndexOf('/') + 1);
             string fileNameWithoutExtension = FileUtility.GetFileNameWithoutExtension(fileName);
@@ -218,7 +258,7 @@ namespace ItemDoc.ConsoleBot.AppData
         /// <param name="sourcePath">源文件路径</param>
         /// <param name="targetPath">目标文件路径</param>
         /// <returns>true=转换成功</returns>
-        private bool ExcelToPDF(AttachmentInfo attachment)
+        public bool ExcelToPDF(AttachmentInfo attachment)
         {
             string fileName = attachment.Path.Substring(attachment.Path.LastIndexOf('/') + 1);
             string fileLocalPathWithFileName = Path.Combine(this.tempPath, fileName.Replace("." + attachment.Extension, ".pdf"));
@@ -227,20 +267,16 @@ namespace ItemDoc.ConsoleBot.AppData
             {
                 using (var sourceStream = new MemoryStream())
                 {
-                    //var ossObject = this.ossClient.GetObject(new GetObjectRequest(this.bucket, attachment.Path));
-
-                    //using (Stream stream = ossObject.Content)
-                    //{
-                    //    stream.CopyTo(sourceStream);
-                    //}
-
+                    using (Stream stream = new FileStream(attachment.Path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    {
+                        stream.CopyTo(sourceStream);
+                    } 
                     Aspose.Cells.Workbook workbook = new Aspose.Cells.Workbook(sourceStream);
                     Aspose.Cells.PdfSaveOptions saveOptions = new Aspose.Cells.PdfSaveOptions();
                     saveOptions.OnePagePerSheet = true;
 
                     workbook.Save(fileLocalPathWithFileName, saveOptions);
                 }
-
                 return true;
             }
             catch (Exception e)
@@ -264,7 +300,8 @@ namespace ItemDoc.ConsoleBot.AppData
         /// <param name="sourcePath">源文件路径</param>
         /// <param name="targetPath">目标文件路径</param>
         /// <returns>true=转换成功</returns>
-        private bool PowerPointToPDF(AttachmentInfo attachment)
+        /// <returns>true=转换成功</returns>
+        public bool PowerPointToPDF(AttachmentInfo attachment)
         {
             string fileName = attachment.Path.Substring(attachment.Path.LastIndexOf('/') + 1);
             string fileLocalPathWithFileName = Path.Combine(this.tempPath, fileName.Replace("." + attachment.Extension, ".pdf"));
@@ -309,7 +346,8 @@ namespace ItemDoc.ConsoleBot.AppData
         /// <param name="sourcePath">源文件路径</param>
         /// <param name="targetPath">目标文件路径</param>
         /// <returns>true=转换成功</returns>
-        private bool WordToPDF(AttachmentInfo attachment)
+        /// <returns>true=转换成功</returns>
+        public bool WordToPDF(AttachmentInfo attachment)
         {
             string fileName = attachment.Path.Substring(attachment.Path.LastIndexOf('/') + 1);
             string fileLocalPathWithFileName = Path.Combine(this.tempPath, fileName.Replace("." + attachment.Extension, ".pdf"));

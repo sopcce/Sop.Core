@@ -93,6 +93,11 @@ namespace ItemDoc.Services.Model
         /// 删除
         /// </summary>
         Delete = 30,
+
+        /// <summary>
+        /// 未知
+        /// </summary>
+        None=0,
     }
 
 

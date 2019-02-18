@@ -1,4 +1,4 @@
-﻿namespace ItemDoc.ConsoleBot.Proxy
+﻿namespace ItemDoc.ConsoleBotServer.Proxy
 {
     public class FreeProxyInfo
     {

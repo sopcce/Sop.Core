@@ -1,4 +1,4 @@
-﻿namespace ItemDoc.ConsoleBot.Models
+﻿namespace ItemDoc.ConsoleBotServer.Models
 {
     public class ProxyOptions
     { 

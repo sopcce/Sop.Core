@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace ItemDoc.ConsoleBot.AppData.FFmpeg
+namespace ItemDoc.ConsoleBotServer.AppData
 {
     /// <summary>
     /// 视频文件

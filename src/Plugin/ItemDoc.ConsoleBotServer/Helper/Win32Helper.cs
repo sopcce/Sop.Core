@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using Microsoft.Win32;
 
 
-namespace ItemDoc.ConsoleBot.Helper
+namespace ItemDoc.ConsoleBotServer.Helper
 {
     /// <summary>
     ///     通过控制台Console调试WinForm程序

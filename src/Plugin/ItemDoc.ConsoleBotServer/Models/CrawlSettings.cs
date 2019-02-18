@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 
-namespace ItemDoc.ConsoleBot.Models
+namespace ItemDoc.ConsoleBotServer.Models
 {
     /// <summary>
     /// The crawl settings.

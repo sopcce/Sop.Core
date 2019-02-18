@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sop.Common.Serialization.XML;
 
-namespace ItemDoc.ConsoleBot.Models
+namespace ItemDoc.ConsoleBotServer.Models
 {
     public class Roots : XmlEntity
     {

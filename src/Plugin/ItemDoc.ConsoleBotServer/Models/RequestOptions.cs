@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace ItemDoc.ConsoleBot.Models
+namespace ItemDoc.ConsoleBotServer.Models
 {
     public class RequestOptions
     {

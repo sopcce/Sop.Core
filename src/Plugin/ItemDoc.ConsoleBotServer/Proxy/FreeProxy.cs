@@ -4,11 +4,11 @@ using System.IO;
 using System.Net;
 using System.Runtime.Remoting.Metadata;
 using System.Threading.Tasks;
-using ItemDoc.ConsoleBot.Helper;
-using ItemDoc.ConsoleBot.Models;
+using ItemDoc.ConsoleBotServer.Helper;
+using ItemDoc.ConsoleBotServer.Models;
 using Sop.Common.Serialization;
 
-namespace ItemDoc.ConsoleBot.Proxy
+namespace ItemDoc.ConsoleBotServer.Proxy
 {
     public class FreeProxy
     {

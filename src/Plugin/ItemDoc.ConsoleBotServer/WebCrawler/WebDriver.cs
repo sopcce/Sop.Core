@@ -4,7 +4,7 @@ using QA = OpenQA.Selenium;
 using UI = OpenQA.Selenium.Support.UI;
  
 
-namespace ItemDoc.ConsoleBot.WebCrawler
+namespace ItemDoc.ConsoleBotServer.WebCrawler
 {
     public class WebDriver
     {

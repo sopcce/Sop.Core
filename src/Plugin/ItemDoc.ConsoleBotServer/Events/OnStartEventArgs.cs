@@ -1,4 +1,4 @@
-﻿namespace ItemDoc.ConsoleBot.Events
+﻿namespace ItemDoc.ConsoleBotServer.Events
 {
     /// <summary>
     /// 爬虫启动事件

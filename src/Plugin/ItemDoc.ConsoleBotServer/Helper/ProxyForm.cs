@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ItemDoc.ConsoleBot.Helper
+namespace ItemDoc.ConsoleBotServer.Helper
 {
 
     public partial class ProxyForm : Form

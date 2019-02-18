@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{76A0657B-71CC-43D6-9AFB-82D01F3540B3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ItemDoc.ConsoleBot</RootNamespace>
-    <AssemblyName>ItemDoc.ConsoleBot</AssemblyName>
+    <RootNamespace>ItemDoc.ConsoleBotServer</RootNamespace>
+    <AssemblyName>ItemDoc.ConsoleBotServer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppData\AttachmentInfo.cs" />
-    <Compile Include="AppData\pdf2html.cs" />
+    <Compile Include="AppData\Pdf2Html.cs" />
     <Compile Include="AppData\VideoEncoder.cs" />
     <Compile Include="AppData\VideoFile.cs" />
     <Compile Include="GhostScriptSharp\GhostScript32.cs" />
@@ -68,22 +68,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="AppData\Aspose.Total.lic" />
     <None Include="AppData\pdf2htmlEX\data\manifest" />
+    <None Include="bin\Debug\Aspose.Total.lic" />
     <None Include="packages.config" />
     <None Include="AppData\phantomjs\ChangeLog" />
     <None Include="AppData\phantomjs\LICENSE.BSD" />
     <None Include="AppData\phantomjs\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\packages\PhantomJS.2.1.1\tools\phantomjs\phantomjs.exe">
-      <Link>phantomjs\exe\phantomjs.exe</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="BotConfig.config" />
-    <Content Include="AppData\Aspose\Aspose.Cells.dll" />
-    <Content Include="AppData\Aspose\Aspose.Pdf.dll" />
-    <Content Include="AppData\Aspose\Aspose.Slides.dll" />
-    <Content Include="AppData\Aspose\Aspose.Words.dll" />
+    <None Include="BotConfig.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="AppData\FFmpeg\ffmpeg.exe" />
     <Content Include="AppData\pdf2htmlEX\pdf2htmlEX.exe" />
     <Content Include="AppData\phantomjs\exe\phantomjs-license.txt">
@@ -149,6 +145,10 @@
       <Project>{5245EDD5-6A59-4C6B-B501-F7525A137C53}</Project>
       <Name>ItemDoc.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\ThirdParty\Sop.Common.Serialization\Sop.Common.Serialization.csproj">
+      <Project>{8e807449-e634-4971-8990-e63db141ecb8}</Project>
+      <Name>Sop.Common.Serialization</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Helper\ProxyForm.resx">
@@ -156,21 +156,26 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Cells, Version=7.4.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>AppData\Aspose\Aspose.Cells.dll</HintPath>
+    <Reference Include="Aspose.Cells, Version=19.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Aspose.Cells.19.2.0\lib\net40\Aspose.Cells.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Pdf, Version=7.7.0.0, Culture=neutral, PublicKeyToken=47b2d0fcacdd3eb6, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>AppData\Aspose\Aspose.Pdf.dll</HintPath>
+    <Reference Include="Aspose.Diagram, Version=19.1.0.0, Culture=neutral, PublicKeyToken=dfdba7ce0555ea8b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Aspose.Diagram.19.1.0\lib\net40\Aspose.Diagram.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Slides, Version=7.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>AppData\Aspose\Aspose.Slides.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=19.1.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Aspose.Email.19.1.1\lib\net40\Aspose.Email.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Words, Version=14.7.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>AppData\Aspose\Aspose.Words.dll</HintPath>
+    <Reference Include="Aspose.PDF, Version=19.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Aspose.PDF.19.2.0\lib\net4.0\Aspose.PDF.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Slides, Version=19.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Aspose.Slides.NET.19.1.0\lib\net4.0-client\Aspose.Slides.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Tasks, Version=19.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Aspose.Tasks.19.2.0\lib\net40\Aspose.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words, Version=19.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Aspose.Words.19.2.0\lib\net40\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
@@ -194,17 +199,20 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Polly">
-      <HintPath>..\..\packages\Polly.6.1.2\lib\netstandard2.0\Polly.dll</HintPath>
+    <Reference Include="Polly, Version=7.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Polly.7.0.1\lib\netstandard2.0\Polly.dll</HintPath>
     </Reference>
     <Reference Include="Selenium.WebDriverBackedSelenium, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Selenium.WebDriverBackedSelenium.3.5.0\lib\net40\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
-    <Reference Include="Sop.Common.Serialization, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sop.Common.Serialization.1.2.0\lib\net46\Sop.Common.Serialization.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Text.Encoding.CodePages.4.4.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="WebDriver, Version=3.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Selenium.WebDriver.3.10.0\lib\net45\WebDriver.dll</HintPath>

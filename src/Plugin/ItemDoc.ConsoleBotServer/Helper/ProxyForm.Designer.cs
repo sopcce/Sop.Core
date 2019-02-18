@@ -1,4 +1,4 @@
-﻿namespace ItemDoc.ConsoleBot.Helper
+﻿namespace ItemDoc.ConsoleBotServer.Helper
 {
     partial class ProxyForm
     {
