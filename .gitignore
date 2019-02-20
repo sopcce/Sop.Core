@@ -68,3 +68,6 @@
 /src/Plugin/ItemDoc.ConsoleBotServer/bin
 /src/Plugin/ItemDoc.ConsoleBotServer/AppData/Aspose.Total.lic
 /src/Plugin/ItemDoc.ConsoleBotServer/AppData/*.lic
+/src/Plugin/ItemDoc.ConsoleBotServer/AppData/Aspose/*.lic
+/src/ThirdParty/Sop.Common.Serialization/obj
+/src/ThirdParty/Sop.Common.Serialization/bin
