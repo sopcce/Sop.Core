@@ -27,11 +27,17 @@ namespace ItemDoc.Services.Model
         /// 
         /// </summary>
         public virtual string ServerId { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual string ServerUrlPath { get; set; }
-
-        public virtual string Path { get; set; }        
-                                                                  
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual string Path { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>        
         public virtual string Extension { get; set; }
         /// <summary>
         /// 
@@ -55,6 +61,9 @@ namespace ItemDoc.Services.Model
         /// 
         /// </summary>
         public virtual AttachmentStatus Status { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual int DisplayOrder { get; set; }
 
         /// <summary>
@@ -65,9 +74,20 @@ namespace ItemDoc.Services.Model
         /// 
         /// </summary>
         public virtual DateTime DateCreated { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual bool HasThumbnail { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual bool HtmlPreview { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual int PageCount { get; set; }
+          
+
     }
 
 
@@ -97,7 +117,7 @@ namespace ItemDoc.Services.Model
         /// <summary>
         /// 未知
         /// </summary>
-        None=0,
+        None = 0,
     }
 
 

@@ -35,10 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AppData\AttachmentInfo.cs" />
-    <Compile Include="AppData\Pdf2Html.cs" />
-    <Compile Include="AppData\VideoEncoder.cs" />
-    <Compile Include="AppData\VideoFile.cs" />
+    <Compile Include="Models\ConvertFile.cs" />
+    <Compile Include="Helper\Pdf2Html.cs" />
+    <Compile Include="Helper\VideoEncoder.cs" />
+    <Compile Include="Helper\VideoFile.cs" />
     <Compile Include="GhostScriptSharp\GhostScript32.cs" />
     <Compile Include="GhostScriptSharp\GhostScript64.cs" />
     <Compile Include="GhostScriptSharp\GhostscriptSharp.cs" />
@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="AppData\Aspose.Total.lic" />
+    <None Include="AppData\Aspose\Aspose.Total.lic" />
     <None Include="AppData\pdf2htmlEX\data\manifest" />
     <None Include="bin\Debug\Aspose.Total.lic" />
     <None Include="packages.config" />

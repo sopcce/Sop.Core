@@ -1,5 +1,6 @@
 ﻿using ItemDoc.ConsoleBotServer.AppData;
 using ItemDoc.ConsoleBotServer.Helper;
+using ItemDoc.Framework.Utility;
 using ItemDoc.Services.Model;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;
@@ -27,31 +28,44 @@ namespace ItemDoc.ConsoleBotServer
             //Console.Write(path);
             //var local = FileUtility.GetDiskFilePath(path);
 
-            //Pdf2Html.Instance().PDF2HTML();
-            var info = new AttachmentInfo()
-            {
-                Id = 1,
-                AttachmentId = "gg",
-                OwnerId = Guid.NewGuid().ToString("N"),
-                ServerId = "",
-                ServerUrlPath = "",
-                Path = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo.xlsx",
-                Extension = "xlsx",
-                Size = 25677,
-                FileNames = "",
-                UploadFileName = "",
-                MimeType = "",
-                Status = AttachmentStatus.None,
-                DisplayOrder = 1,
-                Ip = "",
-                DateCreated = DateTime.Now,
-                HasThumbnail = true,
-                HtmlPreview = true,
-                PageCount = 10,
-            };
 
-            var isok1 = Pdf2Html.Instance().ExcelToPDF(info);
+
+            //string sourcePath = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo1.xlsx";
+            //string targetPath = FileUtility.Combine(Pdf2Html.Instance().tempPath, "demo1.pdf"); 
+
+            //var isok1 = Pdf2Html.Instance().ExcelToPDF(sourcePath, targetPath);
+
+
+
+            //string sourcePath2 = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo2.doc";
+            //string targetPath2 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "demo2.pdf");
+            //var isok2 = Pdf2Html.Instance().WordToPDF(sourcePath2, targetPath2);
+
+
+            //string sourcePath3 = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo3.pptx";
+            //string targetPath3 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "demo3.pdf");
+            //var isok3 = Pdf2Html.Instance().PowerPointToPDF(sourcePath3, targetPath3);
+
+
+
+            string sourcePath4 = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo4.pdf";
+            string targetPath4 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "html");
+            var isok4 = Pdf2Html.Instance().PDF2HTML(sourcePath4, targetPath4);
+
+            string sourcePath5 = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo4.pdf";
+            string targetPath5 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "thumbnail.jpg");
+            var isok5 = Pdf2Html.Instance().GetPDFToThumbnail(sourcePath5, targetPath5);
+
+
+            //string sourcePath6 = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo4.pdf";
+            //string targetPath6 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "preview.html");
+            //var isok6 = Pdf2Html.Instance().PDFToHTML(sourcePath6, targetPath6);
+
+
             Console.Read();
+
+
+
 
 
             //for (int i = 0; i < 10000; i++)

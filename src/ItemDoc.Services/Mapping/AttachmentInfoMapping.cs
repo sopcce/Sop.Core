@@ -24,8 +24,14 @@ namespace ItemDoc.Services.Mapping
             Property(t => t.DisplayOrder);
             Property(t => t.Ip);
             Property(t => t.DateCreated);
-         
-        
+
+            Property(t => t.HasThumbnail);
+            Property(t => t.HtmlPreview);
+            Property(t => t.PageCount);
+            Property(t => t.DateCreated);
+            
+
+
         }
     }
 }
