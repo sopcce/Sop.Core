@@ -101,7 +101,7 @@ namespace ItemDoc.Framework.Repositories.NHibernate
                     if (session == null || !session.IsOpen)
                     {
 
-                        session = _sessionFactory.OpenSession();
+                        session = _sessionFactory.OpenSession(); 
                         CallContext.SetData(typeof(ISession).FullName, session);
                     }
                 }
@@ -116,10 +116,12 @@ namespace ItemDoc.Framework.Repositories.NHibernate
                     if (session == null || !session.IsOpen)
                     {
                         session = _sessionFactory.OpenSession();
+                      
                         CurrentSessionContext.Bind(session);
                     }
                 }
-
+                //确定Hibernate自动刷新会话的点。
+                session.FlushMode = FlushMode.Commit;
                 return session;
             }
         }

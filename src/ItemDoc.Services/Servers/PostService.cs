@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using ItemDoc.Services.Parameter;
 using ItemDoc.Services.ViewModel;
 using System;
+using ItemDoc.Framework.Environment;
+using ItemDoc.Framework.Repositories.NHibernate;
 
 namespace ItemDoc.Services.Servers
 {
@@ -38,15 +40,17 @@ namespace ItemDoc.Services.Servers
         /// 创建
         /// </summary>
         /// <param name="info"></param>
-        public int Create(PostInfo info)
+        public void Create(PostInfo info)
         {
+            //info.DisplayOrder = IdSnowflake.Instance().GetId(); 
             var result = _postRepository.Create(info);
-            int id = Convert.ToInt32(result);
-            info.Id = id;
-            info.DisplayOrder = id;
+
+
+            info.DisplayOrder = (int)result;
+
             _postRepository.Update(info);
 
-            return id;
+
         }
         /// <summary>
         /// 修改
@@ -92,9 +96,50 @@ namespace ItemDoc.Services.Servers
             //  //TODO 特殊处理page 数
             parameter.pageIndex = (parameter.pageIndex / parameter.pageSize) + 1;
 
+            var query = _postRepository.Gets(n => n.CatalogId == parameter.CatalogId, order => order.Desc(n => n.DateCreated), parameter.pageSize, parameter.pageIndex);
+            if (parameter.sortOrder == SortOrder.Asc)
+            {
+                switch (parameter.sortName)
+                {
+                    case SortName.DateCreated:
+                        query = _postRepository.Gets(n => n.CatalogId == parameter.CatalogId, order => order.Asc(n => n.DateCreated), parameter.pageSize, parameter.pageIndex);
+                        break;
+                    case SortName.Title:
+                        query = _postRepository.Gets(n => n.CatalogId == parameter.CatalogId, order => order.Asc(n => n.Title), parameter.pageSize, parameter.pageIndex);
+                        break;
+                    case SortName.ViewCount:
+                        query = _postRepository.Gets(n => n.CatalogId == parameter.CatalogId, order => order.Asc(n => n.ViewCount), parameter.pageSize, parameter.pageIndex);
+                        break;
+                    case SortName.DisplayOrder:
+                        query = _postRepository.Gets(n => n.CatalogId == parameter.CatalogId, order => order.Asc(n => n.DisplayOrder), parameter.pageSize, parameter.pageIndex);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (parameter.sortOrder == SortOrder.Desc)
+            {
+                switch (parameter.sortName)
+                {
+                    case SortName.DateCreated:
+                        query = _postRepository.Gets(n => n.CatalogId == parameter.CatalogId, order => order.Desc(n => n.DateCreated), parameter.pageSize, parameter.pageIndex);
+                        break;
+                    case SortName.Title:
+                        query = _postRepository.Gets(n => n.CatalogId == parameter.CatalogId, order => order.Desc(n => n.Title), parameter.pageSize, parameter.pageIndex);
+                        break;
+                    case SortName.ViewCount:
+                        query = _postRepository.Gets(n => n.CatalogId == parameter.CatalogId, order => order.Desc(n => n.ViewCount), parameter.pageSize, parameter.pageIndex);
+                        break;
+                    case SortName.DisplayOrder:
+                        query = _postRepository.Gets(n => n.CatalogId == parameter.CatalogId, order => order.Desc(n => n.DisplayOrder), parameter.pageSize, parameter.pageIndex);
+                        break;
+                    default:
+                        break;
+                }
+            }
 
-
-            return _postRepository.Gets(n => n.CatalogId == parameter.CatalogId, null, parameter.pageSize, parameter.pageIndex);
+            
+            return query;
 
         }
     }

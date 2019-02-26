@@ -21,6 +21,7 @@
     <![endif]-->
     @Styles.Render("~/assets/common-css")
     @RenderSection("heads", false)
+    <script src="~/assets/lib/jquery-1.10.2.js"></script>
 </head>
 <body style="">
 
@@ -29,8 +30,7 @@
         @RenderBody()
         <hr />
         @RenderPage("~/Views/Home/_Footer.cshtml")
-    </div>
-    <script src="~/assets/lib/jquery-1.10.2.js"></script>
+    </div> 
     <script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/assets/vue/vue.min.js"></script>
     <!-- 引入组件库 -->

@@ -16,8 +16,8 @@ namespace ItemDoc.Services.Model
 
         public virtual int Id { get; set; }
         public virtual string UserId { get; set; }
-
         public virtual int ItemId { get; set; }
+        public virtual int TenantId { get; set; }
         /// <summary>
         /// 分类名称
         /// </summary>

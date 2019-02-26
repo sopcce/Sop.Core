@@ -12,7 +12,7 @@ namespace ItemDoc.Services.Treeview
     {
       var infos = listInfos as CatalogInfo[] ?? listInfos.ToArray();
 
-      var rootCategorys = infos.Where(x => x.ParentId == 0);
+      var rootCategorys = infos?.Where(x => x.ParentId == 0);
 
       List<Node> nodes = new List<Node>();
       foreach (var info in rootCategorys)
@@ -34,14 +34,14 @@ namespace ItemDoc.Services.Treeview
       if (info.ChildCount > 0)
       {
         nodes = new List<Node>();
-        var newlists = lists.Where(x => x.ParentId == info.Id);
+        var newlists = lists?.Where(x => x.ParentId == info.Id);
         foreach (var info1 in newlists)
         {
           Node node1 = new Node
           {
-            Id = info1.Id.ToString(),
+            Id = info1?.Id.ToString(),
             Text = info1.Name,
-            Tags = new string[] { info1.ChildCount.ToString()  }
+            Tags = new string[] { info1?.ChildCount.ToString()  }
           };
           OrganizeForIndented(node1.Nodes, node1, info1, lists);
           nodes.Add(node1);

@@ -20,16 +20,15 @@ namespace ItemDoc.Web
             #region Item
             //匹配特殊路由
             routes.MapRoute(
-              name: "Item_Post",
-              url: "p/{id}",
-              defaults: new { controller = "Item", action = "Post", id = UrlParameter.Optional }
-
+                name: "Item_Post",
+                url: "p/{id}",
+                defaults: new { controller = "Item", action = "Post", id = UrlParameter.Optional } 
             );
             //编辑
             routes.MapRoute(
-              name: "Item_PostEdit",
-              url: "Item/PostEdit/{catalogId}/{id}",
-              defaults: new { controller = "Item", action = "PostEdit", catalogId = 0, id = UrlParameter.Optional }
+                name: "Item_PostEdit",
+                url: "Item/PostEdit/{catalogId}/{id}",
+                defaults: new { controller = "Item", action = "PostEdit", catalogId = 0, id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Item_Index",
@@ -41,19 +40,15 @@ namespace ItemDoc.Web
             #region Account 
             //
             routes.MapRoute(
-            name: "Account_Home",
-            url: "{userName}/Home",
-            defaults: new { controller = "Account", action = "Home", userName = "" }
-            );
-            routes.MapRoute(
-                name: "Account_Home_Short",
-                url: "{userName}",
+                name: "Account_Home",
+                url: "{userName}/Home",
                 defaults: new { controller = "Account", action = "Home", userName = "" }
             );
 
+
             #endregion
 
- 
+
 
 
 
@@ -62,9 +57,9 @@ namespace ItemDoc.Web
             routes.MapRoute(
                 name: "Home_Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Home", action = "Index"  }
+                defaults: new { controller = "Home", action = "Index" }
             );
-            
+
 
             //安装模块
             routes.MapRoute(
@@ -72,7 +67,7 @@ namespace ItemDoc.Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Install", action = "Index", id = UrlParameter.Optional }
             );
-            
+
 
 
 

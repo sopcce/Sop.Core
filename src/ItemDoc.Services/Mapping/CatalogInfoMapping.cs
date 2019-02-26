@@ -14,7 +14,7 @@ namespace ItemDoc.Services.Mapping
             Property(t => t.UserId);
             Property(t => t.ItemId);
             Property(t => t.Name);
-           
+            Property(t => t.TenantId);
             Property(t => t.Description);
             Property(t => t.ParentId);
             Property(t => t.ParentIdList);

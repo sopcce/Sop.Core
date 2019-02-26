@@ -3,20 +3,26 @@
     ViewBag.Title = "文章栏目详细页面";
 }
 
-<link href="~/assets/formvalidation/dist/css/formValidation.css" rel="stylesheet" />
-<script src="~/assets/formvalidation/dist/js/formValidation.js"></script>
-<script src="~/assets/formvalidation/dist/js/framework/bootstrap.min.js"></script>
-<script src="~/assets/formvalidation/dist/js/language/zh_CN.js"></script>
 
-<link href="~/assets/bootstrap-treeview/css/bootstrap-treeview.css" rel="stylesheet" />
-<script src="~/assets/bootstrap-treeview/js/bootstrap-treeview.js"></script>
+@section heads {
+    <link href="~/assets/formvalidation/dist/css/formValidation.css" rel="stylesheet" />
+    <link href="~/assets/bootstrap-treeview/css/bootstrap-treeview.css" rel="stylesheet" />
 
-<link href="~/assets/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet" />
-<script src="~/assets/bootstrap-table/dist/bootstrap-table.js"></script>
-<script src="~/assets/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
-<script src="~/assets/lib/sopdate.format-1.0.js?b=122"></script>
-<script src="~/assets/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
-<script src="~/assets/bootstrap-table/dist/extensions/export-hhurz/tableExport.js"></script>
+    <link href="~/assets/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet" />
+
+}
+@section scripts {
+    <script src="~/assets/formvalidation/dist/js/formValidation.js"></script>
+    <script src="~/assets/formvalidation/dist/js/framework/bootstrap.min.js"></script>
+    <script src="~/assets/formvalidation/dist/js/language/zh_CN.js"></script>
+
+    <script src="~/assets/bootstrap-treeview/js/bootstrap-treeview.js"></script>
+    <script src="~/assets/bootstrap-table/dist/bootstrap-table.js"></script>
+    <script src="~/assets/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/assets/sopcce.com/sopdate.format-1.0.js"></script>
+    <script src="~/assets/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
+    <script src="~/assets/bootstrap-table/dist/extensions/export-hhurz/tableExport.js"></script>
+}
 
 <style>
     .casd {
@@ -324,7 +330,8 @@
 
                 columns: [{
                     checkbox: true
-                }, {
+                }, 
+                {
                     field: 'title',
                     title: '标题',
                     class: "ssdddaa asdasd",
@@ -333,10 +340,11 @@
                         //debugger
                         return '<a href="javascript:openNewPage(\'' + row.id + '\',\'' + row.title + '\')">' + value + '</a>';
                     }
-                }, {
-                    field: 'nickname',
+                },
+                {
+                    field: 'viewcount',
                     sortable: true,
-                    title: '用户名称'
+                    title: '访问次数'
 
                 },
                 {
@@ -349,11 +357,8 @@
                     sortable: true,
                     formatter: function (value, row, index) {
 
-                        //var newDate = new Date();
-                        //newDate.setTime(row.datecreated * 1000);
-                        //return newDate.format('yyyy-MM-dd hh:mm:ss');
-                        // var dd = stringToDate(value, "-");
-                        var dd = stringToDate(value, "yyyy-MM-dd");
+
+                        var dd = stringToDate(value, "yyyy-MM-dd hh:mm:ss");
                         return dd;
                     }
                 }
@@ -502,7 +507,8 @@
             //console.log(arr);
             var id = $(this).data("id");
             var itemId = $("#hf-itemId").val();
-            debugger; console.log("catalog-setting:url_" + thisUrl + "|id_" + id);
+            //debugger;
+            console.log("catalog-setting:url_" + thisUrl + "|id_" + id);
             $.ajax({
                 type: "get",
                 url: thisUrl,

@@ -14,6 +14,7 @@ namespace ItemDoc.Services.Model
 
         public virtual string UserId { get; set; }
 
+
         public virtual string Title { get; set; }
 
         public virtual string Description { get; set; }

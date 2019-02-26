@@ -10,9 +10,7 @@ namespace ItemDoc.Services.Mapping
         {
             Table("item_posts");
             Cache(map => map.Usage(CacheUsage.ReadWrite));
-            Id(t => t.Id, map => map.Generator(Generators.Assigned));
-
-        
+            Id(t => t.Id, map => map.Generator(Generators.Native)); 
             Property(t => t.CatalogId);
             Property(t => t.UserId);
             Property(t => t.Title);

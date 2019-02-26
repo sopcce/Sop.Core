@@ -4,8 +4,6 @@ using ItemDoc.Core;
 //using ItemDoc.Core.Auth;
 using ItemDoc.Core.Mvc;
 using ItemDoc.Core.Mvc.SystemMessage;
-using ItemDoc.Core.WebCrawler;
-using ItemDoc.Core.WebCrawler.Events;
 using ItemDoc.Framework.Utility;
 using ItemDoc.Services;
 using ItemDoc.Services.Auth;
@@ -14,13 +12,10 @@ using ItemDoc.Services.Parameter;
 using ItemDoc.Services.Servers;
 using ItemDoc.Services.Treeview;
 using ItemDoc.Services.ViewModel;
-using OpenQA.Selenium;
 using Sop.Common.Serialization.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 
@@ -38,7 +33,7 @@ namespace ItemDoc.Web.Controllers
         public PostService _postService { get; set; }
         private static readonly ILog Logger = LogManager.GetLogger<ItemController>();
 
-        private static StringBuilder sb = new StringBuilder();
+
 
         public ActionResult Index()
         {
@@ -64,153 +59,13 @@ namespace ItemDoc.Web.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<ActionResult> Crawler()
+        public ActionResult Crawler()
         {
 
 
-            sb.Append("<div>asdasd</div>");
-
-
-            await Main();
-
-            ViewBag.Html = sb.ToString();
+            ViewBag.Html = "<div>asdasd</div>";
 
             return View();
-        }
-        static async Task Main()
-        {
-            var hotelUrl = "https://weixin.sogou.com/weixin?query=.net&_sug_type_=&s_from=input&_sug_=n&type=1&page=1&ie=utf8";
-            var hotelCrawler = new Crawler();
-            hotelCrawler.OnStart += (s, e) =>
-            {
-                Logger.Info("爬虫开始抓取地址：" + e.Uri.ToString());
-            };
-            hotelCrawler.OnError += (s, e) =>
-            {
-                Logger.Error("爬虫抓取出现错误：" + e.Uri.ToString() + "，异常消息：" + e.Exception.Message);
-            };
-            hotelCrawler.OnCompleted += (s, e) =>
-            {
-                HotelCrawler(e);
-            };
-            var operation = new Operation
-            {
-                Action = (x) =>
-                {
-                    //通过Selenium驱动点击页面的“酒店评论”
-                    x.FindElement(By.XPath("//*[@id='pagebar_container']/a[@id='sogou_next']")).Click();
-                },
-                Condition = (x) =>
-                {
-                    //判断Ajax评论内容是否已经加载成功
-                    return true;
-
-
-                },
-                Timeout = 1000
-            };
-
-            await hotelCrawler.Start(new Uri(hotelUrl), null, operation);//不操作JS先将参数设置为NULL
-
-
-        }
-        private static void HotelCrawler(OnCompletedEventArgs e)
-        {
-            //Console.WriteLine(e.PageSource);
-            //File.WriteAllText(Environment.CurrentDirectory + "\\cc.html", e.PageSource, Encoding.UTF8);
-            sb.Clear();
-            sb.AppendLine();
-            //sb.Append(e.PageSource);
-            sb.AppendLine();
-            sb.Append("===============================================" + Environment.NewLine);
-            sb.Append("地址：" + e.Uri.ToString());
-            sb.Append("耗时：" + e.Milliseconds + "毫秒");
-            sb.Append("===============================================" + Environment.NewLine);
-
-            var comments = e.WebDriver.FindElement(By.XPath("//*[@id='wrapper']/div[@id='main']/div[@class='news-box']"));
-            //找到约53条结果
-            var totaltText = comments.FindElement(By.XPath("div[@id='pagebar_container']/div[@class='mun']")).Text;
-            sb.AppendLine();
-            sb.Append("===============================================");
-            sb.AppendLine();
-            sb.Append("找到结果：" + totaltText);
-            sb.AppendLine();
-            string total = System.Text.RegularExpressions.Regex.Replace(totaltText, @"[^0-9]+", "");
-            sb.Append("找到结果：" + total);
-
-
-            var contents = comments.FindElements(By.XPath("ul[@class='news-list2']/li"));
-            sb.AppendLine();
-            foreach (var content in contents)
-            {
-                sb.Append("===============================================");
-                sb.AppendLine();
-                var name = content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='tit']")).Text;
-                sb.Append("名称：" + name);
-                sb.AppendLine();
-                sb.Append("微信号：" + content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='info']/label[@name='em_weixinhao']")).Text);
-                //sb.AppendLine();
-                //sb.Append("发文：" + content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='info']/text()[3]")).Text);
-                //sb.AppendLine();
-                //sb.Append("功能介绍：" + content.FindElement(By.XPath("dl[1]/dd")).Text);
-                //sb.AppendLine();
-                //sb.Append("微信认证：" + content.FindElement(By.XPath("dl[2]/dd")).Text);
-                //sb.AppendLine();
-
-                
-                if (content.FindElement(By.XPath("dl[3]/dd/a")).IsExist())
-                {
-                    sb.Append("最近文章："
-                              + content.FindElement(By.XPath("dl[3]/dd/a")).Text + Environment.NewLine
-                              + content.FindElement(By.XPath("dl[3]/dd/a")).GetAttribute("href"));
-                    sb.AppendLine();
-                }
-              
-
-                //div/div[2]/p[2]/
-                //sb.Append("微信号：" + content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='info']")).Text);
-                //sb.Append("找到结果：" + content.FindElement(By.XPath("div[contains(@class,'user_info')]/p[@class='name']")).Text);
-                sb.AppendLine();
-
-            }
-
-            //var hotelName = e.WebDriver.FindElement(By.XPath("//*[@id='J_htl_info']/div[@class='name']/h2[@class='cn_n']")).Text;
-            //var address = e.WebDriver.FindElement(By.XPath("//*[@id='J_htl_info']/div[@class='adress']")).Text;
-            //var price = e.WebDriver.FindElement(By.XPath("//*[@id='div_minprice']/p[1]")).Text;
-            //var score = e.WebDriver.FindElement(By.XPath("//*[@id='divCtripComment']/div[1]/div[1]/span[3]/span")).Text;
-            //var reviewCount = e.WebDriver.FindElement(By.XPath("//*[@id='commentTab']/a")).Text;
-
-            //var comments = e.WebDriver.FindElement(By.XPath("//*[@id='hotel_info_comment']/div[@id='commentList']/div[1]/div[1]/div[1]"));
-            //var currentPage = Convert.ToInt32(comments.FindElement(By.XPath("div[@class='c_page_box']/div[@class='c_page']/div[contains(@class,'c_page_list')]/a[@class='current']")).Text);
-            //var totalPage = Convert.ToInt32(comments.FindElement(By.XPath("div[@class='c_page_box']/div[@class='c_page']/div[contains(@class,'c_page_list')]/a[last()]")).Text);
-            //var messages = comments.FindElements(By.XPath("div[@class='comment_detail_list']/div"));
-            //var nextPage = Convert.ToInt32(comments.FindElement(By.XPath("div[@class='c_page_box']/div[@class='c_page']/div[contains(@class,'c_page_list')]/a[@class='current']/following-sibling::a[1]")).Text);
-
-            ////sb.Clear();
-            //Console.WriteLine();
-            //Console.WriteLine("名称：" + hotelName);
-            //Console.WriteLine("地址：" + address);
-            //Console.WriteLine("价格：" + price);
-            //Console.WriteLine("评分：" + score);
-            //Console.WriteLine("数量：" + reviewCount);
-            //Console.WriteLine("页码：" + "当前页（" + currentPage + "）" + "下一页（" + nextPage + "）" + "总页数（" + totalPage + "）" + "每页（" + messages.Count + "）");
-            //Console.WriteLine();
-            //Console.WriteLine("===============================================");
-            //Console.WriteLine();
-            //Console.WriteLine("点评内容：");
-
-            //foreach (var message in messages)
-            //{
-            //    Console.WriteLine("帐号：" + message.FindElement(By.XPath("div[contains(@class,'user_info')]/p[@class='name']")).Text);
-            //    Console.WriteLine("房型：" + message.FindElement(By.XPath("div[@class='comment_main']/p/a")).Text);
-            //    Console.WriteLine("内容：" + message.FindElement(By.XPath("div[@class='comment_main']/div[@class='comment_txt']/div[1]")).Text.Substring(0, 50) + "....");
-            //    Console.WriteLine();
-            //    Console.WriteLine();
-            //}
-            Console.WriteLine();
-
-
-
         }
 
 
@@ -352,8 +207,7 @@ namespace ItemDoc.Web.Controllers
         public ActionResult CatalogEdit(CatalogViewModel info)
         {
             info.UserId = UserContext.GetGetUserId();
-
-
+            info.TenantId = 0;
             if (info.Id > 0)
             {
                 if (ModelState.IsValid)
@@ -375,7 +229,7 @@ namespace ItemDoc.Web.Controllers
             {
                 _catalogService.Create(info.MapTo<CatalogInfo>());
             }
-            return Redirect(SiteUrls.Instance().ItemItemsIndex(info.ItemId));
+            return Redirect(SiteUrls.Instance().ItemIndex());
 
         }
         [HttpPost]
@@ -458,7 +312,7 @@ namespace ItemDoc.Web.Controllers
             {
                 infoVM = info.MapTo<PostViewModel>();
                 userInfo = _usersService.GetByUserId(info.UserId);
-                infoVM.NickName = userInfo != null ? "" : userInfo.NickName;
+                infoVM.NickName = userInfo == null ? "" : userInfo.NickName;
                 return View(infoVM);
             }
             else
@@ -529,14 +383,13 @@ namespace ItemDoc.Web.Controllers
         }
 
         [HttpGet]
-
         public ActionResult PostEdit(int catalogId = 0, int id = 0)
         {
 
             PostViewModel postVm = new PostViewModel();
             postVm.TitleImg = Guid.NewGuid().ToString("N");
             postVm.CatalogId = catalogId;
-            postVm.Id = 0;
+
             if (id != 0)
             {
                 var info = _postService.Get(id);
@@ -559,7 +412,6 @@ namespace ItemDoc.Web.Controllers
             bool isModel = TryValidateModel(postView);
             postView.UserId = UserContext.GetGetUserId();
             postView.DateCreated = DateTime.Now;
-            postView.DisplayOrder = 0;
             postView.HtmlContentPath = "HtmlContentPath";
             postView.ViewCount = 1;
             postView.CreatedIP = WebUtility.GetIp();
@@ -571,13 +423,13 @@ namespace ItemDoc.Web.Controllers
                 if (postView.Id > 0)
                 {
                     _postService.Update(info);
-                    return Redirect(SiteUrls.Instance().ItemPost(postView.Id));
+                    return Redirect(SiteUrls.Instance().ItemPost(postView.CatalogId));
 
                 }
                 else
                 {
-                    var id = _postService.Create(info);
-                    return Redirect(SiteUrls.Instance().ItemPost(id));
+                    _postService.Create(info);
+                    return Redirect(SiteUrls.Instance().ItemPost(postView.CatalogId));
                 }
 
             }
@@ -593,12 +445,11 @@ namespace ItemDoc.Web.Controllers
         public ActionResult CreatePost(int CatalogId)
         {
             #region Create 点击自动生成
-
-            _postService.Create(new PostInfo()
+            var info = new PostInfo()
             {
                 CatalogId = CatalogId,
                 UserId = UserContext.GetGetUserId(),
-                Title = CatalogId + "-标题 Post-",
+                Title = CatalogId + "-标题 Post",
                 Content = CatalogId + "<br />" + @"
 
       [TOC]
@@ -636,13 +487,15 @@ namespace ItemDoc.Web.Controllers
       ```
 
              ",
-                DateCreated = DateTime.Now.AddDays(new Random().Next(1000)),
+                CreatedIp = WebUtility.GetIp(),
+                DateCreated = DateTime.Now.AddHours(-(new Random().Next(1000))),
                 Description = "descriptiondescriptiondescriptiondescriptiondescriptiondescription-----" + new Random().Next(1000),
-                DisplayOrder = 1,
+
                 HtmlContentPath = "",
                 ViewCount = new Random().Next(1000),
 
-            });
+            };
+            _postService.Create(info);
             #endregion
 
             return Json("ok", JsonRequestBehavior.AllowGet);

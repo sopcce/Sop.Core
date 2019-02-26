@@ -43,8 +43,16 @@ namespace ItemDoc.Framework.Repositories.NHibernate
             object obj = null;
             using (var transaction = Session.BeginTransaction())
             {
-                obj = Session.Save(entity);
-                transaction.Commit();
+                try
+                { 
+                    obj = Session.Save(entity);
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction?.Rollback();
+                    throw new Exception(ex.Message, ex);
+                }
             }
             return obj;
         }
@@ -56,20 +64,20 @@ namespace ItemDoc.Framework.Repositories.NHibernate
         public void Update(T entity)
         {
             using (var transaction = Session.BeginTransaction())
-            { 
+            {
                 try
                 {
-                    
+
                     Session.Update(entity);
                     transaction.Commit();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     transaction?.Rollback();
-                    throw;
+                    throw new Exception(ex.Message,ex);
                 }
             }
-            
+
         }
 
         /// <summary>
@@ -138,11 +146,11 @@ namespace ItemDoc.Framework.Repositories.NHibernate
             var totalCount = ts.ToFuture<T>().Count();
             var pagingTs = ts.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToFuture();
 
-            return new PageList<T>(pagingTs.ToList(), pageIndex, pageSize);
+            return new PageList<T>(pagingTs.ToList(), pageIndex, pageSize, totalCount);
 
 
         }
-        
+
 
     }
 }

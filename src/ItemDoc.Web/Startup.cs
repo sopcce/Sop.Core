@@ -4,7 +4,6 @@ using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Common.Logging;
 using ItemDoc.Core.Mvc.ModelBinder;
-using ItemDoc.Core.WebCrawler;
 using ItemDoc.Framework.Caching;
 using ItemDoc.Framework.Environment;
 using ItemDoc.Framework.Repositories;
@@ -96,10 +95,7 @@ namespace ItemDoc.Web
 
             //IAuthenticationService
             builder.Register(c => new OwinAuthenticationService()).As<IAuthenticationService>().PropertiesAutowired().InstancePerRequest();
-
-            //注册爬虫服务App_Data 必须含有phantomjs.exe.程序
-            builder.Register(c => new Crawler()).As<ICrawler>().SingleInstance().PropertiesAutowired();
-
+            
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterControllers(assemblies).PropertiesAutowired();

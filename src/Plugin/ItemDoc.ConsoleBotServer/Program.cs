@@ -1,11 +1,15 @@
 ﻿using ItemDoc.ConsoleBotServer.AppData;
 using ItemDoc.ConsoleBotServer.Helper;
+using ItemDoc.ConsoleBotServer.WebCrawler;
+using ItemDoc.Core.WebCrawler;
 using ItemDoc.Framework.Utility;
 using ItemDoc.Services.Model;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;
 using Polly;
 using System;
+using System.Text;
 
 namespace ItemDoc.ConsoleBotServer
 {
@@ -22,6 +26,145 @@ namespace ItemDoc.ConsoleBotServer
             Console.ForegroundColor = ConsoleColor.Green;
             Console.SetCursorPosition(10, 1);
             Console.Write("欢迎使用ConsoleBotServer监控内容爬虫");
+
+
+
+            var hotelUrl = "https://weixin.sogou.com/weixin?query=.net&_sug_type_=&s_from=input&_sug_=n&type=1&page=1&ie=utf8";
+            var hotelCrawler = new Crawler();
+            hotelCrawler.OnStart += (s, e) =>
+            {
+                Console.Write("爬虫开始抓取地址：" + e.Url.ToString());
+            };
+            hotelCrawler.OnError += (s, e) =>
+            {
+                Console.Write("爬虫抓取出现错误：" + e.Url.ToString() + "，异常消息：" + e.Exception.Message);
+            };
+            hotelCrawler.OnCompleted += (s, e) =>
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("===============================================" + Environment.NewLine);
+                sb.Append("地址：" + e.URL.ToString() + Environment.NewLine);
+                sb.Append("耗时：" + e.Milliseconds + "毫秒");
+                sb.Append("===============================================" + Environment.NewLine);
+
+                var comments = e.WebDriver.FindElement(By.XPath("//*[@id='wrapper']/div[@id='main']/div[@class='news-box']"));
+                //找到约53条结果
+                var totaltText = comments.FindElement(By.XPath("div[@id='pagebar_container']/div[@class='mun']")).Text;
+                sb.AppendLine();
+                sb.Append("===============================================");
+                sb.AppendLine();
+                sb.Append("找到结果：" + totaltText);
+                sb.AppendLine();
+                string total = System.Text.RegularExpressions.Regex.Replace(totaltText, @"[^0-9]+", "");
+                sb.Append("找到结果：" + total);
+
+
+                var contents = comments.FindElements(By.XPath("ul[@class='news-list2']/li"));
+                sb.AppendLine();
+                foreach (var content in contents)
+                {
+                    sb.Append("===============================================");
+                    sb.AppendLine();
+                    var name = content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='tit']")).Text;
+                    sb.Append("名称：" + name);
+                    sb.AppendLine();
+                    sb.Append("微信号：" + content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='info']/label[@name='em_weixinhao']")).Text);
+                    //sb.AppendLine();
+                    //sb.Append("发文：" + content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='info']/text()[3]")).Text);
+                    //sb.AppendLine();
+                    //sb.Append("功能介绍：" + content.FindElement(By.XPath("dl[1]/dd")).Text);
+                    //sb.AppendLine();
+                    //sb.Append("微信认证：" + content.FindElement(By.XPath("dl[2]/dd")).Text);
+                    //sb.AppendLine();
+
+
+                    //if (content.FindElement(By.XPath("dl[3]/dd/a")).IsExist())
+                    //{
+                    //    sb.Append("最近文章："
+                    //              + content.FindElement(By.XPath("dl[3]/dd/a")).Text + Environment.NewLine
+                    //              + content.FindElement(By.XPath("dl[3]/dd/a")).GetAttribute("href"));
+                    //    sb.AppendLine();
+                    //}
+
+
+                    //div/div[2]/p[2]/
+                    //sb.Append("微信号：" + content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='info']")).Text);
+                    //sb.Append("找到结果：" + content.FindElement(By.XPath("div[contains(@class,'user_info')]/p[@class='name']")).Text);
+                    sb.AppendLine();
+
+                }
+
+                //var hotelName = e.WebDriver.FindElement(By.XPath("//*[@id='J_htl_info']/div[@class='name']/h2[@class='cn_n']")).Text;
+                //var address = e.WebDriver.FindElement(By.XPath("//*[@id='J_htl_info']/div[@class='adress']")).Text;
+                //var price = e.WebDriver.FindElement(By.XPath("//*[@id='div_minprice']/p[1]")).Text;
+                //var score = e.WebDriver.FindElement(By.XPath("//*[@id='divCtripComment']/div[1]/div[1]/span[3]/span")).Text;
+                //var reviewCount = e.WebDriver.FindElement(By.XPath("//*[@id='commentTab']/a")).Text;
+
+                //var comments = e.WebDriver.FindElement(By.XPath("//*[@id='hotel_info_comment']/div[@id='commentList']/div[1]/div[1]/div[1]"));
+                //var currentPage = Convert.ToInt32(comments.FindElement(By.XPath("div[@class='c_page_box']/div[@class='c_page']/div[contains(@class,'c_page_list')]/a[@class='current']")).Text);
+                //var totalPage = Convert.ToInt32(comments.FindElement(By.XPath("div[@class='c_page_box']/div[@class='c_page']/div[contains(@class,'c_page_list')]/a[last()]")).Text);
+                //var messages = comments.FindElements(By.XPath("div[@class='comment_detail_list']/div"));
+                //var nextPage = Convert.ToInt32(comments.FindElement(By.XPath("div[@class='c_page_box']/div[@class='c_page']/div[contains(@class,'c_page_list')]/a[@class='current']/following-sibling::a[1]")).Text);
+
+                ////sb.Clear();
+                //Console.WriteLine();
+                //Console.WriteLine("名称：" + hotelName);
+                //Console.WriteLine("地址：" + address);
+                //Console.WriteLine("价格：" + price);
+                //Console.WriteLine("评分：" + score);
+                //Console.WriteLine("数量：" + reviewCount);
+                //Console.WriteLine("页码：" + "当前页（" + currentPage + "）" + "下一页（" + nextPage + "）" + "总页数（" + totalPage + "）" + "每页（" + messages.Count + "）");
+                //Console.WriteLine();
+                //Console.WriteLine("===============================================");
+                //Console.WriteLine();
+                //Console.WriteLine("点评内容：");
+
+                //foreach (var message in messages)
+                //{
+                //    Console.WriteLine("帐号：" + message.FindElement(By.XPath("div[contains(@class,'user_info')]/p[@class='name']")).Text);
+                //    Console.WriteLine("房型：" + message.FindElement(By.XPath("div[@class='comment_main']/p/a")).Text);
+                //    Console.WriteLine("内容：" + message.FindElement(By.XPath("div[@class='comment_main']/div[@class='comment_txt']/div[1]")).Text.Substring(0, 50) + "....");
+                //    Console.WriteLine();
+                //    Console.WriteLine();
+                //}
+                Console.WriteLine();
+
+            };
+            //var operation = new Operation
+            //{
+            //    Action = (x) =>
+            //    {
+            //        //通过Selenium驱动点击页面的“酒店评论”
+            //        x.FindElement(By.XPath("//*[@id='pagebar_container']/a[@id='sogou_next']")).Click();
+            //    },
+            //    Condition = (x) =>
+            //    {
+            //        //判断Ajax评论内容是否已经加载成功
+            //        return true;
+
+
+            //    },
+            //    Timeout = 1000
+            //};
+
+            //await hotelCrawler.Start(new Uri(hotelUrl), null, operation);//不操作JS先将参数设置为NULL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             //Console.WriteLine(); 
 
             //var path = Config.AppSettings<string>("RemoteConfig", "BotConfig.config");
@@ -34,6 +177,9 @@ namespace ItemDoc.ConsoleBotServer
             //string targetPath = FileUtility.Combine(Pdf2Html.Instance().tempPath, "demo1.pdf"); 
 
             //var isok1 = Pdf2Html.Instance().ExcelToPDF(sourcePath, targetPath);
+            //2秒后开启该线程，然后每隔4s调用一次
+
+
 
 
 
@@ -48,13 +194,13 @@ namespace ItemDoc.ConsoleBotServer
 
 
 
-            string sourcePath4 = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo4.pdf";
-            string targetPath4 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "html");
-            var isok4 = Pdf2Html.Instance().PDF2HTML(sourcePath4, targetPath4);
+            //string sourcePath4 = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo4.pdf";
+            //string targetPath4 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "html");
+            //var isok4 = Pdf2Html.Instance().PDF2HTML(sourcePath4, targetPath4);
 
-            string sourcePath5 = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo4.pdf";
-            string targetPath5 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "thumbnail.jpg");
-            var isok5 = Pdf2Html.Instance().GetPDFToThumbnail(sourcePath5, targetPath5);
+            //string sourcePath5 = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo4.pdf";
+            //string targetPath5 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "thumbnail.jpg");
+            //var isok5 = Pdf2Html.Instance().GetPDFToThumbnail(sourcePath5, targetPath5);
 
 
             //string sourcePath6 = "E:/GitHub/ItemDoc/src/Plugin/ItemDoc.ConsoleBotServer/bin/Debug/pdf2temp/demo4.pdf";

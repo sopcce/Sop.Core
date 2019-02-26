@@ -45,7 +45,7 @@
 
 
 
-       
+
 
 
         //点击项目设置图标时
@@ -177,7 +177,9 @@
             @foreach (var item in Model)
             {
 
-                <li class="item-thumbnail item-@item.Id">
+            <li class="item-thumbnail item-@item.Id @(item.Enabled ? "" : "disabled" )">
+                @if (item.Enabled)
+                {
                     <div class="thumbnail " data-id="@item.Id" data-description="@item.Description">
 
                         <span class="item-setting" data-src="@SiteUrls.Instance().ItemItemsEdit(item.Id)" data-id="@item.Id" title="项目设置">
@@ -186,11 +188,27 @@
                         <span class="item-delete" data-src="@SiteUrls.Instance().ItemItemsDelete(item.Id)" data-id="@item.Id" title="项目删除">
                             <i class="fa fa-trash" aria-hidden="true"></i>删除
                         </span>
-                        <a class="item-name"  data-id="item-name-@item.Id" data-description="@item.Description" target="_blank" href="@SiteUrls.Instance().ItemItemsIndex(item.Id)">
-                            <p class=""  id="item-name-@item.Id" >@item.Name</p>
+                        <a class="item-name" data-id="item-name-@item.Id" data-description="@item.Description" target="_blank" href="@SiteUrls.Instance().ItemItemsIndex(item.Id)">
+                            <p class="" id="item-name-@item.Id">@item.Name</p>
                         </a>
                     </div>
-                </li>
+                }
+                else
+                {
+                    <div class="thumbnail " data-id="@item.Id" data-description="@item.Description">
+
+                        <span class="item-setting" data-src="@SiteUrls.Instance().ItemItemsEdit(item.Id)" data-id="@item.Id" title="项目设置">
+                            <i class="fa fa-cog"></i>设置
+                        </span>
+                        <span class="item-delete" data-src="@SiteUrls.Instance().ItemItemsDelete(item.Id)" data-id="@item.Id" title="项目删除">
+                            <i class="fa fa-trash" aria-hidden="true"></i>删除
+                        </span>
+                        <a class="item-name" data-id="item-name-@item.Id" data-description="@item.Description" target="_blank" href="">
+                            <p class="" id="item-name-@item.Id">@item.Name</p>
+                        </a>
+                    </div>
+                }
+            </li>
             }
             <li class="item-thumbnail">
                 <div class="thumbnail sop-modal-add">
