@@ -8,6 +8,20 @@ body {
     padding-top: 56px;
 }
 
+.carousel-item {
+    height: 65vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
 @media (max-width: 991.98px) {
     .offcanvas-collapse {
         position: fixed;
@@ -91,4 +105,23 @@ body {
 
 .sop-red {
     border: solid 1px red;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.sop-top-body {
+    margin-top: 90px;
 }

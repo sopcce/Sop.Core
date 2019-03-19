@@ -32,6 +32,15 @@ $(function() {
     });
 });
 
+$(function() {
+    'use strict'
+
+    $('[data-toggle="offcanvas"]').on('click', function() {
+        $('.offcanvas-collapse').toggleClass('open')
+    })
+})
+
+
 /*
 滑动到顶部代码
 @param calss 的值
