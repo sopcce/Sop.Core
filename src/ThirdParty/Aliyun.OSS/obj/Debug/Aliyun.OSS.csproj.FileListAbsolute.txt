@@ -17,3 +17,13 @@ E:\GitHub\ItemDoc\src\ThirdParty\Aliyun.OSS\obj\Debug\Aliyun.OSS.csproj.Generate
 E:\GitHub\ItemDoc\src\ThirdParty\Aliyun.OSS\obj\Debug\Aliyun.OSS.csproj.CoreCompileInputs.cache
 E:\GitHub\ItemDoc\src\ThirdParty\Aliyun.OSS\obj\Debug\Aliyun.OSS.dll
 E:\GitHub\ItemDoc\src\ThirdParty\Aliyun.OSS\obj\Debug\Aliyun.OSS.pdb
+E:\GitHub\STS\src\ThirdParty\Aliyun.OSS\bin\Debug\Aliyun.OSS.XML
+E:\GitHub\STS\src\ThirdParty\Aliyun.OSS\bin\Debug\Aliyun.OSS.dll
+E:\GitHub\STS\src\ThirdParty\Aliyun.OSS\bin\Debug\Aliyun.OSS.pdb
+E:\GitHub\STS\src\ThirdParty\Aliyun.OSS\obj\Debug\Aliyun.OSS.csprojAssemblyReference.cache
+E:\GitHub\STS\src\ThirdParty\Aliyun.OSS\obj\Debug\Aliyun.OSS.Domain.OssResources.resources
+E:\GitHub\STS\src\ThirdParty\Aliyun.OSS\obj\Debug\Aliyun.OSS.Properties.Resources.resources
+E:\GitHub\STS\src\ThirdParty\Aliyun.OSS\obj\Debug\Aliyun.OSS.csproj.GenerateResource.cache
+E:\GitHub\STS\src\ThirdParty\Aliyun.OSS\obj\Debug\Aliyun.OSS.csproj.CoreCompileInputs.cache
+E:\GitHub\STS\src\ThirdParty\Aliyun.OSS\obj\Debug\Aliyun.OSS.dll
+E:\GitHub\STS\src\ThirdParty\Aliyun.OSS\obj\Debug\Aliyun.OSS.pdb

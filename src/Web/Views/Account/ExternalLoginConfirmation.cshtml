@@ -1,0 +1,161 @@
+﻿@model Sop.Web.Models.ExternalLoginConfirmationViewModel
+@using Sop.Core.Mvc.SystemMessage
+@using Sop.Web.Models
+@{
+    ViewBag.Title = "注册";
+}
+@section heads
+{
+    <style type="text/css">
+        .form-signin {
+            max-width: 60%;
+            margin: 50px auto;
+        }
+
+        .checkcodeimg {
+            cursor: pointer;
+            width: 76px;
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+        }
+    </style>
+
+}
+
+
+@section scripts {
+    <link href="~/assets/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" />
+    <script src="~/assets/jquery.validate/jquery.validate.min.js"></script>
+    <script src="~/assets/jquery.validate/jquery.validate.unobtrusive.js"></script>
+    <script src="~/assets/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $(".checkcodeimg").css("background-image",
+                "url('@SiteUrls.Instance().UserCaptchaCode()" +
+                "?v=" +
+                Math.random() +
+                ")no-repeat center top");
+
+            $(".checkcodeimg,.checkImgRefresh").on("click",
+                function() {
+                    $(".checkcodeimg").css("background-image",
+                        "url('@SiteUrls.Instance().UserCaptchaCode()" +
+                        "?v=" +
+                        Math.random() +
+                        ")no-repeat center top");
+
+                });
+
+            //$('#myTabs a').click(function(e) {
+            //    e.preventDefault();
+            //    var $this = $(this);
+            //    //debugger;
+            //    if ($this.data("associate-type") === "login") {
+            //        console.log("login");
+            //        $("#AssociateType").val("login");
+            //    }
+            //    if ($this.data("associate-type") === "register") {
+            //        console.log("register");
+            //        $("#AssociateType").val("register");
+            //    }
+
+
+            //    //$(this).tab('show');
+            //});
+            var $thisType = $('#IsLogin');
+            $(".associate-type").hide();
+            $thisType.bootstrapSwitch({
+                onText: '新用户',
+                offText: '老用户',
+                state:false,
+                onSwitchChange: function () {
+                    //debugger
+                    console.log("asd");
+                    var $this = this;
+                    //新用户true on/老用户 off false
+                    var value = $thisType.bootstrapSwitch('state');
+                    if (value) {
+                        $(".associate-type").show();
+                        $thisType.val("false");
+                    } else {
+                        $(".associate-type").hide(); 
+                        $thisType.val("true");
+                    }
+
+
+                }
+            });
+
+
+        });
+    </script>
+
+
+}
+@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h4>关联 @ViewBag.LoginProvider 账号</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <p class="text-info">
+        你已经用 <strong>@ViewBag.LoginProvider</strong> 成功认证了，
+        请在下面输入此网站的用户名，然后单击“关联账号”按钮完成登录。
+    </p>
+    <div class="form-signin">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">类型：</label>
+            <div class="col-md-10">
+                @*@Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })*@
+                @Html.CheckBoxFor(m=>m.IsLogin)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">账号：</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group associate-type">
+            <label class="col-sm-2 control-label">昵称：</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.NickName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.NickName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">密码：</label>
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.PassWord, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PassWord, "", new { @class = "text-danger" })
+            </div>
+        </div> 
+        <div class="form-group">
+            <label class="col-sm-2 control-label">验证码：</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <div class="input-group-addon checkcodeimg" title="点击换一换">
+                    </div>
+                    @Html.TextBoxFor(n => n.CaptchaCode, new { minlength = "1", maxlength = "4", @class = "form-control", placeholder = "输入验证码", required = "required" })
+                    <div class="input-group-addon checkImgRefresh" style="cursor: pointer;">刷新</div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="关联账号" class="btn btn-default" />
+            </div>
+        </div>
+
+
+
+    </div>
+
+}
+

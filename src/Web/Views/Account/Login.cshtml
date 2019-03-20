@@ -1,0 +1,121 @@
+﻿@using Sop.Core.Mvc.SystemMessage
+@using Sop.Web.Models
+
+@model  UsersLoginViewModel
+@{
+
+    ViewBag.Title = "注册页面";
+    var systemMessageData = ViewData.Get<SystemMessageData>("msg", new SystemMessageData(SystemMessageType.Success, "ok"));
+}
+@section heads
+{
+    <style type="text/css">
+        .form-signin {
+            max-width: 60%;
+            margin: 0 auto;
+        }
+
+        .checkcodeimg {
+            cursor: pointer;
+            width: 76px;
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+        }
+    </style>
+    
+}
+@section scripts {
+ 
+
+    <script src="~/assets/jquery.validate/jquery.validate.min.js"></script>
+    <script src="~/assets/jquery.validate/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript">
+        //debugger
+        $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().AccountCaptchaCode()" +
+            "?v=" +Math.random() +") no-repeat center top");
+        $(function() {
+            $(".checkcodeimg,.checkImgRefresh").on("click",
+                function() {
+                    $(".checkcodeimg").css("background-image", "url('@SiteUrls.Instance().AccountCaptchaCode()" +
+                        "?v=" +
+                        Math.random() +
+                        ")no-repeat center top");
+                });
+
+            if ('@systemMessageData.Type' === '@SystemMessageType.Error') {
+                layer.msg('@systemMessageData.Content', { autoHeight: true });
+            }
+        }) 
+    </script>
+
+
+}
+
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm" class="">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal form-signin", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>使用账号登录</h4>
+                <hr />
+                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">UserName：</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <label class="col-sm-2 control-label">Password：</label>
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.PassWord, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PassWord, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">验证码</label>
+
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            <div class="input-group-addon checkcodeimg" title="点击换一换">
+                            </div>
+                            @Html.TextBoxFor(n => n.CaptchaCode, new { minlength = "1", maxlength = "4", @class = "form-control", placeholder = "输入验证码", required = "required" })
+                            <div class="input-group-addon checkImgRefresh" style="cursor: pointer;">刷新</div>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.CaptchaCode, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            <label>Remember me?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="登 录" class="btn btn-default" />
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("注册一个新的账号", "Register")
+                </p>
+            }
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+</div>
+
+
+
+
