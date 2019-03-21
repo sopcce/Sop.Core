@@ -1,0 +1,321 @@
+﻿
+@{
+    ViewBag.Title = "CodeFormat";
+}
+
+
+
+@section heads { 
+    <style>
+        textarea {
+            outline: none;
+            resize: none;
+        }
+    </style>
+}
+@section scripts {
+ 
+    <script src="~/assets/sopcce.com/tool/base.js"></script>
+    <script src="~/assets/sopcce.com/tool/htmlformat.js"></script>
+    <script src="~/assets/sopcce.com/tool/jsformat.js"></script>
+    <script src="~/assets/sopcce.com/tool/jquery.format.js"></script>
+    <script src="~/assets/zeroclipboard/dist/ZeroClipboard.js"></script>
+    <script type="text/javascript">
+        if (window.localStorage && localStorage.getItem("content2format")) {
+            document.getElementById('content').value = localStorage.getItem("content2format");
+            localStorage.setItem("content2format", "");
+        }
+
+        //缩进
+        function indent(s) {
+            $("#tabsize").val(s);
+            $("#sels").text(s + "个空格缩进");
+        }
+
+        function do_js_beautify() {
+            document.getElementById('beautify').disabled = true;
+            js_source = document.getElementById('content').value.replace(/^\s+/, '');
+            tabsize = document.getElementById('tabsize').value;
+            tabchar = ' ';
+            if (tabsize == 1) {
+                tabchar = '\t';
+            }
+            if (js_source && js_source.charAt(0) === '<') {
+                document.getElementById('content').value = style_html(js_source, tabsize, tabchar, 80);
+            } else {
+                document.getElementById('content').value = js_beautify(js_source, tabsize, tabchar);
+            }
+            document.getElementById('beautify').disabled = false;
+            return false;
+        }
+        function pack_js(base64) {
+            var input = document.getElementById('content').value.replace(/^\s+|\s+$/g, "");
+            if (input == '') {
+                alert('请输入需要压缩的内容!');
+                return;
+            }
+
+            var packer = new Packer;
+            if (base64) {
+                var output = packer.pack(input, 1, 0);
+            } else {
+                var output = packer.pack(input, 0, 0);
+            }
+            document.getElementById('content').value = output;
+        }
+
+
+        function rechange() {
+            document.getElementById('content').value = document.getElementById('content').value.replace(/document.writeln\("/g, "").replace(/"\);/g, "").replace(/\\\"/g, "\"").replace(/\\\'/g, "\'").replace(/\\\//g, "\/").replace(/\\\\/g, "\\")
+        }
+        function changeIt() {
+            document.getElementById('content').value = "document.writeln(\"" + document.getElementById('content').value.replace(/\\/g, "\\\\").replace(/\\/g, "\\/").replace(/\'/g, "\\\'").replace(/\"/g, "\\\"").split('\n').join("\");\ndocument.writeln(\"") + "\");"
+        }
+
+        var ischange = false;
+        function change() {
+            if (!ischange) {
+                changeIt();
+
+            } else {
+                rechange();
+            }
+            ischange = !ischange;
+        }
+
+
+
+
+    </script>
+    <script type="text/javascript">
+        var cssCode = {
+            format: function (s) {
+                s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
+                s = s.replace(/;\s*;/g, ";");
+                s = s.replace(/\,[\s\.\#\d]*{/g, "{");
+                s = s.replace(/([^\s])\{([^\s])/g, "$1 {\n\t$2");
+                s = s.replace(/([^\s])\}([^\n]*)/g, "$1\n}\n$2");
+                s = s.replace(/([^\s]);([^\s\}])/g, "$1;\n\t$2");
+                return s;
+            },
+            packAdv: function (s) {
+                s = s.replace(/\/\*(.|\n)*?\*\//g, "");
+                s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
+                s = s.replace(/\,[\s\.\#\d]*\{/g, "{");
+                s = s.replace(/;\s*;/g, ";");
+                s = s.match(/^\s*(\S+(\s+\S+)*)\s*$/);
+                return (s == null) ? "" : s[1];
+            },
+            pack: function (s) {
+                s = s.replace(/\/\*(.|\n)*?\*\//g, "");
+                s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
+                s = s.replace(/\,[\s\.\#\d]*\{/g, "{");
+                s = s.replace(/;\s*;/g, ";");
+                s = s.replace(/;\s*}/g, "}");
+                s = s.replace(/([^\s])\{([^\s])/g, "$1{$2");
+                s = s.replace(/([^\s])\}([^\n]s*)/g, "$1}\n$2");
+                return s;
+            }
+        };
+        function CSS(s) {
+            var value = cssCode[s]($("#content-css").val());
+            $("#content-css").val(value);
+
+        }
+        function Empty() {
+            debugger
+            $("#content-css").val("");
+            $("#content-css").select();
+        }
+
+        function GetFocus() {
+            $("#content-css").focus();
+
+        }
+    </script>
+    <script type="text/javascript">
+
+        var client = new ZeroClipboard(document.getElementById("btn-copy-xml"));
+
+        client.on("ready", function (readyEvent) {
+            // alert( "ZeroClipboard SWF is ready!" );
+
+            client.on("aftercopy",
+                function (event) {
+                    // `this` === `client`
+                    // `event.target` === the element that was clicked
+                    event.target.style.display = "none";
+                    alert("Copied text to clipboard: " + event.data["text/plain"]);
+                });
+
+
+        });
+
+        $('#demo').click(function () {
+            $("#content-xml").val('<?xml version="1.0" encoding="UTF-8"?><param><id>35</id><username>admin</username><password>111111</password><type>2</type></param>');
+        });
+
+        $('#format').click(function () {
+            $('#content-xml').format({ method: 'xml' });
+        });
+
+        $('#yasuo').click(function () {
+            $('#content-xml').format({ method: 'xmlmin' });
+        });
+
+        function Empty() {
+            document.getElementById('content-xml').value = '';
+            document.getElementById('content-xml').select();
+        }
+
+        function GetFocus() {
+            document.getElementById('content-xml').focus();
+        }
+    </script>
+    <script type="text/javascript">
+        function format(dbtype, obj) {
+            $("#dbt22").text(dbtype);
+            $("#dbt").val(dbtype);
+        }
+        $('#demo-sql').click(function () {
+            $("#content-sql").val('SELECT d.deptno,d.dname,d.loc,COUNT(e.empno) mycount,NVL(AVG(e.sal),0) myavg FROM dept d,emp e WHERE d.deptno=e.deptno(+) GROUP BY d.deptno,d.dname,d.loc HAVING AVG(sal)>2000');
+        });
+
+
+        $("#yasuo-sql").click(function () {
+            debugger
+            var ycon = $("#content-sql").val();
+
+            ycon = ycon.split("\n").join(" ").replace(/\s+/g, " ");
+            $("#content-sql").val(ycon);
+        });
+
+
+    </script>
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="media">
+            <div class="media-body">
+                <h4 class="media-heading">JavaScript/HTML格式化</h4>
+                <div id="desc1">JavaScript/HTML压缩、格式化工具</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <!--内容块开始-->
+        <div>
+            <textarea id="content" name="RawJson" class="json_input" rows="16" style="width: 100%;" spellcheck="false" placeholder="请输入Javascript 或者 HTML 代码"></textarea>
+        </div>
+        <div class="btn-group" role="group" aria-label="...">
+            <button id="sels" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                制表符缩进<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="javascript:;" onclick="indent(1)">1个空格缩进</a></li>
+                <li><a href="javascript:;" onclick="indent(2)">2个空格缩进</a></li>
+                <li><a href="javascript:;" onclick="indent(4)">4个空格缩进</a></li>
+                <li><a href="javascript:;" onclick="indent(8)">8个空格缩进</a></li>
+            </ul>
+            <button type="button" class="btn btn-primary" onclick="return do_js_beautify();" id="beautify">格式化</button>
+            <button type="button" class="btn btn-primary" onclick="pack_js(0);">普通压缩</button>
+            <button type="button" class="btn btn-primary" onclick="pack_js(1);">加密压缩</button>
+            <button type="button" class="btn btn-primary" onclick="change();">JS/HTML互转</button>
+            <button type="button" class="btn btn-danger" onclick="Empty();">清空结果</button>
+        </div>
+        <!--内容块结束-->
+    </div>
+    <input type="hidden" id="tabsize" value="1">
+    <div class="panel-footer"></div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="media">
+            <div class="media-body">
+                <h4 class="media-heading">CSS压缩、格式化</h4>
+                <div id="desc1">CSS压缩、格式化工具</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <!--内容块开始-->
+        <div>
+            <textarea id="content-css" name="RawJson" class="json_input" rows="16" style="width: 100%;" spellcheck="false" placeholder="请输入 CSS 代码"></textarea>
+        </div>
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-primary" onclick="CSS('packAdv');">完全压缩</button>
+            <button type="button" class="btn btn-primary" onclick="CSS('pack');">普通压缩</button>
+            <button type="button" class="btn btn-primary" onclick="CSS('format');">格式化</button>
+            <button type="button" class="btn btn-danger" onclick="Empty();">清空结果</button>
+        </div>
+        <!--内容块结束-->
+    </div>
+    <input type="hidden" id="tabsize" value="1">
+    <div class="panel-footer"></div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="media">
+            <div class="media-body">
+                <h4 class="media-heading">XML压缩、格式化</h4>
+                <div id="desc1">XML压缩、格式化工具</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <!--内容块开始-->
+        <div>
+            <textarea id="content-xml" name="RawJson" class="json_input" rows="16" style="width: 100%;" spellcheck="false" placeholder="请输入XML"></textarea>
+        </div>
+        <div class="alert alert-warning" role="alert" id="sta" style="display: none;"></div>
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-primary" id="format">格式化</button>
+            <button type="button" class="btn btn-primary" id="yasuo">压缩</button>
+            <button type="button" class="btn btn-primary" id="demo">来个测试用例</button>
+
+            <button id="btn-copy-xml" class="btn btn-success" data-clipboard-text="复制" title="复制">复制</button>
+            <button type="button" class="btn btn-danger" onclick="Empty();">清空结果</button>
+        </div>
+        <!--内容块结束-->
+    </div>
+    <input type="hidden" id="tabsize" value="1">
+    <div class="panel-footer"></div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="media">
+            <div class="media-body">
+                <h4 class="media-heading">SQL压缩、格式化</h4>
+                <div id="desc1">SQL压缩、格式化工具</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <!--内容块开始-->
+        <div>
+            <textarea id="content-sql" name="content-sql" class="json_input" rows="16" style="width: 100%;" spellcheck="false" placeholder="请输入SQL"></textarea>
+        </div>
+        <div class="btn-group" role="group" aria-label="...">
+
+            <button type="button" class="btn btn-primary" onclick="$('#content-sql').format({method: 'sql'});">格式化SQL</button>
+
+            <button type="button" class="btn btn-primary" id="yasuo-sql">压缩</button>
+            <button type="button" class="btn btn-primary" id="demo-sql">来个测试用例</button>
+            <button type="button" class="btn btn-danger" onclick="Empty();">清空结果</button>
+        </div>
+        <input type="hidden" id="dbt" value="ORACLE">
+
+        <!--内容块结束-->
+    </div>
+
+    <input type="hidden" id="tabsize" value="1">
+    <div class="panel-footer"></div>
+</div>
+
+
+

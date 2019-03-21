@@ -2,34 +2,48 @@ $(function() {
 
     GoTop("body");
 
-    $(".Dontfriendly").click(function() {
+
+    $.ajax({
+        url: "home/nav.html",
+        dataType: "html",
+        crossDomain: true,
+        success: function(data) {
+            debugger
+            // console.log("数据: " + data + "\n状态: " + status);
+            //$("body").prepend(data);
+
+        }
+    });
+
+
+    $(".sop-alert").click(function() {
         alert("点我干什么");
     });
-    $(".btn-submit").on("click", function() {
-        alert("提交之后");
-        this.attr("disabled='disabled'");
-    });
-    //设置导航选中
-    var currentUrl = window.document.location.pathname;
-    //shezhi 
-    $(".sop-man-nav ul li").each(function() {
-        var $this = $(this);
-        var $html = $this.html();
-        var $href = $($html).attr("href");
+    // $(".btn-submit").on("click", function() {
+    //     alert("提交之后");
+    //     this.attr("disabled='disabled'");
+    // });
+    // //设置导航选中
+    // var currentUrl = window.document.location.pathname;
+    // //shezhi 
+    // $(".sop-man-nav ul li").each(function() {
+    //     var $this = $(this);
+    //     var $html = $this.html();
+    //     var $href = $($html).attr("href");
 
-        if ($href === currentUrl) {
-            //todo:暂时没有判断下拉中选择状态
-            $this.addClass('active');
-        } else if (currentUrl.indexOf($href) > -1) {
-            var currentLength = currentUrl.length;
-            var $hrefLength = $href.length;
-            $this.addClass('active');
-        } else {
-            $this.removeClass('active');
-        }
-        //console.log("currentUrl:" + currentUrl);
-        //console.log("$href:" + $href); 
-    });
+    //     if ($href === currentUrl) {
+    //         //todo:暂时没有判断下拉中选择状态
+    //         $this.addClass('active');
+    //     } else if (currentUrl.indexOf($href) > -1) {
+    //         var currentLength = currentUrl.length;
+    //         var $hrefLength = $href.length;
+    //         $this.addClass('active');
+    //     } else {
+    //         $this.removeClass('active');
+    //     }
+    //     //console.log("currentUrl:" + currentUrl);
+    //     //console.log("$href:" + $href); 
+    // });
 });
 
 $(function() {

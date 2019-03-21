@@ -1,0 +1,36 @@
+﻿
+@{
+
+    ViewBag.Title = "Settings";
+}
+
+
+
+<div class="row">
+
+    <div class="col-xs-4 col-md-3">
+        @RenderPage("_SettingsHeader.cshtml")
+    </div>
+
+    <div class="col-xs-8 col-md-9">
+        <div class="">
+            <h3>公开简介</h3>
+            <hr />
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="email" class="form-control" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <label>昵称</label>
+                <input type="email" class="form-control" placeholder="昵称">
+            </div>
+            <div class="form-group">
+                <label>UrlToken</label>
+                <input type="email" class="form-control"  placeholder="UrlToken" readonly="readonly">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+            
+
+        </div>
+    </div>
+</div>

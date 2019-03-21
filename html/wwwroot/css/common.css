@@ -125,3 +125,68 @@ body {
 .sop-top-body {
     margin-top: 90px;
 }
+
+.sop-error-page {
+    background-color: #fafafa;
+}
+
+
+/* 404.html */
+
+.sop-error-mod {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.sop-error-mod .sop-error-title.soptn-no-access {
+    font-size: 80px;
+    padding: 57px;
+}
+
+.sop-error-mod .sop-error-title {
+    position: relative;
+    font-size: 160px;
+    margin-bottom: 60px;
+    background-color: #fff;
+    color: #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sop-error-mod .sop-error-title:before {
+    content: "\f1d8";
+    position: absolute;
+    top: -110px;
+    right: 50px;
+    font-family: FontAwesome;
+    font-size: 100px;
+    color: #fff;
+}
+
+.sop-error-mod .sop-error-title:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: dashed dashed dashed solid;
+    border-width: 50px 0 50px 50px;
+    border-color: transparent transparent transparent #fff;
+    top: auto;
+    right: auto;
+    left: 50%;
+    bottom: -50px;
+}
+
+.sop-error-mod .sop-error-tips {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.sop-error-mod .sop-error-info {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.sop-error-mod .sop-error-feedback {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
