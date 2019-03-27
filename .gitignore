@@ -9,3 +9,5 @@
 /src/Sop.Web/Web.config
 /src/.vs 
 /src/Plugin/Sop.ConsoleBotServer/*.lic
+/src/packages
+/src/.vs
