@@ -4555,6 +4555,8 @@
     <Content Include="assets\sopcce.com\tool\htmlformat.js" />
     <Content Include="assets\sopcce.com\tool\jquery.format.js" />
     <Content Include="assets\sopcce.com\tool\jsformat.js" />
+    <Content Include="robots.txt" />
+    <Content Include="sitemap.xml" />
     <Content Include="wb_51fd6126ac0f1c46.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
