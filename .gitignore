@@ -6,15 +6,21 @@
 ## Sop
 ###########
 
-/src/Sop.Web/Web.config
+
 /src/.vs 
-/src/Plugin/Sop.ConsoleBotServer/*.lic
 /src/packages
 /src/.vs
+###########
 /src/Sop.Framework/obj
 /src/Sop.Framework/bin
 /src/Sop.Services/obj
 /src/Sop.Services/bin
+/src/Sop.Core/obj
+/src/Sop.Core/bin
+/src/Web/bin
+/src/Web/obj
+/src/Web/Web.config
+###########
 /src/ThirdParty/Aliyun.OSS/obj
 /src/ThirdParty/Aliyun.OSS/bin
 /src/ThirdParty/Microsoft.Owin.Security.Github/obj
@@ -29,7 +35,7 @@
 /src/ThirdParty/NHibernate.Caches.Redis/bin
 /src/ThirdParty/Sop.Common.Serialization/obj
 /src/ThirdParty/Sop.Common.Serialization/bin
-/src/Web/bin
-/src/Web/obj
-/src/Sop.Core/obj
-/src/Sop.Core/bin
+###########
+/src/Plugin/Sop.ConsoleBotServer/*.lic
+/src/Plugin/Sop.ConsoleBotServer/obj
+/src/Plugin/Sop.ConsoleBotServer/bin
