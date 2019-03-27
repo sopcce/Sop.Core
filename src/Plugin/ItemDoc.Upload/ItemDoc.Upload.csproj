@@ -280,15 +280,15 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ItemDoc.Core\ItemDoc.Core.csproj">
+    <ProjectReference Include="..\..\Sop.Core\Sop.Core.csproj">
       <Project>{7ebff26d-37d6-4b34-bb44-bdc273768f9c}</Project>
       <Name>ItemDoc.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ItemDoc.Framework\ItemDoc.Framework.csproj">
+    <ProjectReference Include="..\..\Sop.Framework\Sop.Framework.csproj">
       <Project>{7b4ff94a-7018-42e5-adbe-277e9b39ed5b}</Project>
       <Name>ItemDoc.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ItemDoc.Services\ItemDoc.Services.csproj">
+    <ProjectReference Include="..\..\Sop.Services\Sop.Services.csproj">
       <Project>{5245edd5-6a59-4c6b-b501-f7525a137c53}</Project>
       <Name>ItemDoc.Services</Name>
     </ProjectReference>
