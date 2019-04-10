@@ -1,0 +1,100 @@
+﻿@page
+@model Sop.FileUpload.Pages.EditModel
+
+
+@using Sop.FileUpload
+@using Sop.FileUpload.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Fileserver</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Fileserver.Id" />
+            <div class="form-group">
+                <label asp-for="Fileserver.ServerId" class="control-label"></label>
+                <input asp-for="Fileserver.ServerId" class="form-control" />
+                <span asp-validation-for="Fileserver.ServerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.ServerName" class="control-label"></label>
+                <input asp-for="Fileserver.ServerName" class="form-control" />
+                <span asp-validation-for="Fileserver.ServerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.ServerEnName" class="control-label"></label>
+                <input asp-for="Fileserver.ServerEnName" class="form-control" />
+                <span asp-validation-for="Fileserver.ServerEnName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.ServerUrl" class="control-label"></label>
+                <input asp-for="Fileserver.ServerUrl" class="form-control" />
+                <span asp-validation-for="Fileserver.ServerUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.RootPath" class="control-label"></label>
+                <input asp-for="Fileserver.RootPath" class="form-control" />
+                <span asp-validation-for="Fileserver.RootPath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.VirtualPath" class="control-label"></label>
+                <input asp-for="Fileserver.VirtualPath" class="form-control" />
+                <span asp-validation-for="Fileserver.VirtualPath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.DiskPath" class="control-label"></label>
+                <input asp-for="Fileserver.DiskPath" class="form-control" />
+                <span asp-validation-for="Fileserver.DiskPath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.MaxAmount" class="control-label"></label>
+                <input asp-for="Fileserver.MaxAmount" class="form-control" />
+                <span asp-validation-for="Fileserver.MaxAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.CurAmount" class="control-label"></label>
+                <input asp-for="Fileserver.CurAmount" class="form-control" />
+                <span asp-validation-for="Fileserver.CurAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.Size" class="control-label"></label>
+                <input asp-for="Fileserver.Size" class="form-control" />
+                <span asp-validation-for="Fileserver.Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.Enabled" class="control-label"></label>
+                <input asp-for="Fileserver.Enabled" class="form-control" />
+                <span asp-validation-for="Fileserver.Enabled" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.DateCreated" class="control-label"></label>
+                <input asp-for="Fileserver.DateCreated" class="form-control" />
+                <span asp-validation-for="Fileserver.DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fileserver.DisplayOrder" class="control-label"></label>
+                <input asp-for="Fileserver.DisplayOrder" class="form-control" />
+                <span asp-validation-for="Fileserver.DisplayOrder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
