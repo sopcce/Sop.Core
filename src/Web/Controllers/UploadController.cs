@@ -1,5 +1,4 @@
 ﻿using Common.Logging;
-using Sop.Core.API;
 using Sop.Core.Extensions;
 using Sop.Core.Utilities;
 using Sop.Core.Web;
@@ -18,6 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using ItemDoc.Core.API;
 using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
 
 namespace Sop.Web.Controllers
@@ -100,8 +100,7 @@ namespace Sop.Web.Controllers
              *2、文件上传图片服务器，要求：服务器在Global.asax配置，直接读取缓存或者本地存储配置文件。
              *3、文件上传图片服务器，要求：考虑到服务器之间传输信息效率问题，采用读取缓存队列，上传文件到文件服务器，要求容错，
              *   3次失败之后记录错误队列，错误队列信息等存储到服务器等待定时任务重试。
-             */
-
+             */ 
             try
             {
                 var file1 = Request.Files[0];

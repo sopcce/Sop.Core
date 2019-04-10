@@ -11,7 +11,6 @@ using System.Net;
 using System.Web;
 using System.Web.ApplicationServices;
 using System.Web.Mvc;
-using Sop.Core.API;
 
 namespace Sop.Web.Controllers
 {

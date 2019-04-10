@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Script.Serialization;
-using Sop.Core.API;
+using ItemDoc.Core.API;
 
 namespace Sop.Core.Mvc.SystemMessage
 {

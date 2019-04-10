@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using CodeKicker.BBCode;
 using HtmlAgilityPack;
+using Sop.Framework.WebUtility;
 
 namespace Sop.Framework.Utility
 {
@@ -104,7 +105,7 @@ namespace Sop.Framework.Utility
       if (string.IsNullOrEmpty(text))
         return text;
 
-      text = WebUtility.HtmlEncode(text);
+      text = UrlUtility.Instance().HtmlEncode(text);
 
       if (enableNoFollow)
       {
@@ -328,7 +329,7 @@ namespace Sop.Framework.Utility
         string host = string.Empty;
         if (HttpContext.Current != null)
         {
-          host = WebUtility.GetHostPath(HttpContext.Current.Request.Url);
+          host = UrlUtility.Instance().GetHostPath(HttpContext.Current.Request.Url);
         }
 
         Dictionary<string, string> enforcedAttributes;

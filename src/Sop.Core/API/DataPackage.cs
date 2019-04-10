@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Sop.Core.API
+namespace ItemDoc.Core.API
 {
 
     /// <summary>

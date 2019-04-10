@@ -7,6 +7,7 @@ using System.IO;
 using Sop.Framework.Environment;
 using Sop.Framework.Utility;
 using Sop.Common.Img.Gif;
+using Sop.Framework.WebUtility;
 
 namespace Sop.Framework.Validation
 {
@@ -132,7 +133,7 @@ namespace Sop.Framework.Validation
         private static void SaveCheckCode(string captcha)
         {
             string sValue = EncryptionUtility.EncryptString(captcha.ToLower(), AllChar);
-            WebUtility.SetCookie(SopCaptchaKey, sValue, DateTime.Now);
+            CookieUtility.Instance().SetCookie(SopCaptchaKey, sValue, DateTime.Now);
         }
 
 
@@ -249,7 +250,7 @@ namespace Sop.Framework.Validation
             captcha = captcha.Replace(" ", "");
             //匹配中文（全角）空格
             captcha = captcha.Replace("\u3000", "");
-            string normalCookie = WebUtility.GetCookie(SopCaptchaKey);
+            string normalCookie = CookieUtility.Instance().GetCookie(SopCaptchaKey);
             string value = EncryptionUtility.EncryptString(captcha.ToLower(), AllChar);
             if (string.IsNullOrEmpty(normalCookie))
             {

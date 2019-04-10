@@ -7,8 +7,8 @@
     <ProjectGuid>{7EBFF26D-37D6-4B34-BB44-BDC273768F9C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ItemDoc.Core</RootNamespace>
-    <AssemblyName>ItemDoc.Core</AssemblyName>
+    <RootNamespace>Sop.Core</RootNamespace>
+    <AssemblyName>Sop.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

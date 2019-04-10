@@ -7,8 +7,8 @@
     <ProjectGuid>{5245EDD5-6A59-4C6B-B501-F7525A137C53}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ItemDoc.Services</RootNamespace>
-    <AssemblyName>ItemDoc.Services</AssemblyName>
+    <RootNamespace>Sop.Services</RootNamespace>
+    <AssemblyName>Sop.Services</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -179,6 +179,7 @@
     <Compile Include="ViewModel\UsersRegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

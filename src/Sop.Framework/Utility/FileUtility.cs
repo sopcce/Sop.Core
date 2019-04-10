@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using Microsoft.AspNetCore.Hosting;
 using NHibernate.Util;
 
 namespace Sop.Framework.Utility
@@ -90,7 +91,20 @@ namespace Sop.Framework.Utility
             }
             return len;
         }
-
+        /// <summary>
+        /// 根据完整文件路径获取FileStream
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public static FileStream GetFileStream(string fileName)
+        {
+            FileStream fileStream = null;
+            if (!string.IsNullOrEmpty(fileName) && File.Exists(fileName))
+            {
+                fileStream = new FileStream(fileName, FileMode.Open);
+            }
+            return fileStream;
+        }
 
 
 
@@ -808,6 +822,12 @@ namespace Sop.Framework.Utility
                 result = filePath;
             try
             {
+                var hostingEnvironment = (IHostingEnvironment)options.ApplicationServices.GetService(typeof(IHostingEnvironment))
+
+                if (hostingEnvironment.IsProduction())
+                {
+                    // do work
+                }
                 if (System.Web.Hosting.HostingEnvironment.IsHosted)
                     result = System.Web.Hosting.HostingEnvironment.MapPath(filePath);
                 else
@@ -816,14 +836,16 @@ namespace Sop.Framework.Utility
                     result = Combine(System.AppDomain.CurrentDomain.BaseDirectory, filePath);
                 }
                 string fileName = Path.GetFileName(result);
-                string newResult = result?.Replace(fileName, "");
-                if (!string.IsNullOrWhiteSpace(result) && !Directory.Exists(newResult))
+                if (!string.IsNullOrWhiteSpace(fileName))
                 {
-                    var info = string.IsNullOrWhiteSpace(fileName)
-                         ? Directory.CreateDirectory(result)
-                         : Directory.CreateDirectory(newResult);
-                }
-
+                    string newResult = result?.Replace(fileName, "");
+                    if (!string.IsNullOrWhiteSpace(result) && !Directory.Exists(newResult))
+                    {
+                        var info = string.IsNullOrWhiteSpace(fileName)
+                            ? Directory.CreateDirectory(result)
+                            : Directory.CreateDirectory(newResult);
+                    }
+                } 
 
             }
             catch (Exception ex)
