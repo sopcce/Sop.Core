@@ -1,0 +1,65 @@
+
+————————————时间:2019-04-10 15:07:43,610————————————                
+日志级别：ERROR——当前级别：ERROR——耗时：172                 
+出错类：Sop.Framework.WebUtility.HttpUtility                 
+日志对象的名称：Sop.Framework.WebUtility.HttpUtility —133行                 
+当前机器:{log4net:Identity=, log4net:UserName=SOP\sopcc, log4net:HostName=sop}， SOP\sopcc                   
+异常： 
+System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a receive. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.FixedSizeReader.ReadPacket(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Net.Security._SslStream.StartFrameHeader(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.StartReading(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.ProcessRead(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.TlsStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Connection.SyncRead(HttpWebRequest request, Boolean userRetrievedStream, Boolean probeRead)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at Sop.Framework.WebUtility.HttpUtility.HttpPost(String url, Stream postStream, Dictionary`2 fileDictionary, Encoding encoding, Int32 timeOut) in E:\GitHub\STS\src\Sop.Framework\WebUtility\HttpUtility.cs:line 232
+                 
+错误描述：【Sop.Framework.WebUtility.HttpUtility】HttpPost异常,url:https://localhost:44326/v1/api/Upload?token=&data=&-= 
+
+ 
+————————————时间:2019-04-10 15:10:10,719————————————                
+日志级别：ERROR——当前级别：ERROR——耗时：79                 
+出错类：Sop.Framework.WebUtility.HttpUtility                 
+日志对象的名称：Sop.Framework.WebUtility.HttpUtility —133行                 
+当前机器:{log4net:Identity=, log4net:UserName=SOP\sopcc, log4net:HostName=sop}， SOP\sopcc                   
+异常： 
+System.Net.WebException: The operation has timed out
+   at System.Net.HttpWebRequest.GetResponse()
+   at Sop.Framework.WebUtility.HttpUtility.HttpPost(String url, Stream postStream, Dictionary`2 fileDictionary, Encoding encoding, Int32 timeOut) in E:\GitHub\STS\src\Sop.Framework\WebUtility\HttpUtility.cs:line 232
+                 
+错误描述：【Sop.Framework.WebUtility.HttpUtility】HttpPost异常,url:https://localhost:44326/v1/api/Upload?token=&data=&-= 
+
+ 
+————————————时间:2019-04-10 15:13:23,348————————————                
+日志级别：ERROR——当前级别：ERROR——耗时：73                 
+出错类：Sop.Framework.WebUtility.HttpUtility                 
+日志对象的名称：Sop.Framework.WebUtility.HttpUtility —133行                 
+当前机器:{log4net:Identity=, log4net:UserName=SOP\sopcc, log4net:HostName=sop}， SOP\sopcc                   
+异常： 
+System.Net.WebException: The operation has timed out
+   at System.Net.HttpWebRequest.GetResponse()
+   at Sop.Framework.WebUtility.HttpUtility.HttpPost(String url, Stream postStream, Dictionary`2 fileDictionary, Encoding encoding, Int32 timeOut) in E:\GitHub\STS\src\Sop.Framework\WebUtility\HttpUtility.cs:line 232
+                 
+错误描述：【Sop.Framework.WebUtility.HttpUtility】HttpPost异常,url:https://localhost:44326/v1/api/Upload?token=token111&data=data123&-=datdfsad 
+
+ 
+————————————时间:2019-04-10 15:13:59,581————————————                
+日志级别：ERROR——当前级别：ERROR——耗时：79                 
+出错类：Sop.Framework.WebUtility.HttpUtility                 
+日志对象的名称：Sop.Framework.WebUtility.HttpUtility —133行                 
+当前机器:{log4net:Identity=, log4net:UserName=SOP\sopcc, log4net:HostName=sop}， SOP\sopcc                   
+异常： 
+System.Net.WebException: The operation has timed out
+   at System.Net.HttpWebRequest.GetResponse()
+   at Sop.Framework.WebUtility.HttpUtility.HttpPost(String url, Stream postStream, Dictionary`2 fileDictionary, Encoding encoding, Int32 timeOut) in E:\GitHub\STS\src\Sop.Framework\WebUtility\HttpUtility.cs:line 232
+                 
+错误描述：【Sop.Framework.WebUtility.HttpUtility】HttpPost异常,url:https://localhost:44326/v1/api/Upload?token=token111&data=data123&-=datdfsad 
+
+ 

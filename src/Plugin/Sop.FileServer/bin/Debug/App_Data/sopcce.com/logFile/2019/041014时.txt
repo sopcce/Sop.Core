@@ -1,0 +1,53 @@
+
+————————————时间:2019-04-10 14:39:54,674————————————                
+日志级别：ERROR——当前级别：ERROR——耗时：96                 
+出错类：Sop.Framework.WebUtility.HttpUtility                 
+日志对象的名称：Sop.Framework.WebUtility.HttpUtility —133行                 
+当前机器:{log4net:Identity=, log4net:UserName=SOP\sopcc, log4net:HostName=sop}， SOP\sopcc                   
+异常： 
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Sop.Framework.WebUtility.HttpUtility.HttpPost(String url, Stream postStream, Dictionary`2 fileDictionary, Encoding encoding, Int32 timeOut) in E:\GitHub\STS\src\Sop.Framework\WebUtility\HttpUtility.cs:line 232
+                 
+错误描述：【Sop.Framework.WebUtility.HttpUtility】HttpPost异常,url:https://localhost:44326/v1/api/Uploadflie 
+
+ 
+————————————时间:2019-04-10 14:44:53,557————————————                
+日志级别：ERROR——当前级别：ERROR——耗时：71                 
+出错类：Sop.Framework.WebUtility.HttpUtility                 
+日志对象的名称：Sop.Framework.WebUtility.HttpUtility —133行                 
+当前机器:{log4net:Identity=, log4net:UserName=SOP\sopcc, log4net:HostName=sop}， SOP\sopcc                   
+异常： 
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Sop.Framework.WebUtility.HttpUtility.HttpPost(String url, Stream postStream, Dictionary`2 fileDictionary, Encoding encoding, Int32 timeOut) in E:\GitHub\STS\src\Sop.Framework\WebUtility\HttpUtility.cs:line 232
+                 
+错误描述：【Sop.Framework.WebUtility.HttpUtility】HttpPost异常,url:https://localhost:44326/v1/api/Upload 
+
+ 
+————————————时间:2019-04-10 14:48:11,180————————————                
+日志级别：ERROR——当前级别：ERROR——耗时：84                 
+出错类：Sop.Framework.WebUtility.HttpUtility                 
+日志对象的名称：Sop.Framework.WebUtility.HttpUtility —133行                 
+当前机器:{log4net:Identity=, log4net:UserName=SOP\sopcc, log4net:HostName=sop}， SOP\sopcc                   
+异常： 
+System.Net.WebException: The operation has timed out
+   at System.Net.HttpWebRequest.GetResponse()
+   at Sop.Framework.WebUtility.HttpUtility.HttpPost(String url, Stream postStream, Dictionary`2 fileDictionary, Encoding encoding, Int32 timeOut) in E:\GitHub\STS\src\Sop.Framework\WebUtility\HttpUtility.cs:line 232
+                 
+错误描述：【Sop.Framework.WebUtility.HttpUtility】HttpPost异常,url:https://localhost:44326/v1/api/Upload?token=&data=&-= 
+
+ 
+————————————时间:2019-04-10 14:54:22,891————————————                
+日志级别：ERROR——当前级别：ERROR——耗时：96                 
+出错类：Sop.Framework.WebUtility.HttpUtility                 
+日志对象的名称：Sop.Framework.WebUtility.HttpUtility —133行                 
+当前机器:{log4net:Identity=, log4net:UserName=SOP\sopcc, log4net:HostName=sop}， SOP\sopcc                   
+异常： 
+System.Net.WebException: The operation has timed out
+   at System.Net.HttpWebRequest.GetResponse()
+   at Sop.Framework.WebUtility.HttpUtility.HttpPost(String url, Stream postStream, Dictionary`2 fileDictionary, Encoding encoding, Int32 timeOut) in E:\GitHub\STS\src\Sop.Framework\WebUtility\HttpUtility.cs:line 232
+                 
+错误描述：【Sop.Framework.WebUtility.HttpUtility】HttpPost异常,url:https://localhost:44326/v1/api/Upload?token=&data=&-= 
+
+ 

@@ -1,0 +1,35 @@
+
+————————————时间:2019-04-10 14:40:42,839————————————                
+日志级别：ERROR——当前级别：ERROR——耗时：301                 
+出错类：Sop.Framework.WebUtility.HttpUtility                 
+日志对象的名称：Sop.Framework.WebUtility.HttpUtility —133行                 
+当前机器:{log4net:Identity=, log4net:UserName=SOP\sopcc, log4net:HostName=sop}， SOP\sopcc                   
+异常： 
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44326
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at Sop.Framework.WebUtility.HttpUtility.HttpPost(String url, Stream postStream, Dictionary`2 fileDictionary, Encoding encoding, Int32 timeOut) in E:\GitHub\STS\src\Sop.Framework\WebUtility\HttpUtility.cs:line 219
+                 
+错误描述：【Sop.Framework.WebUtility.HttpUtility】HttpPost异常,url:https://localhost:44326/v1/api/Uploadflie 
+
+ 
+————————————时间:2019-04-10 14:41:55,964————————————                
+日志级别：ERROR——当前级别：ERROR——耗时：124                 
+出错类：Sop.Framework.WebUtility.HttpUtility                 
+日志对象的名称：Sop.Framework.WebUtility.HttpUtility —133行                 
+当前机器:{log4net:Identity=, log4net:UserName=SOP\sopcc, log4net:HostName=sop}， SOP\sopcc                   
+异常： 
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:44326
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at Sop.Framework.WebUtility.HttpUtility.HttpPost(String url, Stream postStream, Dictionary`2 fileDictionary, Encoding encoding, Int32 timeOut) in E:\GitHub\STS\src\Sop.Framework\WebUtility\HttpUtility.cs:line 219
+                 
+错误描述：【Sop.Framework.WebUtility.HttpUtility】HttpPost异常,url:https://localhost:44326/v1/api/Uploadflie 
+
+ 

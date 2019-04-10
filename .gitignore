@@ -39,3 +39,6 @@
 /src/Plugin/Sop.ConsoleBotServer/*.lic
 /src/Plugin/Sop.ConsoleBotServer/obj
 /src/Plugin/Sop.ConsoleBotServer/bin
+/src/Plugin/Sop.FileUpload/bin/Debug
+/src/Plugin/Sop.FileUpload/bin/Release
+/src/Plugin/Sop.FileServer/Aspose.Total.lic
