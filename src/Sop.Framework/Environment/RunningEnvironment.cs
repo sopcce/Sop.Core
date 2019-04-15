@@ -33,7 +33,7 @@ namespace Sop.Framework.Environment
             }
             catch (Exception ex)
             {
-                Log.Instance().Write("RunningEnvironment:" + ex.Message, ex, typeof(RunningEnvironment), LogLevel.Info);
+                SystemLog.Log.Instance().Write("RunningEnvironment:" + ex.Message, ex, typeof(RunningEnvironment), LogLevel.Info);
 
             }
 

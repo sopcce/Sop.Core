@@ -64,6 +64,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Events\OnCompletedEventArgs.cs" />
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\ConvertFile.cs" />
     <Compile Include="Helper\Pdf2Html.cs" />
     <Compile Include="Helper\VideoEncoder.cs" />
@@ -94,9 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Aspose.Total.lic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Aspose.Total.lic" />
     <None Include="packages.config" />
     <None Include="Sop.FileServer_TemporaryKey.pfx" />
   </ItemGroup>

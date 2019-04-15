@@ -28,7 +28,7 @@ namespace Sop.Common.Serialization
     /// <param name="dateTimeType">Type of the date time.</param>
     /// <param name="dateFormatString">The date format string.</param>
     /// <returns></returns>
-    public static string ToJson(this object obj, DateTimeType dateTimeType, string dateFormatString = "yyyy-MM-dd HH:mm:ss")
+    public static string ToJson(this object obj, DateTimeType dateTimeType, string dateFormatString = "yyyy-MM-dd HH:mm:ss fff")
     {
 
       var settings = new JsonSerializerSettings()
@@ -46,7 +46,7 @@ namespace Sop.Common.Serialization
         case DateTimeType.Default:
           if (string.IsNullOrEmpty(dateFormatString))
           {
-            dateFormatString = "yyyy-MM-dd HH:mm:ss";
+            dateFormatString = "yyyy-MM-dd HH:mm:ss fff";
           }
           settings.DateFormatString = dateFormatString;
           break;
@@ -116,7 +116,7 @@ namespace Sop.Common.Serialization
     public static T FromJson<T>(this string json)
     {
       return JsonConvert.DeserializeObject<T>(json,
-        new JsonSerializerSettings() { DateFormatString = "yyyy-MM-dd HH:mm:ss" });
+        new JsonSerializerSettings() { DateFormatString = "yyyy-MM-dd HH:mm:ss fff" });
 
     }
 

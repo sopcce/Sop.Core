@@ -9,10 +9,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sop.FileUpload.Models.Helper;
 
 namespace Sop.FileUpload.Controllers
 {
-    [Route("v1/api/[controller]")]
+    //[Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UploadController : ControllerBase
     {
@@ -27,20 +29,51 @@ namespace Sop.FileUpload.Controllers
 
         [HttpPost()]
         [RequestSizeLimit(100_000_000)]
-        //[DisableRequestSizeLimit]  //或者取消大小的限制
-        public async Task<JsonResult> UploadFlie()
+        [DisableRequestSizeLimit]  //或者取消大小的限制
+        public async Task<IActionResult> UploadFlie()
         {
             try
             {
 
                 string data = Request.Query["data"];
                 string token = Request.Query["token"];
-                string date = Request.Query["-"];
+                string time = Request.Query["-"];
                 if (string.IsNullOrWhiteSpace(token) || string.IsNullOrWhiteSpace(data) ||
-                    string.IsNullOrWhiteSpace(date))
+                    string.IsNullOrWhiteSpace(time))
                 {
                     return new JsonResult(new { status = 2 });
                 }
+                //data
+                //token = EncryptionUtility.Sha512Encode(data + time);
+                //data = EncryptionUtility.AES_Decrypt(data, token);
+
+
+
+                data = EncryptionUtility.AES_Decrypt(data, token);
+                var info = data.FromJson<AttachmentInfo>();
+                var datajson = data.ToJson();
+                var newToken = EncryptionUtility.Sha512Encode(datajson + time);
+                if (newToken != token)
+                {
+                    //return new JsonResult(new { status = 2 });
+                }
+
+
+                var fileserver = await _context.Fileserver.FindAsync(1);
+                string upPath = fileserver.VirtualPath;
+                string newFileName = Guid.NewGuid().ToString("N") + info.Extension;
+                upPath = FileUtility.Format(newFileName, upPath);
+                string diskPath = FileUtility.GetDiskFilePath(upPath) + newFileName;
+                string serverUrlPath = FileUtility.Combine(fileserver.RootPath, upPath.Replace("~", ""), newFileName);
+
+
+                var fileInfo = new ReturnFileInfo()
+                {
+                    PhysicalFilePath = diskPath,
+                    FilePath = upPath,
+                    FileName = newFileName,
+                    UrlFilePath = serverUrlPath
+                };
 
 
 
@@ -48,20 +81,22 @@ namespace Sop.FileUpload.Controllers
 
                 var asdas = Request;
 
-                var buffer = new byte[Convert.ToInt32(Request.ContentLength)];
-                await Request.Body.ReadAsync(buffer, 0, buffer.Length);
-                var body = Encoding.UTF8.GetString(buffer);
-
-
                 if (Request.Body.CanRead)
                 {
-
-                    using (var writer = new StreamWriter(HttpContext.Response.Body))
+                    using (var stream = new FileStream(fileInfo.PhysicalFilePath, FileMode.Create))
                     {
-                        await writer.WriteLineAsync(,);
-                        
+                        await Request.Body.CopyToAsync(stream);
                     }
 
+                    //using (var fileStream = new FileStream(returnFileInfo.PhysicalFilePath, FileMode.CreateNew, FileAccess.ReadWrite))
+                    //{
+
+                    //    using (var streamWriter = new StreamWriter(fileStream, Encoding.GetEncoding(936)))
+                    //    {
+                    //        streamWriter.Write(Request.Body);
+                    //    }
+                    //}
+                    return new JsonResult(new { status = 1, msg = "图片上传", path = fileInfo.UrlFilePath });
                     //using (Bitmap bitmap = new Bitmap(Request.Body))
                     //{ 
                     //    var returnFileInfo = await GetFilePathTask(); 
@@ -79,43 +114,18 @@ namespace Sop.FileUpload.Controllers
 
         }
 
-        public async Task<ReturnFileInfo> GetFilePathTask()
-        {
-            var fileserver = await _context.Fileserver.FindAsync(1);
-            string upPath = fileserver.VirtualPath;
-            string newFileName = Guid.NewGuid().ToString("N") + ".jpg";
-            upPath = FileUtility.Format(newFileName, upPath);
-            string diskPath = FileUtility.GetDiskFilePath(upPath) + newFileName;
-            string diskPath1 = Path.Combine(Directory.GetCurrentDirectory(), upPath.Replace("~", ""), newFileName);
-
-
-            string serverUrlPath = FileUtility.Combine(fileserver.RootPath, upPath.Replace("~", ""), newFileName);
-
-
-            return await Task.FromResult<ReturnFileInfo>(new ReturnFileInfo()
-            {
-                PhysicalFilePath = diskPath,
-                FilePath = upPath,
-                FileName = newFileName,
-                UrlFilePath = serverUrlPath
-            });
-
-        }
 
 
 
-
-
-
-        // GET: v1/api/Upload
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Fileserver>>> GetFileserver()
         {
             return await _context.Fileserver.ToListAsync();
         }
+         
 
         // GET: api/Upload/5
-        [HttpGet("{id}")]
+        [HttpGet("Get/{id}")]
         public async Task<ActionResult<Fileserver>> GetFileserver(int id)
         {
             var fileserver = await _context.Fileserver.FindAsync(id);

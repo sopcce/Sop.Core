@@ -2,9 +2,11 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;
 using Polly;
+using Sop.Common.Serialization;
 using Sop.FileServer.Helper;
 using Sop.Framework.Utility;
 using Sop.Framework.WebUtility;
+using Sop.Services.Model;
 using Sop.Services.Parameter;
 
 namespace Sop.FileServer
@@ -31,19 +33,46 @@ namespace Sop.FileServer
              * 
              */
 
-            string token = "dd35a2425";
-            string data = "1";
-            data = EncryptionUtility.AES_Decrypt(data, token);
-            long date = DateTime.Now.Ticks;
 
-            string newToken = EncryptionUtility.Sha512Encode(data + date);
-            var url = $"https://localhost:44326/v1/api/Upload?token={newToken}&data={data}&-={date}";
 
+            var info = new AttachmentInfo();
+            info.Id = 110;
+            info.AttachmentId = "AttachmentId";
+            info.OwnerId = "OwnerId";
+            info.ServerId = "1";
+            info.FileNames = "郭家秋的个人简历";
+            info.Extension = ".doc";
+            info.Path = "asdasd";
+            info.DateCreated = DateTime.Now;
+            info.DisplayOrder = 1;
+            info.HasThumbnail = false;
+            string data = info.ToJson();
+            long time = DateTime.Now.Ticks;
+            string token = EncryptionUtility.Sha512Encode(data + time);
+            data = EncryptionUtility.AES_Encrypt(data, token);
+
+            data = UrlUtility.Instance().UrlEncode(data);
+            var url = $"https://localhost:44326/api/Upload?token={token}&data={data}&-={time}";
+         
             var path = "E:\\Img\\404.jpg";
+            path = "E:\\PC\\简历\\郭家秋的个人简历.doc";
             var strHttpPost = HttpUtility.Instance().HttpPost(url, FileUtility.GetFileStream(path));
 
             Console.WriteLine($"strHttpPost:{strHttpPost}");
-            Console.ReadKey();
+
+            var url2 = $"https://localhost:44326/home/UploadFlies?token={token}&data={data}&-={time}";
+            var path2 = "E:\\Img\\404.jpg";
+            strHttpPost = HttpUtility.Instance().HttpPost(url2, FileUtility.GetFileStream(path2));
+
+            Console.WriteLine($"strHttpPost:{strHttpPost}");
+
+
+
+
+            Environment.Exit(0);
+
+
+            #region MyRegion
 
             //var hotelUrl = "http://www.xicidaili.com/nt/1";
 
@@ -208,7 +237,7 @@ namespace Sop.FileServer
             //var isok6 = Pdf2Html.Instance().PDFToHTML(sourcePath6, targetPath6);
 
 
-            Console.Read();
+            // Console.Read();
 
 
 
@@ -298,27 +327,26 @@ namespace Sop.FileServer
 
             //重试、超时处理、缓存、返回、
 
-            //Polly();
+            //Polly(); 
+            #endregion
 
 
         }
 
-        public void ookk()
-        {
 
 
-        }
 
-        private static PhantomJSDriverService GetPhantomJSDriverService()
-        {
-            PhantomJSDriverService pds = PhantomJSDriverService.CreateDefaultService();
-            //设置代理服务器地址
-            //pds.Proxy = $"{ip}:{port}"; 
-            //设置代理服务器认证信息
-            //pds.ProxyAuthentication = GetProxyAuthorization();
 
-            return pds;
-        }
+        //private static PhantomJSDriverService GetPhantomJSDriverService()
+        //{
+        //    PhantomJSDriverService pds = PhantomJSDriverService.CreateDefaultService();
+        //    //设置代理服务器地址
+        //    //pds.Proxy = $"{ip}:{port}"; 
+        //    //设置代理服务器认证信息
+        //    //pds.ProxyAuthentication = GetProxyAuthorization();
+
+        //    return pds;
+        //}
         private static ChromeDriverService GetChromeDriverService()
         {
             var pds = ChromeDriverService.CreateDefaultService();
@@ -372,32 +400,32 @@ namespace Sop.FileServer
         /// <summary>
         ///   //重试、超时处理、缓存、返回、
         /// </summary>
-        static void Polly()
-        {
-            var fallBackPolicy =
-                Policy<string>
-                    .Handle<Exception>()
-                    .Fallback("执行失败，返回Fallback");
+        //static void Polly()
+        //{
+        //    var fallBackPolicy =
+        //        Policy<string>
+        //            .Handle<Exception>()
+        //            .Fallback("执行失败，返回Fallback");
 
-            var fallBack = fallBackPolicy.Execute(() =>
-            {
-                return "zhe shi yi ge ce shi";
-            });
-            Console.WriteLine(fallBack);
+        //    var fallBack = fallBackPolicy.Execute(() =>
+        //    {
+        //        return "zhe shi yi ge ce shi";
+        //    });
+        //    Console.WriteLine(fallBack);
 
-            var politicaWaitAndRetry =
-                Policy<string>
-                    .Handle<Exception>()
-                    .Retry(3, (ex, count) =>
-                    {
-                        Console.WriteLine("执行失败! 重试次数 {0}", count);
-                        Console.WriteLine("异常来自 {0}", ex.GetType().Name);
-                    });
+        //    var politicaWaitAndRetry =
+        //        Policy<string>
+        //            .Handle<Exception>()
+        //            .Retry(3, (ex, count) =>
+        //            {
+        //                Console.WriteLine("执行失败! 重试次数 {0}", count);
+        //                Console.WriteLine("异常来自 {0}", ex.GetType().Name);
+        //            });
 
-            var mixedPolicy = Policy.Wrap(fallBackPolicy, politicaWaitAndRetry);
-            var mixedResult = mixedPolicy.Execute(ThrowException);
-            Console.WriteLine($"执行结果: {mixedResult}");
-        }
+        //    var mixedPolicy = Policy.Wrap(fallBackPolicy, politicaWaitAndRetry);
+        //    var mixedResult = mixedPolicy.Execute(ThrowException);
+        //    Console.WriteLine($"执行结果: {mixedResult}");
+        //}
         /// <summary>
         /// 
         /// </summary>

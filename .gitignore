@@ -42,3 +42,6 @@
 /src/Plugin/Sop.FileUpload/bin/Debug
 /src/Plugin/Sop.FileUpload/bin/Release
 /src/Plugin/Sop.FileServer/Aspose.Total.lic
+/src/Plugin/Sop.FileServer/bin
+/src/Plugin/Sop.FileServer/publish
+/src/Plugin/Sop.FileServer/bin

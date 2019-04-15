@@ -5,6 +5,17 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Helper\NewFolder\**" />
+    <Content Remove="Helper\NewFolder\**" />
+    <EmbeddedResource Remove="Helper\NewFolder\**" />
+    <None Remove="Helper\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\index.html" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -13,12 +24,12 @@
     <PackageReference Include="MySql.Data" Version="8.0.15" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.15" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="8.0.15" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
 
   <ItemGroup>
     <Folder Include="bin\WebSite\" />
-    <Folder Include="Helper\NewFolder\" />
   </ItemGroup>
 
 

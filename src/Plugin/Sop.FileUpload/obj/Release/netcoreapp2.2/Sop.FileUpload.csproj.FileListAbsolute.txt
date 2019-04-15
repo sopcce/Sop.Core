@@ -33,3 +33,5 @@ E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Release\netcoreapp2.2\Sop.FileUpload
 E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Release\netcoreapp2.2\Sop.FileUpload.pdb
 E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Release\netcoreapp2.2\Sop.FileUpload.csproj.CopyComplete
 E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Release\netcoreapp2.2\Razor\Pages\_ValidationScriptsPartial.g.cshtml.cs
+E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Release\netcoreapp2.2\Razor\Views\Home\index.g.cshtml.cs
+E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Release\netcoreapp2.2\Razor\Views\Home\About.g.cshtml.cs

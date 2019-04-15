@@ -37,7 +37,8 @@ namespace Sop.FileUpload
                 options.MinimumSameSitePolicy = SameSiteMode.None;
 
             });
-
+            // Angular's default header name for sending the XSRF token.
+            services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -53,7 +54,7 @@ namespace Sop.FileUpload
 
             services.AddDbContext<SopFileUploadContext>(options =>
                     options.UseMySQL(Configuration.GetConnectionString("SopFileUploadContext")));
-
+         
             services.SetIsHosted();
         }
 
@@ -81,7 +82,7 @@ namespace Sop.FileUpload
 
             var options = new FileServerOptions();
             options.FileProvider = new PhysicalFileProvider(pathRoot);
-            options.RequestPath = new Microsoft.AspNetCore.Http.PathString("/Image");
+            options.RequestPath = new Microsoft.AspNetCore.Http.PathString("/Uploads");
             options.StaticFileOptions.ServeUnknownFileTypes = true;
             options.StaticFileOptions.DefaultContentType = "application/x-msdownload";
             options.EnableDirectoryBrowsing = true;
@@ -97,6 +98,11 @@ namespace Sop.FileUpload
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                    name: "default1",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+
             });
 
 

@@ -14,63 +14,68 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+
+
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Fileserver[0].ServerId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fileserver[0].ServerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fileserver[0].ServerEnName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fileserver[0].ServerUrl)
-            </th>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fileserver[0].ServerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fileserver[0].ServerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fileserver[0].ServerEnName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fileserver[0].ServerUrl)
+        </th>
            
-            <th>
-                @Html.DisplayNameFor(model => model.Fileserver[0].DateCreated)
-            </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fileserver[0].DateCreated)
+        </th>
          
-            <th></th>
-        </tr>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Fileserver)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ServerId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ServerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ServerEnName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ServerUrl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RootPath)
-                </td>
+    @foreach (var item in Model.Fileserver)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServerEnName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServerUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RootPath)
+            </td>
                 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Enabled)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateCreated)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enabled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
                 
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
+
+
  

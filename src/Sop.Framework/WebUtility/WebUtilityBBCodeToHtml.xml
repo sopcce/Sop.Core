@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc>
+  <members>
+    <member name="M:Sop.Utilities.HtmlUtility.BBCodeToHtml">
+      <example>
+        <para>怎样添加BBCode标签及模板参见以下示例：</para>
+        <code language="c#">
+          <![CDATA[
+          public string BBCodeToHtml(string rawString)
+          {
+              IList<BBTag> bbTags = new List<BBTag>();
+              string startTag = string.Empty;
+              string emptyStartTag = string.Empty;
+
+              // Left
+              //普通添加方式BBTag第一个参数为要添加的BBTag名称，第二个参数为用来替换BBTag
+              //其实标签的Html起始标签，第三个参数为替换BBTag结束标签的Html结束标签
+              bbTags.Add(new BBTag("left", "<div style=\"text-align:left\">", "</div>"));
+
+              // Note
+              //如果有多个Html模板的情况出现，一般做法是用BBTag中的站位标签来代替原来第二或第三参数中的Html标签，
+              //然后通过第四个参数BBAttribute来替换站位标签的内容，站位标签的形式是：${Id}，BBAttribute中第一个参
+              //数是与站位标签中的Id对应的，而第二个参数是BBTag中的属性名，具体实现参见下面的代码。
+              startTag = "<blockquote><div><strong>{0}</strong></div><br /><div>";
+              emptyStartTag = "<blockquote><div>";
+              bbTags.Add(new BBTag("note", "${startTag}", "</div></blockquote>"
+                         , new BBAttribute("startTag", "header"
+                         , c => string.IsNullOrEmpty(c.AttributeValue) ? emptyStartTag : string.Format(startTag, c.AttributeValue)
+                         , HtmlEncodingMode.UnsafeDontEncode)));
+
+              // Code
+              //
+              startTag = "<blockquote style=\"overflow-x: scroll;\"><div><strong>{0}</strong></div><br /><pre style=\"margin: 0px;\">";
+              bbTags.Add(new BBTag("code", "${startTag}", "</pre></blockquote>",
+                         new BBAttribute("startTag", "file", c =>
+                         {
+                             if (string.IsNullOrEmpty(c.AttributeValue))
+                                 return "<blockquote style=\"overflow-x: scroll;\"><pre style=\"margin: 0px;\">";
+                             return string.Format(startTag, c.AttributeValue);
+                         }, HtmlEncodingMode.UnsafeDontEncode)));
+
+              // Anchors
+              //
+              startTag = "<a href=\"{0}\" target=\"_blank\" title=\"{0}\">";
+              bbTags.Add(new BBTag("url", "${startTag}", "</a>",
+                         new BBAttribute("startTag", "", c =>
+                         {
+                             if (c.AttributeValue != null)
+                                 return string.Format(startTag, c.AttributeValue);
+
+                             string content = c.GetAttributeValueByID("content");
+                             if (!string.IsNullOrEmpty(content) && content.StartsWith("www."))
+                             {
+                                 return string.Format("<a href=\"http://{0}\" target=\"_blank\" title=\"{0}\">", content);
+                             }
+                             return string.Format(startTag, content);
+                         }, HtmlEncodingMode.UnsafeDontEncode)));
+
+              // Color
+              //
+              bbTags.Add(new BBTag("color", "<span style=\"color:${color};\">", "</span>", new BBAttribute("color", "")));
+
+              // Horizontal Rule
+              //
+              bbTags.Add(new BBTag("hr", "<hr />", ""));
+
+              // Email
+              //${content}代表BBTag中间包裹的内容
+              bbTags.Add(new BBTag("email", "<a href=\"mailto:${content}\">", "</a>"));
+
+              // Font size
+              //BBAttribute第二参数为空时表示要获取BBTag的默认属性如：[span=1][/span]
+              //这种情况获取到的就是1
+              bbTags.Add(new BBTag("size", "<span style=\"font-size:${size};\">", "</span>", new BBAttribute("size", "") /* 默认属性表示方式 */));
+
+              return HtmlUtility.BBCodeToHtml(rawString,bbTags);
+          }
+        
+          ]]>
+        </code>
+      </example>
+    </member>
+  </members>
+</doc>

@@ -822,12 +822,7 @@ namespace Sop.Framework.Utility
                 result = filePath;
             try
             {
-                var hostingEnvironment = (IHostingEnvironment)options.ApplicationServices.GetService(typeof(IHostingEnvironment))
-
-                if (hostingEnvironment.IsProduction())
-                {
-                    // do work
-                }
+                
                 if (System.Web.Hosting.HostingEnvironment.IsHosted)
                     result = System.Web.Hosting.HostingEnvironment.MapPath(filePath);
                 else
