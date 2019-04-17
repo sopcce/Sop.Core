@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Sop.FileUpload.Helper;
-using Sop.FileUpload.Models;
+using Sop.Data;
+using Sop.Data.Utility;
+using Sop.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Sop.FileUpload.Models.Helper;
+using Sop.Core.Models;
+using Sop.Core.Utility;
 
 namespace Sop.FileUpload.Controllers
 {
@@ -19,9 +20,9 @@ namespace Sop.FileUpload.Controllers
     public class UploadController : ControllerBase
     {
         #region private
-        private readonly SopFileUploadContext _context;
-
-        public UploadController(SopFileUploadContext context)
+        private readonly SopContext _context;
+     
+        public UploadController(SopContext context)
         {
             _context = context;
         }
@@ -59,7 +60,7 @@ namespace Sop.FileUpload.Controllers
                 }
 
 
-                var fileserver = await _context.Fileserver.FindAsync(1);
+                var fileserver = await _context.FileServer.FindAsync(1);
                 string upPath = fileserver.VirtualPath;
                 string newFileName = Guid.NewGuid().ToString("N") + info.Extension;
                 upPath = FileUtility.Format(newFileName, upPath);
@@ -86,22 +87,8 @@ namespace Sop.FileUpload.Controllers
                     using (var stream = new FileStream(fileInfo.PhysicalFilePath, FileMode.Create))
                     {
                         await Request.Body.CopyToAsync(stream);
-                    }
-
-                    //using (var fileStream = new FileStream(returnFileInfo.PhysicalFilePath, FileMode.CreateNew, FileAccess.ReadWrite))
-                    //{
-
-                    //    using (var streamWriter = new StreamWriter(fileStream, Encoding.GetEncoding(936)))
-                    //    {
-                    //        streamWriter.Write(Request.Body);
-                    //    }
-                    //}
-                    return new JsonResult(new { status = 1, msg = "图片上传", path = fileInfo.UrlFilePath });
-                    //using (Bitmap bitmap = new Bitmap(Request.Body))
-                    //{ 
-                    //    var returnFileInfo = await GetFilePathTask(); 
-                    //    bitmap.Save(returnFileInfo.PhysicalFilePath);
-                    //}
+                    } 
+                    return new JsonResult(new { status = 1, msg = "图片上传", path = fileInfo.UrlFilePath }); 
                 }
             }
             catch (Exception ex)
@@ -118,17 +105,17 @@ namespace Sop.FileUpload.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Fileserver>>> GetFileserver()
+        public async Task<ActionResult<IEnumerable<FileServerInfo>>> GetFileserver()
         {
-            return await _context.Fileserver.ToListAsync();
+            return await _context.FileServer.ToListAsync();
         }
          
 
         // GET: api/Upload/5
         [HttpGet("Get/{id}")]
-        public async Task<ActionResult<Fileserver>> GetFileserver(int id)
+        public async Task<ActionResult<FileServerInfo>> GetFileserver(int id)
         {
-            var fileserver = await _context.Fileserver.FindAsync(id);
+            var fileserver = await _context.FileServer.FindAsync(id);
 
             if (fileserver == null)
             {
@@ -140,7 +127,7 @@ namespace Sop.FileUpload.Controllers
 
         // PUT: api/Upload/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFileserver(int id, Fileserver fileserver)
+        public async Task<IActionResult> PutFileserver(int id, FileServerInfo fileserver)
         {
             if (id != fileserver.Id)
             {
@@ -170,9 +157,9 @@ namespace Sop.FileUpload.Controllers
 
         // POST: api/Upload
         //[HttpPost]
-        //public async Task<ActionResult<Fileserver>> PostFileserver(Fileserver fileserver)
+        //public async Task<ActionResult<FileServerInfo>> PostFileserver(FileServerInfo fileserver)
         //{
-        //    _context.Fileserver.Add(fileserver);
+        //    _context.FileServerInfo.Add(fileserver);
         //    await _context.SaveChangesAsync();
 
         //    return CreatedAtAction("GetFileserver", new { id = fileserver.Id }, fileserver);
@@ -180,15 +167,15 @@ namespace Sop.FileUpload.Controllers
 
         // DELETE: api/Upload/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Fileserver>> DeleteFileserver(int id)
+        public async Task<ActionResult<FileServerInfo>> DeleteFileserver(int id)
         {
-            var fileserver = await _context.Fileserver.FindAsync(id);
+            var fileserver = await _context.FileServer.FindAsync(id);
             if (fileserver == null)
             {
                 return NotFound();
             }
 
-            _context.Fileserver.Remove(fileserver);
+            _context.FileServer.Remove(fileserver);
             await _context.SaveChangesAsync();
 
             return fileserver;
@@ -196,7 +183,7 @@ namespace Sop.FileUpload.Controllers
 
         private bool FileserverExists(int id)
         {
-            return _context.Fileserver.Any(e => e.Id == id);
+            return _context.FileServer.Any(e => e.Id == id);
         }
     }
 

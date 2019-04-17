@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Helper\NewFolder\**" />
-    <Content Remove="Helper\NewFolder\**" />
-    <EmbeddedResource Remove="Helper\NewFolder\**" />
-    <None Remove="Helper\NewFolder\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="bin\index.html" />
   </ItemGroup>
 
@@ -30,6 +23,13 @@
 
   <ItemGroup>
     <Folder Include="bin\WebSite\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Sop.Core\Sop.Core.csproj" />
+    <ProjectReference Include="..\..\Libraries\Sop.Data\Sop.Data.csproj" />
+    <ProjectReference Include="..\..\Libraries\Sop.Services\Sop.Services.csproj" />
   </ItemGroup>
 
 

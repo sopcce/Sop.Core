@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Sop.FileUpload.Models;
+using Sop.Core.Models;
+using Sop.Data;
+using System.Threading.Tasks;
 
 namespace Sop.FileUpload.Pages
 {
     public class DeleteModel : PageModel
     {
-        private readonly Sop.FileUpload.Models.SopFileUploadContext _context;
+        private readonly SopContext _context;
 
-        public DeleteModel(Sop.FileUpload.Models.SopFileUploadContext context)
+        public DeleteModel(SopContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Fileserver Fileserver { get; set; }
+        public FileServerInfo Fileserver { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,7 +26,7 @@ namespace Sop.FileUpload.Pages
                 return NotFound();
             }
 
-            Fileserver = await _context.Fileserver.FirstOrDefaultAsync(m => m.Id == id);
+            Fileserver = await _context.FileServer.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Fileserver == null)
             {
@@ -44,11 +42,11 @@ namespace Sop.FileUpload.Pages
                 return NotFound();
             }
 
-            Fileserver = await _context.Fileserver.FindAsync(id);
+            Fileserver = await _context.FileServer.FindAsync(id);
 
             if (Fileserver != null)
             {
-                _context.Fileserver.Remove(Fileserver);
+                _context.FileServer.Remove(Fileserver);
                 await _context.SaveChangesAsync();
             }
 

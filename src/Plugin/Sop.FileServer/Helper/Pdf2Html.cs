@@ -235,7 +235,7 @@ namespace Sop.FileServer.Helper
                         stream.CopyTo(sourceStream);
                     }
                     Aspose.Pdf.Document document = new Aspose.Pdf.Document(sourceStream);
-
+                    document.IgnoreCorruptedObjects = true;
                     document.Save(targetPath, format);
                 }
                 return true;

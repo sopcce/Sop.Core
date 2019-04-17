@@ -5,15 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Sop.Core.Models;
+using Sop.Data;
 using Sop.FileUpload.Models;
+using Sop.Services;
 
 namespace Sop.FileUpload.Pages
 {
     public class CreateModel : PageModel
     {
-        private readonly Sop.FileUpload.Models.SopFileUploadContext _context;
+        private readonly SopContext _context;
 
-        public CreateModel(Sop.FileUpload.Models.SopFileUploadContext context)
+        public CreateModel(SopContext context)
         {
             _context = context;
         }
@@ -24,7 +27,7 @@ namespace Sop.FileUpload.Pages
         }
 
         [BindProperty]
-        public Fileserver Fileserver { get; set; }
+        public FileServerInfo Fileserver { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -33,7 +36,7 @@ namespace Sop.FileUpload.Pages
                 return Page();
             }
 
-            _context.Fileserver.Add(Fileserver);
+            _context.FileServer.Add(Fileserver);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

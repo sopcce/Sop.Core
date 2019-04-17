@@ -5,24 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Sop.Core.Models;
+using Sop.Data;
 using Sop.FileUpload.Models;
+using Sop.Services;
 
 namespace Sop.FileUpload.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly Sop.FileUpload.Models.SopFileUploadContext _context;
+        private readonly SopContext _context;
 
-        public IndexModel(Sop.FileUpload.Models.SopFileUploadContext context)
+        public IndexModel(SopContext context)
         {
             _context = context;
         }
 
-        public IList<Fileserver> Fileserver { get;set; }
+        public IList<FileServerInfo> Fileserver { get;set; }
 
         public async Task OnGetAsync()
         {
-            Fileserver = await _context.Fileserver.ToListAsync();
+            Fileserver = await _context.FileServer.ToListAsync();
         }
     }
 }

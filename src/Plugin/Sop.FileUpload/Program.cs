@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Sop.Data;
 using Sop.FileUpload.Models;
 
 namespace Sop.FileUpload
@@ -24,7 +25,7 @@ namespace Sop.FileUpload
 
                 try
                 {
-                    var context = services.GetRequiredService<SopFileUploadContext>();
+                    var context = services.GetRequiredService<SopContext>();
                     // using ContosoUniversity.Data; 
                     DbInitializer.Initialize(context);
                 }

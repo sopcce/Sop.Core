@@ -33,4 +33,12 @@ E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Debug\netcoreapp2.2\Sop.FileUpload.V
 E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Debug\netcoreapp2.2\Sop.FileUpload.dll
 E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Debug\netcoreapp2.2\Sop.FileUpload.pdb
 E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Debug\netcoreapp2.2\Sop.FileUpload.csproj.CopyComplete
+E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Debug\netcoreapp2.2\Razor\Views\Home\About.g.cshtml.cs
+E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Debug\netcoreapp2.2\Razor\Views\Home\IdCard.g.cshtml.cs
+E:\GitHub\STS\src\Plugin\Sop.FileUpload\bin\Debug\netcoreapp2.2\Sop.Data.dll
+E:\GitHub\STS\src\Plugin\Sop.FileUpload\bin\Debug\netcoreapp2.2\Sop.Services.dll
+E:\GitHub\STS\src\Plugin\Sop.FileUpload\bin\Debug\netcoreapp2.2\Sop.Data.pdb
+E:\GitHub\STS\src\Plugin\Sop.FileUpload\bin\Debug\netcoreapp2.2\Sop.Services.pdb
 E:\GitHub\STS\src\Plugin\Sop.FileUpload\obj\Debug\netcoreapp2.2\Sop.FileUpload.csprojAssemblyReference.cache
+E:\GitHub\STS\src\Plugin\Sop.FileUpload\bin\Debug\netcoreapp2.2\Sop.Core.dll
+E:\GitHub\STS\src\Plugin\Sop.FileUpload\bin\Debug\netcoreapp2.2\Sop.Core.pdb

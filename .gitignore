@@ -45,3 +45,9 @@
 /src/Plugin/Sop.FileServer/bin
 /src/Plugin/Sop.FileServer/publish
 /src/Plugin/Sop.FileServer/bin
+/src/Libraries/Sop.Core/obj
+/src/Libraries/Sop.Core/bin
+/src/Libraries/Sop.Data/bin
+/src/Libraries/Sop.Data/obj
+/src/Libraries/Sop.Services/bin
+/src/Libraries/Sop.Services/obj

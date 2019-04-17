@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
-using Sop.FileUpload.Models;
-using Sop.FileUpload.Models.Helper;
+using Sop.Core.Utility;
+using Sop.Data;
+using System.IO;
 
 namespace Sop.FileUpload
 {
@@ -52,7 +47,7 @@ namespace Sop.FileUpload
             //        options.UseSqlServer(Configuration.GetConnectionString("SopFileUploadContext")));
 
 
-            services.AddDbContext<SopFileUploadContext>(options =>
+            services.AddDbContext<SopContext>(options =>
                     options.UseMySQL(Configuration.GetConnectionString("SopFileUploadContext")));
          
             services.SetIsHosted();
@@ -97,7 +92,7 @@ namespace Sop.FileUpload
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=About}/{id?}");
 
                 routes.MapRoute(
                     name: "default1",

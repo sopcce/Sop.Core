@@ -95,7 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="App_Data\itemdoc2.db" />
+    <Content Include="App_Data\log4net.config" />
     <None Include="Aspose.Total.lic" />
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Sop.FileServer_TemporaryKey.pfx" />
   </ItemGroup>
@@ -103,6 +108,14 @@
     <None Include="BotConfig.config">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="App_Data\Database\MySql\itemdoc.sql" />
+    <Content Include="App_Data\Database\SqlServer\SQLQuery1.sql" />
+    <Content Include="App_Data\Database\SqlServer\tiemdoc.sql" />
+    <Content Include="App_Data\Lang\installation.zhs.xml" />
+    <Content Include="App_Data\Lang\zh-cn.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\phantomjs.exe" />
     <Content Include="ffmpeg.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -223,6 +236,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\config\" />
+    <Folder Include="App_Data\sopcce.com\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.Chrome.WebDriver.2.45\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.45\build\Selenium.Chrome.WebDriver.targets')" />

@@ -565,7 +565,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>K1PCBWoy/h6J2DKmwXo8uSGBpyDrVPw6/VyVo/mfFY4=</dsig:DigestValue>
+        <dsig:DigestValue>5lc5dUsfPlB4v33X9IG7eEaU7Xrj5QFMQ/waTdl8iQ0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -577,7 +577,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>r2HF+LnpR4iKjO6Ca5R0dwpIr4zF35UWNTOenCpeOTc=</dsig:DigestValue>
+        <dsig:DigestValue>KQXwsprLZjkB0RJbpJJMbDca/M3gt9fYU2X9gkFbRaI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -601,7 +601,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pOTANg+K4q+h11dmh1BuehOF/vGx4zbGYNDVRhqgCxE=</dsig:DigestValue>
+        <dsig:DigestValue>QvsUnsdEqQvK9Xqasfc+We6Hy4MXusNNakgBX+ziMLw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1865,6 +1865,78 @@
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="App_Data\Database\MySql\itemdoc.sql" size="36581">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Ht3yoB1GvDrx83AzYDwlED3WbxMHJjQXtFpMTomRCuM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="App_Data\Database\SqlServer\SQLQuery1.sql" size="16184490">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>S5UiyI7tVX+ne5lTvQ925SyiTkvFzGiF43bLebXjYjs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="App_Data\Database\SqlServer\tiemdoc.sql" size="485100">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>OW1BXIotBAneH5+pEUtJk29KKaPsmAmZ8jhkVboSM7Y=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="App_Data\itemdoc2.db" size="8192">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>1nqpO4RegDC3Kmwv3QNs3FmbqGDeM/HnoNMPsI97fvo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="App_Data\Lang\installation.zhs.xml" size="563" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ZoYVN0Le0UaK/QMBQK8nGzrWw2l/1LbKtAyKZOZt5Do=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="App_Data\Lang\zh-cn.xml" size="6704" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>WHMK5AchXucU6bQFKC0A9/AjaT0ygU3x3gKLY4NXh/8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="App_Data\log4net.config" size="4760">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fyE06/TFW9XFFgUipSjWMQtO4VNE5wEQmKWu9uoztr0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="App_Data\phantomjs.exe" size="18587648">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>HPmyqnMr0MZag8VdlrqYxO1GK5NyDX/YwLzFNoO/z/s=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="ffmpeg.exe" size="31386112">
     <hash>
       <dsig:Transforms>
@@ -1892,6 +1964,15 @@
       <dsig:DigestValue>lYUhyrBspg2ikODKfWlVghbSGebgHX6oF0FEl7M5rXw=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="log4net.config" size="4760">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fyE06/TFW9XFFgUipSjWMQtO4VNE5wEQmKWu9uoztr0=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="pdf2htmlEX.exe" size="5820416">
     <hash>
       <dsig:Transforms>
@@ -1910,13 +1991,13 @@
       <dsig:DigestValue>HPmyqnMr0MZag8VdlrqYxO1GK5NyDX/YwLzFNoO/z/s=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Sop.FileServer.exe.config" size="22105">
+  <file name="Sop.FileServer.exe.config" size="22094">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>iGOuSR7v9FsBBWoKKuj1FmTpqBOIEGZs2GBJ43o2yo8=</dsig:DigestValue>
+      <dsig:DigestValue>p9TnvgNkELR1UGDuJAEhzCPpNzKAlmTu/p/pZycukBM=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

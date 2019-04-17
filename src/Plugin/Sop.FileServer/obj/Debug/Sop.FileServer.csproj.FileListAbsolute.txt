@@ -222,3 +222,5 @@ E:\GitHub\STS\src\Plugin\Sop.FileServer\obj\Debug\Sop.FileServer.application
 E:\GitHub\STS\src\Plugin\Sop.FileServer\obj\Debug\Sop.FileServer.csproj.CopyComplete
 E:\GitHub\STS\src\Plugin\Sop.FileServer\obj\Debug\Sop.FileServer.exe
 E:\GitHub\STS\src\Plugin\Sop.FileServer\obj\Debug\Sop.FileServer.pdb
+E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Sop.Services.dll.config
+E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\log4net.config

@@ -1,4 +1,5 @@
 ﻿using System;
+using Aspose.Pdf;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;
 using Polly;
@@ -32,6 +33,10 @@ namespace Sop.FileServer
              * 1、定义一个xml文件内，可以使用导入导出的方式配置爬虫
              * 
              */
+
+            string sourcePath2 = "D:\\csharp.pdf";
+            string targetPath2 = FileUtility.Combine(Pdf2Html.Instance().TempPath, "demo2.docx");
+            var isok2 = Pdf2Html.Instance().PdfToFile(sourcePath2, targetPath2,SaveFormat.DocX);
 
 
 

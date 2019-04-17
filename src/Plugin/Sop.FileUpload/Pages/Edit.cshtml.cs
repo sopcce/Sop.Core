@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using Sop.Core.Models;
+using Sop.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Sop.FileUpload.Models;
 
 namespace Sop.FileUpload.Pages
 {
     public class EditModel : PageModel
     {
-        private readonly Sop.FileUpload.Models.SopFileUploadContext _context;
+        private readonly SopContext _context;
 
-        public EditModel(Sop.FileUpload.Models.SopFileUploadContext context)
+        public EditModel(SopContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Fileserver Fileserver { get; set; }
+        public FileServerInfo Fileserver { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,7 +27,7 @@ namespace Sop.FileUpload.Pages
                 return NotFound();
             }
 
-            Fileserver = await _context.Fileserver.FirstOrDefaultAsync(m => m.Id == id);
+            Fileserver = await _context.FileServer.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Fileserver == null)
             {
@@ -68,7 +66,7 @@ namespace Sop.FileUpload.Pages
 
         private bool FileserverExists(int id)
         {
-            return _context.Fileserver.Any(e => e.Id == id);
+            return _context.FileServer.Any(e => e.Id == id);
         }
     }
 }

@@ -4802,6 +4802,50 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "Sop.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
+        "compile": {
+          "bin/placeholder/Sop.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Sop.Core.dll": {}
+        }
+      },
+      "Sop.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "MySql.Data": "8.0.15",
+          "MySql.Data.EntityFrameworkCore": "8.0.15",
+          "MySql.Data.EntityFrameworkCore.Design": "8.0.15",
+          "Newtonsoft.Json": "12.0.1",
+          "Sop.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Sop.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Sop.Data.dll": {}
+        }
+      },
+      "Sop.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Sop.Core": "1.0.0",
+          "Sop.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Sop.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Sop.Services.dll": {}
+        }
       }
     }
   },
@@ -13153,6 +13197,21 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "Sop.Core/1.0.0": {
+      "type": "project",
+      "path": "../../Libraries/Sop.Core/Sop.Core.csproj",
+      "msbuildProject": "../../Libraries/Sop.Core/Sop.Core.csproj"
+    },
+    "Sop.Data/1.0.0": {
+      "type": "project",
+      "path": "../../Libraries/Sop.Data/Sop.Data.csproj",
+      "msbuildProject": "../../Libraries/Sop.Data/Sop.Data.csproj"
+    },
+    "Sop.Services/1.0.0": {
+      "type": "project",
+      "path": "../../Libraries/Sop.Services/Sop.Services.csproj",
+      "msbuildProject": "../../Libraries/Sop.Services/Sop.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -13164,7 +13223,10 @@
       "MySql.Data >= 8.0.15",
       "MySql.Data.EntityFrameworkCore >= 8.0.15",
       "MySql.Data.EntityFrameworkCore.Design >= 8.0.15",
-      "Newtonsoft.Json >= 12.0.1"
+      "Newtonsoft.Json >= 12.0.1",
+      "Sop.Core >= 1.0.0",
+      "Sop.Data >= 1.0.0",
+      "Sop.Services >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -13196,7 +13258,17 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\GitHub\\STS\\src\\Libraries\\Sop.Core\\Sop.Core.csproj": {
+              "projectPath": "E:\\GitHub\\STS\\src\\Libraries\\Sop.Core\\Sop.Core.csproj"
+            },
+            "E:\\GitHub\\STS\\src\\Libraries\\Sop.Data\\Sop.Data.csproj": {
+              "projectPath": "E:\\GitHub\\STS\\src\\Libraries\\Sop.Data\\Sop.Data.csproj"
+            },
+            "E:\\GitHub\\STS\\src\\Libraries\\Sop.Services\\Sop.Services.csproj": {
+              "projectPath": "E:\\GitHub\\STS\\src\\Libraries\\Sop.Services\\Sop.Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
