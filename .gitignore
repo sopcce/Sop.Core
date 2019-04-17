@@ -6,7 +6,7 @@
 ## Sop
 ###########
 
-
+*.lic
 /src/.vs 
 /src/packages
 /src/.vs
@@ -36,9 +36,8 @@
 /src/ThirdParty/Sop.Common.Serialization/obj
 /src/ThirdParty/Sop.Common.Serialization/bin
 ###########
-/src/Plugin/Sop.ConsoleBotServer/*.lic
-/src/Plugin/Sop.ConsoleBotServer/obj
-/src/Plugin/Sop.ConsoleBotServer/bin
+/src/Plugin/Sop.FileServer/obj
+/src/Plugin/Sop.FileServer/bin
 /src/Plugin/Sop.FileUpload/bin/Debug
 /src/Plugin/Sop.FileUpload/bin/Release
 /src/Plugin/Sop.FileServer/Aspose.Total.lic
