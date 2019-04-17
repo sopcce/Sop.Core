@@ -51,3 +51,10 @@
 /src/Libraries/Sop.Data/obj
 /src/Libraries/Sop.Services/bin
 /src/Libraries/Sop.Services/obj
+/src/Plugin/Sop.FileUpload/bin
+/src/Plugin/Sop.FileUpload/obj
+/src/Plugin/Sop.FileUpload/obj
+/src/Plugin/Sop.FileUpload/bin
+/src/Plugin/Sop.Tools/obj
+/src/Plugin/Sop.Tools/bin
+/src/Plugin/Plugin.sln.DotSettings.user
