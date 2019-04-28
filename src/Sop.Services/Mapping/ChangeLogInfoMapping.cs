@@ -8,7 +8,7 @@ namespace Sop.Services.Mapping
     {
         public ChangeLogInfoMapping()
         {
-            Table("item_catalog");
+            Table("sop_changelog");
             Cache(map => map.Usage(CacheUsage.ReadWrite));
             Id(t => t.Id, map => map.Generator(Generators.Native));
             Property(t => t.DataDate);

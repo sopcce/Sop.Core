@@ -8,7 +8,7 @@ namespace Sop.Services.Mapping
     {
         public UsersExternalLoginMapping()
         {
-            Table("item_usersexternallogin");
+            Table("sop_users_external_login");
             Cache(map => map.Usage(CacheUsage.ReadWrite));
             Id(t => t.Id, map => map.Generator(Generators.Assigned)); 
             Property(t => t.LoginProvider);

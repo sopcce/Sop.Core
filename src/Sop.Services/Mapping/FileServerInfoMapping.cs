@@ -8,8 +8,8 @@ namespace Sop.Services.Mapping
     {
         public FileServerInfoMapping()
         {
-            // ReSharper disable once StringLiteralTypo
-            Table("item_fileserver");
+           
+            Table("sop_files_server");
             Cache(map => map.Usage(CacheUsage.ReadWrite));
             Id(t => t.Id, map => map.Generator(Generators.Native));
 

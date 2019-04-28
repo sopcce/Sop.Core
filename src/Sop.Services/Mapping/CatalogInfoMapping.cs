@@ -8,7 +8,7 @@ namespace Sop.Services.Mapping
     {
         public CatalogInfoMapping()
         {
-            Table("item_catalog");
+            Table("sop_catalog");
             Cache(map => map.Usage(CacheUsage.ReadWrite));
             Id(t => t.Id, map => map.Generator(Generators.Native));
             Property(t => t.UserId);

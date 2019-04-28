@@ -12,11 +12,7 @@ namespace Sop.Web.Controllers
         //private IAuthenticationService _authentication;
         public UsersService _usersService { get; set; }
         public PostService _postService { get; set; }
-
-        //public HomeController(IAuthenticationService authentication)
-        //{
-        //    _authentication = authentication;
-        //}
+ 
 
         public HomeController()
         {

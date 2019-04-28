@@ -8,7 +8,7 @@ namespace Sop.Services.Mapping
     {
         public PostInfoMapping()
         {
-            Table("item_posts");
+            Table("sop_posts");
             Cache(map => map.Usage(CacheUsage.ReadWrite));
             Id(t => t.Id, map => map.Generator(Generators.Native)); 
             Property(t => t.CatalogId);

@@ -9,7 +9,7 @@ namespace Sop.Services.Mapping
     {
         public UsersInfoMapping()
         {
-            Table("item_users");
+            Table("sop_users");
             Cache(map => map.Usage(CacheUsage.ReadWrite));
             Id(t => t.Id, map => map.Generator(Generators.Assigned));
 

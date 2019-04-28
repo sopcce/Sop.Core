@@ -336,5 +336,10 @@ namespace Sop.Core
         }
         #endregion
 
+        public object ActicleIndex()
+        { 
+            return CachedUrlHelper.Action("Index", "Acticle");
+        }
+    
     }
 }

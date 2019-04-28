@@ -1,25 +1,23 @@
-﻿using System;
-using System.Drawing;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Common.Logging;
+﻿using Common.Logging;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using Sop.Core.Mvc;
 using Sop.Core.Mvc.SystemMessage;
 using Sop.Framework.Environment;
 using Sop.Framework.Utility;
 using Sop.Framework.Validation;
-using Sop.Services;
 using Sop.Services.Auth.Identity;
 using Sop.Services.Auth.Model;
 using Sop.Services.Model;
 using Sop.Services.Servers;
 using Sop.Services.ViewModel;
 using Sop.Web.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace Sop.Web.Controllers
 {

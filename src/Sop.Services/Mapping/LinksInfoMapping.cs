@@ -8,7 +8,7 @@ namespace Sop.Services.Mapping
     {
         public LinksInfoMapping()
         {
-            Table("item_links");
+            Table("sop_links");
             Cache(map => map.Usage(CacheUsage.ReadWrite));
             Id(t => t.Id, map => map.Generator(Generators.Native));
             Property(t => t.OwnerId);
