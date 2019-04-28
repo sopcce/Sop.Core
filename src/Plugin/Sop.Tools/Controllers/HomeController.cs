@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Sop.Core.Models;
+using Sop.Data;
 using Sop.Tools.Models;
 
 namespace Sop.Tools.Controllers
 {
     public class HomeController : Controller
-    {  
-         
+    {
+        private readonly SopContext _context;
+
+        public HomeController(SopContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         { 
             return View();

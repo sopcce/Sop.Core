@@ -1,7 +1,4 @@
-﻿using Sop.Services.Auth.Identity;
-using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
+﻿using System;
 namespace Sop.Services.Model
 {
     /// <summary>

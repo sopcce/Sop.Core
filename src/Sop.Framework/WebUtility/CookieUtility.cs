@@ -70,7 +70,7 @@ namespace Sop.Framework.WebUtility
                 for (int i = 0; i < allKeys.Length; i++)
                 {
                     string name = allKeys[i];
-                    nameValueCollection.Add(name, UrlUtility.Instance().UrlDecode(httpCookie.Values[name], Encoding.GetEncoding(936)));
+                    nameValueCollection.Add(name, UrlUtility.Instance().UrlDecode(httpCookie.Values[name]));
                 }
             }
             return nameValueCollection;
@@ -108,7 +108,7 @@ namespace Sop.Framework.WebUtility
                 return;
             }
             HttpCookie httpCookie = new HttpCookie(sKey);
-            httpCookie.Value = UrlUtility.Instance().UrlEncode(sValue, Encoding.Default);
+            httpCookie.Value = UrlUtility.Instance().UrlEncode(sValue);
             httpCookie.HttpOnly = true;
             if (expiresTime > DateTime.Now)
             {
@@ -148,7 +148,7 @@ namespace Sop.Framework.WebUtility
             for (int i = 0; i < allKeys.Length; i++)
             {
                 string name = allKeys[i];
-                httpCookie.Values[name] = UrlUtility.Instance().UrlEncode(sValues[name], Encoding.GetEncoding(936));
+                httpCookie.Values[name] = UrlUtility.Instance().UrlEncode(sValues[name]);
             }
             httpCookie.HttpOnly = true;
             if (expiresTime > DateTime.Now)

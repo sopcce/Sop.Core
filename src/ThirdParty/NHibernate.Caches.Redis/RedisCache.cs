@@ -67,7 +67,7 @@ end
 #if DEBUG
     private const CommandFlags FireAndForgetFlags = CommandFlags.None;
 #else
-        private const CommandFlags fireAndForgetFlags = CommandFlags.FireAndForget;
+        private const CommandFlags FireAndForgetFlags = CommandFlags.FireAndForget;
 #endif
 
     private readonly ConnectionMultiplexer _connectionMultiplexer;
@@ -131,14 +131,7 @@ end
     internal RedisNamespace CacheNamespace { get; private set; }
 
     public int Timeout { get { return Timestamper.OneMs * (int)_lockTimeout.TotalMilliseconds; } }
-    //###########################################################################################
-    // 
-    //
-    //
-    //
-    //
-    //###########################################################################################
-
+   
 
 
     /// <summary>

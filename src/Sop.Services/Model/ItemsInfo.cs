@@ -1,7 +1,4 @@
 ﻿using System;
-using Sop.Framework.Repositories;
-using NHibernate.Mapping.ByCode;
-using NHibernate.Mapping.ByCode.Conformist;
 
 namespace Sop.Services.Model
 {

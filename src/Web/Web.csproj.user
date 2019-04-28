@@ -8,17 +8,18 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
+    <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
     <ProjectView>ShowAllFiles</ProjectView>
     <WebStackScaffolding_ViewDialogWidth>1368</WebStackScaffolding_ViewDialogWidth>
     <WebStackScaffolding_IsLayoutPageSelected>True</WebStackScaffolding_IsLayoutPageSelected>
     <WebStackScaffolding_IsPartialViewSelected>False</WebStackScaffolding_IsPartialViewSelected>
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
-    <Controller_SelectedScaffolderID>ApiControllerEmptyScaffolder</Controller_SelectedScaffolderID>
+    <Controller_SelectedScaffolderID>MvcControllerWithActionsScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Controller</Controller_SelectedScaffolderCategoryPath>
     <WebStackScaffolding_ControllerDialogWidth>1368</WebStackScaffolding_ControllerDialogWidth>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
+    <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

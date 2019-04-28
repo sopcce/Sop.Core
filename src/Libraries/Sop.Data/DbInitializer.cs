@@ -6,14 +6,17 @@ namespace Sop.Data
     {
         public static void Initialize(SopContext context)
         {
-            // context.Database.EnsureCreated();
+             //context.Database.EnsureCreated();
 
             // Look for any students.
-            if (context.FileServer.Any())
-            {
-                return;   // DB has been seeded
-            }
-
+            //if (context.FileServer.Any())
+            //{
+            //    return;   // DB has been seeded
+            //}
+            //if (context.CitysServer.Any())
+            //{
+            //    return;   // DB has been seeded
+            //}
             //var students = new Student[]
             //{
             //    new Student{FirstMidName="Carson",LastName="Alexander",EnrollmentDate=DateTime.Parse("2005-09-01")},

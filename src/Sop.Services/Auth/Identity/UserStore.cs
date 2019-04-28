@@ -290,7 +290,7 @@ namespace Sop.Services.Auth.Identity
 
         #endregion
 
-        #region USER - LOGINS
+        #region User - Logins
 
         public Task AddLoginAsync(User user, UserLoginInfo login)
         {

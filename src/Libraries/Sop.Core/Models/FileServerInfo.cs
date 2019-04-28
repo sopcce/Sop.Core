@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sop.Core.Models
 {
-    [Table("item_fileserver")]
+    [Table("sop_fileserver")]
     public abstract class FileServerInfo
     {
         ///<Summary>

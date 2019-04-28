@@ -48,7 +48,7 @@ namespace Sop.FileUpload
 
 
             services.AddDbContext<SopContext>(options =>
-                    options.UseMySQL(Configuration.GetConnectionString("SopFileUploadContext")));
+                    options.UseMySQL(Configuration.GetConnectionString("SopContext")));
          
             services.SetIsHosted();
         }

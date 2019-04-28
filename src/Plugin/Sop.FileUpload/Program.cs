@@ -17,8 +17,23 @@ namespace Sop.FileUpload
     {
         public static void Main(string[] args)
         {
-            var host = CreateWebHostBuilder(args).Build();
+            //aaaaaaaaaaaaaaaa
+            Console.WriteLine("Running demo with Kestrel.");
 
+            var config = new ConfigurationBuilder()
+                .AddCommandLine(args)
+                .Build();
+
+            var builder = new WebHostBuilder()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseConfiguration(config)
+                .UseStartup<Startup>()
+                .UseKestrel(options =>
+                {
+                    options.ListenLocalhost(5000);
+                })
+                .UseUrls("http://localhost:5000");
+            var host = builder.Build();
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -35,13 +50,10 @@ namespace Sop.FileUpload
                     logger.LogError(ex, "An error occurred creating the DB.");
                 }
             }
-
             host.Run();
+
 
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
     }
 }

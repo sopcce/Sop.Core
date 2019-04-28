@@ -10,46 +10,46 @@ namespace Sop.Core.Models
         ///<Summary>
         /// Id 
         ///</Summary>
-        public long Id { get; set; }
+        public virtual long Id { get; set; }
         ///<Summary>
         /// Code 
         ///</Summary>
-        public string Code { get; set; }
+        public virtual string Code { get; set; }
         ///<Summary>
         /// Name 
         ///</Summary>
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
         ///<Summary>
         /// Description 
         ///</Summary>
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
         ///<Summary>
         /// ParentCode 
         ///</Summary>
-        public long ParentCode { get; set; }
+        public virtual long ParentCode { get; set; }
         ///<Summary>
         /// ParentCodeList 
         ///</Summary>
-        public string ParentCodeList { get; set; }
+        public virtual string ParentCodeList { get; set; }
         ///<Summary>
         /// ChildCount 
         ///</Summary>
-        public int ChildCount { get; set; }
+        public virtual int ChildCount { get; set; }
         ///<Summary>
         /// Depth 
         ///</Summary>
-        public int Depth { get; set; }
+        public virtual int Depth { get; set; }
         ///<Summary>
         /// Enabled 
         ///</Summary>
-        public int Enabled { get; set; }
+        public virtual int Enabled { get; set; }
         ///<Summary>
         /// DateCreated 
         ///</Summary>
-        public DateTime DateCreated { get; set; }
+        public virtual DateTime DateCreated { get; set; }
         ///<Summary>
         /// Icon 
         ///</Summary>
-        public string Icon { get; set; }
+        public virtual string Icon { get; set; }
     }
 }

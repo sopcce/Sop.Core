@@ -286,6 +286,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\Base\BasePublicController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\Base\AppApiController.cs" />
@@ -4632,10 +4633,12 @@
     <Content Include="Views\Account\Demo.cshtml" />
     <Content Include="Views\Shared\_NavMenu.cshtml" />
     <Content Include="Views\Tool\Enc.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\config\" />
     <Folder Include="App_Data\sopcce.com\" />
+    <Folder Include="Views\Article\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

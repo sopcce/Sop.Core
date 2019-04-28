@@ -8,4 +8,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>E:\GitHub\STS\src\Plugin\WebSite\Tools</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="SopContext">
+      <Value>server=127.0.0.1%3bport=3306%3bdatabase=sopcce%3buid=root%3bpwd=123456%3bCharset=utf8mb4%3bSslMode = none%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
 </Project>

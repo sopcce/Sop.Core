@@ -3,11 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 using Sop.Core;
 using System;
 using System.Collections.Generic;
+using Sop.Data;
 
 namespace Sop.Tools.Controllers
 {
     public class IdController : Controller
     {
+        private readonly SopContext _context;
+
+        public IdController(SopContext context)
+        {
+            _context = context;
+        }
         // GET: ID
         public ActionResult Index()
         {
