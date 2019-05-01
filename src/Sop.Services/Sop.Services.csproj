@@ -154,6 +154,7 @@
     <Compile Include="Model\AttachmentInfo.cs" />
     <Compile Include="Model\CatalogInfo.cs" />
     <Compile Include="Model\ChangeLogInfo.cs" />
+    <Compile Include="Model\Class1.cs" />
     <Compile Include="Model\ForumArticleInfo.cs" />
     <Compile Include="Model\FileServerInfo.cs" />
     <Compile Include="Model\ItemsInfo.cs" />

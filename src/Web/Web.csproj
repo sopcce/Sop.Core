@@ -4518,8 +4518,6 @@
     <Content Include="assets\zeroclipboard\test\.jshintrc" />
     <Content Include="assets\zTree\css\awesomeStyle\awesome.less" />
     <Content Include="assets\zTree\css\awesomeStyle\fa.less" />
-    <Content Include="assets\zTree\js\ztree.3.5.26.zip" />
-    <Content Include="assets\zTree\README.md" />
     <Content Include="Content\images\logo.psd" />
     <Content Include="fonts\editormd-logo.eot" />
     <Content Include="fonts\editormd-logo.ttf" />
@@ -4634,11 +4632,11 @@
     <Content Include="Views\Shared\_NavMenu.cshtml" />
     <Content Include="Views\Tool\Enc.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Article\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\config\" />
     <Folder Include="App_Data\sopcce.com\" />
-    <Folder Include="Views\Article\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
@@ -13,6 +16,7 @@ using Microsoft.Owin;
 using Owin;
 using StackExchange.Redis;
 using System.Reflection;
+using System.ServiceProcess;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -70,7 +74,28 @@ namespace Sop.Web
 
             try
             {
-
+                #region 尝试启动本机服务
+                var serviceControllers = ServiceController.GetServices();
+                var listDictionary = new Dictionary<string, ServiceController>();
+                foreach (var service in serviceControllers)
+                {
+                    if (service.ServiceName.ToLower().Contains("redis"))
+                    {
+                        listDictionary.Add(service.ServiceName.ToLower(), service);
+                    }
+                }
+                if (listDictionary.ContainsKey("redis"))
+                {
+                    throw new System.Exception("不存在redis的windows服务位于本机，请修改或配置");
+                }
+                foreach (var info in listDictionary)
+                {
+                    if (info.Value.Status != ServiceControllerStatus.Running)
+                    {
+                        info.Value.Start();
+                    }
+                } 
+                #endregion
                 var test = ConnectionMultiplexer.Connect(option, null);
                 var nn = test.GetStatus();
                 if (test.IsConnected == true)
@@ -79,11 +104,6 @@ namespace Sop.Web
                     builder.Register(c => ConnectionMultiplexer.Connect(option)).SingleInstance().PropertiesAutowired();
 
                     builder.Register(c => new RedisCacheManager(option)).As<ICacheManager>().SingleInstance().PropertiesAutowired();
-                }
-                else
-                {
-                    throw new System.Exception("Redis服务不可用，请启动Redis服务");
-
                 }
             }
             catch (System.Exception ex)
@@ -95,7 +115,7 @@ namespace Sop.Web
 
             //IAuthenticationService
             builder.Register(c => new OwinAuthenticationService()).As<IAuthenticationService>().PropertiesAutowired().InstancePerRequest();
-            
+
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterControllers(assemblies).PropertiesAutowired();

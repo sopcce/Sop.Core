@@ -299,8 +299,12 @@ namespace Sop.Core
 
             return CachedUrlHelper.Action("CatalogDelete", "Item");
         }
-        public string ItemIndex()
+     
+        public string ItemIndex(int? id)
         {
+            RouteValueDictionary route = new RouteValueDictionary();
+            if (id != null)
+                route.Add("id", id);
             return CachedUrlHelper.Action("Index", "Item");
         }
 
@@ -336,9 +340,9 @@ namespace Sop.Core
         }
         #endregion
 
-        public object ActicleIndex()
+        public object ArticleIndex()
         { 
-            return CachedUrlHelper.Action("Index", "Acticle");
+            return CachedUrlHelper.Action("Index", "Article");
         }
     
     }

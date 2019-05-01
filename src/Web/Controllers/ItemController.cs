@@ -69,6 +69,71 @@ namespace Sop.Web.Controllers
 
 
 
+        [HttpGet]
+        public ActionResult CreatePost(int CatalogId)
+        {
+            #region Create 点击自动生成
+            var info = new PostInfo()
+            {
+                CatalogId = CatalogId,
+                UserId = UserContext.GetGetUserId(),
+                Title = CatalogId + "-标题 Post",
+                Content = CatalogId + "<br />" + @"
+
+      [TOC]
+
+      #### Disabled options
+
+      - TeX (Based on KaTeX);
+      - Emoji;
+      - Task lists;
+      - HTML tags decode;
+      - Flowchart and Sequence Diagram;
+
+      #### Editor.md directory
+
+          editor.md/
+                  lib/
+                  css/
+                  scss/
+                  tests/
+                  fonts/
+                  images/
+                  plugins/
+                  examples/
+                  languages/     
+                  editormd.js
+                  ...
+
+      ```html
+      guojiaqiu test
+      <!-- English -->
+      <script src=""../dist/js/languages/en.js""></script>
+
+      <!-- 繁體中文 -->
+      <script src=""../dist/js/languages/zh-tw.js""></script>
+      ```
+
+             ",
+                CreatedIp = WebUtility.GetIp(),
+                DateCreated = DateTime.Now.AddHours(-(new Random().Next(1000))),
+                Description = "descriptiondescriptiondescriptiondescriptiondescriptiondescription-----" + new Random().Next(1000),
+
+                HtmlContentPath = "",
+                ViewCount = new Random().Next(1000),
+
+            };
+            _postService.Create(info);
+            #endregion
+
+            return Json("ok", JsonRequestBehavior.AllowGet);
+        } 
+        public ActionResult Catalog(int id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
+
 
         #region Items
 
@@ -228,7 +293,7 @@ namespace Sop.Web.Controllers
             {
                 _catalogService.Create(info.MapTo<CatalogInfo>());
             }
-            return Redirect(SiteUrls.Instance().ItemIndex());
+            return Redirect(SiteUrls.Instance().ItemIndex(info.ItemId));
 
         }
         [HttpPost]
@@ -437,86 +502,6 @@ namespace Sop.Web.Controllers
         }
 
         #endregion
-
-
-
-        [HttpGet]
-        public ActionResult CreatePost(int CatalogId)
-        {
-            #region Create 点击自动生成
-            var info = new PostInfo()
-            {
-                CatalogId = CatalogId,
-                UserId = UserContext.GetGetUserId(),
-                Title = CatalogId + "-标题 Post",
-                Content = CatalogId + "<br />" + @"
-
-      [TOC]
-
-      #### Disabled options
-
-      - TeX (Based on KaTeX);
-      - Emoji;
-      - Task lists;
-      - HTML tags decode;
-      - Flowchart and Sequence Diagram;
-
-      #### Editor.md directory
-
-          editor.md/
-                  lib/
-                  css/
-                  scss/
-                  tests/
-                  fonts/
-                  images/
-                  plugins/
-                  examples/
-                  languages/     
-                  editormd.js
-                  ...
-
-      ```html
-      guojiaqiu test
-      <!-- English -->
-      <script src=""../dist/js/languages/en.js""></script>
-
-      <!-- 繁體中文 -->
-      <script src=""../dist/js/languages/zh-tw.js""></script>
-      ```
-
-             ",
-                CreatedIp = WebUtility.GetIp(),
-                DateCreated = DateTime.Now.AddHours(-(new Random().Next(1000))),
-                Description = "descriptiondescriptiondescriptiondescriptiondescriptiondescription-----" + new Random().Next(1000),
-
-                HtmlContentPath = "",
-                ViewCount = new Random().Next(1000),
-
-            };
-            _postService.Create(info);
-            #endregion
-
-            return Json("ok", JsonRequestBehavior.AllowGet);
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-        public ActionResult Catalog(int id)
-        {
-            ViewBag.Id = id;
-            return View();
-        }
-
-
+         
     }
 }

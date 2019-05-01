@@ -2,93 +2,62 @@
     //Layout = null;
     ViewBag.Title = "_ProfileHeader";
 }
- 
+
 <style>
-    .avatar-uploader .el-upload {
-        border: 1px dashed #d9d9d9;
-        border-radius: 126px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden; 
-    }
-
-    .avatar-uploader .el-upload:hover {
-        border-color: #409EFF;
-    }
-    input[type="file"] {
-        display: none;
-    }
-
-    .avatar-uploader-icon {
-        font-size: 28px;
-        color: #8c939d;
-        width: 144px;
-        height: 144px;
-        line-height: 144px;
-        text-align: center;
-    }
-     
-</style>
+   
  
-
-<link href="~/Content/css/user.css?v=12312" rel="stylesheet" />
-<div id="ProfileHeader" class="sopred">
-    <div class="ProfileCard">
-        <div id="ProfileHeader-userCover ">
-            <div class="ProfileUserCoverEditor">
-                <div>
-                    <button type="button" class="UserCoverEditor-EditButton button">
-                        <i class="fa fa-camera"></i>
-                        编辑封面图片
-                    </button>
-                    <div class="ProfileUserCover">
-                        <img class="ProfileUserCover-image" width="1000" src="#" alt="用户封面">
+</style>
+<link href="~/assets/css/user.css" rel="stylesheet" />
+<div class="ProfileHeader">
+    <div class="Card">
+        <div class="ProfileHeader-userCover">
+            <div class="UserCover">
+                <img class="UserCover-image" src="https://pic2.zhimg.com/80/v2-67b965aa94a92ed49b1a4205145b5cf4_r.jpg" alt="用户封面">
+            </div>
+        </div>
+        <div class="ProfileHeader-wrapper">
+            <div class="ProfileHeader-main">
+                <div class="UserAvatar ProfileHeader-avatar" style="top: -25px;">
+                    <img class="Avatar Avatar--large UserAvatar-inner" width="160" height="160" src="https://pic1.zhimg.com/v2-1bea18837914ab5a40537d515ed3219c_xl.jpg" srcset="https://pic1.zhimg.com/v2-1bea18837914ab5a40537d515ed3219c_xll.jpg 2x">
+                </div>
+                <div class="ProfileHeader-content">
+                    <div class="ProfileHeader-contentHead">
+                        <h1 class="ProfileHeader-title">
+                            <span class="ProfileHeader-name">vczh</span><span class="ztext ProfileHeader-headline">专业造轮子，拉黑抢前排。gaclib.net</span>
+                        </h1>
+                    </div>
+                    <div class="ProfileHeader-contentBody" style="overflow: hidden; transition: height 300ms ease-out 0s; height: 50px;">
+                        <div>
+                            <div class="ProfileHeader-info">
+                                <div class="ProfileHeader-infoItem">
+                                    <div class="ProfileHeader-iconWrapper">
+                                        <svg viewBox="0 0 20 18" class="Icon Icon--company" width="13" height="16" aria-hidden="true" style="height: 16px; width: 13px;"><title></title><g><path d="M15 3.998v-2C14.86.89 13.98 0 13 0H7C5.822 0 5.016.89 5 2v2l-3.02-.002c-1.098 0-1.97.89-1.97 2L0 16c0 1.11.882 2 1.98 2h16.033c1.1 0 1.98-.89 1.987-2V6c-.007-1.113-.884-2.002-1.982-2.002H15zM7 4V2.5s-.004-.5.5-.5h5c.5 0 .5.5.5.5V4H7z"></path></g></svg>
+                                    </div>计算机软件
+                                    <div class="ProfileHeader-divider"></div>Microsoft Office
+                                    <div class="ProfileHeader-divider"></div>Developer
+                                </div>
+                                <div class="ProfileHeader-infoItem">
+                                    <div class="ProfileHeader-iconWrapper">
+                                        <svg viewBox="0 0 22 16" class="Icon Icon--education" width="16" height="16" aria-hidden="true" style="height: 16px; width: 16px;"><title></title><g><path d="M11 0L0 3.94v.588l4.153 2.73v5.166C4.158 12.758 7.028 16 11 16c3.972 0 6.808-3.116 6.85-3.576l.006-5.163 4.13-2.732.014-.586L11 0z"></path></g></svg>
+                                    </div>华南理工大学
+                                    <div class="ProfileHeader-divider"></div>软件学院
+                                    <div class="ProfileHeader-divider"></div>
+                                    <div class="ProfileHeader-iconWrapper">
+                                        <svg width="14" height="16" viewBox="0 0 14 14" class="Icon Icon--male" aria-hidden="true" style="height: 16px; width: 14px;"><title></title><g><path d="M3.025 10.64c-1.367-1.366-1.367-3.582 0-4.95 1.367-1.366 3.583-1.366 4.95 0 1.367 1.368 1.367 3.584 0 4.95-1.367 1.368-3.583 1.368-4.95 0zm10.122-9.368c-.002-.414-.34-.75-.753-.753L8.322 0c-.413-.002-.746.33-.744.744.002.413.338.75.75.752l2.128.313c-.95.953-1.832 1.828-1.832 1.828-2.14-1.482-5.104-1.27-7.013.64-2.147 2.147-2.147 5.63 0 7.777 2.15 2.148 5.63 2.148 7.78 0 1.908-1.91 2.12-4.873.636-7.016l1.842-1.82.303 2.116c.003.414.34.75.753.753.413.002.746-.332.744-.745l-.52-4.073z" fill-rule="evenodd"></path></g></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ProfileHeader-contentFooter">
+                        <button type="button" class="Button ProfileHeader-expandButton Button--plain"><svg viewBox="0 0 10 6" class="Icon ProfileHeader-arrowIcon Icon--arrow" width="10" height="16" aria-hidden="true" style="height: 16px; width: 10px;"><title></title><g><path d="M8.716.217L5.002 4 1.285.218C.99-.072.514-.072.22.218c-.294.29-.294.76 0 1.052l4.25 4.512c.292.29.77.29 1.063 0L9.78 1.27c.293-.29.293-.76 0-1.052-.295-.29-.77-.29-1.063 0z"></path></g></svg>查看详细资料</button>
+                        <div class="MemberButtonGroup ProfileButtonGroup ProfileHeader-buttons">
+                            <button type="button" class="Button FollowButton Button--primary Button--grey">已关注</button><button type="button" class="Button Button--grey Button--withIcon Button--withLabel"><span style="display: inline-flex; align-items: center;">&#8203;<svg class="Zi Zi--Comments Button-zi" fill="currentColor" viewBox="0 0 24 24" width="1.2em" height="1.2em"><path d="M11 2c5.571 0 9 4.335 9 8 0 6-6.475 9.764-11.481 8.022-.315-.07-.379-.124-.78.078-1.455.54-2.413.921-3.525 1.122-.483.087-.916-.25-.588-.581 0 0 .677-.417.842-1.904.064-.351-.14-.879-.454-1.171A8.833 8.833 0 0 1 2 10c0-3.87 3.394-8 9-8zm10.14 9.628c.758.988.86 2.009.86 3.15 0 1.195-.619 3.11-1.368 3.938-.209.23-.354.467-.308.722.12 1.073.614 1.501.614 1.501.237.239-.188.562-.537.5-.803-.146-1.495-.42-2.546-.811-.29-.146-.336-.106-.563-.057-2.043.711-4.398.475-6.083-.927 5.965-.524 8.727-3.03 9.93-8.016z" fill-rule="evenodd"></path></svg></span>发私信</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="ProfileHeader-wrapper">
-            <div class="">
-                <div class="person_info_con">
-                    <i class="fa fa-edit person-info-edit">&nbsp;修改个人资料</i>
-
-                    <dl class="person-photo">
-                        <dt>
-                            <a id="app_3" class="">
-                                <el-upload class="avatar-uploader"
-                                           action="/upload/Files/"
-                                           :show-file-list="false"
-                                           :on-success="handleAvatarSuccess"
-                                           :before-upload="beforeAvatarUpload">
-                                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                                </el-upload>
-                            </a>
-                        </dt>
-                        <dd class="focus_num"><b><a href="/my/follow" target="_blank">46</a></b>关注</dd>
-                        <dd class="fans_num"><b><a href="/my/fans" target="_blank">1</a></b>粉丝</dd>
-                    </dl>
-                    <dl class="person-info">
-                        <dt class="person-nick-name">
-                            <span>招摇的小麻雀</span>
-                        </dt>
-                        <dd class="person-detail">
-                            计算机软件
-                            <span>|</span>学生
-                            <span>|</span>郭家秋
-                            <span>|</span>中国-山东省-青岛市
-                            <span>|</span>男
-                            <span>|</span>1993-9-2
-                        </dd>
-                        <dd class="person-sign">从事ASP.NET、ASP.NET MVC 网站软件开发，涉猎移动端开发、Android、PC端。</dd>
-
-                    </dl>
-
-                </div>
-            </div>
-        </div>
     </div>
-
-
 </div>
 
