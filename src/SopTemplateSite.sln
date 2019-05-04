@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sop.FileServer", "Plugin\So
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sop.FileUpload", "Plugin\Sop.FileUpload\Sop.FileUpload.csproj", "{1EA8127D-B60D-458D-A4AE-D7442E292CCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sop.Common.Img", "ThirdParty\Sop.Common.Img\Sop.Common.Img.csproj", "{6D9C4669-CA00-4838-B190-35F4CC01C7B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{1EA8127D-B60D-458D-A4AE-D7442E292CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EA8127D-B60D-458D-A4AE-D7442E292CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EA8127D-B60D-458D-A4AE-D7442E292CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D9C4669-CA00-4838-B190-35F4CC01C7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D9C4669-CA00-4838-B190-35F4CC01C7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D9C4669-CA00-4838-B190-35F4CC01C7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D9C4669-CA00-4838-B190-35F4CC01C7B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +111,7 @@ Global
 		{8E807449-E634-4971-8990-E63DB141ECB8} = {AE67689A-1769-420E-8C70-E3770180B45B}
 		{76A0657B-71CC-43D6-9AFB-82D01F3540B3} = {37E7B4DE-1D60-4F21-9D3E-311FEEEC9355}
 		{1EA8127D-B60D-458D-A4AE-D7442E292CCA} = {37E7B4DE-1D60-4F21-9D3E-311FEEEC9355}
+		{6D9C4669-CA00-4838-B190-35F4CC01C7B6} = {AE67689A-1769-420E-8C70-E3770180B45B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C36005FD-A283-40EB-B500-35AA7C376872}

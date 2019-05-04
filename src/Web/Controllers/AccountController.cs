@@ -6,7 +6,6 @@ using Sop.Core.Mvc;
 using Sop.Core.Mvc.SystemMessage;
 using Sop.Framework.Environment;
 using Sop.Framework.Utility;
-using Sop.Framework.Validation;
 using Sop.Services.Auth.Identity;
 using Sop.Services.Auth.Model;
 using Sop.Services.Model;
@@ -18,6 +17,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Sop.Core.Validation;
+using Sop.Core.WebUtility;
 
 namespace Sop.Web.Controllers
 {

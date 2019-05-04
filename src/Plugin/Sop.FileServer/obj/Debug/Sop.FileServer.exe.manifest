@@ -234,14 +234,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HtmlAgilityPack.dll" size="127488">
-      <assemblyIdentity name="HtmlAgilityPack" version="1.8.6.0" publicKeyToken="BD319B19EAF3B43A" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HtmlAgilityPack.dll" size="161280">
+      <assemblyIdentity name="HtmlAgilityPack" version="1.11.4.0" publicKeyToken="BD319B19EAF3B43A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>AIFTZjpoW7fQozRZDRgkCdTas3ET4XzPWwixGk6huhY=</dsig:DigestValue>
+        <dsig:DigestValue>B+Hjj3y0AOFF1aZ9SSRifxvRVoCMtoobWIakwgGrYlc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -445,7 +445,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0IzqNVEhiHQD0vV3GGpekC34lzaD+YBrKu2i34TgISA=</dsig:DigestValue>
+        <dsig:DigestValue>UinNXCxpc07HOs446cg1o9FiwsG9mxFn92jSwrm0iL4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -457,7 +457,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MFvGFGiGkZf92e4OwW/MSoRyZx61XmLIgbK0Ee8LfeM=</dsig:DigestValue>
+        <dsig:DigestValue>SSuBckFZAHJcSEU5CtFhagH7EY/rFaSXH8Zggqy41cc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -541,7 +541,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>20XGSxb7wAl0OYCxJDDGyCxiF9/xyenM5I4xVyOYDAA=</dsig:DigestValue>
+        <dsig:DigestValue>HyvVw0zznmpDnRHYiJl2C27wCWLGTKEdtCLzXPTJEFc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -553,19 +553,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>amB4Tbia0rYaKC8XXcgIMec+k5HuZ7os2MjzBYVONVM=</dsig:DigestValue>
+        <dsig:DigestValue>QyFgCVGUg9y0mKSpKKIffacHsZatnCv6TFhqxj0EPss=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sop.Core.dll" size="182784">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sop.Core.dll" size="228864">
       <assemblyIdentity name="Sop.Core" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5lc5dUsfPlB4v33X9IG7eEaU7Xrj5QFMQ/waTdl8iQ0=</dsig:DigestValue>
+        <dsig:DigestValue>3tOv8giEE9xfsTpMf/WHC3xdQ4+oSnk3L/Wmm2AVgf0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -577,31 +577,31 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KQXwsprLZjkB0RJbpJJMbDca/M3gt9fYU2X9gkFbRaI=</dsig:DigestValue>
+        <dsig:DigestValue>LBv0+KWrHlhY9EN8coxdUB+7MIi9n6CnQl351m4y3O8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sop.Framework.dll" size="132608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sop.Framework.dll" size="95232">
       <assemblyIdentity name="Sop.Framework" version="1.1.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>N1+lPRtbjXka7QLkgjJnHdjzATbsp5z+b7VL8TK3tIE=</dsig:DigestValue>
+        <dsig:DigestValue>K2arZ4sDOCcCstOBcgDtMmJXDU0ROq93FB/n7wqWYwI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sop.Services.dll" size="80384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sop.Services.dll" size="99328">
       <assemblyIdentity name="Sop.Services" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QvsUnsdEqQvK9Xqasfc+We6Hy4MXusNNakgBX+ziMLw=</dsig:DigestValue>
+        <dsig:DigestValue>9i/lwshy9nm2AjYjg5E+T4GClyIa8ZmepklsFeqOsZo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

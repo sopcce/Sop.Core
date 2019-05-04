@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Sop.Core.Mvc;
 using Sop.Core.Mvc.SystemMessage;
-using Sop.Framework.Validation;
 using Sop.Services.Model;
 using Sop.Services.Servers;
 using Sop.Services.ViewModel;
@@ -11,6 +10,7 @@ using System.Net;
 using System.Web;
 using System.Web.ApplicationServices;
 using System.Web.Mvc;
+using Sop.Core.Validation;
 
 namespace Sop.Web.Controllers
 {

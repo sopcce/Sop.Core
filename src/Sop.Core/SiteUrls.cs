@@ -305,9 +305,12 @@ namespace Sop.Core
             RouteValueDictionary route = new RouteValueDictionary();
             if (id != null)
                 route.Add("id", id);
-            return CachedUrlHelper.Action("Index", "Item");
+            return CachedUrlHelper.Action("Index", "Item", route);
         }
-
+        public string ItemIndex()
+        {
+            return ItemIndex(null);
+        }
         #endregion
 
         #endregion

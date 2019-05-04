@@ -19,6 +19,7 @@ using System.Web;
 using System.Web.Mvc;
 using ItemDoc.Core.API;
 using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
+using WebUtility = Sop.Core.WebUtility.WebUtility;
 
 namespace Sop.Web.Controllers
 {
@@ -121,7 +122,7 @@ namespace Sop.Web.Controllers
                         var elapsedMilliseconds = sw.ElapsedMilliseconds;
 
                         var cc = result.FromJson<DataPackage>();
-                        var paths = Framework.Utility.WebUtility.GetRootPath();
+                        var paths = WebUtility.GetRootPath();
 
 
                         var Data = cc?.Data?.ToJson()?.FromJson<DataInfo>();
@@ -176,7 +177,7 @@ namespace Sop.Web.Controllers
             imgServer.ContentLength = file.ContentLength;
             imgServer.Key = Guid.NewGuid().ToString("N");
             imgServer.Date = DateTime.Now.ToTimestamp();
-            imgServer.IP = Framework.Utility.WebUtility.GetIp();
+            imgServer.IP = WebUtility.GetIp();
             imgServer.VirtualPath = list[i].VirtualPath;
             imgServer.Token = EncryptionUtility.Sha512Encode(imgServer.Key + imgServer.ServerUrl + imgServer.Date);
 

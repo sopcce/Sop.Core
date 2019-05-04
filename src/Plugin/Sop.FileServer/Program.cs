@@ -4,9 +4,9 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;
 using Polly;
 using Sop.Common.Serialization;
+using Sop.Core.WebUtility;
 using Sop.FileServer.Helper;
 using Sop.Framework.Utility;
-using Sop.Framework.WebUtility;
 using Sop.Services.Model;
 using Sop.Services.Parameter;
 

@@ -1,5 +1,4 @@
 ﻿using Sop.Framework.Utility;
-using Sop.Framework.Validation;
 using Sop.Services.Model;
 using System;
 using System.ComponentModel.DataAnnotations;

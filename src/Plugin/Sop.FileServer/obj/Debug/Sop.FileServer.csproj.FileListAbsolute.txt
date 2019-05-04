@@ -132,9 +132,6 @@ E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\WebDriver.dll
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\WebDriver.Support.dll
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\System.Web.Mvc.dll
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\System.Web.WebPages.dll
-E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Sop.Common.Img.dll
-E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\CodeKicker.BBCode.dll
-E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\HtmlAgilityPack.dll
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\NHibernate.dll
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\StackExchange.Redis.StrongName.dll
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\NHibernate.Caches.Redis.dll
@@ -191,8 +188,6 @@ E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\WebDriver.xml
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\WebDriver.Support.xml
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\System.Web.Mvc.xml
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\System.Web.WebPages.xml
-E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\HtmlAgilityPack.pdb
-E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\HtmlAgilityPack.xml
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\NHibernate.xml
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\StackExchange.Redis.StrongName.xml
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\NHibernate.Caches.Redis.pdb
@@ -224,3 +219,9 @@ E:\GitHub\STS\src\Plugin\Sop.FileServer\obj\Debug\Sop.FileServer.exe
 E:\GitHub\STS\src\Plugin\Sop.FileServer\obj\Debug\Sop.FileServer.pdb
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Sop.Services.dll.config
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\log4net.config
+E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\CodeKicker.BBCode.dll
+E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\HtmlAgilityPack.dll
+E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Sop.Common.Img.dll
+E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\HtmlAgilityPack.pdb
+E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\HtmlAgilityPack.xml
+E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Sop.Common.Img.pdb

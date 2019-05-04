@@ -103,9 +103,6 @@
     <Reference Include="Remotion.Linq.EagerFetching, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.Linq.EagerFetching.2.1.0\lib\net45\Remotion.Linq.EagerFetching.dll</HintPath>
     </Reference>
-    <Reference Include="Sop.Common.Img, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sop.Common.Img.1.0.0.1\lib\net46\Sop.Common.Img.dll</HintPath>
-    </Reference>
     <Reference Include="StackExchange.Redis.StrongName, Version=1.2.6.0, Culture=neutral, PublicKeyToken=c219ff1ca8c2ce46, processorArchitecture=MSIL">
       <HintPath>..\packages\StackExchange.Redis.StrongName.1.2.6\lib\net46\StackExchange.Redis.StrongName.dll</HintPath>
     </Reference>
@@ -189,18 +186,12 @@
     <Compile Include="Utility\EncryptionUtility.cs" />
     <Compile Include="Utility\EnumDefine.cs" />
     <Compile Include="Utility\FileUtility.cs" />
-    <Compile Include="Utility\HtmlUtility.cs" />
     <Compile Include="Utility\HttpCollects.cs" />
     <Compile Include="Utility\LinqUtility.cs" />
     <Compile Include="Utility\RegexUtility.cs" />
     <Compile Include="Utility\StringUtility.cs" />
     <Compile Include="Utility\TrustedHtml.cs" />
     <Compile Include="Utility\ValueUtility.cs" />
-    <Compile Include="WebUtility\CookieUtility.cs" />
-    <Compile Include="WebUtility\HttpUtility.cs" />
-    <Compile Include="WebUtility\UrlUtility.cs" />
-    <Compile Include="WebUtility\WebUtility.cs" />
-    <Compile Include="Validation\Captcha.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ThirdParty\NHibernate.Cache.DynamicCacheBuster\NHibernate.Cache.DynamicCacheBuster.csproj">
@@ -218,7 +209,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
-    <Content Include="WebUtility\WebUtilityBBCodeToHtml.xml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
