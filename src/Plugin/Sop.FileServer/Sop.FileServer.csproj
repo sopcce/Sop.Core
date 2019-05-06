@@ -139,10 +139,6 @@
       <Project>{5245edd5-6a59-4c6b-b501-f7525a137c53}</Project>
       <Name>Sop.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ThirdParty\Sop.Common.Serialization\Sop.Common.Serialization.csproj">
-      <Project>{8e807449-e634-4971-8990-e63db141ecb8}</Project>
-      <Name>Sop.Common.Serialization</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Aspose.BarCode, Version=19.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">

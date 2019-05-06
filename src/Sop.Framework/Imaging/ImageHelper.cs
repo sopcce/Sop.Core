@@ -467,8 +467,8 @@ namespace Sop.Framework.Imaging
                     return ImageFormat.Jpeg;
             }
         }
-        
-      
+
+
         /// <summary>
         /// 生成缩略图
         /// </summary>
@@ -553,7 +553,7 @@ namespace Sop.Framework.Imaging
                 g.Dispose();
             }
         }
-       
+
 
         /// <summary>
         /// 图片水印处理方法
@@ -648,9 +648,9 @@ namespace Sop.Framework.Imaging
             loca.Add(y);
             return loca;
         }
-       
 
-     
+
+
         /// <summary>
         /// 文字水印处理方法
         /// </summary>
@@ -750,9 +750,9 @@ namespace Sop.Framework.Imaging
             return loca;
 
         }
-         
- 
-     
- 
+
+
+
+
     }
 }
