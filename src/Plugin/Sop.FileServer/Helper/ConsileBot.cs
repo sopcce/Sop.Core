@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Sop.Common.Serialization.XML;
+using System.Xml;
 
 namespace Sop.FileServer.Helper
 {

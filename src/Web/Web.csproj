@@ -4647,40 +4647,6 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Sop.Core\Sop.Core.csproj">
-      <Project>{7ebff26d-37d6-4b34-bb44-bdc273768f9c}</Project>
-      <Name>Sop.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sop.Framework\Sop.Framework.csproj">
-      <Project>{7b4ff94a-7018-42e5-adbe-277e9b39ed5b}</Project>
-      <Name>Sop.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sop.Services\Sop.Services.csproj">
-      <Project>{5245edd5-6a59-4c6b-b501-f7525a137c53}</Project>
-      <Name>Sop.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ThirdParty\Microsoft.Owin.Security.Github\Microsoft.Owin.Security.Github.csproj">
-      <Project>{7ef640e7-7e31-4387-acbe-c914c5ffbc04}</Project>
-      <Name>Microsoft.Owin.Security.Github</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ThirdParty\Microsoft.Owin.Security.QQ\Microsoft.Owin.Security.QQ.csproj">
-      <Project>{3839ee9c-f0c8-471a-8f81-de9b9e24aaf0}</Project>
-      <Name>Microsoft.Owin.Security.QQ</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ThirdParty\Microsoft.Owin.Security.Weixin\Microsoft.Owin.Security.Weixin.csproj">
-      <Project>{3f97ad7c-9295-45b8-8fba-e2b5d83bcfbf}</Project>
-      <Name>Microsoft.Owin.Security.Weixin</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ThirdParty\NHibernate.Cache.DynamicCacheBuster\NHibernate.Cache.DynamicCacheBuster.csproj">
-      <Project>{32f38f68-5622-4984-9b13-d7c1a1fa2222}</Project>
-      <Name>NHibernate.Cache.DynamicCacheBuster</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ThirdParty\NHibernate.Caches.Redis\NHibernate.Caches.Redis.csproj">
-      <Project>{1b50164c-db00-4109-a0d4-e2868abfedaf}</Project>
-      <Name>NHibernate.Caches.Redis</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

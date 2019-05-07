@@ -33,233 +33,247 @@ using System.Globalization;
 using System.Security;
 using System.Security.Permissions;
 
-namespace System.DrawingCore.Printing {
+namespace System.DrawingCore.Printing
+{
 
-	[Serializable]
-	public sealed class PrintingPermission
+    [Serializable]
+    public sealed class PrintingPermission
 #if !NETCORE
-		: CodeAccessPermission, IUnrestrictedPermission
+        : CodeAccessPermission, IUnrestrictedPermission
 #endif
-		{
+    {
 
-		private const int version = 1;
+        private const int version = 1;
 
-		private PrintingPermissionLevel _Level;
+        private PrintingPermissionLevel _Level;
 
 #if !NETCORE
-		public PrintingPermission (PermissionState state) 
-		{
-			if (CheckPermissionState (state, true) == PermissionState.Unrestricted)
-				_Level = PrintingPermissionLevel.AllPrinting;
-		}
-#endif
-
-		public PrintingPermission (PrintingPermissionLevel printingLevel) 
-		{
-			Level = printingLevel;
-		}
-		
-		// properties
-
-		public PrintingPermissionLevel Level{
-			get { return _Level; }
-			set {
-				if (!Enum.IsDefined (typeof (PrintingPermissionLevel), value)) {
-					string msg = string.Format ("Invalid enum {0}");
-					throw new ArgumentException (String.Format (msg, value), "Level");
-				}
-				 _Level = value;
-			}
-		}
-
-		// methods
-#if !NETCORE
-		public override IPermission Copy ()
-		{
-			return new PrintingPermission (this.Level);
-		}
+        public PrintingPermission(PermissionState state)
+        {
+            if (CheckPermissionState(state, true) == PermissionState.Unrestricted)
+                _Level = PrintingPermissionLevel.AllPrinting;
+        }
 #endif
 
-#if !NETCORE
-		public override void FromXml (SecurityElement esd)
-		{
-			CheckSecurityElement (esd, "esd", version, version);
-			// Note: we do not (yet) care about the return value 
-			// as we only accept version 1 (min/max values)
+        public PrintingPermission(PrintingPermissionLevel printingLevel)
+        {
+            Level = printingLevel;
+        }
 
-			if (IsUnrestricted (esd))
-				_Level = PrintingPermissionLevel.AllPrinting;
-			else {
-				string level = esd.Attribute ("Level");
-				if (level != null) {
-					_Level = (PrintingPermissionLevel) Enum.Parse (
-						typeof (PrintingPermissionLevel), level);
-				}
-				else
-					_Level = PrintingPermissionLevel.NoPrinting;
-			}
-		}
+        // properties
+
+        public PrintingPermissionLevel Level
+        {
+            get => _Level;
+            set
+            {
+                if (!Enum.IsDefined(typeof(PrintingPermissionLevel), value))
+                {
+                    string msg = string.Format("Invalid enum {0}", value);
+                    throw new ArgumentException(String.Format(msg, value), "Level");
+                }
+                _Level = value;
+            }
+        }
+
+        // methods
+#if !NETCORE
+        public override IPermission Copy()
+        {
+            return new PrintingPermission(this.Level);
+        }
 #endif
 
 #if !NETCORE
-		public override IPermission Intersect (IPermission target)
-		{
-			PrintingPermission pp = Cast (target);
-			if ((pp == null) || IsEmpty () || pp.IsEmpty ())
-				return null;
+        public override void FromXml(SecurityElement esd)
+        {
+            CheckSecurityElement(esd, "esd", version, version);
+            // Note: we do not (yet) care about the return value 
+            // as we only accept version 1 (min/max values)
 
-			PrintingPermissionLevel level = (_Level <= pp.Level) ? _Level : pp.Level;
-			return new PrintingPermission (level);
-		}
+            if (IsUnrestricted(esd))
+                _Level = PrintingPermissionLevel.AllPrinting;
+            else
+            {
+                string level = esd.Attribute("Level");
+                if (level != null)
+                {
+                    _Level = (PrintingPermissionLevel)Enum.Parse(
+                        typeof(PrintingPermissionLevel), level);
+                }
+                else
+                    _Level = PrintingPermissionLevel.NoPrinting;
+            }
+        }
 #endif
 
 #if !NETCORE
-		public override bool IsSubsetOf (IPermission target)
-		{
-			PrintingPermission pp = Cast (target);
-			if (pp == null)
-				return IsEmpty ();
-			
-			return (_Level <= pp.Level);
-		}
-#endif
+        public override IPermission Intersect(IPermission target)
+        {
+            PrintingPermission pp = Cast(target);
+            if ((pp == null) || IsEmpty() || pp.IsEmpty())
+                return null;
 
-		public bool IsUnrestricted ()
-		{
-			return (_Level == PrintingPermissionLevel.AllPrinting);
-		}
-
-#if !NETCORE
-		public override SecurityElement ToXml ()
-		{
-			SecurityElement se = Element (version);
-			if (IsUnrestricted ())
-				se.AddAttribute ("Unrestricted", "true");
-			else
-				se.AddAttribute ("Level", _Level.ToString ());
-			return se;
-		}
+            PrintingPermissionLevel level = (_Level <= pp.Level) ? _Level : pp.Level;
+            return new PrintingPermission(level);
+        }
 #endif
 
 #if !NETCORE
-		public override IPermission Union (IPermission target)
-		{
-			PrintingPermission pp = Cast (target);
-			if (pp == null)
-				return new PrintingPermission (_Level);
-			if (IsUnrestricted () || pp.IsUnrestricted ())
-				return new PrintingPermission (PrintingPermissionLevel.AllPrinting);
-			if (IsEmpty () && pp.IsEmpty ())
-				return null;
+        public override bool IsSubsetOf(IPermission target)
+        {
+            PrintingPermission pp = Cast(target);
+            if (pp == null)
+                return IsEmpty();
 
-			PrintingPermissionLevel level = (_Level > pp.Level) ? _Level : pp.Level;
-			return new PrintingPermission (level);
-		}
+            return (_Level <= pp.Level);
+        }
 #endif
 
-		// Internal helpers methods
-
-		private bool IsEmpty ()
-		{
-			return (_Level == PrintingPermissionLevel.NoPrinting);
-		}
+        public bool IsUnrestricted()
+        {
+            return (_Level == PrintingPermissionLevel.AllPrinting);
+        }
 
 #if !NETCORE
-		private PrintingPermission Cast (IPermission target)
-		{
-			if (target == null)
-				return null;
-
-			PrintingPermission pp = (target as PrintingPermission);
-			if (pp == null) {
-				ThrowInvalidPermission (target, typeof (PrintingPermission));
-			}
-
-			return pp;
-		}
+        public override SecurityElement ToXml()
+        {
+            SecurityElement se = Element(version);
+            if (IsUnrestricted())
+                se.AddAttribute("Unrestricted", "true");
+            else
+                se.AddAttribute("Level", _Level.ToString());
+            return se;
+        }
 #endif
-
-		// NOTE: The following static methods should be moved out to a (static?) class 
-		// if (ever) System.DrawingCore.dll gets more than one permission in it's assembly.
-
-		// snippet moved from FileIOPermission (nickd) to be reused in all derived classes
-		internal SecurityElement Element (int version) 
-		{
-			SecurityElement se = new SecurityElement ("IPermission");
-			Type type = this.GetType ();
-			se.AddAttribute ("class", type.FullName + ", " + type.Assembly.ToString ().Replace ('\"', '\''));
-			se.AddAttribute ("version", version.ToString ());
-			return se;
-		}
 
 #if !NETCORE
-		internal static PermissionState CheckPermissionState (PermissionState state, bool allowUnrestricted)
-		{
-			string msg;
-			switch (state) {
-			case PermissionState.None:
-				break;
-			case PermissionState.Unrestricted:
-				if (!allowUnrestricted) {
-					msg = string.Format ("Unrestricted isn't not allowed for identity permissions.");
-					throw new ArgumentException (msg, "state");
-				}
-				break;
-			default:
-				msg = string.Format("Invalid enum {0}", state);
-				throw new ArgumentException (msg, "state");
-			}
-			return state;
-		}
+        public override IPermission Union(IPermission target)
+        {
+            PrintingPermission pp = Cast(target);
+            if (pp == null)
+                return new PrintingPermission(_Level);
+            if (IsUnrestricted() || pp.IsUnrestricted())
+                return new PrintingPermission(PrintingPermissionLevel.AllPrinting);
+            if (IsEmpty() && pp.IsEmpty())
+                return null;
+
+            PrintingPermissionLevel level = (_Level > pp.Level) ? _Level : pp.Level;
+            return new PrintingPermission(level);
+        }
 #endif
 
-		// logic isn't identical to CodeAccessPermission.CheckSecurityElement - see unit tests
-		internal static int CheckSecurityElement (SecurityElement se, string parameterName, int minimumVersion, int maximumVersion) 
-		{
-			if (se == null)
-				throw new ArgumentNullException (parameterName);
+        // Internal helpers methods
 
-			string c = se.Attribute ("class");
-			if (c == null) {
-				string msg = string.Format ("Missing 'class' attribute.");
-				throw new ArgumentException (msg, parameterName);
-			}
-			// we assume minimum version if no version number is supplied
-			int version = minimumVersion;
-			string v = se.Attribute ("version");
-			if (v != null) {
-				try {
-					version = Int32.Parse (v);
-				}
-				catch (Exception e) {
-					string msg = string.Format ("Couldn't parse version from '{0}'.");
-					msg = String.Format (msg, v);
-					throw new ArgumentException (msg, parameterName, e);
-				}
-			}
+        private bool IsEmpty()
+        {
+            return (_Level == PrintingPermissionLevel.NoPrinting);
+        }
 
-			if ((version < minimumVersion) || (version > maximumVersion)) {
-				string msg = string.Format ("Unknown version '{0}', expected versions between ['{1}','{2}'].");
-				msg = String.Format (msg, version, minimumVersion, maximumVersion);
-				throw new ArgumentException (msg, parameterName);
-			}
-			return version;
-		}
+#if !NETCORE
+        private PrintingPermission Cast(IPermission target)
+        {
+            if (target == null)
+                return null;
 
-		// must be called after CheckSecurityElement (i.e. se != null)
-		internal static bool IsUnrestricted (SecurityElement se) 
-		{
-			string value = se.Attribute ("Unrestricted");
-			if (value == null)
-				return false;
-			return (String.Compare (value, Boolean.TrueString, true, CultureInfo.InvariantCulture) == 0);
-		}
+            PrintingPermission pp = (target as PrintingPermission);
+            if (pp == null)
+            {
+                ThrowInvalidPermission(target, typeof(PrintingPermission));
+            }
 
-		internal static void ThrowInvalidPermission (IPermission target, Type expected) 
-		{
-			string msg = string.Format ("Invalid permission type '{0}', expected type '{1}'.");
-			msg = String.Format (msg, target.GetType (), expected);
-			throw new ArgumentException (msg, "target");
-		}
-	}
+            return pp;
+        }
+#endif
+
+        // NOTE: The following static methods should be moved out to a (static?) class 
+        // if (ever) System.DrawingCore.dll gets more than one permission in it's assembly.
+
+        // snippet moved from FileIOPermission (nickd) to be reused in all derived classes
+        internal SecurityElement Element(int version)
+        {
+            SecurityElement se = new SecurityElement("IPermission");
+            Type type = this.GetType();
+            se.AddAttribute("class", type.FullName + ", " + type.Assembly.ToString().Replace('\"', '\''));
+            se.AddAttribute("version", version.ToString());
+            return se;
+        }
+
+#if !NETCORE
+        internal static PermissionState CheckPermissionState(PermissionState state, bool allowUnrestricted)
+        {
+            string msg;
+            switch (state)
+            {
+                case PermissionState.None:
+                    break;
+                case PermissionState.Unrestricted:
+                    if (!allowUnrestricted)
+                    {
+                        msg = string.Format("Unrestricted isn't not allowed for identity permissions.");
+                        throw new ArgumentException(msg, "state");
+                    }
+                    break;
+                default:
+                    msg = string.Format("Invalid enum {0}", state);
+                    throw new ArgumentException(msg, "state");
+            }
+            return state;
+        }
+#endif
+
+        // logic isn't identical to CodeAccessPermission.CheckSecurityElement - see unit tests
+        internal static int CheckSecurityElement(SecurityElement se, string parameterName, int minimumVersion, int maximumVersion)
+        {
+            if (se == null)
+                throw new ArgumentNullException(parameterName);
+
+            string c = se.Attribute("class");
+            if (c == null)
+            {
+                string msg = string.Format("Missing 'class' attribute.");
+                throw new ArgumentException(msg, parameterName);
+            }
+            // we assume minimum version if no version number is supplied
+            int version = minimumVersion;
+            string v = se.Attribute("version");
+            if (v != null)
+            {
+                try
+                {
+                    version = Int32.Parse(v);
+                }
+                catch (Exception e)
+                {
+                    string msg = string.Format("Couldn't parse version from '{0}'.");
+                    msg = String.Format(msg, v);
+                    throw new ArgumentException(msg, parameterName, e);
+                }
+            }
+
+            if ((version < minimumVersion) || (version > maximumVersion))
+            {
+                string msg = string.Format("Unknown version '{0}', expected versions between ['{1}','{2}'].");
+                msg = String.Format(msg, version, minimumVersion, maximumVersion);
+                throw new ArgumentException(msg, parameterName);
+            }
+            return version;
+        }
+
+        // must be called after CheckSecurityElement (i.e. se != null)
+        internal static bool IsUnrestricted(SecurityElement se)
+        {
+            string value = se.Attribute("Unrestricted");
+            if (value == null)
+                return false;
+            return (String.Compare(value, Boolean.TrueString, true, CultureInfo.InvariantCulture) == 0);
+        }
+
+        internal static void ThrowInvalidPermission(IPermission target, Type expected)
+        {
+            string msg = string.Format("Invalid permission type '{0}', expected type '{1}'.");
+            msg = String.Format(msg, target.GetType(), expected);
+            throw new ArgumentException(msg, "target");
+        }
+    }
 }

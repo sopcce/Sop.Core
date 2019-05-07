@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 //using System.Web.Hosting;
 
-namespace Sop.Common.Img.Utility
+namespace Sop.Common.Helper.Img.Utility
 {
     /// <summary>
     /// 通用磁盘(IO)数据访问操作 

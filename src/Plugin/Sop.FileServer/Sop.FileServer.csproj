@@ -127,10 +127,6 @@
     <Content Include="phantomjs.exe" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Sop.Core\Sop.Core.csproj">
-      <Project>{7ebff26d-37d6-4b34-bb44-bdc273768f9c}</Project>
-      <Name>Sop.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Sop.Framework\Sop.Framework.csproj">
       <Project>{7b4ff94a-7018-42e5-adbe-277e9b39ed5b}</Project>
       <Name>Sop.Framework</Name>

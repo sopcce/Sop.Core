@@ -194,16 +194,6 @@
     <Compile Include="Utility\ValueUtility.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThirdParty\NHibernate.Cache.DynamicCacheBuster\NHibernate.Cache.DynamicCacheBuster.csproj">
-      <Project>{32f38f68-5622-4984-9b13-d7c1a1fa2222}</Project>
-      <Name>NHibernate.Cache.DynamicCacheBuster</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ThirdParty\NHibernate.Caches.Redis\NHibernate.Caches.Redis.csproj">
-      <Project>{1b50164c-db00-4109-a0d4-e2868abfedaf}</Project>
-      <Name>NHibernate.Caches.Redis</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>

@@ -44,6 +44,11 @@
         <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
  
     </ItemGroup>
+    <ItemGroup>
+      <Reference Include="Microsoft.VisualBasic">
+        <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.VisualBasic.dll</HintPath>
+      </Reference>
+    </ItemGroup>
 
     <ItemGroup>
         <Compile Update="Spider.Properties.cs">

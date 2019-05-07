@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Sop.Framework.Environment;
+using System;
 using System.Configuration;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Configuration;
-using Sop.Framework.Environment;
 
 namespace Sop.Framework.Utility
 {
