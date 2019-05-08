@@ -1,14 +1,12 @@
-﻿using System;
-using System.Web;
+﻿using Sop.Framework.Environment;
 using System.Web.Optimization;
-using Sop.Framework.Environment;
 
 namespace Sop.Web
 {
-  /// <summary>
-  /// 
-  /// </summary>
-  public class BundleConfig
+    /// <summary>
+    /// 
+    /// </summary>
+    public class BundleConfig
   {
 
 

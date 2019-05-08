@@ -242,3 +242,8 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 /WebSite
+/src/Plugin/.vs/Plugin/v15/Server/sqlite3/db.lock
+/src/Plugin/.vs/Plugin/v15/Server/sqlite3/storage.ide
+/src/Plugin/.vs/Plugin/v15/Server/sqlite3/storage.ide-shm
+/src/Plugin/.vs/Plugin/v15/Server/sqlite3/storage.ide-wal
+/src/Plugin/.vs/config/applicationhost.config

@@ -8,6 +8,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Github;
 using Microsoft.Owin.Security.QQ;
 using Microsoft.Owin.Security.Weixin;
+using Microsoft.Owin.Security.SinaWeibo;
 using Owin;
 
 
@@ -110,6 +111,8 @@ namespace Sop.Web
 
             app.UseQQAuthentication("101264620", "95850abee8a3ffbfddb6027fce3e1933");
 
+            app.UseSinaWeiboAuthentication("1338661855", "5f5e42a5983cfb41a2bc300c28039860");
+            
 
 
 

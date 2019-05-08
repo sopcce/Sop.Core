@@ -1,12 +1,13 @@
 ﻿using Common.Logging;
+using ItemDoc.Core.API;
+using Microsoft.Win32;
+using Sop.Common.Serialization;
 using Sop.Core.Extensions;
 using Sop.Core.Utilities;
 using Sop.Core.Web;
 using Sop.Framework.Utility;
 using Sop.Services.Parameter;
 using Sop.Services.Servers;
-using Microsoft.Win32;
-using Sop.Common.Serialization;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -17,7 +18,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using ItemDoc.Core.API;
 using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
 using WebUtility = Sop.Core.WebUtility.WebUtility;
 

@@ -1,7 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//<sopcce.com>
+//--------------------------------------------------------------
+//<version>V0.5</verion>
+//<createdate>2018-6-6</createdate>
+//<author>guojq</author>
+//<email>sopcce@qq.com</email>
+//<log date="2019-04-6" version="0.5">创建</log>
+//--------------------------------------------------------------
+//<sopcce.com>
+using System;
 using System.IO;
-using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
