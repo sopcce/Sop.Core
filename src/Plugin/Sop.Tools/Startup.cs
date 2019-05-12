@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Security.AccessControl;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,13 +33,14 @@ namespace Sop.Tools
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+          
             //
             services.AddSingleton<INavMenuService, NavMenuService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<SopContext>(options =>
-                options.UseMySQL(Configuration.GetConnectionString("SopContext")));
 
+            services.AddDbContext<SopContext>(options =>
+             options.UseMySQL(Configuration.GetConnectionString("SopContext")));
             //InitAppConfig(services);
         }
 
@@ -53,6 +55,8 @@ namespace Sop.Tools
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+                
             }
             else
             {
@@ -67,6 +71,7 @@ namespace Sop.Tools
             if (!Directory.Exists(pathRoot))
             {
                 Directory.CreateDirectory(pathRoot);
+                addpathPower(pathRoot, "ASPNET", "FullControl");
             }
 
             var options = new FileServerOptions();
@@ -104,6 +109,36 @@ namespace Sop.Tools
 
             var config = builder.Build();
             //services.Configure<NavBarMenus>(config.GetSection("NavBarMenus"));
+        }
+        public void addpathPower(string pathname, string username, string power)
+        {
+
+            DirectoryInfo dirinfo = new DirectoryInfo(pathname);
+
+            if ((dirinfo.Attributes & FileAttributes.ReadOnly) != 0)
+            {
+                dirinfo.Attributes = FileAttributes.Normal;
+            }
+
+            //取得访问控制列表   
+            DirectorySecurity dirsecurity = dirinfo.GetAccessControl();
+
+            switch (power)
+            {
+                case "FullControl":
+                    dirsecurity.AddAccessRule(new FileSystemAccessRule(username, FileSystemRights.FullControl, InheritanceFlags.ContainerInherit, PropagationFlags.InheritOnly, AccessControlType.Allow));
+                    break;
+                case "ReadOnly":
+                    dirsecurity.AddAccessRule(new FileSystemAccessRule(username, FileSystemRights.Read, AccessControlType.Allow));
+                    break;
+                case "Write":
+                    dirsecurity.AddAccessRule(new FileSystemAccessRule(username, FileSystemRights.Write, AccessControlType.Allow));
+                    break;
+                case "Modify":
+                    dirsecurity.AddAccessRule(new FileSystemAccessRule(username, FileSystemRights.Modify, AccessControlType.Allow));
+                    break;
+            }
+            dirinfo.SetAccessControl(dirsecurity);
         }
     }
 }
