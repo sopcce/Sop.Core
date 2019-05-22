@@ -17,7 +17,7 @@ using Sop.Common.Helper.Json;
 
 namespace Sop.Common.Helper
 {
-    public static class Serialization 
+    public static class JsonXmlHelper 
     {
         #region ToJson
         /// <summary>

@@ -146,10 +146,6 @@ namespace Sop.Common.Helper
                 _lastErrMsg = ex.Message;
                 return null;
             }
-        }
-
-
-
-
+        } 
     }
 }

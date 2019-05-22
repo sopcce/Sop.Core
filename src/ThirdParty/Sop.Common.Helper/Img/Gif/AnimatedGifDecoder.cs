@@ -296,22 +296,20 @@ namespace Sop.Common.Helper.Img.Gif
             return im;
         }
 
-        /**
-		 * Gets image size.
-		 *
-		 * @return GIF image dimensions
-		 */
+        /// <summary>
+        /// Gets image size.
+        /// </summary>
+        /// <returns>GIF image dimensions</returns>
         public Size GetFrameSize()
         {
             return new Size(width, height);
         }
-
-        /**
-		 * Reads GIF image from stream
-		 *
-		 * @param BufferedInputStream containing GIF file.
-		 * @return read status code (0 = no errors)
-		 */
+ 
+        /// <summary>
+        ///  Reads GIF image from stream
+        /// </summary>
+        /// <param name="inStream">BufferedInputStream containing GIF file.</param>
+        /// <returns>read status code (0 = no errors)</returns>
         public int Read(Stream inStream)
         {
             Init();
