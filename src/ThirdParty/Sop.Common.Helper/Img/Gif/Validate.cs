@@ -106,7 +106,8 @@ namespace Sop.Common.Helper.Img.Gif
 
                 ga.DrawString(IdentifyingCode, f, SystemBrushes.Desktop, new PointF(random.Next(1, Width - 1 - fW), random.Next(1, Height - 1 - fH)));
                 ga.Flush();
-                coder.Delay= _delay;
+                //coder.Delay= _delay;
+                coder.SetDelay(_delay);
                 coder.AddFrame(im);
                 im.Dispose();
             }

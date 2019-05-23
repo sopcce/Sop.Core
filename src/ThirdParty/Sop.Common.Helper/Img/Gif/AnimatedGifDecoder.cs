@@ -86,12 +86,11 @@ namespace Sop.Common.Helper.Img.Gif
             public int delay;
         }
 
-        /**
-		 * Gets display duration for specified frame.
-		 *
-		 * @param n int index of frame
-		 * @return delay in milliseconds
-		 */
+        /// <summary>
+        /// Gets display duration for specified frame.
+        /// </summary>
+        /// <param name="n">n int index of frame</param>
+        /// <returns>delay in milliseconds</returns>
         public int GetDelay(int n)
         {
             //

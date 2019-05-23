@@ -69,7 +69,7 @@ namespace Sop.Common.Helper.Img.Gif
       Stream stream = new MemoryStream();
       animatedGifEncoder.Start();
       //确保视觉残留
-      animatedGifEncoder.Delay= 10;
+      //animatedGifEncoder.Delay= 10;
       animatedGifEncoder.SetRepeat(0);
       //animatedGifEncoder.SetTransparent(Color.White);
       for (int i = 0; i < 10; i++)
