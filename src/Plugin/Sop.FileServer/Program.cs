@@ -1,450 +1,257 @@
-﻿using System;
-using Aspose.Pdf;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.PhantomJS;
-using Polly;
-using Sop.Common.Serialization;
-using Sop.Core.WebUtility;
-using Sop.FileServer.Helper;
-using Sop.Framework.Utility;
-using Sop.Services.Model;
-using Sop.Services.Parameter;
+﻿using Dapper;
+using MySql.Data.MySqlClient;
+using Serilog;
+using Sop.FileServer.Base;
+using Sop.FileServer.Common;
+using Sop.FileServer.Services;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace Sop.FileServer
 {
     public class Program
     {
-        private static readonly string title = "Console.Server";
-
-
-
-        //[STAThread]
+        //server=127.0.0.1;port=3306;database=sopcce;uid=root;pwd=123456;Charset=utf8mb4;SslMode = none;
+        public static IDbConnection conn = new MySqlConnection("server=127.0.0.1;port=3306;database=sopcce;uid=root;pwd=123456;Charset=utf8mb4;SslMode = none;");
         static void Main(string[] args)
         {
-            //启动程序，测试功能 //初始化Id sheng
-            //搜索引擎爬虫，商业爬虫，内容取者爬虫和监控爬虫
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("欢迎使用Console.Server监控内容爬虫");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine();
-
-
-            /*
-             * 1、定义一个xml文件内，可以使用导入导出的方式配置爬虫
-             * 
-             */
-
-            string sourcePath2 = "D:\\csharp.pdf";
-            string targetPath2 = FileUtility.Combine(Pdf2Html.Instance().TempPath, "demo2.docx");
-            var isok2 = Pdf2Html.Instance().PdfToFile(sourcePath2, targetPath2,SaveFormat.DocX);
-
-
-
-            var info = new AttachmentInfo();
-            info.Id = 110;
-            info.AttachmentId = "AttachmentId";
-            info.OwnerId = "OwnerId";
-            info.ServerId = "1";
-            info.FileNames = "郭家秋的个人简历";
-            info.Extension = ".doc";
-            info.Path = "asdasd";
-            info.DateCreated = DateTime.Now;
-            info.DisplayOrder = 1;
-            info.HasThumbnail = false;
-            string data = info.ToJson();
-            long time = DateTime.Now.Ticks;
-            string token = EncryptionUtility.Sha512Encode(data + time);
-            data = EncryptionUtility.AES_Encrypt(data, token);
-
-            data = UrlUtility.Instance().UrlEncode(data);
-            var url = $"https://localhost:44326/api/Upload?token={token}&data={data}&-={time}";
-         
-            var path = "E:\\Img\\404.jpg";
-            path = "E:\\PC\\简历\\郭家秋的个人简历.doc";
-            var strHttpPost = HttpUtility.Instance().HttpPost(url, FileUtility.GetFileStream(path));
-
-            Console.WriteLine($"strHttpPost:{strHttpPost}");
-
-            var url2 = $"https://localhost:44326/home/UploadFlies?token={token}&data={data}&-={time}";
-            var path2 = "E:\\Img\\404.jpg";
-            strHttpPost = HttpUtility.Instance().HttpPost(url2, FileUtility.GetFileStream(path2));
-
-            Console.WriteLine($"strHttpPost:{strHttpPost}");
-
-
-
-
-            Environment.Exit(0);
-
-
-            #region MyRegion
-
-            //var hotelUrl = "http://www.xicidaili.com/nt/1";
-
-            //var hotelCrawler = new Crawler();
-            //hotelCrawler.OnCompleted += (s, e) =>
-            //{
-            //    StringBuilder sb = new StringBuilder();
-            //    sb.Append("===============================================" + Environment.NewLine);
-            //    sb.Append("地址：" + e.URL.ToString() + Environment.NewLine);
-            //    sb.Append("耗时：" + e.Milliseconds + "毫秒");
-            //    sb.Append("===============================================" + Environment.NewLine);
-
-            //    ////By.XPath("//input[contains(@id, 'ip_list')]")
-
-            //    var comments = e.WebDriver.FindElement(By.Id("ip_list") );
-            //    //找到约53条结果
-
-            //    var totaltText = comments.FindElement(By.XPath("div[@id='pagebar_container']/div[@class='mun']")).Text;
-            //    var wait = new WebDriverWait(e.WebDriver, TimeSpan.FromSeconds(3));
-
-
-            //    sb.AppendLine();
-            //    sb.Append("===============================================");
-            //    sb.AppendLine();
-            //    sb.Append("找到结果：" + totaltText);
-            //    sb.AppendLine();
-            //    string total = System.Text.RegularExpressions.Regex.Replace(totaltText, @"[^0-9]+", "");
-            //    sb.Append("找到结果：" + total);
-
-
-            //    var contents = comments.FindElements(By.XPath("ul[@class='news-list2']/li"));
-            //    sb.AppendLine();
-            //    foreach (var content in contents)
-            //    {
-            //        sb.Append("===============================================");
-            //        sb.AppendLine();
-            //        var name = content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='tit']")).Text;
-            //        sb.Append("名称：" + name);
-            //        sb.AppendLine();
-            //        sb.Append("微信号：" + content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='info']/label[@name='em_weixinhao']")).Text);
-            //        //sb.AppendLine();
-            //        //sb.Append("发文：" + content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='info']/text()[3]")).Text);
-            //        //sb.AppendLine();
-            //        //sb.Append("功能介绍：" + content.FindElement(By.XPath("dl[1]/dd")).Text);
-            //        //sb.AppendLine();
-            //        //sb.Append("微信认证：" + content.FindElement(By.XPath("dl[2]/dd")).Text);
-            //        //sb.AppendLine();
-
-
-            //        //if (content.FindElement(By.XPath("dl[3]/dd/a")).IsExist())
-            //        //{
-            //        //    sb.Append("最近文章："
-            //        //              + content.FindElement(By.XPath("dl[3]/dd/a")).Text + Environment.NewLine
-            //        //              + content.FindElement(By.XPath("dl[3]/dd/a")).GetAttribute("href"));
-            //        //    sb.AppendLine();
-            //        //}
-
-
-            //        //div/div[2]/p[2]/
-            //        //sb.Append("微信号：" + content.FindElement(By.XPath("div[@class='gzh-box2']/div[@class='txt-box']/p[@class='info']")).Text);
-            //        //sb.Append("找到结果：" + content.FindElement(By.XPath("div[contains(@class,'user_info')]/p[@class='name']")).Text);
-            //        sb.AppendLine();
-
-            //    }
-
-            //    //var hotelName = e.WebDriver.FindElement(By.XPath("//*[@id='J_htl_info']/div[@class='name']/h2[@class='cn_n']")).Text;
-            //    //var address = e.WebDriver.FindElement(By.XPath("//*[@id='J_htl_info']/div[@class='adress']")).Text;
-            //    //var price = e.WebDriver.FindElement(By.XPath("//*[@id='div_minprice']/p[1]")).Text;
-            //    //var score = e.WebDriver.FindElement(By.XPath("//*[@id='divCtripComment']/div[1]/div[1]/span[3]/span")).Text;
-            //    //var reviewCount = e.WebDriver.FindElement(By.XPath("//*[@id='commentTab']/a")).Text;
-
-            //    //var comments = e.WebDriver.FindElement(By.XPath("//*[@id='hotel_info_comment']/div[@id='commentList']/div[1]/div[1]/div[1]"));
-            //    //var currentPage = Convert.ToInt32(comments.FindElement(By.XPath("div[@class='c_page_box']/div[@class='c_page']/div[contains(@class,'c_page_list')]/a[@class='current']")).Text);
-            //    //var totalPage = Convert.ToInt32(comments.FindElement(By.XPath("div[@class='c_page_box']/div[@class='c_page']/div[contains(@class,'c_page_list')]/a[last()]")).Text);
-            //    //var messages = comments.FindElements(By.XPath("div[@class='comment_detail_list']/div"));
-            //    //var nextPage = Convert.ToInt32(comments.FindElement(By.XPath("div[@class='c_page_box']/div[@class='c_page']/div[contains(@class,'c_page_list')]/a[@class='current']/following-sibling::a[1]")).Text);
-
-            //    ////sb.Clear();
-            //    //Console.WriteLine();
-            //    //Console.WriteLine("名称：" + hotelName);
-            //    //Console.WriteLine("地址：" + address);
-            //    //Console.WriteLine("价格：" + price);
-            //    //Console.WriteLine("评分：" + score);
-            //    //Console.WriteLine("数量：" + reviewCount);
-            //    //Console.WriteLine("页码：" + "当前页（" + currentPage + "）" + "下一页（" + nextPage + "）" + "总页数（" + totalPage + "）" + "每页（" + messages.Count + "）");
-            //    //Console.WriteLine();
-            //    //Console.WriteLine("===============================================");
-            //    //Console.WriteLine();
-            //    //Console.WriteLine("点评内容：");
-
-            //    //foreach (var message in messages)
-            //    //{
-            //    //    Console.WriteLine("帐号：" + message.FindElement(By.XPath("div[contains(@class,'user_info')]/p[@class='name']")).Text);
-            //    //    Console.WriteLine("房型：" + message.FindElement(By.XPath("div[@class='comment_main']/p/a")).Text);
-            //    //    Console.WriteLine("内容：" + message.FindElement(By.XPath("div[@class='comment_main']/div[@class='comment_txt']/div[1]")).Text.Substring(0, 50) + "....");
-            //    //    Console.WriteLine();
-            //    //    Console.WriteLine();
-            //    //}
-            //    Console.WriteLine();
-
-            //};
-            //hotelCrawler.Start(hotelUrl, new CrawlSettings());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //Console.WriteLine(); 
-
-            //var path = Config.AppSettings<string>("RemoteConfig", "BotConfig.config");
-            //Console.Write(path);
-            //var local = FileUtility.GetDiskFilePath(path);
-
-
-
-            //string sourcePath = "E:/GitHub/ItemDoc/src/Plugin/Sop.FileServer/bin/Debug/pdf2temp/demo1.xlsx";
-            //string targetPath = FileUtility.Combine(Pdf2Html.Instance().tempPath, "demo1.pdf"); 
-
-            //var isok1 = Pdf2Html.Instance().ExcelToPDF(sourcePath, targetPath);
-            //2秒后开启该线程，然后每隔4s调用一次
-
-
-
-
-
-            //string sourcePath2 = "D:\\csharp.pdf";
-            //string targetPath2 = FileUtility.Combine(Pdf2Html.Instance().TempPath, "demo2.docx");
-            //var isok2 = Pdf2Html.Instance().PdfToFile(sourcePath2, targetPath2);
-
-
-            //string sourcePath3 = "E:/GitHub/ItemDoc/src/Plugin/Sop.FileServer/bin/Debug/pdf2temp/demo3.pptx";
-            //string targetPath3 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "demo3.pdf");
-            //var isok3 = Pdf2Html.Instance().PowerPointToPDF(sourcePath3, targetPath3);
-
-
-
-            //string sourcePath4 = "E:/GitHub/ItemDoc/src/Plugin/Sop.FileServer/bin/Debug/pdf2temp/demo4.pdf";
-            //string targetPath4 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "html");
-            //var isok4 = Pdf2Html.Instance().PDF2HTML(sourcePath4, targetPath4);
-
-            //string sourcePath5 = "E:/GitHub/ItemDoc/src/Plugin/Sop.FileServer/bin/Debug/pdf2temp/demo4.pdf";
-            //string targetPath5 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "thumbnail.jpg");
-            //var isok5 = Pdf2Html.Instance().GetPDFToThumbnail(sourcePath5, targetPath5);
-
-
-            //string sourcePath6 = "E:/GitHub/ItemDoc/src/Plugin/Sop.FileServer/bin/Debug/pdf2temp/demo4.pdf";
-            //string targetPath6 = FileUtility.Combine(Pdf2Html.Instance().tempPath, "preview.html");
-            //var isok6 = Pdf2Html.Instance().PDFToHTML(sourcePath6, targetPath6);
-
-
-            // Console.Read();
-
-
-
-
-
-            //for (int i = 0; i < 10000; i++)
-            //{
-            //    var url = "http://www.baidu.com";
-            //    IWebDriver driver = new ChromeDriver(GetChromeDriverService());
-            //    driver.Navigate().GoToUrl(url);
-            //    if (!string.IsNullOrWhiteSpace(driver.PageSource))
-            //    {
-            //        Console.WriteLine(url); 
-            //    } 
-
-            //}
-            //var url = "https://www.baidu.com";
-            //int prot = 8123;
-            //string ip = "39.107.84.185";
-            //string proxyAddr = $"http://{ip}:{prot}";
-
-            //var proxyUser = "";
-            //var proxyPassWord = "";
-            //var proxyDomain = "";
-
-
-            //var isok = FreeProxy.CheckProxy(url, proxyAddr, proxyUser, proxyPassWord, proxyDomain);
-
-            //var vae = Crawler.Instance();
-            //vae.OnStart += (s, e) =>
-            //{
-            //    Console.WriteLine("爬虫开始抓取地址：" + e.Url);
-            //};
-            //vae.OnError += (s, e) =>
-            //{
-            //    Console.WriteLine("爬虫抓取出现错误：" + e.Url + "，异常消息：" + e.Exception.ToString());
-            //};
-            //vae.OnCompleted += async (s, e) =>
-            //{
-            //    var str = await vae.StartHttpTask(e.URL, new CrawlSettings()
-            //    {
-            //        CrawlerType = CrawlerType.HttpWebRequest,
-            //        AutoSpeedLimit = false,
-            //        ProxyOption = new ProxyOptions()
-            //        {
-            //            Address = proxyAddr
-            //        },
-            //        RequestOption = new RequestOptions()
-            //        {
-            //            Method = "post"
-            //        }
-
-            //    });
-            //    Console.WriteLine(str);
-            //};
-
-
-
-            Console.Read();
-
-
-
-            //System.Console.SetCursorPosition(0,4);//定位光标位置，第四行第一位
-            //System.Console.CursorTop;//获取已输出文本的行数
-            //System.Console.BufferWidth;//获取控制台的宽度
-
-            // 所有log 日志全部存储到数据库，方便记录。
-
-
-            //获取当前用模板设置的代理账号。
-            //Console.Title = title;
-            //Closebtn();
-            //Console.CancelKeyPress += new ConsoleCancelEventHandler(CloseConsole);
-            //Console.WriteLine("管理器启动中...");
-
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new ProxyForm());
-
-
-
-
-            //Console.WriteLine("按任意键退出...");
-            //Console.Read();
-
-            //Console.ReadKey();
-
-            //重试、超时处理、缓存、返回、
-
-            //Polly(); 
-            #endregion
-
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.Console()
+                .WriteTo.File("log.txt",
+                    rollingInterval: RollingInterval.Day,
+                    rollOnFileSizeLimit: true)
+                .CreateLogger();
+            Log.Information("Hello, Serilog!");
+            Log.CloseAndFlush();
+
+            //var app = new BaseApplication { Name = "论坛贴吧数据分析系统" };
+            //Register(app);
+            //app.Execute(args.Length == 0 ? null : args[0]);
+
+
+            //var proxy = new ProxyValidator();
+            //var asdasd = proxy.IsAvailable(new WebProxy("34.80.63.3", 1024));
+            //asdasd = proxy.IsAvailable(new WebProxy("117.93.138.15", 53281));
+            //asdasd = proxy.IsAvailable(new WebProxy("49.84.151.169	", 53281));
+            //DB();
+            //GetCity("0");
+            GetCity1("0");
+            Console.ForegroundColor=ConsoleColor.Blue;
+            Console.WriteLine("*********************************");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ReadKey();
 
         }
-
-
-
-
-
-        //private static PhantomJSDriverService GetPhantomJSDriverService()
-        //{
-        //    PhantomJSDriverService pds = PhantomJSDriverService.CreateDefaultService();
-        //    //设置代理服务器地址
-        //    //pds.Proxy = $"{ip}:{port}"; 
-        //    //设置代理服务器认证信息
-        //    //pds.ProxyAuthentication = GetProxyAuthorization();
-
-        //    return pds;
-        //}
-        private static ChromeDriverService GetChromeDriverService()
+        
+        private static string GetCity1(string parentId)
         {
-            var pds = ChromeDriverService.CreateDefaultService();
 
+            string url = $"http://www.mca.gov.cn/article/sj/xzqh/2019/201901-06/201902061025.html";
+            var html = HttpHelper.HttpGet(url);
+            if (html == null)
+            {
+                return null;
 
-            //设置代理服务器地址
-            //pds.Proxy = $"{ip}:{port}"; 
-            //设置代理服务器认证信息
-            //pds.ProxyAuthentication = GetProxyAuthorization();
-            pds.HideCommandPromptWindow = true;
-
-            //var options = new ChromeOptions();
-
-            //options.AddArguments("--proxy-server=" + "<< IP Address >>" + ":" + "<< Port Number >>");
-
-
-            //options.Proxy = null;
-
-            //string userAgent = "<< User Agent Text >>";
-
-            //options.AddArgument($"--user-agent={userAgent}$PC${"<< User Name >>" + ":" + "<< Password >>"}");
-
-
-
-            return pds;
+            }
+            return null;
         }
-        /// <summary>
-        /// 禁用关闭按钮
-        /// </summary>
-        static void Closebtn()
+        private static string GetCity(string parentId)
         {
-            IntPtr windowHandle = Win32Helper.FindWindow(null, title);
-            IntPtr closeMenu = Win32Helper.GetSystemMenu(windowHandle, IntPtr.Zero);
-            uint SC_CLOSE = 0xF060;
-            Win32Helper.RemoveMenu(closeMenu, SC_CLOSE, 0x0);
+             
+            string url = $"http://api.yunrunyuqing.com/api/place?parentId={parentId}";
+            var html = HttpHelper.HttpGet(url);
+            if (html == null)
+            {
+                return null;
+
+            }
+            var json = html.FromJson<Info>();
+            if (json == null)
+            {
+                return null;
+
+            }
+            //对JSON数据存储到数据库
+            var data = json.data;
+            if (data == null)
+            {
+                return null;
+
+            }
+            if (data != null & data.Count > 0)
+            {
+                foreach (var datainfo in data)
+                {
+                    var info = conn.QueryFirstOrDefault<string>("SELECT * FROM `sop_citys` where Name=@name ", new { name = datainfo.Name });
+                    if (!string.IsNullOrWhiteSpace(info))
+                    {
+                        var id = conn.Execute("update sop_citys set Isnew=0,psid=@psid,sid=@sid where Name=@name  ", new
+                        {
+                            sid = datainfo.ID,
+                            psid = datainfo.ParentID,
+                            name = datainfo.Name
+
+                        });
+                        Console.WriteLine(id > 0 ? "" + datainfo.Name : "失败了:" + datainfo.Name);
+                    }
+                    else
+                    {
+                        var id = conn.Execute(" INSERT INTO `sop_citys`(`Code`, `Name`, `Description`, `ParentCode`, `ParentCodeList`, `ChildCount`, `Depth`, `Enabled`, `DateCreated`, `Icon`, `IsNew`, `psid`, `sid`) VALUES (0,@name, NULL, 0, \',86,\', 0, @Layer, 1, @date, NULL, NULL,@psid,@sid); ", new
+                        {
+                            sid = datainfo.ID,
+                            psid = datainfo.ParentID,
+                            name = datainfo.Name,
+                            Layer = datainfo.Layer,
+                            date = DateTime.Now
+                        });
+                        Console.WriteLine(id > 0 ? "" + datainfo.Name : "失败了:" + datainfo.Name);
+
+
+                    }
+                     GetCity(datainfo.ID);
+                }
+            }
+            return null;
         }
 
-
-
-        /// <summary>  
-        /// 关闭时的事件  
-        /// </summary>  
-        /// <param name="sender">对象</param>  
-        /// <param name="e">参数</param>  
-        protected static void CloseConsole(object sender, ConsoleCancelEventArgs e)
+        public static void DB()
         {
-            Environment.Exit(0);
-            //return;
+            var info = conn.Query<SopCitysInfo>("SELECT * FROM `sop_citys`").ToList();
+            var count = info.Count();
+            foreach (var dataCitysInfo in info)
+            {
+                var code = dataCitysInfo.Code;
+                if (code.ToString().Substring(2, 4) == "0000")
+                {
+
+                    var id = conn.Execute("update sop_citys set ParentCode=86,ParentCodeList=',86,',Depth=1 where id=@id ", new
+                    {
+                        pcode = code.ToString().Substring(0, 2),
+                        id = dataCitysInfo.Id
+                    });
+                    Console.WriteLine(id > 0 ? "" + dataCitysInfo.Id : "失败了" + dataCitysInfo.Id);
+                }
+                else
+                {
+                    if (code.ToString().Substring(4, 2) == "00")
+                    {
+
+                        var id = conn.Execute("update sop_citys set ParentCode=@pcode,ParentCodeList=@pcode2,Depth=2 where id=@id ", new
+                        {
+                            pcode = code.ToString().Substring(0, 2) + "0000",
+                            pcode2 = ",86," + code.ToString().Substring(0, 2) + "0000,",
+                            id = dataCitysInfo.Id
+                        });
+                        Console.WriteLine(id > 0 ? "" + dataCitysInfo.Id : "失败了" + dataCitysInfo.Id);
+                    }
+                    else
+                    {
+                        var id = conn.Execute("update sop_citys set ParentCode=@pcode,ParentCodeList=@pcode2,Depth=3 where id=@id ", new
+                        {
+                            pcode = code.ToString().Substring(0, 4) + "00",
+                            pcode2 = ",86," + code.ToString().Substring(0, 2) + "0000," + code.ToString().Substring(0, 4) + "00,",
+                            id = dataCitysInfo.Id
+                        });
+                        Console.WriteLine(id > 0 ? "" + dataCitysInfo.Id : "失败了" + dataCitysInfo.Id);
+
+
+                    }
+
+                }
+                //修正Childcount
+
+
+            }
+
+
         }
+        [Serializable]
+        public class SopCitysInfo
+        {
 
-        /// <summary>
-        ///   //重试、超时处理、缓存、返回、
-        /// </summary>
-        //static void Polly()
-        //{
-        //    var fallBackPolicy =
-        //        Policy<string>
-        //            .Handle<Exception>()
-        //            .Fallback("执行失败，返回Fallback");
 
-        //    var fallBack = fallBackPolicy.Execute(() =>
-        //    {
-        //        return "zhe shi yi ge ce shi";
-        //    });
-        //    Console.WriteLine(fallBack);
+            ///<Summary>
+            /// Id 
+            ///</Summary>
+            public virtual long Id { get; set; }
+            ///<Summary>
+            /// Code 
+            ///</Summary>
+            public virtual long Code { get; set; }
+            ///<Summary>
+            /// Name 
+            ///</Summary>
+            public virtual string Name { get; set; }
+            ///<Summary>
+            /// Description 
+            ///</Summary>
+            public virtual string Description { get; set; }
+            ///<Summary>
+            /// ParentCode 
+            ///</Summary>
+            public virtual long Parentcode { get; set; }
+            ///<Summary>
+            /// ParentCodeList 
+            ///</Summary>
+            public virtual string Parentcodelist { get; set; }
+            ///<Summary>
+            /// ChildCount 
+            ///</Summary>
+            public virtual int Childcount { get; set; }
+            ///<Summary>
+            /// Depth 
+            ///</Summary>
+            public virtual int Depth { get; set; }
+            ///<Summary>
+            /// Enabled 
+            ///</Summary>
+            public virtual int Enabled { get; set; }
+            ///<Summary>
+            /// DateCreated 
+            ///</Summary>
+            public virtual DateTime Datecreated { get; set; }
+            ///<Summary>
+            /// Icon 
+            ///</Summary>
+            public virtual string Icon { get; set; }
+            ///<Summary>
+            /// IsNew 
+            ///</Summary>
+            public virtual string Isnew { get; set; }
+            public virtual string psid { get; set; }
+            public virtual string sid { get; set; }
 
-        //    var politicaWaitAndRetry =
-        //        Policy<string>
-        //            .Handle<Exception>()
-        //            .Retry(3, (ex, count) =>
-        //            {
-        //                Console.WriteLine("执行失败! 重试次数 {0}", count);
-        //                Console.WriteLine("异常来自 {0}", ex.GetType().Name);
-        //            });
+        }
+        public class Info
+        {
+            public int status { get; set; }
+            public string msg { get; set; }
+            public List<Data> data { get; set; }
 
-        //    var mixedPolicy = Policy.Wrap(fallBackPolicy, politicaWaitAndRetry);
-        //    var mixedResult = mixedPolicy.Execute(ThrowException);
-        //    Console.WriteLine($"执行结果: {mixedResult}");
-        //}
+        }
+        public class Data
+        {
+            public string ID { get; set; }
+            public int Layer { get; set; }
+
+            public string Name { get; set; }
+            public string ParentID { get; set; }
+            public string Word { get; set; }
+
+        }
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
-        static string ThrowException()
+        /// <param name="app"></param>
+        static void Register(IApplication app)
         {
-            throw new Exception();
+            app.RegisterTask<TaskDemo>("TaskDemo", "TaskDemo");
+            app.RegisterTask<TaskService>("TaskService", "TaskService");
+
         }
 
-
-        static int Compute()
-        {
-            var a = 0;
-            return 1 / a;
-        }
     }
 }

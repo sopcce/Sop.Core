@@ -23,44 +23,22 @@ Welcome to SopTemplateSite
 Sop Template Site is a mature, open source  .NET framework . It is actively developed,
 fully featured and used in thousands of successful projects.
 
-The NHibernate community website - <http://nhibernate.info> - has a range of resources to help you get started,
-including [howtos][A1], [blogs][A2] and [reference documentation][A3].
 
-[A1]: http://nhibernate.info/doc/
-[A2]: http://nhibernate.info/blog/
-[A3]: http://nhibernate.info/doc/nh/en/index.html
 
 Latest Version
 --------------
 
-The quickest way to get the latest release of NHibernate is to add it to your project using 
-NuGet (<http://nuget.org/List/Packages/NHibernate>).
-
-Alternatively binaries are available from SourceForge at <http://sourceforge.net/projects/nhibernate>.
-
-You are encouraged to review the release notes ([releasenotes.txt](releasenotes.txt)), particularly when upgrading to a 
-later version. The release notes will generally document any breaking changes.
+xx
 
 Community Forums
 ----------------
 
-There are two official NHibernate community forums:
-
-* [NHibernate Users][B1] - a forum for users to find help using NHibernate
-* [NHibernate Development][B2] - a forum for the developers of NHibernate
-
-[B1]: http://groups.google.com/group/nhusers
-[B2]: http://groups.google.com/group/nhibernate-development
+xx
 
 Bug Reports
 -----------
-
-If you find any bugs, please report them using the [GitHub issue tracker][C1]. A
-test-case that demonstrates the issue is usually required. Instructions on providing a test-case
-can be found in [contributing guidelines][C3] or [here][C2].
-
-[C1]: http://github.com/nhibernate/nhibernate-core/issues
-
+xx
+ 
 Licenses
 --------
 
@@ -70,7 +48,7 @@ Credits
 -------
 
 Many thanks to the following individuals, organisations and projects whose work is so important to the success
-of NHibernate (in no particular order):
+of SopTemplateSite (in no particular order):
 
 * [NUnit][] - unit-testing
 * [Nant][] - build automation

@@ -63,41 +63,106 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Events\OnCompletedEventArgs.cs" />
+    <Compile Include="Base\BaseApplication.cs" />
+    <Compile Include="Base\IApplication.cs" />
+    <Compile Include="Base\IExecutable.cs" />
+    <Compile Include="Common\CheckServer.cs" />
+    <Compile Include="Common\ClearInfo.cs" />
+    <Compile Include="Common\FileHelper.cs" />
+    <Compile Include="Common\HttpHelper.cs" />
+    <Compile Include="Common\StringCompute.cs" />
+    <Compile Include="Spider\Core\Env.cs" />
+    <Compile Include="Spider\Core\IRequestBuilder.cs" />
+    <Compile Include="Spider\Core\ContentType.cs" />
+    <Compile Include="Spider\Core\Operation.cs" />
+    <Compile Include="Spider\Core\Pipeline\IPipeline.cs" />
+    <Compile Include="Spider\Core\Processor\IPageProcessor.cs" />
+    <Compile Include="Spider\Core\Page.cs" />
+    <Compile Include="Spider\Core\PageExtensions.cs" />
+    <Compile Include="Spider\Core\ResultItems.cs" />
+    <Compile Include="Spider\Filter\AbstractSelectable.cs" />
+    <Compile Include="Spider\Filter\CssSelector.cs" />
+    <Compile Include="Spider\Filter\DefaultSelector.cs" />
+    <Compile Include="Spider\Filter\EnvironmentSelector.cs" />
+    <Compile Include="Spider\Filter\ExtractionException.cs" />
+    <Compile Include="Spider\Filter\HtmlSelector.cs" />
+    <Compile Include="Spider\Filter\ISelectable.cs" />
+    <Compile Include="Spider\Filter\ISelector.cs" />
+    <Compile Include="Spider\Filter\JsonPathSelector.cs" />
+    <Compile Include="Spider\Filter\RegexSelector.cs" />
+    <Compile Include="Spider\Filter\Selectable.cs" />
+    <Compile Include="Spider\Filter\Selectors.cs" />
+    <Compile Include="Spider\Filter\SelectorType.cs" />
+    <Compile Include="Spider\Filter\XPathSelector.cs" />
+    <Compile Include="Spider\Spider.cs" />
+    <Compile Include="Spider\Util\Cryptography.cs" />
+    <Compile Include="Spider\Enum\CompressMode.cs" />
+    <Compile Include="Spider\Enum\Downloader.cs" />
+    <Compile Include="Spider\Downloader\Class1.cs" />
+    <Compile Include="Spider\Core\Request.cs" />
+    <Compile Include="Spider\Core\Response.cs" />
+    <Compile Include="Spider\Events\OnCompletedEventArgs.cs" />
+    <Compile Include="Helper\GhostScriptSharp\GhostscriptPages.cs" />
+    <Compile Include="Helper\GhostScriptSharp\GhostscriptDevices.cs" />
+    <Compile Include="Helper\GhostScriptSharp\GhostscriptPageSize.cs" />
+    <Compile Include="Helper\GhostScriptSharp\GhostscriptPageSizes.cs" />
     <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\ConvertFile.cs" />
     <Compile Include="Helper\Pdf2Html.cs" />
     <Compile Include="Helper\VideoEncoder.cs" />
     <Compile Include="Helper\VideoFile.cs" />
-    <Compile Include="GhostScriptSharp\GhostScript32.cs" />
-    <Compile Include="GhostScriptSharp\GhostScript64.cs" />
-    <Compile Include="GhostScriptSharp\GhostscriptSharp.cs" />
-    <Compile Include="Helper\ConsileBot.cs" />
+    <Compile Include="Helper\GhostScriptSharp\GhostScript32.cs" />
+    <Compile Include="Helper\GhostScriptSharp\GhostScript64.cs" />
+    <Compile Include="Helper\GhostScriptSharp\GhostscriptSharp.cs" />
     <Compile Include="Helper\Win32Helper.cs" />
-    <Compile Include="Models\Roots.cs" />
-    <Compile Include="Proxy\IpProxy.cs" />
-    <Compile Include="Proxy\ProxyInfo.cs" />
-    <Compile Include="Proxy\FreeProxyInfo.cs" />
-    <Compile Include="Proxy\FreeProxy.cs" />
+    <Compile Include="Services\Service1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Service1.Designer.cs">
+      <DependentUpon>Service1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\TaskDemo.cs" />
+    <Compile Include="Services\TaskService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proxy\sit.cs" />
-    <Compile Include="Quartz\DefaultController.cs" />
-    <Compile Include="Queue\SecurityQueue.cs" />
-    <Compile Include="WebCrawler\Browsers.cs" />
-    <Compile Include="WebCrawler\Crawler.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\Either.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\ExtensionMethods.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\HtmlNodeExtensions.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\HtmlNodeOps.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\HtmlNodeSelection.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\IElementOps.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\ISelectorGenerator.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\LRUCache.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\NamespacePrefix.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\Parser.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\Reader.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\Selector.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\SelectorGenerator.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\Token.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\Tokener.cs" />
+    <Compile Include="Spider\HtmlAgilityPack.Css\TokenKind.cs" />
+    <Compile Include="Spider\Infrastructure\SerilogConsoleTheme.cs" />
+    <Compile Include="Spider\Proxy\Class1.cs" />
+    <Compile Include="Spider\Proxy\HttpProxy.cs" />
+    <Compile Include="Spider\Proxy\IProxyValidator.cs" />
+    <Compile Include="Spider\Proxy\ProxyValidator.cs" />
+    <Compile Include="Spider\Util\DateTimeUtil.cs" />
+    <Compile Include="Spider\Proxy\ProxyInfo.cs" />
+    <Compile Include="Spider\Util\PrintInfo.cs" />
+    <Compile Include="Spider\Util\ThreadCommonPool.cs" />
     <Compile Include="Models\ProxyOptions.cs" />
-    <Compile Include="WebCrawler\Extensions\WebDriverExtensions.cs" />
-    <Compile Include="WebCrawler\HttpWebCrawler.cs" />
-    <Compile Include="WebCrawler\WebDriver.cs" />
     <Compile Include="Models\CrawlSettings.cs" />
     <Compile Include="Models\RequestOptions.cs" />
+    <Compile Include="Spider\Downloader\Spider1.cs" />
+    <Compile Include="WebCrawler\Crawler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <Content Include="App_Data\itemdoc2.db" />
     <Content Include="App_Data\log4net.config" />
     <None Include="Aspose.Total.lic" />
+    <Content Include="Helper\GhostScriptSharp\gsdll32.dll" />
+    <Content Include="Helper\GhostScriptSharp\gsdll64.dll" />
     <Content Include="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -108,9 +173,6 @@
     <None Include="BotConfig.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="App_Data\Database\MySql\itemdoc.sql" />
-    <Content Include="App_Data\Database\SqlServer\SQLQuery1.sql" />
-    <Content Include="App_Data\Database\SqlServer\tiemdoc.sql" />
     <Content Include="App_Data\Lang\installation.zhs.xml" />
     <Content Include="App_Data\Lang\zh-cn.xml">
       <SubType>Designer</SubType>
@@ -125,16 +187,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="phantomjs.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Sop.Framework\Sop.Framework.csproj">
-      <Project>{7b4ff94a-7018-42e5-adbe-277e9b39ed5b}</Project>
-      <Name>Sop.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Sop.Services\Sop.Services.csproj">
-      <Project>{5245edd5-6a59-4c6b-b501-f7525a137c53}</Project>
-      <Name>Sop.Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Aspose.BarCode, Version=19.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
@@ -164,6 +216,9 @@
     <Reference Include="Aspose.Words, Version=19.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Aspose.Words.19.2.0\lib\net40\Aspose.Words.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
@@ -172,6 +227,15 @@
     </Reference>
     <Reference Include="Common.Logging.Log4Net1213, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Common.Logging.Log4Net1213.3.4.1\lib\net40\Common.Logging.Log4Net1213.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.4.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HtmlAgilityPack.1.11.4\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\Ionic.Zip.dll</HintPath>
@@ -183,8 +247,35 @@
       <HintPath>..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Configuration.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Configuration.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Configuration.Binder.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Logging.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Logging.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Options.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.16.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MySql.Data.8.0.16\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Polly, Version=7.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Polly.7.0.1\lib\netstandard2.0\Polly.dll</HintPath>
@@ -195,21 +286,52 @@
     <Reference Include="Selenium.WebDriverBackedSelenium, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Selenium.WebDriverBackedSelenium.3.5.0\lib\net40\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serilog.2.8.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Console, Version=3.1.1.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serilog.Sinks.Console.3.1.1\lib\net45\Serilog.Sinks.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Serilog.Sinks.File.4.0.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Text.Encoding.CodePages.4.5.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebDriver, Version=3.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Selenium.WebDriver.3.10.0\lib\net45\WebDriver.dll</HintPath>
     </Reference>
@@ -230,7 +352,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\config\" />
     <Folder Include="App_Data\sopcce.com\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

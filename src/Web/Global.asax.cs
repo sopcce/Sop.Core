@@ -1,26 +1,12 @@
-﻿
-using Autofac;
-using Autofac.Integration.Mvc;
-using Autofac.Integration.WebApi;
-using Common.Logging;
-using Sop.Core.Mvc.ModelBinder;
-using Sop.Framework.Caching;
+﻿using Common.Logging;
 using Sop.Framework.Environment;
-using Sop.Framework.Repositories;
-using Sop.Framework.Repositories.NHibernate;
-using Sop.Services.Auth;
 using StackExchange.Profiling;
-using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
-using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
 
 namespace Sop.Web
 {

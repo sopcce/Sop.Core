@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>ftp://39.98.237.120/root/sop/tools1</_PublishTargetUrl>
+    <_PublishTargetUrl>ftp://39.98.237.120/root/sop/tools</_PublishTargetUrl>
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4RvY1Lj6y0CzTkjuvFTYWwAAAAACAAAAAAAQZgAAAAEAACAAAADaqfMe0RlDpvGX91/vgLEJCPxBmu/lfhZUYK75uxDapwAAAAAOgAAAAAIAACAAAADNUjDKBDguf82CK3PTi5OEVQ6/28NemS0H+xJUP01U0CAAAADW6VEBGstbmZQIAfER1k0PJUQqIbCZTyMOfnAHGyL5kkAAAACBHCGOU/+TKYBuaXyqBkZYne1f8tqLMjy0TnixQRILYN8BV6a9LzReUzg9aI2NC4LeojrzYUJAdvmTMZCoItsF</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
@@ -116,40 +116,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/03/2017 03:05:26</publishTime>
     </File>
     <File Include="Sop.Core.dll">
-      <publishTime>05/10/2019 00:07:38</publishTime>
+      <publishTime>05/21/2019 17:08:09</publishTime>
     </File>
     <File Include="Sop.Core.pdb">
-      <publishTime>05/10/2019 00:07:38</publishTime>
+      <publishTime>05/21/2019 17:08:09</publishTime>
     </File>
     <File Include="Sop.Data.dll">
-      <publishTime>05/10/2019 00:07:39</publishTime>
+      <publishTime>05/21/2019 17:08:12</publishTime>
     </File>
     <File Include="Sop.Data.pdb">
-      <publishTime>05/10/2019 00:07:39</publishTime>
+      <publishTime>05/21/2019 17:08:12</publishTime>
     </File>
     <File Include="Sop.Services.dll">
-      <publishTime>05/10/2019 00:07:40</publishTime>
+      <publishTime>05/21/2019 17:08:13</publishTime>
     </File>
     <File Include="Sop.Services.pdb">
-      <publishTime>05/10/2019 00:07:40</publishTime>
+      <publishTime>05/21/2019 17:08:13</publishTime>
     </File>
     <File Include="Sop.Tools.deps.json">
-      <publishTime>05/10/2019 00:07:48</publishTime>
+      <publishTime>05/22/2019 14:07:19</publishTime>
     </File>
     <File Include="Sop.Tools.dll">
-      <publishTime>05/10/2019 00:07:42</publishTime>
+      <publishTime>05/22/2019 14:07:07</publishTime>
     </File>
     <File Include="Sop.Tools.pdb">
-      <publishTime>05/10/2019 00:07:42</publishTime>
+      <publishTime>05/22/2019 14:07:07</publishTime>
     </File>
     <File Include="Sop.Tools.runtimeconfig.json">
-      <publishTime>05/10/2019 00:07:48</publishTime>
+      <publishTime>05/22/2019 14:07:20</publishTime>
     </File>
     <File Include="Sop.Tools.Views.dll">
-      <publishTime>05/10/2019 00:07:43</publishTime>
+      <publishTime>05/22/2019 14:07:13</publishTime>
     </File>
     <File Include="Sop.Tools.Views.pdb">
-      <publishTime>05/10/2019 00:07:43</publishTime>
+      <publishTime>05/22/2019 14:07:13</publishTime>
     </File>
     <File Include="System.Composition.AttributedModel.dll">
       <publishTime>12/17/2018 05:24:46</publishTime>
@@ -173,7 +173,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/19/2017 10:01:34</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>05/10/2019 00:07:48</publishTime>
+      <publishTime>05/22/2019 14:07:20</publishTime>
     </File>
     <File Include="wwwroot/AreaCode/AreaCodeInfo.json">
       <publishTime>04/15/2019 23:12:12</publishTime>
@@ -185,7 +185,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/25/2019 15:26:13</publishTime>
     </File>
     <File Include="wwwroot/css/tools.css">
-      <publishTime>04/18/2019 13:56:28</publishTime>
+      <publishTime>05/22/2019 14:03:03</publishTime>
     </File>
     <File Include="wwwroot/en-letter/1-150G2131J1911-lp.jpg">
       <publishTime>04/19/2019 00:49:13</publishTime>
@@ -275,7 +275,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/19/2019 01:16:39</publishTime>
     </File>
     <File Include="wwwroot/favicon.ico">
-      <publishTime>04/25/2019 15:26:13</publishTime>
+      <publishTime>03/09/2019 19:23:55</publishTime>
     </File>
     <File Include="wwwroot/img/tools/tool-Aa.png">
       <publishTime>04/18/2019 11:03:20</publishTime>
@@ -330,6 +330,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="wwwroot/js/site.js">
       <publishTime>04/15/2019 21:55:52</publishTime>
+    </File>
+    <File Include="wwwroot/js/tools.js">
+      <publishTime>05/22/2019 13:58:25</publishTime>
+    </File>
+    <File Include="wwwroot/js/UpperAndLower.js">
+      <publishTime>05/21/2019 17:01:32</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css">
       <publishTime>04/15/2019 21:55:52</publishTime>

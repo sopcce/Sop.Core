@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Common.Logging;
+using Sop.FileServer.Events;
+using Sop.FileServer.Models;
+using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Common.Logging;
-using Ionic.Zlib;
-using Sop.FileServer.Events;
-using Sop.FileServer.Models;
 
 namespace Sop.FileServer.WebCrawler
 {

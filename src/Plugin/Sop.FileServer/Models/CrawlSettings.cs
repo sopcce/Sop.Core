@@ -1,6 +1,5 @@
-﻿using System;
-using OpenQA.Selenium;
-using Sop.FileServer.WebCrawler;
+﻿using OpenQA.Selenium;
+using System;
 
 namespace Sop.FileServer.Models
 {
@@ -24,7 +23,7 @@ namespace Sop.FileServer.Models
         /// <summary>
         /// 
         /// </summary>
-        public Browsers Browsers { get; set; } = Browsers.HttpWebRequest;
+        //public Browsers Browsers { get; set; } = Browsers.HttpWebRequest;
        
 
        

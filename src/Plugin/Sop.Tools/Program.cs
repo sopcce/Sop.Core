@@ -73,12 +73,11 @@ namespace Sop.Tools
                 //    options.Limits.MaxRequestBodySize = null;
 
                 //})
+                .UseUrls("http://*:5000 ")
                 .UseDefaultServiceProvider(options =>
                     options.ValidateScopes = false)
                .UseStartup<Startup>();
-
-            var address = IPAddress.Broadcast;
-            Console.WriteLine("IP address : " + address);
+             
 
             return host;
         }

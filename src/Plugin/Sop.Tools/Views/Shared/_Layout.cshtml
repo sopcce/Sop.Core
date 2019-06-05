@@ -45,15 +45,12 @@
         </nav>
     </header>
     <div class="container" style="margin-top: 80px;">
-
-
-
         <main role="main" class="pb-3">
             @await Component.InvokeAsync("_Menu", new { id = 123 })
+            <partial name="_CookieConsentPartial" />
             @RenderBody()
         </main>
     </div>
-    <partial name="_CookieConsentPartial" />
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2019 - Sop.Tools - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

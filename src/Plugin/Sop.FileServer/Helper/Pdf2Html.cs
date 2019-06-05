@@ -1,13 +1,12 @@
-﻿using System;
+﻿
+using Common.Logging;
+using Sop.FileServer.Helper.GhostScriptSharp;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Timers;
-using Aspose.Pdf;
-using Common.Logging;
-using GhostscriptSharp;
-using Sop.Framework.Utility;
 
 namespace Sop.FileServer.Helper
 {
@@ -45,7 +44,7 @@ namespace Sop.FileServer.Helper
             //初始化临时目录
             HomePath = Assembly.GetExecutingAssembly().Location;
             HomePath = HomePath.Substring(0, HomePath.LastIndexOf('\\'));
-            TempPath = FileUtility.Combine(HomePath, "pdf2temp");
+            TempPath = Path.Combine(HomePath, "pdf2temp");
             if (!Directory.Exists(TempPath))
             {
                 Directory.CreateDirectory(TempPath);
@@ -76,11 +75,7 @@ namespace Sop.FileServer.Helper
             catch (Exception ex)
             {
                 _logger.Error("解析Aspose组件授权失败：" + ex.Message);
-            }
-
-
-
-
+            } 
         }
 
 
@@ -127,7 +122,7 @@ namespace Sop.FileServer.Helper
             string htmlOutputPath = Path.Combine(TempPath, fileNameWithoutExtension);
 
 
-            string binPath = FileUtility.Combine(HomePath, "pdf2htmlEX", "pdf2htmlEX.exe");
+            string binPath = Path.Combine(HomePath, "pdf2htmlEX", "pdf2htmlEX.exe");
 
             //详见pdf2htmlEX的命令行参数说明：https://github.com/coolwanglu/pdf2htmlEX/wiki
             string binParams = string.Format("--embed CFIJO --first-page 1 --last-page 800 --fit-width 1800 --hdpi 96 --vdpi 96 --embed-external-font 0 --font-size-multiplier 1 --split-pages 1 --dest-dir {0} --page-filename page-%d.html {1} preview.html", htmlOutputPath, fileLocalPathWithFileName.Replace('\\', '/'));
@@ -222,7 +217,7 @@ namespace Sop.FileServer.Helper
         /// <param name="targetPath"></param>
         /// <param name="format"></param>
         /// <returns></returns>
-        public bool PdfToFile(string sourcePath, string targetPath, SaveFormat format = SaveFormat.Html)
+        public bool PdfToFile(string sourcePath, string targetPath, Aspose.Pdf.SaveFormat format = Aspose.Pdf.SaveFormat.Html)
         {
             string fileName = Path.GetFileName(sourcePath);
             string fileExtension = Path.GetExtension(sourcePath);
@@ -311,6 +306,7 @@ namespace Sop.FileServer.Helper
                         stream.CopyTo(sourceStream);
                         sourceStream.Position = 0;
                     }
+                    
                     Aspose.Slides.Presentation pres = new Aspose.Slides.Presentation(sourceStream);
                     pres.Save(targetPath, Aspose.Slides.Export.SaveFormat.Pdf);
                 }

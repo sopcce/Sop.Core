@@ -1,10 +1,8 @@
-﻿using Sop.Services.Model;
-
-namespace Sop.FileServer.Models
+﻿namespace Sop.FileServer.Models
 {
     public class ConvertFile
     {
-        public AttachmentInfo attachmentInfo { get; set; }
+        //public AttachmentInfo attachmentInfo { get; set; }
 
         public string FromPath { get; set; }
 
