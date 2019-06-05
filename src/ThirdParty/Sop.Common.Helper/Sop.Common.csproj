@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net461;</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <Version>0.0.5</Version>
+        <Authors>sopcce@hotmail.com;</Authors>
+        <Copyright>Copyright 2019 sopcce.com</Copyright>
+        <PackageId>Sop.Common.Helper</PackageId>
+        <Description>Sop.Common.Helper, a .NET Standard  Sop.Common.Helper library. It is lightweight, efficient and fast high-level Sop.Common.Helper &amp; framework</Description>
+        <PackageTags>helper;Sop.Common.Helper;dotnetcore;json;xml;c#;gif</PackageTags>
+        <PackageProjectUrl>https://github.com/sopcce/sts</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/Sopcce/STS/master/favicon.png</PackageIconUrl>
+        <RepositoryUrl>https://github.com/sopcce/sts</RepositoryUrl>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <PackageLicenseUrl>https://github.com/Sopcce/STS/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryType>MIT</RepositoryType>
+        <PackageReleaseNotes>helper;Sop.Common.Helper;dotnet core</PackageReleaseNotes>
+        <NeutralLanguage>en</NeutralLanguage>
+        <AssemblyVersion>0.0.4.3</AssemblyVersion>
+        <FileVersion>0.0.4.3</FileVersion>
+        <Company>sopcce@hotmail.com;</Company>
+    </PropertyGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    </ItemGroup>
+	
+    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">        
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    </ItemGroup>
+    <ItemGroup>
+      
+      <None Remove="HtmlAgilityPack.Css\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="Extensions\Email.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.4" />
+        <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+        <PackageReference Include="NPOI" Version="2.4.1" />
+        <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
+        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+ 
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="Microsoft.VisualBasic">
+        <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.VisualBasic.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Data.Entity">
+        <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.Entity.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Runtime.Caching">
+        <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Runtime.Caching.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Spider.Properties.cs">
+            <DependentUpon>Spider.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Data\Parser\DataParser`.cs">
+            <DependentUpon>DataParser.cs</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Encryption\" />
+      <Folder Include="Excel\" />
+    </ItemGroup>
+
+</Project>

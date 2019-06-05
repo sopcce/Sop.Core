@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewData["Title"] = "IdCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>IdCard</h1>
+
+<div class="layui-col-md9">
+    <h1 class="hidden">身份证生器,身份证号码在线成器,身份证查询,身份证生在线成器,身份实名认证|身份证号码生成器</h1> 
+    <div class="fly-panel">
+        <div class="fly-panel-title"><strong>身份证号码生成器</strong></div>
+        <div class="fly-panel-main">
+            <div class="buttonContainer">
+                <input class="layui-btn" onclick="randomGenerate();" type="button" value="随机生成">&nbsp;
+                <input class="layui-btn" onclick="conditionGenerate();" type="button" value="按条件生成">&nbsp;
+                <input class="layui-btn" onclick="checkPRCID();" type="button" value="验证有效性">&nbsp;
+                <input class="layui-btn layui-btn-danger" type="reset" onclick="reset();" value="清空内容">
+            </div>
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <blockquote class="layui-elem-quote layui-text">
+                        <p>
+                            方法：1.点击随机生成；2.输入6位地区码和出生日期后，点击按条件生成；3.直接输入身份证号码，点击验证有效性。
+                        </p>
+                        <p style="color:red;">
+                            警告：仅供测试使用，请勿用于非法用途。
+                        </p>
+                    </blockquote>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">地区码</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="dqCode" id="dqCode" placeholder="输入（6位数字）地区码" lay-verify="required|number" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">出生日期</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="birthdayCode" id="birthdayCode" placeholder="YYYYMMDD" lay-verify="date" class="layui-input" lay-key="1">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">身份证</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="PRCID" id="PRCID" placeholder="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>验证结果</legend>
+            </fieldset>
+            <form class="layui-form layui-form-pane" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">有效性</label>
+                    <div class="layui-input-block">
+                        <input disabled="" type="text" name="isPRCID" id="isPRCID" placeholder="有效性" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-block">
+                        <input disabled="" type="text" name="name" id="name" placeholder="姓名" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">年龄</label>
+                    <div class="layui-input-block">
+                        <input disabled="" type="text" name="old" id="old" placeholder="年龄" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">性别</label>
+                    <div class="layui-input-block">
+                        <input disabled="" type="text" name="sex" id="sex" placeholder="性别" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">出生日期</label>
+                    <div class="layui-input-block">
+                        <input disabled="" type="text" name="birthday" id="birthday" placeholder="出生日期" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所在地</label>
+                    <div class="layui-input-block">
+                        <input disabled="" type="text" name="address" id="address" placeholder="身份证号码所在地" class="layui-input">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
