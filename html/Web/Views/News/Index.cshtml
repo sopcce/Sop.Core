@@ -1,0 +1,775 @@
+﻿@{
+    Layout = null;
+    var com = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>今日头条</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta name="renderer" content="webkit">
+    <link rel="dns-prefetch" href="https://s3.pstatp.com/">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="360-site-verification" content="b96e1758dfc9156a410a4fb9520c5956">
+    <meta name="360_ssp_verify" content="2ae4ad39552c45425bddb738efda3dbb">
+    <meta name="google-site-verification" content="3PYTTW0s7IAfkReV8wAECfjIdKY-bQeSkVTyJNZpBKE">
+    <meta name="shenma-site-verification" content="34c05607e2a9430ad4249ed48faaf7cb_1432711730">
+    <meta name="baidu_union_verify" content="b88dd3920f970845bad8ad9f90d687f7">
+    <meta name="domain_verify" content=" ">
+    <meta name="keywords" content="今日头条，头条，头条网，头条新闻，今日头条官网">
+    <meta name="description" content="《今日头条》(www.toutiao.com)是一款基于数据挖掘的推荐引擎产品，它为用户推荐有价值的、个性化的信息，提供连接人与信息的新型服务，是国内移动互联网领域成长最快的产品服务之一。">
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.toutiao.com/">
+    <link rel="shortcut icon" href="~/css2js/favicon_5995b44.ico" type="image/x-icon">
+
+
+    <!--[if lt IE 9]>
+    <p>您的浏览器版本过低，请
+        <a href="http://browsehappy.com/">升级浏览器</a>
+    </p>
+    <![endif]-->
+
+    <link href="~/css2js/index.css" rel="stylesheet" />
+
+    @Html.Partial("_CssJs")
+
+
+</head>
+<body>
+    <div>
+        <!-- sop-header -->
+        <div class="sop-header">
+            <div class="topbar">
+                <div class="bui-left clearfix">
+                    <a href="#" target="_blank" class="download-app topbar-link ">下载APP</a>
+                    <div class="weather-tool">
+                        <div class="weather-abstract">
+                            <span>&nbsp;北京</span>
+                            <span class="city_state">晴</span>
+                            <span class="city_temperature">
+                                <em>20</em>° &nbsp;/&nbsp;
+                                <em>33</em>°
+                            </span>
+                            <i class="bui-icon icon-arrow_down" style="font-size: 14px; color:white;"></i>
+                        </div>
+                        <div class="y-weather" style="display: none;">
+                            <div class="w-header">
+                                <span ga_event="mh_change_city" class="bui-icon icon-locationweather bui-vm">&nbsp;北京</span>
+                                <span class="wind bui-vm">北风2级</span>
+                                <span class="air vm" style="background-color: rgb(92, 191, 76);">良&nbsp;95</span>
+                            </div>
+                            <ul class="days-weather">
+                                <li class="bui-left day">
+                                    <span class="title">今天</span>
+                                    <div class="weather-icon weather-icon-0" title="晴"></div>
+                                    <span class="temperature">
+                                        <em>20</em>°
+                                        /
+
+                                        <em>33</em>°
+
+                                    </span>
+                                </li>
+                                <li class="bui-left day">
+                                    <span class="title">明天</span>
+                                    <div class="weather-icon weather-icon-1" title="多云转多云"></div>
+                                    <span class="temperature">
+                                        <em>22</em>°
+                                        /
+
+                                        <em>33</em>°
+
+                                    </span>
+                                </li>
+                                <li class="bui-left day">
+                                    <span class="title">后天</span>
+                                    <div class="weather-icon weather-icon-0" title="晴"></div>
+                                    <span class="temperature">
+                                        <em>23</em>°
+                                        /
+
+                                        <em>34</em>°
+
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bui-right">
+                    <ul class="user-nav-list clearfix">
+
+                        <li>
+                            <a href="https://www.toutiao.com/complain/" target="blank" class="topbar-link ">侵权投诉</a>
+                        </li>
+                        <li>
+                            <div class="tt-dropdown">
+                                <a href="javascript:;" class="tt-dropdown-link topbar-link ">头条产品</a>
+                                <ul class="tt-dropdown-menu" style="display: none;">
+                                    <li class="tt-dropdown-menu__item">
+                                        <a href="https://www.wukong.com/" target="_blank" ga_event="mh_nav_others" class="layer-item">问答</a>
+                                    </li>
+                                    <li class="tt-dropdown-menu__item">
+                                        <a href="https://mp.toutiao.com/" target="_blank" ga_event="mh_nav_others" class="layer-item">头条号</a>
+                                    </li>
+                                    <li class="tt-dropdown-menu__item">
+                                        <a href="https://tuchong.com/?utm_source=toutiao&amp;utm_medium=pc_header" target="_blank" ga_event="mh_nav_others" class="layer-item">图虫</a>
+                                    </li>
+                                    <li class="tt-dropdown-menu__item">
+                                        <a href="https://stock.tuchong.com/?source=ttweb" target="_blank" ga_event="mh_nav_others" class="layer-item">正版图库</a>
+                                    </li>
+                                    <li class="tt-dropdown-menu__item">
+                                        <a href="https://www.oceanengine.com/?source=pchometop" target="_blank" ga_event="mh_nav_ad" class="layer-item">广告投放</a>
+                                    </li>
+                                    <li class="tt-dropdown-menu__item">
+                                        <a href="http://s.pstatp.com/site/motor/" target="_blank" ga_event="mh_nav_others" class="layer-item">懂车帝</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- container -->
+        <div class="bui-box container">
+            <div ga_event="channel_click" class="bui-left index-channel">
+                @Html.Partial("_MenuNews")
+            </div>
+            <div class="bui-left index-content">
+                <div class="ugcBox sopred">
+                    这是一个轮播，或者是一个输入，或者是一个展示asdasd
+                </div>
+                <div class="feed-infinite-wrapper">
+                    <div class="loading ball-pulse" style="/* display: none; */">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <span>推荐中⋅⋅⋅</span>
+                    </div>
+                    <div>
+                        <div class="msg-alert msg-alert-hidden">
+                            <span>为您推荐了10篇文章</span>
+
+                        </div>
+                        <div class="msgAlert-place" style="">
+                            <div ga_event="refresh_float_click" class="msg-alert">
+                                <span>您有未读新闻，点击查看</span>
+                                <i class="bui-icon icon-close_small" style="font-size: 15px; color: rgb(255, 255, 255);"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="app" infinite-scroll-disabled="loading" infinite-scroll-immediate-check="containerCheck" v-infinite-scroll="container" infinite-scroll-immediate-check-count="containerCheckCount" infinite-scroll-distance="80">
+                        <li class="">
+                            <div class="no-mode">
+                                <div ga_event="article_title_click" class="title-box limit-box">
+                                    <a href="#" target="_blank" class="link">习近平将对朝鲜民主主义人民共和国进行国事访问</a>
+                                </div>
+                                <a rel="noopener noreferrer" target="_blank" href="https://www.xuexi.cn/" class="xuexi"></a>
+                                <div class="bui-box footer-bar">
+                                    <div class="bui-left footer-bar-left">
+                                        <a href="#" target="_blank" ga_event="article_tag_click" class="footer-bar-action tag tag-style-other">时政</a>
+                                        <a href="#" target="_blank" ga_event="article_avatar_click" class="footer-bar-action media-avatar">
+                                            <img src="/css2js/news_files/xinhuashe.jpg" lazy="loaded">
+                                        </a>
+                                        <a href="#" target="_blank" ga_event="article_name_click" class="footer-bar-action source">&nbsp;新华网客户端&nbsp;⋅</a>
+                                        <a href="#comment_area" target="_blank" ga_event="article_comment_click" class="footer-bar-action source">&nbsp;669评论&nbsp;⋅</a>
+                                        <span class="footer-bar-action">&nbsp;22分钟前</span>
+                                    </div>
+                                    <div class="bui-right">
+                                        <div ga_event="dislike_click" class="action-dislike" dislikeurl="/api/dislike/">
+                                            <i class="bui-icon icon-close_small" style="font-size: 16px; color: rgb(221, 221, 221);"></i>
+                                            不感兴趣
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div ga_event="article_item_click" class="bui-box single-mode">
+                                <div ga_event="article_img_click" class="bui-left single-mode-lbox">
+                                    <a href="/group/6704386768575136260/" target="_blank" class="img-wrap">
+                                        <img class="lazy-load-img" src="//p1.pstatp.com/list/190x124/pgc-image/RTsz2wNBoVpIAz" lazy="loaded">
+                                        <!---->
+                                    </a>
+                                </div>
+                                <div class="single-mode-rbox">
+                                    <div class="single-mode-rbox-inner">
+                                        <div ga_event="article_title_click" class="title-box">
+                                            <a href="/group/6704386768575136260/" target="_blank" class="link">杭州95后骑警小哥给骑电动车的姑娘定了全责！半个月后，对方竟给他寄来了防晒霜和一封信</a>
+                                        </div>
+                                        <div class="bui-box footer-bar">
+                                            <div class="bui-left footer-bar-left">
+                                                <a href="news_society" target="_blank" ga_event="article_tag_click" class="footer-bar-action tag tag-style-society">社会</a>
+                                                <a href="/c/user/50502346296/" target="_blank" ga_event="article_avatar_click" class="footer-bar-action media-avatar">
+                                                    <img src="//p7.pstatp.com/large/b726000628f3d294ca51" lazy="loaded">
+                                                </a>
+                                                <a href="/c/user/50502346296/" target="_blank" ga_event="article_name_click" class="footer-bar-action source">&nbsp;中国经济网&nbsp;⋅</a>
+                                                <a href="/group/6704386768575136260//#comment_area" target="_blank" ga_event="article_comment_click" class="footer-bar-action source">&nbsp;116评论&nbsp;⋅</a>
+                                                <span class="footer-bar-action">&nbsp;4分钟前</span>
+                                                <!---->
+                                                <!---->
+                                                <!---->
+                                            </div>
+                                            <div class="bui-right">
+                                                <div ga_event="dislike_click" class="action-dislike" dislikeurl="/api/dislike/">
+                                                    <i class="bui-icon icon-close_small" style="font-size: 16px; color: rgb(221, 221, 221);"></i>
+                                                    不感兴趣
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div ga_event="refresh_item_click" class="refresh-mode">
+                                <span>刚刚看到这里</span>
+                                &nbsp;点击刷新&nbsp;
+                                <i class="bui-icon icon-refresh" style="font-size: 12px; color: rgb(42, 144, 215);"></i>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div ga_event="article_item_click" class="no-mode">
+                                <div ga_event="article_title_click" class="title-box">
+                                    <a href="https://www.toutiao.com/group/6703413666017968644/" target="_blank" class="link">“从团结合作中获取力量”——记国家主席习近平2019年夏中亚之行</a>
+                                </div>
+                                <div class="bui-box footer-bar">
+                                    <div class="bui-left footer-bar-left">
+                                        <a href="https://www.toutiao.com/search/?keyword=%E6%97%B6%E6%94%BF" target="_blank" ga_event="article_tag_click" class="footer-bar-action tag tag-style-other">时政</a>
+                                        <a href="https://www.toutiao.com/c/user/4377795668/" target="_blank" ga_event="article_avatar_click" class="footer-bar-action media-avatar">
+                                            <img src="/css2js/news_files/720bef0bd08a4e98b6224bba730c5d98.jpg" lazy="loaded">
+                                        </a>
+                                        <a href="https://www.toutiao.com/c/user/4377795668/" target="_blank" ga_event="article_name_click" class="footer-bar-action source">&nbsp;新华网客户端&nbsp;⋅</a>
+                                        <a href="https://www.toutiao.com/group/6703413666017968644//#comment_area" target="_blank" ga_event="article_comment_click" class="footer-bar-action source">&nbsp;978评论&nbsp;⋅</a>
+                                        <span class="footer-bar-action">&nbsp;22分钟前</span>
+                                    </div>
+                                    <div class="bui-right">
+                                        <div ga_event="dislike_click" class="action-dislike" dislikeurl="/api/dislike/">
+                                            <i class="bui-icon icon-close_small" style="font-size: 16px; color: rgb(221, 221, 221);"></i>
+                                            不感兴趣
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div ga_event="article_item_click" class="no-mode">
+                                <div ga_event="article_title_click" class="title-box">
+                                    <a href="https://www.toutiao.com/group/6703402358069527051/" target="_blank" class="link">他身患多种疾病，却活到93岁，是最后一位去世的元帅，他的长寿之谜到底是什么呢？</a>
+                                </div>
+                                <div class="bui-box footer-bar">
+                                    <div class="bui-left footer-bar-left">
+                                        <a href="https://www.toutiao.com/news_health" target="_blank" ga_event="article_tag_click" class="footer-bar-action tag tag-style-other">健康</a>
+                                        <a href="https://www.toutiao.com/c/user/52239293810/" target="_blank" ga_event="article_avatar_click" class="footer-bar-action media-avatar">
+                                            <img src="/css2js/news_files/66bb0004ee5b33080ff0.jpg" lazy="loaded">
+                                        </a>
+                                        <a href="https://www.toutiao.com/c/user/52239293810/" target="_blank" ga_event="article_name_click" class="footer-bar-action source">&nbsp;文汇网&nbsp;⋅</a>
+                                        <a href="https://www.toutiao.com/group/6703402358069527051//#comment_area" target="_blank" ga_event="article_comment_click" class="footer-bar-action source">&nbsp;56评论&nbsp;⋅</a>
+                                        <span class="footer-bar-action">&nbsp;22分钟前</span>
+                                    </div>
+                                    <div class="bui-right">
+                                        <div ga_event="dislike_click" class="action-dislike" dislikeurl="/api/dislike/">
+                                            <i class="bui-icon icon-close_small" style="font-size: 16px; color: rgb(221, 221, 221);"></i>
+                                            不感兴趣
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div ga_event="refresh_item_click" class="refresh-mode">
+                                <span>22分钟前看到这里</span>
+                                &nbsp;点击刷新&nbsp;
+
+                                <i class="bui-icon icon-refresh" style="font-size: 12px; color: rgb(42, 144, 215);"></i>
+                            </div>
+                        </li>
+                        <li class=" ">
+                            <div ga_event="ad_item_click" class="more-mode">
+                                <div ga_event="ad_title_click" class="title-box">
+                                    <a href="#" target="_blank" class="link">这传奇你卸载算我输！爆率9.8，一刀满仓，好玩不花钱！</a>
+                                </div>
+                                <div ga_event="ad_img_click" class="bui-box img-list">
+                                    <a href="#" target="_blank" class="img-wrap img-item">
+                                        <img class="lazy-load-img" src="/css2js/news_files/301553-267cf6b7dafaed55b2b9d4f69f1ede29.gif" lazy="loaded">
+                                    </a>
+                                    <a href="#" target="_blank" class="img-wrap img-item">
+                                        <img class="lazy-load-img" src="/css2js/news_files/301553-a27ced12cd399bdb022d349f058e0174.gif" lazy="loaded">
+                                    </a>
+                                    <a href="#" target="_blank" class="img-wrap img-item">
+                                        <img class="lazy-load-img" src="/css2js/news_files/301553-17046accb3edc5613a53c84a6d739d7f.gif" lazy="loaded">
+                                    </a>
+                                    <a href="#" target="_blank" class="img-wrap img-item">
+                                        <img class="lazy-load-img" src="/css2js/news_files/301553-766f7af5e7d780c8e79ff65944399296.gif" lazy="loaded">
+                                    </a>
+                                </div>
+                                <div class="bui-box footer-bar">
+                                    <div class="bui-left footer-bar-left">
+                                        <a href="#" ga_event="ad_avatar_click" class="footer-bar-action media-avatar avatar-style-1">贪</a>
+                                        <a href="#" target="_blank" ga_event="ad_name_click" class="footer-bar-action source">&nbsp;贪玩游戏 · 顶新&nbsp;⋅</a>
+                                        <span class="footer-bar-action">&nbsp;21分钟前</span>
+                                        <a target="_blank" href="https://www.oceanengine.com/?source=pcfeedadtag" class="footer-bar-action ad">广告</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                    <div class="loading ball-pulse" style="display: none;">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <span>加载中⋅⋅⋅</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bui-right index-right-bar">
+                <div ga_event="index_search_click" class="search-wrapper">
+                    <div class="search-wrap">
+                        <div class="tt-autocomplete">
+                            <div class="tt-input tt-input-group tt-input-group--append">
+
+
+                                <input type="text" placeholder="请输入要搜索的内容" autocomplete="off" class="tt-input__inner">
+
+                                <div class="tt-input-group__append">
+                                    <button type="button" class="tt-button tt-button--default">
+
+
+                                        <span>搜索</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="tt-autocomplete-suggestion" style="display: none;">
+                                <div class="tt-scrollbar">
+                                    <div class="tt-autocomplete-suggestion__wrap tt-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
+                                        <ul class="tt-scrollbar__view tt-autocomplete-suggestion__list" style="position: relative;">
+                                            <div class="resize-triggers">
+                                                <div class="expand-trigger">
+                                                    <div style="width: 1px; height: 1px;"></div>
+                                                </div>
+                                                <div class="contract-trigger"></div>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <div class="tt-scrollbar__bar is-horizontal">
+                                        <div class="tt-scrollbar__thumb" style="transform: translateX(0%);"></div>
+                                    </div>
+                                    <div class="tt-scrollbar__bar is-vertical">
+                                        <div class="tt-scrollbar__thumb" style="transform: translateY(0%);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div data-v-73e9c86a="" class="outer">
+                        <div data-v-4a7e2734="" data-v-73e9c86a="" class="login inner">
+                            <p data-v-4a7e2734="" class="login-msg">
+                                登录后可以保存您的浏览喜好、评论、收藏，并与APP同步更可以发布微头条
+                            </p>
+                            <a data-v-4a7e2734="" href="https://sso.toutiao.com/">
+                                <button data-v-4a7e2734="" class="login-button">登录</button>
+                            </a>
+                            <ul data-v-4a7e2734="" class="third-login">
+                                <li data-v-4a7e2734="" data-pid="qzone_sns" class="sns qq">
+                                    <span data-v-4a7e2734="">QQ</span>
+                                </li>
+                                <li data-v-4a7e2734="" data-pid="weixin" class="sns weixin">
+                                    <span data-v-4a7e2734="">微信</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-struct bui-box">
+                    <div id="hotNewsWrap" class="bui-box">
+                        <div class="pane-module">
+                            <div class="module-head">24小时热闻</div>
+                            <ul ga_event="click_hot_news" class="module-content article-list">
+                                <li class="article-item">
+                                    <a href="#" target="_blank" class="news-link">
+                                        <div class="module-pic news-pic">
+                                            <img src="~/css2js/news_files/demo.jpg" lazy="loaded">
+                                        </div>
+                                        <div class="news-inner">
+                                            <p class="module-title">每月跑不到124公里扣200元？招行：个别支行增设惩罚条款</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="article-item">
+                                    <a href="#" target="_blank" class="news-link">
+                                        <div class="module-pic news-pic"> <img src="~/css2js/news_files/demo.jpg" lazy="loaded"> </div> <div class="news-inner"> <p class="module-title">Baby地震逃生！与助理跑下20层楼发文报平安</p> </div>
+                                    </a>
+                                </li>
+                                <li class="article-item">
+                                    <a href="#" target="_blank" class="news-link"> <div class="module-pic news-pic"> <img src="~/css2js/news_files/d8a8754528df488bb396b01a4ddcdd79.jpg" lazy="loaded"> </div> <div class="news-inner"> <p class="module-title">卷走男友10亿，换头抢闺蜜男友？600万粉丝的“第一网红”要凉</p> </div> </a>
+                                </li>
+                                <li class="article-item"> <a href="https://www.toutiao.com/group/6703596450657337864/" target="_blank" class="news-link"> <div class="module-pic news-pic"> <img src="~/css2js/news_files/RTgWxrwAjyFawd.jpg" lazy="loaded"> </div> <div class="news-inner"> <p class="module-title">中航退出地产业务 多处项目无人接盘</p> </div> </a> </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="pane-module">
+                    <div class="module-head">精彩图片</div>
+                    <ul ga_event="click_pictures_recommend" class="module-content bui-box picture-list">
+                        <li class="bui-left picture-item">
+                            <a href="https://www.toutiao.com/group/6703530026937090572/" target="_blank" class="link">
+                                <div class="module-pic picture-img">
+                                    <img alt="" src="/css2js/news_files/720bef0bd08a4e98b6224bba730c5d98.jpg" lazy="loaded">
+                                    <i class="module-tag">
+                                        <span>6图</span>
+                                    </i>
+                                </div>
+                                <p>她用十几分钟出场征服观众，《破冰行动》成为最靓女演员，气质佳</p>
+                            </a>
+                        </li>
+                        <li class="bui-left picture-item">
+                            <a href="https://www.toutiao.com/group/6703098291887800835/" target="_blank" class="link">
+                                <div class="module-pic picture-img">
+                                    <img alt="" src="/css2js/news_files/25feda217d1643c9b1787f2627ddd537.jpg" lazy="loaded">
+                                    <i class="module-tag">
+                                        <span>11图</span>
+                                    </i>
+                                </div>
+                                <p>高圆圆最美的11张照片欣赏</p>
+                            </a>
+                        </li>
+                        <li class="bui-left picture-item">
+                            <a href="https://www.toutiao.com/group/6703443133381739020/" target="_blank" class="link">
+                                <div class="module-pic picture-img">
+                                    <img alt="" src="/css2js/news_files/ef80805c30324b3ab6574a7bbc4a5347.jpg" lazy="loaded">
+                                    <i class="module-tag">
+                                        <span>30图</span>
+                                    </i>
+                                </div>
+                                <p>灵渠、天生桥群、湘江源头、秦家大院——广西桂林超美旅游大景观</p>
+                            </a>
+                        </li>
+                        <li class="bui-left picture-item">
+                            <a href="https://www.toutiao.com/group/6703429249052705288/" target="_blank" class="link">
+                                <div class="module-pic picture-img">
+                                    <img alt="" src="/css2js/news_files/7e8c5a07c80140079e560c836af24d7e.jpg" lazy="loaded">
+                                    <i class="module-tag">
+                                        <span>17图</span>
+                                    </i>
+                                </div>
+                                <p>哈尔滨松花江上：冬日的採冰场，夏日的日光浴场</p>
+                            </a>
+                        </li>
+                        <li class="bui-left picture-item">
+                            <a href="https://www.toutiao.com/group/6703450459102773763/" target="_blank" class="link">
+                                <div class="module-pic picture-img">
+                                    <img alt="" src="/css2js/news_files/ce55dc7ef58149ef8de8b9ef2da54ae8.jpg" lazy="loaded">
+                                    <i class="module-tag">
+                                        <span>8图</span>
+                                    </i>
+                                </div>
+                                <p>走进海军退役的279潜艇，内部设施密密麻麻让人眼花缭乱</p>
+                            </a>
+                        </li>
+                        <li class="bui-left picture-item">
+                            <a href="https://www.toutiao.com/group/6703500675843621388/" target="_blank" class="link">
+                                <div class="module-pic picture-img">
+                                    <img alt="" src="/css2js/news_files/0146a2be154c42b09962324032c1b3bc.jpg" lazy="loaded">
+                                    <i class="module-tag">
+                                        <span>8图</span>
+                                    </i>
+                                </div>
+                                <p>北京最牛高速即将亮相 4个收费站共有110条车道 全部ETC收费</p>
+                            </a>
+                        </li>
+                        <li class="bui-left picture-item">
+                            <a href="https://www.toutiao.com/group/6703477407141069320/" target="_blank" class="link">
+                                <div class="module-pic picture-img">
+                                    <img alt="" src="/css2js/news_files/7fa8be74b942408185ee6b2c7acd7fe4.jpg" lazy="loaded">
+                                    <i class="module-tag">
+                                        <span>10图</span>
+                                    </i>
+                                </div>
+                                <p>湖北省武汉市老照片：80年代的武汉东湖风景区</p>
+                            </a>
+                        </li>
+                        <li class="bui-left picture-item">
+                            <a href="https://www.toutiao.com/group/6703437740987384324/" target="_blank" class="link">
+                                <div class="module-pic picture-img">
+                                    <img alt="" src="/css2js/news_files/c8e8e63922b1420e88b45b6dbe0e7a6d.jpg" lazy="loaded">
+                                    <i class="module-tag">
+                                        <span>17图</span>
+                                    </i>
+                                </div>
+                                <p>大西安的小南门，老西安人日常生活打卡必去地</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pane-module">
+                    <div class="module-head">更多</div>
+
+                    <ul class="more-items-content">
+                        <li class="item">
+                            <a href="https://www.toutiao.com/about/">关于头条</a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.toutiao.com/join/">加入头条</a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.toutiao.com/report/">媒体报道</a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.toutiao.com/media_partners/">媒体合作</a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.toutiao.com/cooperation/">产品合作</a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.toutiao.com/media_cooperation/">合作说明</a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.oceanengine.com/?source=pchomemore" target="_blank">广告投放</a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.toutiao.com/contact/">联系我们</a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.toutiao.com/user_agreement/">用户协议</a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.toutiao.com/privacy_protection/">隐私政策</a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.toutiao.com/complain/">侵权投诉</a>
+                        </li>
+                        <li class="item">
+                            <a href="https://www.toutiao.com/corrupt_report/">廉洁举报</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://renzheng.toutiao.com/guide?platform=%27PC%27&amp;source=%27www.toutiao.com%27">企业认证</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pane-module">
+                    <div class="module-head">友情链接</div>
+                    <ul class="friend-links-content">
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.gmw.cn/">光明网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.cnr.cn/">央广网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.cri.cn/">国际在线</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.tibet.cn/">中国西藏网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.cankaoxiaoxi.com/">参考消息</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.huanqiu.com/">环球网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.cyol.com/">中青在线</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.youth.cn/">中青网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.haiwainet.cn/">海外网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://h5.china.com.cn/">中国网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.k618.cn/">未来网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://qianlong.com/">千龙网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.bjnews.com.cn/">新京报</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.ynet.com/">北青网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.fawan.com/">法制晚报</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.morningpost.com.cn/">北京晨报</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.bbtnews.com.cn/">北京商报</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.stardaily.com.cn/">北京娱乐信报</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.oeeee.com/">奥一网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.ycwb.com/">金羊网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.hsw.cn/">华商网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.xinmin.cn/">新民网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.rednet.cn/index.html">红网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.jschina.com.cn/">中国江苏网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.jxnews.com.cn/">中国江西网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.iqilu.com/">齐鲁网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.hinews.cn/news/">南海网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.ahwang.cn/">安徽网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.hebnews.cn/">河北新闻网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.mnw.cn/">闽南网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.hxnews.com/">海峡网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.voc.com.cn/">华声在线</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://tv.cztv.com/">中国蓝TV</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.lnd.com.cn/">北国网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.longhoo.net/">龙虎网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.timedg.com/">东莞时间网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.autohome.com.cn/">汽车之家</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.onlylady.com/">Onlylady女人志</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://123.chinaso.com/">中国搜索</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.nbd.com.cn/">每日经济新闻</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.cheshi.com/">网上车市</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.news18a.com/">网通社汽车</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.enorth.com.cn/">北方网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.hnt.gov.cn/">湖南省旅发委官网</a>
+                        </li>
+                        <li class="item">
+                            <a rel="noopener noreferrer" target="_blank" href="http://www.leju.com/">乐居网</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="company">
+                    <p class="J-company-name"> © 2019 今日头条</p> <a href="http://www.12377.cn/" target="_blank" ga_event="click_about">中国互联网举报中心</a> <a href="http://www.miibeian.gov.cn/" target="_blank" ga_event="click_about">京ICP证140141号</a> <div>
+                        <a href="http://www.miibeian.gov.cn/" target="_blank" ga_event="click_about">
+                            京ICP备12025439号-3
+                        </a> <a href="https://www.toutiao.com/license/" target="_blank" class="icp">网络文化经营许可证</a>
+                    </div> <a href="https://www.toutiao.com/business_license/" target="_blank">营业执照</a> <p>京-非经营性-2016-0081</p> <p>互联网药品信息服务资格证书</p> <a href="https://www.toutiao.com/a3642705768/" target="_blank">跟帖评论自律管理承诺书</a> <span>违法和不良信息举报：010-58341833</span> <span>举报邮箱：jubao@toutiao.com</span> <span>公司名称：北京字节跳动科技有限公司</span> <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002002023" target="_blank" ga_event="click_about"> <img src="~/css2js/news_files/gongan.png">&nbsp;京公网安备 11000002002023号 </a>
+                </div>
+            </div>
+        </div>
+        <ul class="toolbar">
+
+            <li data-v-756beef7="" class="tool-item report-item"> <a data-v-756beef7="" href="http://report.12377.cn:13225/toreportinputNormal_anis.do" target="_blank"> <img data-v-756beef7="" src="~/css2js/news_files/report_logo_15cc24e.png"> <span data-v-756beef7="">网上有害信息举报</span> </a> </li>
+            <li data-v-756beef7="" class="tool-item">
+                <a data-v-756beef7="" href="javascript:void(0);"> <i data-v-756beef7="" class="bui-icon icon-refresh" style="font-size: 16px; color: rgb(255, 255, 255);"></i> </a>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.bootcss.com/reqwest/2.0.5/reqwest.@(com)js"></script>
+    <script src="https://cdn.bootcss.com/es6-promise/4.1.1/es6-promise.@(com)js"></script>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.0/axios.js"></script>
+    <script src="https://unpkg.com/vue-infinite-scroll@2.0.2/vue-infinite-scroll.js"></script>
+
+
+
+    <script src="https://unpkg.com/vue-lazyload/vue-lazyload.@(com)js"></script>
+    <script>
+        var app = document.querySelector('.app')
+        new Vue({
+            el: app,
+            data: function () {
+                return { loading: false }
+            },
+            methods: {
+                container: function () {
+                    var self = this;
+                    self.loading = true;
+                    console.log('loading... ' + new Date());
+                    // 可选地，上面的请求可以这样做
+                    var url = 'https://www.toutiao.com/api/pc/feed/?min_behot_time=0&category=__all__&utm_source=toutiao&widen=1&tadrequire=true&as=A145ED206BB410E&cp=5D0BD46110CE2E1&_signature=8tHwmBAQr-X7nYqNTYpAgfLR8I';
+                    axios.get(url)
+
+                        .then(function (response) {
+                            debugger
+                            console.log(response);
+                            self.loading = false
+                        })
+                        .catch(function (error) {
+                            debugger
+                            console.log(error);
+                            self.loading = false
+                        });
+
+
+                    //var app = document.querySelector('.app')
+                    //var height = app.clientHeight;
+                    //app.style.height = height + 300 + 'px';
+                    //console.log('end... ' + new Date());
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>
