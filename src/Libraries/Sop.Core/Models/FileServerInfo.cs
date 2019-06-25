@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Sop.Core.Models
 {
     [Table("sop_fileserver")]
-    public abstract class FileServerInfo
+    public  class FileServerInfo
     {
         ///<Summary>
         /// Id 

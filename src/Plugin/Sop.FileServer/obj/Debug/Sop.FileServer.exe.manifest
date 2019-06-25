@@ -486,26 +486,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sop.Common.Helper.dll" size="701952">
-      <assemblyIdentity name="Sop.Common.Helper" version="0.0.4.3" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sop.Common.Serialization.dll" size="15872">
+      <assemblyIdentity name="Sop.Common.Serialization" version="1.2.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MFQ1FSQNS9cWBHtwIL8jHXZdRM2/nP2UCd4AUoH1gZY=</dsig:DigestValue>
+        <dsig:DigestValue>+ls9Glb0o/S/CCIiwwfWH5JMiB5Wc22yUtbKetNMZas=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sop.FileServer.exe" size="198552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sop.FileServer.exe" size="199064">
       <assemblyIdentity name="Sop.FileServer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XxaCTXiCzJQEMevfU/rBECWx8EQw1YmoEXmcyYPeqyM=</dsig:DigestValue>
+        <dsig:DigestValue>fCfmdqA7/Y/aw7ojxDeLJrsVcN1ojmsz6Ia6g7dvhJg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1862,13 +1862,13 @@
       <dsig:DigestValue>HPmyqnMr0MZag8VdlrqYxO1GK5NyDX/YwLzFNoO/z/s=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Sop.FileServer.exe.config" size="22439">
+  <file name="Sop.FileServer.exe.config" size="22770">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>3u1QpyroYUiaqKqotgxfYslWD4infZ2yyBq24c0up0w=</dsig:DigestValue>
+      <dsig:DigestValue>mmdaYBjFKJ/SI9J9XWosw8MDMw2f4QK5NYmDJ6dM2oY=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

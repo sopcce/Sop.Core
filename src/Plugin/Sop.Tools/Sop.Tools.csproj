@@ -33,4 +33,11 @@
     <Folder Include="wwwroot\log\" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Content Update="wwwroot\bak\launchSettings.json">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

@@ -1,20 +1,20 @@
 ﻿
 $(function () {
-    $("body").on("",)
+
 
     if ($('.playmp3-player').length < 1) {
         //debugger
         $('body').append('<div class="playmp3-player" style="width:1px;height:1px;overflow:hidden;"></div>');
     }
     $('*[mp3]').attr('title', '鼠标停留发音..').hover(function () {
-        //debugger
+
         var burl = window.location.origin;
-        if (burl == "") {
+        if (burl === "") {
             burl = window.location.protocol + "//" + window.location.host;
         }
         var mp3url = burl + $(this).attr('mp3');
 
-        //console.log("mp3:" + mp3url);
+        console.log("mp3:" + mp3url);
         MyObj.playmp3({ s: '.playmp3-player', url: mp3url });
     }, function () {
         $('.playmp3-player').html('');
@@ -48,6 +48,11 @@ $(function () {
 
 var MyObj = {
     playmp3: function (options) {
+        var burl = window.location.origin;
+        if (burl === "") {
+            burl = window.location.protocol + "//" + window.location.host;
+        }
+        var mp3swf = burl + "/en-letter/mp3.swf";
         if (window.applicationCache) {
             $(options.s).html('<audio autoplay="autoplay"' +
                 (options.loop ? ' loop="true" Repeat="true"' : '') +
@@ -58,7 +63,7 @@ var MyObj = {
         else {
             $(options.s)
                 .html(
-                    '<EMBED height="20" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" width="226" src="//www.xiao84.com/player/mp3.swf?r=' +
+                    '<embed height="20" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" width="226" src=' + mp3swf + '?r=' +
                     Math.random() +
                     '&amp;mp3=' +
                     options.url +
@@ -108,7 +113,7 @@ function doLowerCase() {
 function reset() {
     txtContent.val("");
 }
- 
+
 
 var CApp = {
     ScreenSizeType: 'S', // 小屏，如手机

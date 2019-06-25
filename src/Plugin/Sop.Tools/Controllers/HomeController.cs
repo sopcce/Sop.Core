@@ -20,7 +20,22 @@ namespace Sop.Tools.Controllers
             _context = context;
         }
         public IActionResult Index()
-        { 
+        {
+            var info = new ChangelogInfo()
+            {
+                Body = "asdasd",
+                Datadate = "2019-1-1",
+                Datecreated = DateTime.Now
+            };
+
+            var a = _context.Add(info);
+            var a1 = _context.SaveChanges();
+            var a2 = _context.ChangelogServer.ToList();
+
+
+
+
+
             return View();
         }
         public IActionResult Common()
@@ -64,7 +79,7 @@ namespace Sop.Tools.Controllers
         }
         //public IActionResult _Menu()
         //{
-           
+
         //    return PartialView("_Menu");
         //}
 

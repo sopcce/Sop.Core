@@ -203,10 +203,6 @@
       <Project>{7b4ff94a-7018-42e5-adbe-277e9b39ed5b}</Project>
       <Name>Sop.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ThirdParty\Sop.Common.Img\Sop.Common.Img.csproj">
-      <Project>{6D9C4669-CA00-4838-B190-35F4CC01C7B6}</Project>
-      <Name>Sop.Common.Img</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Img\Gif\Readme.txt" />

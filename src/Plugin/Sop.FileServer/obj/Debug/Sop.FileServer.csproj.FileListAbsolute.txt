@@ -193,8 +193,6 @@ E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Microsoft.Extensions.Primitive
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\System.Buffers.xml
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\System.Memory.xml
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\System.Numerics.Vectors.xml
-E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Sop.Common.Helper.dll
-E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Sop.Common.Helper.pdb
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Newtonsoft.Json.pdb
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\BouncyCastle.Crypto.dll
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Dapper.dll
@@ -203,3 +201,4 @@ E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\MySql.Data.dll
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Dapper.xml
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Google.Protobuf.xml
 E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\MySql.Data.xml
+E:\GitHub\STS\src\Plugin\Sop.FileServer\bin\Debug\Sop.Common.Serialization.dll

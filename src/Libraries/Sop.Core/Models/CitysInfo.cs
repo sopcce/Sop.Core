@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Sop.Core.Models
 {
     [Table("sop_citys")]
-    public abstract class CitysInfo
+    public  class CitysInfo
     {
-
+        
         ///<Summary>
         /// Id 
         ///</Summary>

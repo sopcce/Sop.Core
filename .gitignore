@@ -247,3 +247,5 @@ ModelManifest.xml
 /src/Plugin/.vs/Plugin/v15/Server/sqlite3/storage.ide-shm
 /src/Plugin/.vs/Plugin/v15/Server/sqlite3/storage.ide-wal
 /src/Plugin/.vs/config/applicationhost.config
+/html/.vs
+/html/packages

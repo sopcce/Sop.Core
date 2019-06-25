@@ -9,10 +9,10 @@ namespace Sop.Data
         /// 
         /// </summary>
         /// <param name="options"></param>
-        public SopContext (DbContextOptions<SopContext> options)
+        public SopContext(DbContextOptions<SopContext> options)
             : base(options)
         {
-            
+
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -32,5 +32,10 @@ namespace Sop.Data
         /// 
         /// </summary>
         public DbSet<CitysInfo> CitysServer { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public DbSet<ChangelogInfo> ChangelogServer { get; set; }
     }
 }
+ 

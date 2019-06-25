@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="grey" />
     <meta name="keywords" content="工具,HTML在线编辑器,互联网人工具箱">
     <meta name="description" content="工具是一个开源的工具网站,为站长和互联网从业者提供优秀的在线工具：Html编辑器等应用工具，分享当前c#、Asp.net、jq 最流行最主流的框架" />
-    <title>@ViewData["Title"] - Sop.Tools - 个人最喜欢的工具类收藏网站</title>
+    <title>@ViewData["Title"] - 个人最喜欢的工具类收藏网站</title>
     @await Html.PartialAsync("_SiteCssPartial")
     @RenderSection("Styles", required: false)
 </head>
@@ -31,6 +31,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">隐私</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="News" asp-action="Index">NEWS</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#">Disabled</a>

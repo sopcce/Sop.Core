@@ -33,7 +33,7 @@ namespace Sop.Tools
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-          
+
             //
             services.AddSingleton<INavMenuService, NavMenuService>();
 
@@ -56,7 +56,7 @@ namespace Sop.Tools
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                
+
             }
             else
             {
@@ -96,6 +96,10 @@ namespace Sop.Tools
                 routes.MapRoute(
                     name: "default1",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "default_api",
+                    template: "api/{controller}/{action}", 
+                    defaults: "api/values/get");
 
             });
 
