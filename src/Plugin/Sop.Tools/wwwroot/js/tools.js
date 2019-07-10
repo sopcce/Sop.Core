@@ -1,6 +1,21 @@
 ﻿
-$(function () {
 
+
+
+
+
+
+
+
+
+
+$(function () {
+    debugger;
+    $(".sop-are-select").sopcategory({
+
+    }, function () {
+
+    });
 
     if ($('.playmp3-player').length < 1) {
         //debugger

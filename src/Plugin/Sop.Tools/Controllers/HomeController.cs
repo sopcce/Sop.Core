@@ -23,20 +23,15 @@ namespace Sop.Tools.Controllers
         {
             var info = new ChangelogInfo()
             {
-                Body = "asdasd",
-                Datadate = "2019-1-1",
+                Body = Guid.NewGuid().ToString(),
+                Datadate =DateTime.Now.ToString("yyyy-MM-dd"),
                 Datecreated = DateTime.Now
-            };
-
+            }; 
             var a = _context.Add(info);
             var a1 = _context.SaveChanges();
-            var a2 = _context.ChangelogServer.ToList();
-
-
-
-
-
-            return View();
+            var a2 = _context.ChangelogServer.ToList();       
+            
+            return View(a2);
         }
         public IActionResult Common()
         {

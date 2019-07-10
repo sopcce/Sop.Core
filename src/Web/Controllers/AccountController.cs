@@ -66,9 +66,9 @@ namespace Sop.Web.Controllers
             {
                 _userManager = value;
             }
-        } 
+        }
         #endregion
-        
+
         #region Login
 
         //
@@ -391,7 +391,7 @@ namespace Sop.Web.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        [AcceptVerbs(HttpVerbs.Get)]
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult CaptchaCode()
         {
@@ -416,7 +416,7 @@ namespace Sop.Web.Controllers
 
         public ActionResult Demo()
         {
-           
+
             return View();
         }
 

@@ -172,8 +172,6 @@
     <Compile Include="Servers\ItemsService.cs" />
     <Compile Include="Servers\PostService.cs" />
     <Compile Include="Servers\UsersService.cs" />
-    <Compile Include="Treeview\Nodes.cs" />
-    <Compile Include="Treeview\NodesExtension.cs" />
     <Compile Include="UserContext.cs" />
     <Compile Include="ViewModel\CatalogViewModel.cs" />
     <Compile Include="ViewModel\ItemsViewModel.cs" />
@@ -189,6 +187,10 @@
     <ProjectReference Include="..\Sop.Framework\Sop.Framework.csproj">
       <Project>{7B4FF94A-7018-42E5-ADBE-277E9B39ED5B}</Project>
       <Name>Sop.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThirdParty\.Net-Common-Utility\Sop.Common\Sop.Common.csproj">
+      <Project>{76525BFF-55B4-4FA0-8607-C110F0C401F8}</Project>
+      <Name>Sop.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

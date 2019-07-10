@@ -27,8 +27,16 @@ namespace Sop.Tools.Controllers
             return View();
         }
 
-
-
+        public IActionResult CardNumber()
+        {
+            var list = _context.CitysServer.ToList();
+            return View();
+        }
+        public IActionResult GetAreInfo(long parentCode = 86)
+        {
+            var list = _context.CitysServer.Select(n => n.ParentCode == parentCode).ToList();
+            return Json(list);
+        }
 
 
 

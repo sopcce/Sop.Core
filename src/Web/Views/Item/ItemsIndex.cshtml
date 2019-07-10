@@ -7,9 +7,21 @@
 @section heads {
     <link href="~/assets/formvalidation/dist/css/formValidation.css" rel="stylesheet" />
     <link href="~/assets/bootstrap-treeview/css/bootstrap-treeview.css" rel="stylesheet" />
-
     <link href="~/assets/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet" />
+    <style>
+        .casd {
+            height: 230px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
 
+        .Error {
+            text-align: center;
+            color: #f8b700;
+            font-family: wow,Blizzard,sans-serif;
+            font-size: 9.5rem;
+        }
+    </style>
 }
 @section scripts {
     <script src="~/assets/formvalidation/dist/js/formValidation.js"></script>
@@ -22,139 +34,7 @@
     <script src="~/assets/sopcce.com/sopdate.format-1.0.js"></script>
     <script src="~/assets/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
     <script src="~/assets/bootstrap-table/dist/extensions/export-hhurz/tableExport.js"></script>
-}
-
-<style>
-    .casd {
-        height: 230px;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    .Error {
-        text-align: center;
-        color: #f8b700;
-        font-family: wow,Blizzard,sans-serif;
-        font-size: 9.5rem;
-    }
-</style>
-@Html.Partial("_CommonHead")
-<div class="row">
-
-    <input type="hidden" id="hf-itemId" value="@ViewBag.itemId" />
-
-    <input type="hidden" id="hf-selectedvalue" />
-    <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3 ">
-        <form class="form-inline">
-
-            <div class="input-group">
-                <input type="text" class="form-control" aria-label="..." id="input-search" placeholder="Search">
-                <div class="input-group-btn">
-                    <button type="button" id="btn-add" class="btn btn-danger" data-src="@SiteUrls.Instance().ItemCatalogEdit()">新增导航</button>
-
-                    <button type="button" id="btn-search" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#" class="" id="btn-addchild" data-src="@SiteUrls.Instance().ItemCatalogEdit()">选择新增</a></li>
-                        <li><a href="#" class="" id="btn-edit" data-src="@SiteUrls.Instance().ItemCatalogEdit()">选择编辑</a></li>
-                        <li><a href="#" data-src="@SiteUrls.Instance().ItemCatalogDelete()" data-id="" id="btn-delete">选择删除</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#" id="btn-clear-search">Clear</a></li>
-                        <li><a href="#" data-status="true" id="btn-disable-all">禁用</a></li>
-                        <li><a href="#" data-status="true" id="btn-check-all">全选</a></li>
-                        <li><a href="#" data-status="false" id="btn-expand-all">收缩</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </form>
-
-        <div id="catalog-treeview" data-selectedvalue="" data-checkedvalue
-             class=""></div>
-    </div>
-    <div class=" col-xs-7 col-sm-8 col-md-9 col-lg-9 " style="min-height: 600px;">
-        <div style="min-height:360px;">
-
-            <div class="" style=" ">
-
-                <div id="toolbar" class="btn-group" style="display: none">
-                    <button id="btn_post_add" type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-                    </button>
-                    <button id="btn_post_edit" type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
-                    </button>
-                    <button id="btn_post_delete" type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-                    </button>
-                </div>
-                <table id="tb_post">
-                    <tr>
-                        <td class="Error">点击树加载数据啊，点 啊</td>
-                    </tr>
-                </table>
-
-
-
-
-
-
-            </div>
-
-        </div>
-
-
-    </div>
-</div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
-            </div>
-            <div class="modal-body">
-                <form id="form-edit">
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label">名称:</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">描述:</label>
-                        <textarea class="form-control" id="message-text" style="resize:none"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary">保存</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade sop-modal-lg" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog sop-category-edit-model">
-        <!-- <div class="modal-content ">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body ">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>-->
-    </div>
-</div>
-<script>
+    <script>
     var $tree;
     var silent1 = false;
     $(function() {
@@ -220,7 +100,7 @@
                 },
                 function(data) {
                     console.log(data);
-                    if (data.type == "@((int) SystemMessageType.Success)") {
+                    if (data.type == 1) {
                         layer.msg(data.content);
                         $('#tb_post').bootstrapTable('refresh');
 
@@ -330,7 +210,7 @@
 
                 columns: [{
                     checkbox: true
-                }, 
+                },
                 {
                     field: 'title',
                     title: '标题',
@@ -758,6 +638,126 @@
 
 
     }
-</script>
+    </script>
+}
+
+
+@Html.Partial("_CommonHead")
+<div class="row">
+
+    <input type="hidden" id="hf-itemId" value="@ViewBag.itemId" />
+
+    <input type="hidden" id="hf-selectedvalue" />
+    <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3 ">
+        <form class="form-inline">
+
+            <div class="input-group">
+                <input type="text" class="form-control" aria-label="..." id="input-search" placeholder="Search">
+                <div class="input-group-btn">
+                    <button type="button" id="btn-add" class="btn btn-danger" data-src="@SiteUrls.Instance().ItemCatalogEdit()">新增导航</button>
+
+                    <button type="button" id="btn-search" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" class="" id="btn-addchild" data-src="@SiteUrls.Instance().ItemCatalogEdit()">选择新增</a></li>
+                        <li><a href="#" class="" id="btn-edit" data-src="@SiteUrls.Instance().ItemCatalogEdit()">选择编辑</a></li>
+                        <li><a href="#" data-src="@SiteUrls.Instance().ItemCatalogDelete()" data-id="" id="btn-delete">选择删除</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" id="btn-clear-search">Clear</a></li>
+                        <li><a href="#" data-status="true" id="btn-disable-all">禁用</a></li>
+                        <li><a href="#" data-status="true" id="btn-check-all">全选</a></li>
+                        <li><a href="#" data-status="false" id="btn-expand-all">收缩</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </form>
+
+        <div id="catalog-treeview" data-selectedvalue="" data-checkedvalue
+             class=""></div>
+    </div>
+    <div class=" col-xs-7 col-sm-8 col-md-9 col-lg-9 " style="min-height: 600px;">
+        <div style="min-height:360px;">
+
+            <div class="" style=" ">
+
+                <div id="toolbar" class="btn-group" style="display: none">
+                    <button id="btn_post_add" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                    </button>
+                    <button id="btn_post_edit" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+                    </button>
+                    <button id="btn_post_delete" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+                    </button>
+                </div>
+                <table id="tb_post">
+                    <tr>
+                        <td class="Error">点击树加载数据啊，点 啊</td>
+                    </tr>
+                </table>
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+            </div>
+            <div class="modal-body">
+                <form id="form-edit">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">名称:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">描述:</label>
+                        <textarea class="form-control" id="message-text" style="resize:none"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade sop-modal-lg" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog sop-category-edit-model">
+        <!-- <div class="modal-content ">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body ">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>-->
+    </div>
+</div>
+
 
 

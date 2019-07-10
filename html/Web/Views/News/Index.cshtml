@@ -748,8 +748,7 @@
                     console.log('loading... ' + new Date());
                     // 可选地，上面的请求可以这样做
                     var url = 'https://www.toutiao.com/api/pc/feed/?min_behot_time=0&category=__all__&utm_source=toutiao&widen=1&tadrequire=true&as=A145ED206BB410E&cp=5D0BD46110CE2E1&_signature=8tHwmBAQr-X7nYqNTYpAgfLR8I';
-                    axios.get(url)
-
+                    axios.post(url)
                         .then(function (response) {
                             debugger
                             console.log(response);

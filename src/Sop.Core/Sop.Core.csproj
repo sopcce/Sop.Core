@@ -59,9 +59,6 @@
     <Reference Include="Selenium.WebDriverBackedSelenium, Version=3.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriverBackedSelenium.3.10.0\lib\net45\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
-    <Reference Include="Sop.Common.Helper, Version=0.0.4.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sop.Common.Helper.0.0.3.1\lib\net461\Sop.Common.Helper.dll</HintPath>
-    </Reference>
     <Reference Include="Sop.Common.Serialization, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sop.Common.Serialization.1.2.0\lib\net46\Sop.Common.Serialization.dll</HintPath>
     </Reference>
@@ -202,6 +199,14 @@
     <ProjectReference Include="..\Sop.Framework\Sop.Framework.csproj">
       <Project>{7b4ff94a-7018-42e5-adbe-277e9b39ed5b}</Project>
       <Name>Sop.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThirdParty\.Net-Common-Utility\Sop.Common.Helper\Sop.Common.Helper.csproj">
+      <Project>{f548f554-6d94-415e-be7a-e81234eb1241}</Project>
+      <Name>Sop.Common.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThirdParty\.Net-Common-Utility\Sop.Common.Img\Sop.Common.Img.csproj">
+      <Project>{1D35D0F3-FC27-4F16-A6BF-CA72826FC492}</Project>
+      <Name>Sop.Common.Img</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

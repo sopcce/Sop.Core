@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sop.Common.Treeview;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sop.Services.Model
@@ -6,45 +7,42 @@ namespace Sop.Services.Model
     /// <summary>
     /// 用户登录实体
     /// </summary> 
-    public class CatalogInfo
+    public class CatalogInfo : NodeInfo
     {
-
-
-
-        public virtual int Id { get; set; }
+        public override int Id { get; set; }
         public virtual string UserId { get; set; }
         public virtual int ItemId { get; set; }
         public virtual int TenantId { get; set; }
         /// <summary>
         /// 分类名称
         /// </summary>
-        public virtual string Name { get; set; }
+        public override string Name { get; set; }
         /// <summary>
         /// 栏目描述
         /// </summary>
-        public virtual string Description { get; set; }
+        public override string Description { get; set; }
         /// <summary>
         /// 父id
         /// </summary>
-        public virtual int ParentId { get; set; }
+        public override int ParentId { get; set; }
         /// <summary>
         /// 父id
         /// </summary>
-        public virtual string ParentIdList { get; set; } = "";
+        public override string ParentIdList { get; set; } = "";
 
         /// <summary>
         /// 子栏目数目
         /// </summary>
-        public virtual int ChildCount { get; set; }
+        public override int ChildCount { get; set; }
 
         /// <summary>
         /// 深度
         /// </summary>
-        public virtual int Depth { get; set; } = 0;
+        public override int Depth { get; set; } = 0;
         /// <summary>
         /// 是否启用
         /// </summary>
-        public virtual bool Enabled { get; set; } = true;
+        public override bool Enabled { get; set; } = true;
 
         /// <summary>
         /// 内容计数
@@ -58,18 +56,22 @@ namespace Sop.Services.Model
         /// <summary>
         /// 排序id
         /// </summary>
-        public virtual int DisplayOrder { get; set; }
+        public override int DisplayOrder { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>
-        public virtual DateTime DateCreated { get; set; } = DateTime.Now;
+        public override DateTime DateCreated { get; set; } = DateTime.Now;
+        /// <summary>
+        /// 
+        /// </summary>
+        public override string Tags { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public override string Color { get; set; }
+        public override string Url { get; set; }
 
-        public virtual string Tags { get; set; }
-
-        public virtual string Color { get; set; }
-        public virtual string Url { get; set; }
-
-        public virtual string BackColor { get; set; }
+        public override string BackColor { get; set; }
 
     }
     public enum ViewCountTypeStatus
@@ -93,6 +95,6 @@ namespace Sop.Services.Model
     }
 
 
-   
+
 
 }

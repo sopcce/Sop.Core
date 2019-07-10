@@ -1,16 +1,12 @@
-﻿using System;
-using System.Security.Claims;
-
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 using Sop.Framework.Caching;
 using Sop.Framework.Environment;
 using Sop.Services.Model;
 using Sop.Services.Servers;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-using Microsoft.AspNet.Identity.Owin;
-using System.Net.Http;
+using System;
+using System.Security.Claims;
 using System.Web;
-using System.Web.Mvc;
 
 namespace Sop.Services.Auth
 {

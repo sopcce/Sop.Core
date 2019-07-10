@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -4253,6 +4252,7 @@
     <Content Include="assets\css\showdoc.css" />
     <Content Include="assets\css\tab-tpl.css" />
     <Content Include="assets\css\user.css" />
+    <Content Include="Content\Script\Item.js" />
     <Content Include="Content\images\banner.jpg" />
     <Content Include="Content\images\bg.png" />
     <Content Include="Content\images\cp_img_sc.png" />
@@ -4654,6 +4654,10 @@
     <ProjectReference Include="..\Sop.Services\Sop.Services.csproj">
       <Project>{5245EDD5-6A59-4C6B-B501-F7525A137C53}</Project>
       <Name>Sop.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThirdParty\.Net-Common-Utility\Sop.Common\Sop.Common.csproj">
+      <Project>{76525bff-55b4-4fa0-8607-c110f0c401f8}</Project>
+      <Name>Sop.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\ThirdParty\Microsoft.Owin.Security.Github\Microsoft.Owin.Security.Github.csproj">
       <Project>{7ef640e7-7e31-4387-acbe-c914c5ffbc04}</Project>

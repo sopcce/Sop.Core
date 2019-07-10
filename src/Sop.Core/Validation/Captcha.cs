@@ -1,4 +1,4 @@
-﻿using Sop.Common.Helper.Img.Gif;
+﻿using Sop.Common.Img.Gif;
 using Sop.Core.WebUtility;
 using Sop.Framework.Environment;
 using Sop.Framework.Utility;
@@ -227,7 +227,7 @@ namespace Sop.Core.Validation
                 DisposeImageBmp(ref bitmap);
                 //输出绘图,将图像保存到指定的流
                 bitmap.Save(stream, ImageFormat.Png);
-                animatedGifEncoder.AddFrame( Image.FromStream(stream));
+                animatedGifEncoder.AddFrame(Image.FromStream(stream));
                 stream = new MemoryStream();
             }
             animatedGifEncoder.OutPut(ref stream);

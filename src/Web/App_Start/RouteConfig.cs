@@ -35,6 +35,11 @@ namespace Sop.Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Item", action = "Index" }
             );
+            routes.MapRoute(
+              name: "Item_Index1",
+              url: "Item /{action}/{id}",
+              defaults: new { controller = "Item", action = "Index" }
+          );
             #endregion
 
             #region Account 
