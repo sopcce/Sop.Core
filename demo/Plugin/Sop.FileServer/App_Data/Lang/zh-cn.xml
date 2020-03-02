@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<keyvalues>
+  <!--Attorn-->
+  <keyvalue key="attorn_item" value="转让项目" new=""></keyvalue>
+  <keyvalue key="username" value="用户名" new=""></keyvalue>
+  <keyvalue key="receiver_name" value="项目接收者用户名" new=""></keyvalue>
+  <keyvalue key="verify_identity" value="验证身份" new=""></keyvalue>
+  <keyvalue key="your_password" value="你的登录密码" new=""></keyvalue>
+  <keyvalue key="attorn" value="转让" new=""></keyvalue>
+  <keyvalue key="close" value="关闭" new=""></keyvalue>
+
+  <!--Catalog-->
+  <keyvalue key="new_or_edit_catalog" value="新建/编辑目录" new=""></keyvalue>
+  <keyvalue key="catalog_name" value="目录名" new=""></keyvalue>
+  <keyvalue key="s_number" value="序号" new=""></keyvalue>
+  <keyvalue key="s_number_explain" value="可选：顺序数字" new=""></keyvalue>
+  <keyvalue key="last_catalog" value="上级目录" new=""></keyvalue>
+  <keyvalue key="save" value="关闭" new=""></keyvalue>
+  <keyvalue key="delete_catalog" value="删除目录" new=""></keyvalue>
+  <keyvalue key="catalog_list" value="目录列表" new=""></keyvalue>
+  <keyvalue key="click_to_edit" value="点击可编辑" new=""></keyvalue>
+
+  <!--index-->
+  <keyvalue key="help" value="帮助" new=""></keyvalue>
+  <keyvalue key="demo" value="示例" new=""></keyvalue>
+  <keyvalue key="index_login_or_register" value="登录 / 注册" new=""></keyvalue>
+  <keyvalue key="my_item" value="我的项目" new=""></keyvalue>
+  <keyvalue key="section_title1" value="ShowDoc" new=""></keyvalue>
+  <keyvalue key="section_description1" value="一个非常适合IT团队的在线API文档、技术文档工具" new=""></keyvalue>
+  <keyvalue key="section_title2" value="API文档" new=""></keyvalue>
+  <keyvalue key="section_description2" value="APP、web前端与服务器常用API来进行交互 
+  用ShowDoc可以非常方便快速地编写出美观的API文档" new=""></keyvalue>
+  <keyvalue key="section_title3" value="数据字典" new=""></keyvalue>
+  <keyvalue key="section_description3" value="好的数据字典可以很方便地向别人描述你的数据库结构
+    用ShowDoc可以编辑出美观的数字字典" new=""></keyvalue>
+  <keyvalue key="section_title4" value="说明文档" new=""></keyvalue>
+  <keyvalue key="section_description4" value="你完全可以使用 ShowDoc来编写一些工具的说明书 
+      也可以编写一些技术规范说明文档以供团队查阅" new=""></keyvalue>
+  <keyvalue key="section_title5" value="团队协作" new=""></keyvalue>
+  <keyvalue key="section_description5" value="团队权限管理机制让团队良好地协同编写文档" new=""></keyvalue>
+  <keyvalue key="section_title6" value="免费开源" new=""></keyvalue>
+  <keyvalue key="section_description6" value="ShowDoc提供免费开源的版本 
+        你可以选择将ShowDoc部署到你的服务器" new=""></keyvalue>  
+  <keyvalue key="section_title7" value="在线托管" new=""></keyvalue>
+  <keyvalue key="section_description7" value="提供安全稳定的在线文档托管服务,你可以放心地选择托管你的文档数据在云端" new=""></keyvalue>
+  <keyvalue key="section_title8" value="立即体验" new=""></keyvalue>
+  <keyvalue key="section_description8" value="超过1000+互联网团队正在使用ShowDoc" new=""></keyvalue>
+  <!--Common message-->
+  <keyvalue key="redirect_message" value="如果你的浏览器没有自动跳转，请点击此链接" new=""></keyvalue>
+  <keyvalue key="click_to_goback" value="点击这里返回上一页" new=""></keyvalue>
+  <keyvalue key="home" value="首页" new=""></keyvalue>
+  <!--item/add-->
+  <keyvalue key="item_name" value="项目名" new=""></keyvalue>
+  <keyvalue key="item_description" value="项目描述" new=""></keyvalue>
+  <keyvalue key="item_domain" value="(可选)个性域名" new=""></keyvalue>
+  <keyvalue key="item_domain_illegal" value="个性域名只能是字母或数字的组合" new=""></keyvalue>
+  <keyvalue key="domain_already_exists" value="个性域名已经存在" new=""></keyvalue>
+  <keyvalue key="visit_password_placeholder" value="访问密码（可选，私密项目请设置密码）" new=""></keyvalue>
+  <keyvalue key="submit" value="提交" new=""></keyvalue>
+  <keyvalue key="goback" value="返回" new=""></keyvalue>
+  <!--item/delete-->
+  <keyvalue key="delete_item" value="删除项目" new=""></keyvalue>
+  <keyvalue key="verify_your_identity" value="创建人登录密码" new=""></keyvalue>
+  <keyvalue key="delete" value="删除" new=""></keyvalue>
+  <keyvalue key="close" value="关闭" new=""></keyvalue>
+  <keyvalue key="personal_setting" value="关闭" new=""></keyvalue>
+  <!--item/index-->
+  <keyvalue key="personal_setting" value="个人设置" new=""></keyvalue>
+  <keyvalue key="share_home" value="分享主页" new=""></keyvalue>
+  <keyvalue key="web_home" value="网站首页" new=""></keyvalue>
+  <keyvalue key="logout" value="退出登录" new=""></keyvalue>
+  <keyvalue key="add_an_item" value="添加一个新项目" new=""></keyvalue>
+
+  <keyvalue key="add_an_item" value="新建项目" new=""></keyvalue>
+  <keyvalue key="share_my_home" value="分享我的主页" new=""></keyvalue>
+  <keyvalue key="feedback" value="反馈" new=""></keyvalue>
+  <keyvalue key="home_address" value="主页地址" new=""></keyvalue>
+  <keyvalue key="home_address_description" value="别人访问您的主页时，将可以看到您的所有公开项目（但没有新建项目等权限）。你可以复制地址给你的好友" new=""></keyvalue>
+  <!--//item/pwd-->
+  <keyvalue key="input_visit_password" value="请输入访问密码" new=""></keyvalue>
+  <keyvalue key="password" value="密码" new=""></keyvalue>
+  <keyvalue key="verification_code" value="验证码" new=""></keyvalue>
+  <keyvalue key="submit" value="提交" new=""></keyvalue>
+  <keyvalue key="login_or_register" value="登录/注册" new=""></keyvalue>
+<!--//item/show-->
+  
+  <keyvalue key="item" value="项目" new=""></keyvalue>
+  
+  <keyvalue key="share" value="分享" new=""></keyvalue>
+  <keyvalue key="export" value="导出" new=""></keyvalue>
+  <keyvalue key="update_info" value="修改信息" new=""></keyvalue>
+  <keyvalue key="manage_members" value="成员管理" new=""></keyvalue>
+  <keyvalue key="delete" value="删除" new=""></keyvalue>
+  <keyvalue key="delete" value="删除" new=""></keyvalue>
+  <keyvalue key="delete" value="删除" new=""></keyvalue>
+  <keyvalue key="delete" value="删除" new=""></keyvalue>
+  <keyvalue key="delete" value="删除" new=""></keyvalue>
+
+</keyvalues>
+ 
+ 

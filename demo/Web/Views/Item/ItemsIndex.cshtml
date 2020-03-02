@@ -1,0 +1,763 @@
+﻿
+@{
+    ViewBag.Title = "文章栏目详细页面";
+}
+
+
+@section heads {
+    <link href="~/assets/formvalidation/dist/css/formValidation.css" rel="stylesheet" />
+    <link href="~/assets/bootstrap-treeview/css/bootstrap-treeview.css" rel="stylesheet" />
+    <link href="~/assets/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet" />
+    <style>
+        .casd {
+            height: 230px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .Error {
+            text-align: center;
+            color: #f8b700;
+            font-family: wow,Blizzard,sans-serif;
+            font-size: 9.5rem;
+        }
+    </style>
+}
+@section scripts {
+    <script src="~/assets/formvalidation/dist/js/formValidation.js"></script>
+    <script src="~/assets/formvalidation/dist/js/framework/bootstrap.min.js"></script>
+    <script src="~/assets/formvalidation/dist/js/language/zh_CN.js"></script>
+
+    <script src="~/assets/bootstrap-treeview/js/bootstrap-treeview.js"></script>
+    <script src="~/assets/bootstrap-table/dist/bootstrap-table.js"></script>
+    <script src="~/assets/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/assets/sopcce.com/sopdate.format-1.0.js"></script>
+    <script src="~/assets/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
+    <script src="~/assets/bootstrap-table/dist/extensions/export-hhurz/tableExport.js"></script>
+    <script>
+    var $tree;
+    var silent1 = false;
+    $(function() {
+
+        $.post("/Item/GetCataloTree",
+            {
+                itemId: $("#hf-itemId").val()
+            },
+            function(data) {
+
+                TreeView(data);
+
+            },
+            "json");
+
+
+        TreeView1();
+
+        TreeView2();
+
+
+        TreeView3();
+    });
+
+    //新增添加post
+    function TreeView3() {
+        $('#btn_post_add').on('click', function(e) {
+            var selectedvalue=   $("#hf-selectedvalue").val();
+            window.open("/Item/PostEdit/" + selectedvalue);
+        });
+        $('#btn_post_edit').on('click', function(e) {
+            var selectedvalue = $("#hf-selectedvalue").val();
+            var arrselections = $('#tb_post').bootstrapTable('getSelections');
+            if (arrselections.length <= 0) {
+                layer.msg('请选择有效数据');
+                return false;
+            }
+            if (arrselections.length !== 1) {
+                layer.msg('请选择一条数据');
+                return false;
+            }
+
+            window.open("/Item/PostEdit/" + selectedvalue + "/" + arrselections[0].id);
+        });
+
+        //
+        $('#btn_post_delete').on('click', function (e){
+
+            var $this = this;
+            var arrselections = $('#tb_post').bootstrapTable('getSelections');
+            if (arrselections.length <= 0) {
+                layer.msg('请选择有效数据');
+                return false;
+            }
+            var arrIds = "";
+            for (var i = 0; i < arrselections.length; i++) {
+                arrIds += arrselections[i].id + ",";
+            }
+            //console.log(arrIds);
+            $.post("/Item/PostDelete",
+                {
+                    ids: arrIds
+                },
+                function(data) {
+                    console.log(data);
+                    if (data.type == 1) {
+                        layer.msg(data.content);
+                        $('#tb_post').bootstrapTable('refresh');
+
+                    } else {
+                        layer.msg(data.content);
+                    }
+                },
+                "json");
+            return false;
+        });
+
+
+
+
+
+    }
+
+
+
+
+
+    function openNewPage(postId, title) {
+
+        window.open("/P/" + postId);
+        //alert(title);
+
+    }
+    function NodeSelected() {
+
+
+
+        var selectedvalue = $('#catalog-treeview').data("selectedvalue");
+
+        var value = selectedvalue;
+        if (value === "") {
+            layer.msg("请选择或者勾选一条数据");
+            return false;
+        }
+        var arr = new Array();
+        var json = value.split(",");
+        for (var i = 0; i < json.length; i++) {
+            var valueId = json[i];
+            if (valueId !== "") {
+                arr.push(valueId);
+
+            }
+        }
+        //
+        if (arr.length !== 1 && arr.length !== 2 || (arr.length === 2 && arr[0] !== arr[1])) {
+
+            layer.msg("请选择或者勾选一条数据,");
+            return false;
+        }
+        $("#hf-selectedvalue").val(arr[0]);
+        //layer.msg("ID:" + arr[0]);
+
+        //debugger;
+        $.get("/Item/CreatePost",
+            { catalogId: arr[0] },
+            function (data) {
+                console.log(data);
+            });
+
+        $("#toolbar").show();
+        var obj = new TableInit();
+
+        obj.Init();
+        obj.cataLogId = arr[0];
+        $("#tb_post").bootstrapTable('refresh');
+
+
+
+    }
+
+    var TableInit = function () {
+        var oTableInit = new Object();
+        //初始化Table
+        oTableInit.Init = function () {
+            $('#tb_post').bootstrapTable({
+                url: '/Item/GetPostList',         //请求后台的URL（*）
+                method: 'get',                      //请求方式（*）
+                toolbar: '#toolbar',                //工具按钮用哪个容器
+                striped: false,                      //是否显示行间隔色
+                cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                pagination: true,                   //是否显示分页（*）
+                sortable: true,                     //是否启用排序
+                sortName: "id",
+                sortOrder: "asc",                   //排序方式
+                queryParams: oTableInit.queryParams,//传递参数（*）
+                sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                pageNumber: 1,                       //初始化加载第一页，默认第一页
+                pageSize: 10,                       //每页的记录行数（*）
+                pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+                search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+                strictSearch: true,
+                showColumns: true,                  //是否显示所有的列
+                showRefresh: true,                  //是否显示刷新按钮
+                minimumCountColumns: 2,             //最少允许的列数
+                clickToSelect: true,                //是否启用点击选中行
+                //height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                uniqueId: "id",                     //每一行的唯一标识，一般为主键列
+                showToggle: false,                    //是否显示详细视图和列表视图的切换按钮
+                cardView: false,                    //是否显示详细视图
+                detailView: false,                   //是否显示父子表
+                showExport: true,                     //是否显示导出
+                exportDataType: "basic",              //basic', 'all', 'selected'.
+
+                columns: [{
+                    checkbox: true
+                },
+                {
+                    field: 'title',
+                    title: '标题',
+                    class: "ssdddaa asdasd",
+                    sortable: true,
+                    formatter: function (value, row, index) {
+                        //debugger
+                        return '<a href="javascript:openNewPage(\'' + row.id + '\',\'' + row.title + '\')">' + value + '</a>';
+                    }
+                },
+                {
+                    field: 'viewcount',
+                    sortable: true,
+                    title: '访问次数'
+
+                },
+                {
+                    field: 'displayorder',
+                    title: '排序',
+                    sortable: true
+                }, {
+                    field: 'datecreated',
+                    title: '创建时间',
+                    sortable: true,
+                    formatter: function (value, row, index) {
+
+
+                        var dd = stringToDate(value, "yyyy-MM-dd hh:mm:ss");
+                        return dd;
+                    }
+                }
+
+                ]
+            });
+        };
+
+        //得到查询的参数
+        oTableInit.queryParams = function (params) {
+            //debugger
+            var temp = {
+                pageSize: params.limit,
+                pageIndex: params.offset,
+                keyword: params.search, //搜索
+                sortOrder: params.order, //排序
+                sortName: params.sort,//排序字段
+                catalogId: $("#hf-selectedvalue").val()
+            };
+            return temp;
+        };
+        oTableInit.cataLogId = function (value) {
+            return value;
+        };
+        oTableInit.onLoadError = function () {
+            alert("数据加载失败！");
+        };
+        oTableInit.customSort = function (params) {
+            //debugger
+            var temp = {
+                sortName: params.sortName,
+                sortOrder: params.sortOrder
+            };
+            return temp;
+        }
+
+        return oTableInit;
+    };
+
+
+
+    function TreeView2() {
+
+        $('#btn-delete').on('click', function (e) {
+
+            var checkedvalue = $('#catalog-treeview').data("checkedvalue");
+            var selectedvalue = $('#catalog-treeview').data("selectedvalue");
+
+            var value = checkedvalue + selectedvalue;
+            if (checkedvalue != "" || selectedvalue != "") {
+
+            }
+            //TODO 判断是否选择，先删除选的，在删除勾选的。
+            var thisUrl = $(this).data("src");
+            layer.confirm('你确定要删除选择的数据吗？', {
+                btn: ['确定', '取消'] //按钮
+            }, function () {
+                $.ajax({
+                    type: "post",
+                    url: thisUrl,
+                    data: { ids: value },
+                    success: function (data) {
+                        console.log(data);
+                        if (data.type == '1') {
+                            layer.msg(data.content);
+
+                            //debugger;
+                            //var arrlist = value.split(',');
+                            //if (arrlist.length !== 0) {
+                            //    for (var i = 0; i < arrlist.length; i++) {
+                            //        var valueId = arrlist[i];
+                            //        if (valueId !== "") {
+                            //            $(".node-sop-" + valueId).remove();
+                            //        }
+                            //    }
+                            //}
+                            window.location.reload();
+
+                        }
+                        else {
+                            layer.msg(data.content);
+
+                        }
+
+
+                    }
+                });
+
+            }, function () {
+                layer.msg("取消操作");
+            });
+
+
+
+        });
+
+        $('#btn-add').on('click', function (e) {
+            //var value = $("#hf-tree-checkedvalue").val();
+            //console.log(value);
+            //layer.msg(value);
+            var thisUrl = $(this).data("src");
+            var id = $(this).data("id");
+            var itemId = $("#hf-itemId").val();
+            console.log("catalog-setting:url_" + thisUrl + "|id_" + id);
+            $.ajax({
+                type: "get",
+                url: thisUrl,
+                data: { itemId: itemId },
+                success: function (data) {
+                    $(".sop-category-edit-model").html(data);
+                    $('.sop-modal-lg').modal('show');
+                }
+            });
+            return false;
+
+        });
+
+
+
+        $("#btn-addchild").on("click", function () {
+            var checkedvalue = $('#catalog-treeview').data("checkedvalue");
+            var selectedvalue = $('#catalog-treeview').data("selectedvalue");
+            var thisUrl = $(this).data("src");
+
+            var value = checkedvalue + selectedvalue;
+            if (value === "") {
+                layer.msg("请选择或者勾选一条数据");
+                return false;
+            }
+
+            var arr = new Array();
+            var json = value.split(",");
+            for (var i = 0; i < json.length; i++) {
+                var valueId = json[i];
+                if (valueId !== "") {
+                    arr.push(valueId);
+
+                }
+            }
+            //
+            if (arr.length !== 1 && arr.length !== 2 || (arr.length === 2 && arr[0] !== arr[1])) {
+
+                layer.msg("请选择或者勾选一条数据,");
+                return false;
+            }
+            //console.log(arr);
+            var id = $(this).data("id");
+            var itemId = $("#hf-itemId").val();
+            //debugger;
+            console.log("catalog-setting:url_" + thisUrl + "|id_" + id);
+            $.ajax({
+                type: "get",
+                url: thisUrl,
+                data: {
+                    itemId: itemId, ParentId: arr[0]
+                },
+                success: function (data) {
+                    $(".sop-category-edit-model").html(data);
+                    $('.sop-modal-lg').modal('show');
+                }
+            });
+            return false;
+
+
+        });
+
+        $("#btn-edit").on("click", function () {
+            var checkedvalue = $('#catalog-treeview').data("checkedvalue");
+            var selectedvalue = $('#catalog-treeview').data("selectedvalue");
+            var thisUrl = $(this).data("src");
+
+            var value = checkedvalue + selectedvalue;
+            if (value === "") {
+                layer.msg("请选择或者勾选一条数据");
+                return false;
+            }
+
+            var arr = new Array();
+            var json = value.split(",");
+            for (var i = 0; i < json.length; i++) {
+                var valueId = json[i];
+                if (valueId !== "") {
+                    arr.push(valueId);
+
+                }
+            }
+            //
+            if (arr.length !== 1 && arr.length !== 2 || (arr.length === 2 && arr[0] !== arr[1])) {
+
+                layer.msg("请选择或者勾选一条数据,");
+                return false;
+            }
+            var id = $(this).data("id");
+            var itemId = $("#hf-itemId").val();
+            //console.log("catalog-setting:url_" + thisUrl + "|id_" + id);
+            $.ajax({
+                type: "get",
+                url: thisUrl,
+                data: {
+                    itemId: itemId, Id: arr[0]
+                },
+                success: function (data) {
+                    $(".sop-category-edit-model").html(data);
+                    $('.sop-modal-lg').modal('show');
+                }
+            });
+            return false;
+
+
+        });
+    }
+    function TreeView1() {
+
+
+        //启用禁用
+        $('#btn-disable-all').on('click', function (e) {
+            var $this = this;
+            var status = $this.attributes["data-status"].value;
+            console.log(status);
+            if (status == "true") {
+                $this.attributes["data-status"].value = false;
+                $this.innerText = "启用";
+                $tree.treeview('disableAll', { silent: silent1 });
+            }
+            if (status == "false") {
+                $this.attributes["data-status"].value = true;
+                $this.innerText = "禁用";
+                $tree.treeview('enableAll', { silent: silent1 });
+            }
+
+
+        });
+
+        $('#btn-check-all').on('click', function (e) {
+            var $this = this;
+            var status = $this.attributes["data-status"].value;
+            console.log(status);
+            if (status == "true") {
+                $this.attributes["data-status"].value = false;
+                $this.innerText = "取消";
+                $tree.treeview('checkAll', { silent: silent1 });
+            }
+            if (status == "false") {
+                $this.attributes["data-status"].value = true;
+                $this.innerText = "全选";
+                $tree.treeview('uncheckAll', { silent: silent1 });
+            }
+
+
+        });
+
+        $('#btn-expand-all').on('click', function (e) {
+            var $this = this;
+            var status = $this.attributes["data-status"].value;
+            console.log(status);
+            if (status == "true") {
+                $this.attributes["data-status"].value = false;
+                $this.innerText = "收缩";
+
+                $tree.treeview('expandAll', { silent: silent1 });
+            }
+            if (status == "false") {
+                $this.attributes["data-status"].value = true;
+                $this.innerText = "展开";
+
+                $tree.treeview('collapseAll', { silent: silent1 });
+            }
+
+
+        });
+
+        var results = function () {
+            var pattern = $('#input-search').val();
+            var options = {
+                ignoreCase: true,
+                exactMatch: false,
+                revealResults: true
+            };
+            return $tree.treeview('search', [pattern, options]);
+        }
+        var search = function (e) {
+            results();
+            var output = '<p>' + results.length + ' matches found</p>';
+            $.each(results, function (index, result) {
+                output += '<p>- ' + result.text + '</p>';
+            });
+            console.log(output);
+            //$tree.treeview('selectNode', [results(), { silent: silent1 }]);
+
+        }
+
+        $('#btn-search').on('click', search);
+        $('#input-search').on('keyup', search);
+
+        $('#btn-clear-search').on('click', function (e) {
+            $tree.treeview('clearSearch');
+            //$tree.treeview('toggleNodeSelected', [results(), { silent: silent1 }]);
+            //$tree.treeview('unselectNode', [results(), { silent: silent1 }]);
+            $('#input-search').val('');
+
+        });
+
+    }
+
+    function TreeView(data) {
+        $tree = $('#catalog-treeview').treeview({
+            color: "#428bca",
+            levels: 11,
+            expandIcon: 'glyphicon glyphicon-chevron-right',
+            collapseIcon: 'glyphicon glyphicon-chevron-down',
+            nodeIcon: "glyphicon glyphicon-user",
+            showTags: true,
+            showBorder: true,
+            enableLinks: true,
+            showIcon: true,
+            showCheckbox: true,
+            data: data,
+            multiSelect: false,
+            onNodeSelected: function (event, node) {
+                if (typeof ($(this).attr("data-selectedvalue")) != "undefined") {
+                    var value = $(this).data("selectedvalue");
+                    if (value === "") {
+                        value = "," + node.id + ",";
+                    } else {
+                        if (value.toString().indexOf(node.id) == -1) {
+                            value = value + node.id + ",";
+                        }
+                    }
+                    $(this).data("selectedvalue", value);
+                } else {
+                    console.log("data-selectedvalue 属性未定义");
+                }
+                //
+                NodeSelected();
+            },
+            onNodeUnselected: function (event, node) {
+
+                if (typeof ($(this).attr("data-selectedvalue")) != "undefined") {
+                    var value = $(this).data("selectedvalue");
+                    if (value !== "") {
+                        var reg = "";
+                        if (value.toString().indexOf("," + node.id + ",") != -1) {
+                            reg = "," + node.id + ",";
+                        }
+                        value = value.toString().replace(reg, ',');
+                    }
+                    $(this).data("selectedvalue", value)
+                } else {
+                    console.log("data-selectedvalue 属性未定义")
+                }
+            },
+            onNodeChecked: function (event, node) {
+
+                if (typeof ($(this).attr("data-checkedvalue")) != "undefined") {
+                    var value = $(this).data("checkedvalue");
+                    if (value === "") {
+                        value = "," + node.id + ",";
+                    } else {
+                        if (value.toString().indexOf(node.id) == -1) {
+                            value = value + node.id + ",";
+                        }
+                    }
+                    $(this).data("checkedvalue", value);
+                }
+                else {
+                    console.log("data-checkedvalue 属性未定义")
+                }
+            },
+            onNodeUnchecked: function (event, node) {
+
+                if (typeof ($(this).attr("data-checkedvalue")) != "undefined") {
+                    var value = $(this).data("checkedvalue");
+                    if (value !== "") {
+                        var reg = "";
+                        if (value.toString().indexOf("," + node.id + ",") != -1) {
+                            reg = "," + node.id + ",";
+                        }
+                        value = value.toString().replace(reg, ',');
+                    }
+                    $(this).data("checkedvalue", value);
+
+                } else {
+                    console.log("data-checkedvalue 属性未定义")
+                }
+            },
+            onNodeDisabled: function (event, node) {
+                console.log('<p>' + node.text + ' was onNodeDisabled</p>');
+            },
+            onNodeEnabled: function (event, node) {
+                console.log('<p>' + node.text + ' was onNodeEnabled</p>');
+            },
+            onNodeCollapsed: function (event, node) {
+                console.log('<p>' + node.text + ' was onNodeCollapsed</p>');
+            }
+
+        });
+
+
+    }
+    </script>
+}
+
+
+@Html.Partial("_CommonHead")
+<div class="row">
+
+    <input type="hidden" id="hf-itemId" value="@ViewBag.itemId" />
+
+    <input type="hidden" id="hf-selectedvalue" />
+    <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3 ">
+        <form class="form-inline">
+
+            <div class="input-group">
+                <input type="text" class="form-control" aria-label="..." id="input-search" placeholder="Search">
+                <div class="input-group-btn">
+                    <button type="button" id="btn-add" class="btn btn-danger" data-src="@SiteUrls.Instance().ItemCatalogEdit()">新增导航</button>
+
+                    <button type="button" id="btn-search" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" class="" id="btn-addchild" data-src="@SiteUrls.Instance().ItemCatalogEdit()">选择新增</a></li>
+                        <li><a href="#" class="" id="btn-edit" data-src="@SiteUrls.Instance().ItemCatalogEdit()">选择编辑</a></li>
+                        <li><a href="#" data-src="@SiteUrls.Instance().ItemCatalogDelete()" data-id="" id="btn-delete">选择删除</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" id="btn-clear-search">Clear</a></li>
+                        <li><a href="#" data-status="true" id="btn-disable-all">禁用</a></li>
+                        <li><a href="#" data-status="true" id="btn-check-all">全选</a></li>
+                        <li><a href="#" data-status="false" id="btn-expand-all">收缩</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </form>
+
+        <div id="catalog-treeview" data-selectedvalue="" data-checkedvalue
+             class=""></div>
+    </div>
+    <div class=" col-xs-7 col-sm-8 col-md-9 col-lg-9 " style="min-height: 600px;">
+        <div style="min-height:360px;">
+
+            <div class="" style=" ">
+
+                <div id="toolbar" class="btn-group" style="display: none">
+                    <button id="btn_post_add" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                    </button>
+                    <button id="btn_post_edit" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+                    </button>
+                    <button id="btn_post_delete" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+                    </button>
+                </div>
+                <table id="tb_post">
+                    <tr>
+                        <td class="Error">点击树加载数据啊，点 啊</td>
+                    </tr>
+                </table>
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+            </div>
+            <div class="modal-body">
+                <form id="form-edit">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">名称:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">描述:</label>
+                        <textarea class="form-control" id="message-text" style="resize:none"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade sop-modal-lg" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog sop-category-edit-model">
+        <!-- <div class="modal-content ">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body ">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>-->
+    </div>
+</div>
+
+
+

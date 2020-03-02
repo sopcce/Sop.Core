@@ -1,0 +1,3 @@
+NHibernate
+StackExchange.Redis.StrongName
+Newtonsoft.Json

@@ -1,0 +1,22 @@
+﻿@using Sop.Core.Mvc.SystemMessage
+@{
+    ViewBag.Title = "Sop小秋";
+
+    var postView = ViewData.Get<List<PostViewModel>>("postView", new List<PostViewModel>());
+    ViewBag.Description = "我是@ViewBag.Description";
+}
+
+<hr/>
+<ul>
+    @for (int i = 0; i < postView.Count; i++)
+    {
+        var info = postView.ElementAt(i);
+    <li>
+        @info.Title
+        @*@info.Description*@
+
+    </li>
+    
+    }
+   
+</ul>
