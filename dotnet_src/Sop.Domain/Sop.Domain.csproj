@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Sop.Data" Version="1.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="T4Templates\Database.tt">
+            <Generator>TextTemplatingFileGenerator</Generator>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="User" />
+    </ItemGroup>
+</Project>
+

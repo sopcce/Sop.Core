@@ -1,0 +1,35 @@
+﻿@model Sop.Domain.Entity.UserAbout
+
+<div id="fh5co-about" class="animate-box">
+    <div class="container">
+        <div class="row">
+            <div class="m-auto text-center fh5co-heading">
+                <h2>About Me </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <ul class="info">
+                    <li>
+                        <span class="first-block">Full Name:</span><span class="second-block">@Model.FullName</span>
+                    </li>
+                    <li>
+                        <span class="first-block">Phone:</span><span class="second-block">@Model.Phone </span>
+                    </li>
+                    <li>
+                        <span class="first-block">Email:</span><span class="second-block">@Model.Email</span>
+                    </li>
+                    <li>
+                        <span class="first-block">Website:</span><span class="second-block">@Model.Website</span>
+                    </li>
+                    <li>
+                        <span class="first-block">Address:</span><span class="second-block">@Model.Address</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                @Html.Raw(Model.Introduce)
+            </div>
+        </div>
+    </div>
+</div>

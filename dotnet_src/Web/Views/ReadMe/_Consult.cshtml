@@ -1,0 +1,42 @@
+@model Sop.Domain.VModel.UserConsultVm
+
+<div id="fh5co-consult">
+    <div class="video fh5co-video" style="background-image: url(images/cover_bg_1.jpg);">
+        <div class="overlay"></div>
+    </div>
+    <div class="choose animate-box">
+        <h2>Contact</h2>
+        @using(Html.BeginForm("Contact","ReadMe",null,FormMethod.Post))
+        {
+            <div class="row form-group">
+                 <div class="col-md-6">
+                     @Html.TextBoxFor(n => n.FirstName, new {@class = "form-control", placeholder = "Your firstname "})
+                 </div>
+             </div>
+          
+            <div class="row form-group">
+                <div class="col-md-6">
+                    @Html.TextBoxFor(n => n.LastName, new {@class = "form-control", placeholder = "Your lastname "})
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    @Html.TextBoxFor(n => n.Email, new {@class = "form-control", placeholder = "Your email address "})
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    @Html.TextBoxFor(n => n.Subject, new {@class = "form-control", placeholder = "Your subject of this message"})
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    @Html.TextAreaFor(n => n.Message, new {@class = "form-control", cols = "30", rows = "10", placeholder = "Say something about us"})
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary">
+            </div>
+        }
+    </div>
+</div>
