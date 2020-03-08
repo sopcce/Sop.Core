@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:WebApi.Controllers.WeatherForecastController.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:WebApi.StartupConfig.AppSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.StartupConfig.AppSettings.Secret">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.EfDbBaseDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:WebApi.StartupConfig.EfDbBaseDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:WebApi.StartupConfig.TranslationDatabase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.TranslationDatabase.Resolve(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="lang"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.StartupConfig.TranslationTransformer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.TranslationTransformer.#ctor(WebApi.StartupConfig.TranslationDatabase)">
+            <summary>
+            
+            </summary>
+            <param name="translationDatabase"></param>
+        </member>
+        <member name="M:WebApi.StartupConfig.TranslationTransformer.TransformAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Routing.RouteValueDictionary)">
+            <summary>
+            
+            </summary>
+            <param name="httpContext"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

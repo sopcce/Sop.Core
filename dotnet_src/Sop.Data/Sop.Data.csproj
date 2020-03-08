@@ -1,0 +1,68 @@
+﻿ 
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;;</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.0.1</Version>
+    <Authors>sopcce@hotmail.com;</Authors>
+    <Copyright>Copyright 2019 sopcce.com</Copyright>
+    <PackageId>Sop.Data</PackageId>
+    <Description>Sop.Data数据服务
+提供数据访问CURD（EntityFrameworkCore）,和复杂的SQL（Dapper）操作。
+</Description>
+    <PackageTags>Dapper;EntityFrameworkCore;IUnitOfWork;Autofac;NetCore</PackageTags>
+    <PackageProjectUrl>https://github.com/csharphelp/Sop.Data</PackageProjectUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <RepositoryUrl>https://github.com/csharphelp/Sop.Data</RepositoryUrl>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PackageLicenseUrl>https://github.com/Sopcce</PackageLicenseUrl>
+    <RepositoryType>MIT</RepositoryType>
+    <PackageReleaseNotes>Dapper;EntityFrameworkCore;IUnitOfWork;Autofac;NetCore</PackageReleaseNotes>
+    <NeutralLanguage>en</NeutralLanguage>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.1.0</FileVersion>
+    <Company>sopcce@hotmail.com;</Company>
+    <Product>Sop.Data</Product>
+    <PackageIcon>guo.png</PackageIcon>
+  </PropertyGroup>
+  
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
+  </ItemGroup> 
+  <ItemGroup>
+    <Compile Remove="CronExpression.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Castle.Core" Version="4.4.0" />
+    <PackageReference Include="Dapper" Version="1.60.6" />
+ 
+    <!--<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />--> 
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\guo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+    
+
+</Project>
+
