@@ -1,17 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Sop.Data" Version="1.0.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
     </ItemGroup>
     <ItemGroup>
         <None Update="T4Templates\Database.tt">
             <Generator>TextTemplatingFileGenerator</Generator>
         </None>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="User" />
     </ItemGroup>
 </Project>
 

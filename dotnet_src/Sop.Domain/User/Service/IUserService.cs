@@ -16,5 +16,13 @@ namespace Sop.Domain.Service
         /// <param name="userId"></param>
         /// <returns></returns>
         ReadMeVm GetReadMeVmByUserId(long userId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        AuthenticateModel Authenticate(string username, string password);
     }
 }

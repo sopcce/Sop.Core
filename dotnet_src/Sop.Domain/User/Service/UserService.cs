@@ -1,9 +1,15 @@
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Sop.Data;
+using Sop.Domain;
 using Sop.Domain.Entity;
 using Sop.Domain.Repository;
 using Sop.Domain.VModel;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
 
 namespace Sop.Domain.Service
 {
@@ -18,7 +24,9 @@ namespace Sop.Domain.Service
         private readonly IUserProjectRepository _userProjectRepository;
         private readonly IUserRepository _userRepository;
         private readonly IUserWorkRepository _userWorkRepository;
-        
+        private readonly AppSettings _appSettings;
+
+       
 
         public UserService(IUserRepository userRepository,
                            IUserAboutRepository userAboutRepository,
@@ -26,7 +34,8 @@ namespace Sop.Domain.Service
                            IUserFeaturesRepository userFeaturesRepository,
                            IUserSkillRepository userSkillRepository,
                            IUserProjectRepository userProjectRepository,
-                           IUnitOfWork unitOfWork)
+                           IUnitOfWork unitOfWork,
+                           IOptions<AppSettings> appSettings)
         {
             _userRepository = userRepository;
             _userAboutRepository = userAboutRepository;
@@ -66,6 +75,41 @@ namespace Sop.Domain.Service
 
 
             return readMeVm;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public AuthenticateModel Authenticate(string username, string password)
+        {
+            var user = _userRepository.TableNoTracking.SingleOrDefault(x => x.UserName == username && x.PassWord == password);
+
+            // return null if user not found
+            if (user == null)
+                return null;
+
+            var userModel = new AuthenticateModel();
+            // authentication successful so generate jwt token
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.Id.ToString(),"")
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+
+            userModel.Username = user.UserName;            
+            userModel.Token = tokenHandler.WriteToken(token);
+
+            return userModel;
         }
     }
 }

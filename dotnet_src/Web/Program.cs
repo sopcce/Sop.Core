@@ -17,13 +17,12 @@ namespace Web
         {
             return WebHost.CreateDefaultBuilder(args)
                           .CaptureStartupErrors(true)
-                          .UseSetting("detailedErrors", "true")
-                           // .UseUrls("https://localhost:5101", "http://localhost:5102")
-                           // .UseKestrel(o =>
-                           // {
-                           //     o.Listen(IPAddress.Any, 5101); //HTTP port
-                           //     o.Listen(IPAddress.Any, 5102); //HTTPS port
-                           // })
+                           .ConfigureLogging(logging =>
+                            {
+                                logging.ClearProviders();
+                                logging.AddConsole();
+                           })
+                          .UseSetting("detailedErrors", "true") 
                           .UseStartup<Startup>();
         }
     }
