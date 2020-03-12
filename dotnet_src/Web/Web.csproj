@@ -5,15 +5,13 @@
   </PropertyGroup>
 
 
-  <ItemGroup> 
-    <PackageReference Include="Sop.Data" Version="1.0.0" />
-  </ItemGroup>
-
-
   <ItemGroup>
+    <ProjectReference Include="..\Sop.Core\Sop.Core.csproj" />
+    <ProjectReference Include="..\Sop.Data\Sop.Data.csproj" />
     <ProjectReference Include="..\Sop.Domain\Sop.Domain.csproj">
       <GlobalPropertiesToRemove>;WebPublishProfileFile</GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\WebApi\WebApi.csproj" />
   </ItemGroup>
 
 </Project>

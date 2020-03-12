@@ -3,13 +3,16 @@
         <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Sop.Data" Version="1.0.0" />
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
     </ItemGroup>
     <ItemGroup>
         <None Update="T4Templates\Database.tt">
             <Generator>TextTemplatingFileGenerator</Generator>
         </None>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Sop.Core\Sop.Core.csproj" />
+      <ProjectReference Include="..\Sop.Data\Sop.Data.csproj" />
     </ItemGroup>
 </Project>
 

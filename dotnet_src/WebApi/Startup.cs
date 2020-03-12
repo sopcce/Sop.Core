@@ -35,7 +35,7 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllers();
 
             services.AddOptions();
             services.Configure<CookiePolicyOptions>(options =>
@@ -175,10 +175,10 @@ namespace WebApi
 
                 //c.AddSecurityDefinition("HuangLiAPP.Web", new ApiKeyScheme
                 //{
-                //    Description = @"JWT授权(数据将在请求头中进行传输) 直接在下框中输入冒号后的字符串信息，token:token字符串 ",
+                //    Description = @"JWT锟斤拷权(锟斤拷锟捷斤拷锟斤拷锟斤拷锟斤拷头锟叫斤拷锟叫达拷锟斤拷) 直锟斤拷锟斤拷锟铰匡拷锟斤拷锟斤拷锟斤拷冒锟脚猴拷锟斤拷址锟斤拷锟斤拷锟较拷锟絫oken:token锟街凤拷锟斤拷 ",
 
-                //    Name = "token",//jwt默认的参数名称
-                //    In = "header",//jwt默认存放Authorization信息的位置(请求头中)
+                //    Name = "token",//jwt默锟较的诧拷锟斤拷锟斤拷锟斤拷
+                //    In = "header",//jwt默锟较达拷锟紸uthorization锟斤拷息锟斤拷位锟斤拷(锟斤拷锟斤拷头锟斤拷)
                 //    Type = "apiKey"
                 //});
             });
@@ -210,10 +210,10 @@ namespace WebApi
 
                 //c.AddSecurityDefinition("HuangLiAPP.Web", new ApiKeyScheme
                 //{
-                //    Description = @"JWT授权(数据将在请求头中进行传输) 直接在下框中输入冒号后的字符串信息，token:token字符串 ",
+                //    Description = @"JWT锟斤拷权(锟斤拷锟捷斤拷锟斤拷锟斤拷锟斤拷头锟叫斤拷锟叫达拷锟斤拷) 直锟斤拷锟斤拷锟铰匡拷锟斤拷锟斤拷锟斤拷冒锟脚猴拷锟斤拷址锟斤拷锟斤拷锟较拷锟絫oken:token锟街凤拷锟斤拷 ",
 
-                //    Name = "token",//jwt默认的参数名称
-                //    In = "header",//jwt默认存放Authorization信息的位置(请求头中)
+                //    Name = "token",//jwt默锟较的诧拷锟斤拷锟斤拷锟斤拷
+                //    In = "header",//jwt默锟较达拷锟紸uthorization锟斤拷息锟斤拷位锟斤拷(锟斤拷锟斤拷头锟斤拷)
                 //    Type = "apiKey"
                 //});
             });
