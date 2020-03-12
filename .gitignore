@@ -250,3 +250,4 @@ ModelManifest.xml
 /html/.vs
 /html/packages
 dotnet_src/.vs
+dotnet_src/.idea
