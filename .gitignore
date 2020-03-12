@@ -249,3 +249,4 @@ ModelManifest.xml
 /src/Plugin/.vs/config/applicationhost.config
 /html/.vs
 /html/packages
+dotnet_src/.vs
