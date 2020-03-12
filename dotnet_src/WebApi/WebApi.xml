@@ -4,10 +4,47 @@
         <name>WebApi</name>
     </assembly>
     <members>
+        <member name="T:WebApi.Controllers.UsersController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.UsersController.#ctor(Sop.Domain.Service.IUserService)">
+            <summary>
+            
+            </summary>
+            <param name="userService"></param>
+        </member>
+        <member name="M:WebApi.Controllers.UsersController.Authenticate(Sop.Domain.VModel.AuthenticateModel)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UsersController.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:WebApi.Controllers.WeatherForecastController.Get">
             <summary>
             
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:WebApi.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
             <returns></returns>
         </member>
         <member name="M:WebApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
@@ -18,9 +55,7 @@
             <param name="env"></param>
         </member>
         <member name="T:WebApi.StartupConfig.AppSettings">
-            <summary>
             
-            </summary>
         </member>
         <member name="P:WebApi.StartupConfig.AppSettings.Secret">
             <summary>

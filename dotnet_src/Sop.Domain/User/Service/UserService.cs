@@ -6,6 +6,7 @@ using Sop.Domain.Entity;
 using Sop.Domain.Repository;
 using Sop.Domain.VModel;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -110,6 +111,24 @@ namespace Sop.Domain.Service
             userModel.Token = tokenHandler.WriteToken(token);
 
             return userModel;
+        }
+        /// <summary>
+        /// gets user list
+        /// </summary>
+        /// <returns></returns>
+        public List<User> GetAll()
+        {
+            return _userRepository.TableNoTracking.ToList();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool Authenticate(string username, object password)
+        {
+            throw new NotImplementedException();
         }
     }
 }

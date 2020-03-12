@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Sop.Domain.Entity;
 using Sop.Domain.VModel;
 
@@ -24,5 +25,14 @@ namespace Sop.Domain.Service
         /// <param name="password"></param>
         /// <returns></returns>
         AuthenticateModel Authenticate(string username, string password);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+
+        List<User> GetAll();
+        
     }
+
+    
 }
