@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Sop.Data;
 using Sop.Data.Repository;
@@ -10,8 +9,6 @@ namespace Sop.Domain.Repository
 {
     public class UserProjectRepository : EfCoreRepository<UserProject>, IUserProjectRepository
     {
-       
-
         /// <summary>
         /// </summary>
         /// <param name="context"></param>
@@ -20,22 +17,19 @@ namespace Sop.Domain.Repository
         }
 
 
-        
-
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="userId"></param>
-       /// <param name="pageIndex"></param>
-       /// <param name="pageSize"></param>
-       /// <returns></returns>
-        public IPageList<UserProject> GetPageListByUserId(long userId,  int pageIndex = 1,
-                                                        int pageSize = 8)
+        /// <summary>
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public IPageList<UserProject> GetPageListByUserId(long userId, int pageIndex = 1,
+                                                          int pageSize = 8)
         {
-            var query = TableNoTracking.Where(n => n.UserId == userId); 
-            
+            var query = TableNoTracking.Where(n => n.UserId == userId);
+
             query = query.OrderByDescending(n => n.StartDate);
-            var list =  query.ToPagedList(pageIndex,pageSize); 
+            var list = query.ToPagedList(pageIndex, pageSize);
             return list;
         }
     }

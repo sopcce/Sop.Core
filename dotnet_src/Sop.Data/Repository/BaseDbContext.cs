@@ -9,14 +9,14 @@ using Sop.Data.Mapping;
 namespace Sop.Data.Repository
 {
     /// <summary>
-    /// default DbContext
+    ///     default DbContext
     /// </summary>
     public class BaseDbContext : DbContext
     {
         private OnModelCreatingType _onModelCreatingType = OnModelCreatingType.UseEntity;
+
         protected BaseDbContext()
         {
-
         }
 
         public BaseDbContext(DbContextOptions options) : base(options)
@@ -37,10 +37,10 @@ namespace Sop.Data.Repository
                     foreach (var assembly in assemblies)
                     {
                         var entityTypes = assembly.GetTypes()
-                            .Where(type => !string.IsNullOrWhiteSpace(type.Namespace))
-                            .Where(type => type.IsClass)
-                            .Where(type => type.BaseType != null)
-                            .Where(type => typeof(IEntity).IsAssignableFrom(type));
+                                                  .Where(type => !string.IsNullOrWhiteSpace(type.Namespace))
+                                                  .Where(type => type.IsClass)
+                                                  .Where(type => type.BaseType != null)
+                                                  .Where(type => typeof(IEntity).IsAssignableFrom(type));
 
                         foreach (var entityType in entityTypes)
                         {
@@ -49,26 +49,34 @@ namespace Sop.Data.Repository
                             modelBuilder.Model.AddEntityType(entityType);
                         }
                     }
+
                     break;
                 case OnModelCreatingType.UseEntityMap:
                     foreach (var assembly in assemblies)
                     {
                         //dynamically load all entity and query type configurations
                         var typeConfigurations = assembly.GetTypes().Where(type =>
-                            (type.BaseType?.IsGenericType ?? false)
-                            && (type.BaseType.GetGenericTypeDefinition() == typeof(BaseMapEntityTypeConfiguration<>)
-                                || type.BaseType.GetGenericTypeDefinition() == typeof(BaseMapQueryTypeConfiguration<>)));
+                                                                               (type.BaseType?.IsGenericType ?? false)
+                                                                               && (type.BaseType
+                                                                                       .GetGenericTypeDefinition() ==
+                                                                                   typeof(BaseMapEntityTypeConfiguration
+                                                                                       <>)
+                                                                                   || type
+                                                                                     .BaseType
+                                                                                     .GetGenericTypeDefinition() ==
+                                                                                   typeof(BaseMapQueryTypeConfiguration<
+                                                                                   >)));
 
                         foreach (var typeConfiguration in typeConfigurations)
                         {
-                            var configuration = (IMappingConfiguration)Activator.CreateInstance(typeConfiguration);
+                            var configuration = (IMappingConfiguration) Activator.CreateInstance(typeConfiguration);
                             configuration.ApplyConfiguration(modelBuilder);
                         }
                     }
-                    break;
-                default:
+
                     break;
             }
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -79,52 +87,38 @@ namespace Sop.Data.Repository
             switch (_onModelCreatingType)
             {
                 case OnModelCreatingType.UseEntity:
-                    {
-                        var dulls = DependencyContext.Default.CompileLibraries
-                            .Where(x => !x.Name.StartsWith("Microsoft") && !x.Name.StartsWith("System"))
-                            .ToList();
-                        if (dulls.Any())
-                        {
-                            foreach (var dll in dulls)
-                            {
-                                if (dll.Type == "project")
-                                {
-                                    list.Add(Assembly.Load(dll.Name));
-                                }
-                            }
-                        }
-                        list.Add(Assembly.GetExecutingAssembly());
-                    }
+                {
+                    var dulls = DependencyContext.Default.CompileLibraries
+                                                 .Where(x => !x.Name.StartsWith("Microsoft") &&
+                                                             !x.Name.StartsWith("System"))
+                                                 .ToList();
+                    if (dulls.Any())
+                        foreach (var dll in dulls)
+                            if (dll.Type == "project")
+                                list.Add(Assembly.Load(dll.Name));
+                    list.Add(Assembly.GetExecutingAssembly());
+                }
                     break;
                 case OnModelCreatingType.UseEntityMap:
-                    {
-                        var dulls = DependencyContext.Default.CompileLibraries
-                            .ToList();
-                        if (dulls.Any())
-                        {
-                            foreach (var dll in dulls)
-                            {
-                                if (dll.Type == "project")
-                                {
-                                    list.Add(Assembly.Load(dll.Name));
-                                }
-                            }
-                        } 
-                        list.Add(Assembly.GetExecutingAssembly());
-                    }
-                    break;
-                default:
+                {
+                    var dulls = DependencyContext.Default.CompileLibraries
+                                                 .ToList();
+                    if (dulls.Any())
+                        foreach (var dll in dulls)
+                            if (dll.Type == "project")
+                                list.Add(Assembly.Load(dll.Name));
+                    list.Add(Assembly.GetExecutingAssembly());
+                }
                     break;
             }
+
             return list;
         }
-
-       
     }
 
     public enum OnModelCreatingType
     {
         UseEntity,
-        UseEntityMap,
+        UseEntityMap
     }
 }

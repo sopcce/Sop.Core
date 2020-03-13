@@ -138,6 +138,5 @@ namespace Sop.Domain.Entity
         ///     二次授权启用
         /// </Summary>
         public int TwoFactorEnabled { get; set; }
-  
     }
 }

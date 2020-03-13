@@ -6,15 +6,14 @@ namespace WebApi.StartupConfig
     public class EfDbBaseDbContext : BaseDbContext
     {
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="options"></param>
         public EfDbBaseDbContext(DbContextOptions options) : base(options)
         {
             SetOnModelCreatingType(OnModelCreatingType.UseEntityMap);
         }
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)

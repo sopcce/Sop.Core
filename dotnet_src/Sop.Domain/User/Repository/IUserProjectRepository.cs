@@ -6,7 +6,6 @@ namespace Sop.Domain.Repository
     public interface IUserProjectRepository : IRepository<UserProject>
     {
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="pageIndex"></param>

@@ -9,7 +9,7 @@ namespace Sop.Data.Repository
     public static class TypeExtensions
     {
         /// <summary>
-        /// GetNonSystemAssembly
+        ///     GetNonSystemAssembly
         /// </summary>
         /// <param name="domain"></param>
         /// <returns></returns>
@@ -17,29 +17,23 @@ namespace Sop.Data.Repository
         {
             var allAssemblies = domain.GetAssemblies();
             return allAssemblies.Where(x => !x.FullName.StartsWith("Microsoft") && !x.FullName.StartsWith("System"))
-                .ToList();
+                                .ToList();
         }
 
         public static List<Assembly> GetCurrentPathAssembly(this AppDomain domain)
         {
             var dlls = DependencyContext.Default.CompileLibraries
-                .Where(x => !x.Name.StartsWith("Microsoft") && !x.Name.StartsWith("System"))
-                .ToList();
+                                        .Where(x => !x.Name.StartsWith("Microsoft") && !x.Name.StartsWith("System"))
+                                        .ToList();
             var list = new List<Assembly>();
             if (dlls.Any())
-            {
                 foreach (var dll in dlls)
-                {
                     if (dll.Type == "project")
-                    {
                         list.Add(Assembly.Load(dll.Name));
-                    }
-                }
-            }
             return list;
         }
 
-       
+
         public static bool HasImplementedRawGeneric(this Type type, Type generic)
         {
             if (type == null) throw new ArgumentNullException(nameof(type));
@@ -52,10 +46,13 @@ namespace Sop.Data.Repository
                 if (isTheRawGenericType) return true;
                 type = type.BaseType;
             }
+
             return false;
 
             bool IsTheRawGenericType(Type test)
-                => generic == (test.IsGenericType ? test.GetGenericTypeDefinition() : test);
+            {
+                return generic == (test.IsGenericType ? test.GetGenericTypeDefinition() : test);
+            }
         }
     }
 }

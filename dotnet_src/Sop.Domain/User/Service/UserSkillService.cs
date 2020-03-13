@@ -1,16 +1,12 @@
-using System;
-using System.Linq;
-using System.Linq.Expressions;
 using Sop.Data;
-using Sop.Domain.Entity;
 using Sop.Domain.Repository;
 
 namespace Sop.Domain.Service
 {
     public class UserSkillService : IUserSkillService
     {
-        private readonly IUserSkillRepository _userSkillRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserSkillRepository _userSkillRepository;
 
 
         public UserSkillService(IUserSkillRepository userSkillRepository,
@@ -19,7 +15,5 @@ namespace Sop.Domain.Service
             _userSkillRepository = userSkillRepository;
             _unitOfWork = unitOfWork;
         }
-
-      
     }
 }

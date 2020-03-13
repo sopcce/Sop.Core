@@ -1,10 +1,9 @@
-﻿ namespace Sop.Data
+﻿namespace Sop.Data
 {
     /// <summary>
-    /// IEntity
+    ///     IEntity
     /// </summary>
     public interface IEntity
     {
-
     }
 }

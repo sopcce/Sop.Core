@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="row row-pb-md">
-            @foreach (var info in Model.Where(n=>n.Type==0).ToList())
+            @foreach (var info in Model.Where(n => n.Type == 0).ToList())
             {
                 <div class="col-md-3 col-sm-6 col-xs-12 text-center">
                     <div class="chart" data-percent="@info.Percent">
@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                @foreach (var info in Model.Where(n=>n.Type==1).Skip(0).Take(4))
+                @foreach (var info in Model.Where(n => n.Type == 1).Skip(0).Take(4))
                 {
                     <div class="progress-wrap">
                         <h3>
@@ -31,21 +31,21 @@
                             </div>
                         </div>
                     </div>
-                } 
+                }
             </div>
             <div class="col-md-6">
-                 @foreach (var info in Model.Where(n=>n.Type==1).Skip(1).Take(4))
+                @foreach (var info in Model.Where(n => n.Type == 1).Skip(1).Take(4))
                 {
-                      <div class="progress-wrap">
-                          <h3>
-                              <span class="name-left">@info.Title</span><span class="value-right">@info.Percent%</span>
-                          </h3>
-                          <div class="progress">
-                              <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-                                   aria-valuenow="@info.Percent" aria-valuemin="0" aria-valuemax="100" style="width:@info.Percent%">
-                              </div>
-                          </div>
-                      </div>
+                    <div class="progress-wrap">
+                        <h3>
+                            <span class="name-left">@info.Title</span><span class="value-right">@info.Percent%</span>
+                        </h3>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
+                                 aria-valuenow="@info.Percent" aria-valuemin="0" aria-valuemax="100" style="width:@info.Percent%">
+                            </div>
+                        </div>
+                    </div>
                 }
             </div>
         </div>

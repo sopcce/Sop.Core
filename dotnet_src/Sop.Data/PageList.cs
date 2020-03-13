@@ -1,39 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Sop.Data;
 
 namespace System
 {
     /// <summary>
-    /// Paged list
+    ///     Paged list
     /// </summary>
     /// <typeparam name="T">T</typeparam>
     [Serializable]
-    public class PageList<T> : List<T>, IPageList<T> 
-    { 
+    public class PageList<T> : List<T>, IPageList<T>
+    {
         /// <summary>
-        /// Ctor
+        ///     Ctor
         /// </summary>
         /// <param name="source">source</param>
         /// <param name="pageIndex">Page index</param>
         /// <param name="pageSize">Page size</param>
         public PageList(IQueryable<T> source, int pageIndex, int pageSize)
         {
-            int total = source.Count();
-            this.TotalCount = total;
-            this.TotalPages = total / pageSize;
+            var total = source.Count();
+            TotalCount = total;
+            TotalPages = total / pageSize;
 
             if (total % pageSize > 0)
                 TotalPages++;
 
-            this.PageSize = pageSize;
-            this.PageIndex = pageIndex;
-            this.AddRange(source.Skip(pageIndex * pageSize).Take(pageSize).AsQueryable());
+            PageSize = pageSize;
+            PageIndex = pageIndex;
+            AddRange(source.Skip(pageIndex * pageSize).Take(pageSize).AsQueryable());
         }
 
         /// <summary>
-        /// Ctor
+        ///     Ctor
         /// </summary>
         /// <param name="source">source</param>
         /// <param name="pageIndex">Page index</param>
@@ -46,13 +45,13 @@ namespace System
             if (TotalCount % pageSize > 0)
                 TotalPages++;
 
-            this.PageSize = pageSize;
-            this.PageIndex = pageIndex;
-            this.AddRange(source.Skip(pageIndex * pageSize).Take(pageSize).ToList());
+            PageSize = pageSize;
+            PageIndex = pageIndex;
+            AddRange(source.Skip(pageIndex * pageSize).Take(pageSize).ToList());
         }
 
         /// <summary>
-        /// Ctor
+        ///     Ctor
         /// </summary>
         /// <param name="source">source</param>
         /// <param name="pageIndex">Page index</param>
@@ -66,33 +65,33 @@ namespace System
             if (TotalCount % pageSize > 0)
                 TotalPages++;
 
-            this.PageSize = pageSize;
-            this.PageIndex = pageIndex;
-            this.AddRange(source);
+            PageSize = pageSize;
+            PageIndex = pageIndex;
+            AddRange(source);
         }
+
         /// <summary>
-        /// 
         /// </summary>
         public int PageIndex { get; private set; }
+
         /// <summary>
-        /// 
         /// </summary>
         public int PageSize { get; private set; }
+
         /// <summary>
-        /// 
         /// </summary>
         public int TotalCount { get; private set; }
+
         /// <summary>
-        /// 
         /// </summary>
         public int TotalPages { get; private set; }
+
         /// <summary>
-        /// 
         /// </summary>
-        public bool HasPreviousPage => (PageIndex > 0);
+        public bool HasPreviousPage => PageIndex > 0;
+
         /// <summary>
-        /// 
         /// </summary>
-        public bool HasNextPage => (PageIndex + 1 < TotalPages);
+        public bool HasNextPage => PageIndex + 1 < TotalPages;
     }
 }

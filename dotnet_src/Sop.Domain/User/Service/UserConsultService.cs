@@ -18,7 +18,7 @@ namespace Sop.Domain.Service
         }
 
         /// <summary>
-        /// /
+        ///     /
         /// </summary>
         /// <param name="userConsult"></param>
         public void Edit(UserConsultVm userConsult)
@@ -26,16 +26,15 @@ namespace Sop.Domain.Service
             var info = new UserConsult
             {
                 UserId = 1,
-                FirstName =userConsult.FirstName ,
-                LastName =userConsult.LastName ,
+                FirstName = userConsult.FirstName,
+                LastName = userConsult.LastName,
                 Email = userConsult.Email,
                 Body = userConsult.Message,
-                Subject =userConsult.Subject ,
-                CreateTime =DateTime.Now
+                Subject = userConsult.Subject,
+                CreateTime = DateTime.Now
             };
-             _userConsultRepository.Insert(info);
-             _unitOfWork.SaveChanges();
+            _userConsultRepository.Insert(info);
+            _unitOfWork.SaveChanges();
         }
-        
     }
 }

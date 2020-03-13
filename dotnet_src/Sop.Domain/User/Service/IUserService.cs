@@ -19,20 +19,15 @@ namespace Sop.Domain.Service
         ReadMeVm GetReadMeVmByUserId(long userId);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
         AuthenticateModel Authenticate(string username, string password);
+
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
-
         List<User> GetAll();
-        
     }
-
-    
 }

@@ -8,14 +8,13 @@ using Sop.Data;
 namespace System
 {
     /// <summary>
-    /// 该类包含两个ToPagedList扩展方法，
-    /// 用于将泛型IQueryable或泛型IEnumerable对象转换为泛型PagedList对象；
+    ///     该类包含两个ToPagedList扩展方法，
+    ///     用于将泛型IQueryable或泛型IEnumerable对象转换为泛型PagedList对象；
     /// </summary>
     public static class PageListExtensions
     {
-
         /// <summary>
-        /// 根据当前页索引pageIndex及每页记录数pageSize获取要分页的数据对象。
+        ///     根据当前页索引pageIndex及每页记录数pageSize获取要分页的数据对象。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="allItems">包含所有要分页数据的IQueryable对象</param>
@@ -28,15 +27,13 @@ namespace System
                 pageIndex = 1;
             var itemIndex = (pageIndex - 1) * pageSize;
             var totalItemCount = allItems.Count();
-            while (totalItemCount <= itemIndex && pageIndex > 1)
-            {
-                itemIndex = (--pageIndex - 1) * pageSize;
-            }
+            while (totalItemCount <= itemIndex && pageIndex > 1) itemIndex = (--pageIndex - 1) * pageSize;
             var pageOfItems = allItems.Skip(itemIndex).Take(pageSize);
             return new PageList<T>(pageOfItems, pageIndex, pageSize, totalItemCount);
         }
+
         /// <summary>
-        /// 根据当前页索引pageIndex及每页记录数pageSize获取要分页的数据对象。
+        ///     根据当前页索引pageIndex及每页记录数pageSize获取要分页的数据对象。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="allItems">包含所有要分页数据的IEnumerable对象</param>
@@ -49,9 +46,8 @@ namespace System
         }
 
 
-
         /// <summary>
-        /// PagedList
+        ///     PagedList
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="query"></param>
@@ -68,20 +64,12 @@ namespace System
             if (pageIndex < 1)
                 pageIndex = 1;
             var itemIndex = (pageIndex - 1) * pageSize;
-            int totalItemCount = await query.CountAsync(cancellationToken).ConfigureAwait(false);
-            while (totalItemCount <= itemIndex && pageIndex > 1)
-            {
-                itemIndex = (--pageIndex - 1) * pageSize;
-            } 
-            List<T> items = await query.Skip(itemIndex)
-                .Take(pageSize).ToListAsync(cancellationToken).ConfigureAwait(false);
+            var totalItemCount = await query.CountAsync(cancellationToken).ConfigureAwait(false);
+            while (totalItemCount <= itemIndex && pageIndex > 1) itemIndex = (--pageIndex - 1) * pageSize;
+            var items = await query.Skip(itemIndex)
+                                   .Take(pageSize).ToListAsync(cancellationToken).ConfigureAwait(false);
 
             return new PageList<T>(items, pageIndex, pageSize, totalItemCount);
         }
-
-      
-
-  
-
     }
 }

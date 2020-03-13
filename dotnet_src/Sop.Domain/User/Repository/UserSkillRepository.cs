@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Dapper;
 using Microsoft.EntityFrameworkCore;
 using Sop.Data;
 using Sop.Data.Repository;
@@ -17,7 +16,6 @@ namespace Sop.Domain.Repository
         /// <param name="context"></param>
         public UserSkillRepository(DbContext context) : base(context)
         {
-
         }
 
 
@@ -25,6 +23,7 @@ namespace Sop.Domain.Repository
         {
             return TableNoTracking.Where(n => n.UserId == userId).ToList();
         }
+
         /// <summary>
         /// </summary>
         /// <param name="predicate"></param>
@@ -40,7 +39,6 @@ namespace Sop.Domain.Repository
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="predicate"></param>
@@ -51,15 +49,11 @@ namespace Sop.Domain.Repository
                                                         int pageIndex = 1,
                                                         int pageSize = 15)
         {
-            var query = TableNoTracking.Where(n => n.UserId == userId); 
-            if (predicate!=null)
-            {
-                query = query.Where(predicate);
-            }
+            var query = TableNoTracking.Where(n => n.UserId == userId);
+            if (predicate != null) query = query.Where(predicate);
             query = query.OrderByDescending(n => n.CreateTime);
-            var list =  query.ToPagedList(pageIndex,pageSize); 
+            var list = query.ToPagedList(pageIndex, pageSize);
             return list;
         }
-        
     }
 }

@@ -6,14 +6,14 @@
     </div>
     <div class="choose animate-box">
         <h2>Contact</h2>
-        @using(Html.BeginForm("Contact","ReadMe",null,FormMethod.Post))
+        @using (Html.BeginForm("Contact", "ReadMe", null, FormMethod.Post))
         {
             <div class="row form-group">
-                 <div class="col-md-6">
-                     @Html.TextBoxFor(n => n.FirstName, new {@class = "form-control", placeholder = "Your firstname "})
-                 </div>
-             </div>
-          
+                <div class="col-md-6">
+                    @Html.TextBoxFor(n => n.FirstName, new {@class = "form-control", placeholder = "Your firstname "})
+                </div>
+            </div>
+
             <div class="row form-group">
                 <div class="col-md-6">
                     @Html.TextBoxFor(n => n.LastName, new {@class = "form-control", placeholder = "Your lastname "})

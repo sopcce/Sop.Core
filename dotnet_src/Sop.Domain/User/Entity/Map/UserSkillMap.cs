@@ -6,7 +6,8 @@ namespace Sop.Domain.Entity.Map
 {
     public class UserSkillMap : BaseMapEntityTypeConfiguration<UserSkill>
     {
-        /// <summary>sop_user_skills
+        /// <summary>
+        ///     sop_user_skills
         /// </summary>
         /// <param name="builder"></param>
         public override void Configure(EntityTypeBuilder<UserSkill> builder)

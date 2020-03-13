@@ -23,24 +23,21 @@ namespace Web
         public IConfiguration Configuration { get; }
 
         /// <summary>
-        /// This method gets called by the runtime. Use this method to add services to the container.
+        ///     This method gets called by the runtime. Use this method to add services to the container.
         /// </summary>
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllersWithViews();
             services.AddRazorPages();
 
 
-          
             services.AddOptions();
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
-
             });
 
             var connectionString = Configuration.GetConnectionString("mysql");
@@ -53,19 +50,16 @@ namespace Web
             var loggerFactory = LoggerFactory.Create(builder =>
             {
                 builder
-                    .AddFilter("Microsoft", LogLevel.Warning)
-                    .AddFilter("System", LogLevel.Warning)
-                    .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
-                    .AddConsole()
-                    .AddEventLog();
+                   .AddFilter("Microsoft", LogLevel.Warning)
+                   .AddFilter("System", LogLevel.Warning)
+                   .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
+                   .AddConsole()
+                   .AddEventLog();
             });
             ILogger logger = loggerFactory.CreateLogger<Program>();
             logger.LogInformation("Example log message");
 
-         
-            
 
-        
             services.AddSopData<EfDbBaseDbContext>(opt =>
             {
                 opt.UseMySql(connectionString);
@@ -77,7 +71,7 @@ namespace Web
             //services.AddScoped<IUserService, UserService>(); 
             var path = AppDomain.CurrentDomain?.RelativeSearchPath ?? AppDomain.CurrentDomain.BaseDirectory;
 
-            #region Debug Tests
+        #region Debug Tests
 
             //var referencedAssemblies = System.IO.Directory.GetFiles(path, "*.dll").Select(Assembly.LoadFrom).ToArray();
             //var types1 = assemblies
@@ -87,7 +81,7 @@ namespace Web
             //var implementTypes1 = types1.Where(x => x.IsClass).ToArray();
             //var interfaceTypes1 = types1.Where(x => x.IsInterface).ToArray(); 
 
-            #endregion
+        #endregion
 
 
             var files = Directory.EnumerateFiles(path, "Sop.*.dll");
@@ -106,8 +100,6 @@ namespace Web
                 if (interfaceType != null)
                     services.AddScoped(interfaceType, implementType);
             }
-           
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -128,21 +120,18 @@ namespace Web
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-             
+
             app.UseRouting();
-            app.UseCors(); 
+            app.UseCors();
             app.UseAuthentication();
             app.UseAuthorization();
-          
-            app.UseEndpoints(endpoints => {
+
+            app.UseEndpoints(endpoints =>
+            {
                 endpoints.MapControllers();
                 //endpoints.MapHub<ChatHub>("/chat");
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
-
-  
-
-   
 }

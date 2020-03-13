@@ -3,12 +3,11 @@
 namespace Sop.Data.Mapping
 {
     /// <summary>
-    /// 
     /// </summary>
-    public partial interface IMappingConfiguration
+    public interface IMappingConfiguration
     {
         /// <summary>
-        /// Apply this mapping configuration
+        ///     Apply this mapping configuration
         /// </summary>
         /// <param name="modelBuilder">The builder being used to construct the model for the database context</param>
         void ApplyConfiguration(ModelBuilder modelBuilder);

@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Mvc;
 using Sop.Domain.Service;
 using Sop.Domain.VModel;
 
@@ -22,12 +20,7 @@ namespace Web.Controllers
         public RedirectResult Contact(UserConsultVm consultVm)
         {
             _userConsultService.Edit(consultVm);
-           return Redirect("/");
+            return Redirect("/");
         }
-        
-        
-        
-        
     }
-     
 }

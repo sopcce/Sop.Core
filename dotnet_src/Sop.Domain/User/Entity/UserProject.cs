@@ -15,25 +15,22 @@ namespace Sop.Domain.Entity
         public long UserId { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public int CompanyId { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public string ProjectName { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public string RoleName { get; set; }
+
         /// <summary>
-        /// 
         /// </summary>
         public string Url { get; set; }
+
         /// <summary>
-        /// 
         /// </summary>
         public DateTime StartDate { get; set; }
 
@@ -42,23 +39,19 @@ namespace Sop.Domain.Entity
         public DateTime EndDate { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public DateTime DateCreated { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public string Performance { get; set; }
+
         /// <summary>
-        /// 
         /// </summary>
         public string ProjectDesc { get; set; }
-        
+
         /// <summary>
-        ///
         /// </summary>
         public string Pictures { get; set; }
-        
     }
 }
