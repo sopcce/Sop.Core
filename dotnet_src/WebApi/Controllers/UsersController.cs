@@ -9,7 +9,7 @@ namespace WebApi.Controllers
     /// </summary>
     [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]/[action]")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;

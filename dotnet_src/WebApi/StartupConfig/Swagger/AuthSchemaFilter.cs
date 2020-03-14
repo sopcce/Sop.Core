@@ -5,13 +5,25 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace WebApi.StartupConfig.Swagger
 {
-    public class ExamplesSchemaFilter : ISchemaFilter
+    /// <summary>
+    /// 
+    /// </summary>
+    public class AuthSchemaFilter : ISchemaFilter
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="schema"></param>
+        /// <param name="context"></param>
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
             schema.Example = GetExampleOrNullFor(context.Type);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         private IOpenApiAny GetExampleOrNullFor(Type type)
         {
             switch (type.Name)

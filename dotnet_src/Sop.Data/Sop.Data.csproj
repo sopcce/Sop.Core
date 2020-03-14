@@ -2,31 +2,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild> 
+    <Version>1.0.1</Version>
     <Authors>sopcce@hotmail.com;</Authors>
-    <Copyright>Copyright 2019 sopcce.com</Copyright>
+    <Copyright>MIT</Copyright>
     <PackageId>Sop.Data</PackageId>
-    <Description>Sop.Data数据服务
-提供数据访问CURD（EntityFrameworkCore）,和复杂的SQL（Dapper）操作。
-</Description>
+    <Description>Sop.Data数据服务,提供数据访问CURD（EntityFrameworkCore）,和复杂的SQL（Dapper）操作。</Description>
     <PackageTags>Dapper;EntityFrameworkCore;IUnitOfWork;Autofac;NetCore</PackageTags>
-    <PackageProjectUrl>https://github.com/csharphelp/Sop.Data</PackageProjectUrl>
-    <PackageIconUrl></PackageIconUrl>
-    <RepositoryUrl>https://github.com/csharphelp/Sop.Data</RepositoryUrl>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PackageLicenseUrl>https://github.com/csharphelp/Sop.Data</PackageLicenseUrl>
-    <RepositoryType>MIT</RepositoryType>
+    <PackageProjectUrl>https://github.com/csharphelp/Sop.Data</PackageProjectUrl> 
+    <RepositoryUrl>https://github.com/csharphelp/Sop.Data</RepositoryUrl> 
     <PackageReleaseNotes>Dapper;EntityFrameworkCore;IUnitOfWork;Autofac;NetCore</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
     <AssemblyVersion>0.1.0.0</AssemblyVersion>
     <FileVersion>0.1.1.0</FileVersion>
     <Company>sopcce@hotmail.com;</Company>
     <Product>Sop.Data</Product>
-    <PackageIcon>guo.png</PackageIcon>
+    <PackageIcon>favicon.ico</PackageIcon>
+    <PackageLicenseFile></PackageLicenseFile>
   </PropertyGroup>
   
   
@@ -38,6 +32,10 @@
   </ItemGroup> 
   <ItemGroup>
     <Compile Remove="CronExpression.cs" />
+  </ItemGroup> 
+  <ItemGroup>
+    <None Remove="README.md" />
+    <None Remove="README.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +52,13 @@
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="favicon.ico">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
     
 

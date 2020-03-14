@@ -3,6 +3,9 @@ using Microsoft.Extensions.Hosting;
 
 namespace WebApi
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Program
     {
         /// <summary>

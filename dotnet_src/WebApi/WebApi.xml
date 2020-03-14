@@ -6,27 +6,34 @@
     <members>
         <member name="T:WebApi.Controllers.UsersController">
             <summary>
-            
             </summary>
         </member>
         <member name="M:WebApi.Controllers.UsersController.#ctor(Sop.Domain.Service.IUserService)">
             <summary>
-            
             </summary>
             <param name="userService"></param>
         </member>
         <member name="M:WebApi.Controllers.UsersController.Authenticate(Sop.Domain.VModel.AuthenticateModel)">
             <summary>
-            
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:WebApi.Controllers.UsersController.GetAll">
             <summary>
-            
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:WebApi.Controllers.WeatherForecastController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{WebApi.Controllers.WeatherForecastController})">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
         </member>
         <member name="M:WebApi.Controllers.WeatherForecastController.Get">
             <summary>
@@ -34,22 +41,72 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WebApi.Program.Main(System.String[])">
+        <member name="T:WebApi.WeatherForecast">
             <summary>
             
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.Date">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.TemperatureC">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.TemperatureF">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.Summary">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WebApi.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.Program.Main(System.String[])">
+            <summary>
             </summary>
             <param name="args"></param>
         </member>
         <member name="M:WebApi.Program.CreateHostBuilder(System.String[])">
             <summary>
-            
             </summary>
             <param name="args"></param>
             <returns></returns>
         </member>
+        <member name="T:WebApi.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:WebApi.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
         <member name="M:WebApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
             <summary>
-            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+                This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
             </summary>
             <param name="app"></param>
             <param name="env"></param>
@@ -59,29 +116,92 @@
         </member>
         <member name="P:WebApi.StartupConfig.AppSettings.Secret">
             <summary>
+            </summary>
+        </member>
+        <member name="P:WebApi.StartupConfig.AppSettings.JwtToken">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WebApi.StartupConfig.JwtToken">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.StartupConfig.JwtToken.Issuer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.StartupConfig.JwtToken.SecretKey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WebApi.StartupConfig.EfDbBaseDbContext">
+            <summary>
             
             </summary>
         </member>
         <member name="M:WebApi.StartupConfig.EfDbBaseDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
             <summary>
-            
             </summary>
             <param name="options"></param>
         </member>
         <member name="M:WebApi.StartupConfig.EfDbBaseDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
-            
             </summary>
             <param name="modelBuilder"></param>
         </member>
-        <member name="T:WebApi.StartupConfig.TranslationDatabase">
+        <member name="T:WebApi.StartupConfig.Swagger.AssignOperationVendorExtensions">
             <summary>
             
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.Swagger.AssignOperationVendorExtensions.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:WebApi.StartupConfig.Swagger.AuthOperationFilter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.Swagger.AuthOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:WebApi.StartupConfig.Swagger.AuthSchemaFilter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.Swagger.AuthSchemaFilter.Apply(Microsoft.OpenApi.Models.OpenApiSchema,Swashbuckle.AspNetCore.SwaggerGen.SchemaFilterContext)">
+            <summary>
+            
+            </summary>
+            <param name="schema"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:WebApi.StartupConfig.Swagger.AuthSchemaFilter.GetExampleOrNullFor(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.StartupConfig.TranslationDatabase">
+            <summary>
             </summary>
         </member>
         <member name="M:WebApi.StartupConfig.TranslationDatabase.Resolve(System.String,System.String)">
             <summary>
-            
             </summary>
             <param name="lang"></param>
             <param name="value"></param>
@@ -89,18 +209,15 @@
         </member>
         <member name="T:WebApi.StartupConfig.TranslationTransformer">
             <summary>
-            
             </summary>
         </member>
         <member name="M:WebApi.StartupConfig.TranslationTransformer.#ctor(WebApi.StartupConfig.TranslationDatabase)">
             <summary>
-            
             </summary>
             <param name="translationDatabase"></param>
         </member>
         <member name="M:WebApi.StartupConfig.TranslationTransformer.TransformAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Routing.RouteValueDictionary)">
             <summary>
-            
             </summary>
             <param name="httpContext"></param>
             <param name="values"></param>

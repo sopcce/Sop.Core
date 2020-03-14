@@ -3,6 +3,10 @@ using Sop.Data.Repository;
 
 namespace WebApi.StartupConfig
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class EfDbBaseDbContext : BaseDbContext
     {
         /// <summary>

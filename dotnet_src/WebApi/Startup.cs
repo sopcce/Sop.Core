@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,21 +9,39 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 using WebApi.StartupConfig;
 using WebApi.StartupConfig.Swagger;
 
 namespace WebApi
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -44,11 +56,7 @@ namespace WebApi
 
             var connectionString = Configuration.GetConnectionString("mysql");
 
-            //IServiceCollection serviceCollection = new ServiceCollection();
-            //serviceCollection.AddLogging(builder => builder
-            //                                       .AddConsole()
-            //                                       .AddFilter(level => level >= LogLevel.Information)
-            //);
+         
             var loggerFactory = LoggerFactory.Create(builder =>
             {
                 builder
@@ -61,7 +69,7 @@ namespace WebApi
             ILogger logger = loggerFactory.CreateLogger<Program>();
             logger.LogInformation("Example log message");
 
-        #region Dependency injection
+            #region Dependency injection
 
             services.AddSopData<EfDbBaseDbContext>(opt =>
             {
@@ -72,7 +80,7 @@ namespace WebApi
 
             var path = AppDomain.CurrentDomain?.RelativeSearchPath ?? AppDomain.CurrentDomain.BaseDirectory;
 
-        #region Debug Tests
+            #region Debug Tests
 
             //var referencedAssemblies = System.IO.Directory.GetFiles(path, "*.dll").Select(Assembly.LoadFrom).ToArray();
             //var types1 = assemblies
@@ -82,7 +90,7 @@ namespace WebApi
             //var implementTypes1 = types1.Where(x => x.IsClass).ToArray();
             //var interfaceTypes1 = types1.Where(x => x.IsInterface).ToArray(); 
 
-        #endregion
+            #endregion
 
             var files = Directory.EnumerateFiles(path, "Sop.*.dll");
             var assemblies = files.Select(n => Assembly.Load(AssemblyName.GetAssemblyName(n))).ToArray();
@@ -101,18 +109,76 @@ namespace WebApi
                     services.AddScoped(interfaceType, implementType);
             }
 
-        #endregion
+            #endregion
 
 
-        #region Dynamic Controller Routing
+            #region Dynamic Controller Routing
 
             //services.AddSingleton<TranslationTransformer>();
             //services.AddSingleton<TranslationDatabase>(); 
 
-        #endregion
+            #endregion
+             
+            #region SwaggerGen
 
+          
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                   new OpenApiInfo
+                   {
+                       Title = "Test API V1",
+                       Version = "v1",
+                       Description = "A sample API for testing Swashbuckle",
+                       TermsOfService = new Uri("http://tempuri.org/terms")
+                   }
+               );
+                c.SwaggerDoc("v2",
+                    new OpenApiInfo
+                    {
+                        Title = "Test API v2",
+                        Version = "v2",
+                        Description = "A sample API for testing Swashbuckle",
+                        TermsOfService = new Uri("http://tempuri.org/terms")
+                    }
+                );
 
-        #region Jwt
+                c.OperationFilter<AuthOperationFilter>(); 
+                c.SchemaFilter<AuthSchemaFilter>();
+                c.GeneratePolymorphicSchemas();
+                c.DescribeAllParametersInCamelCase();  
+                //添加全局安全需求
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement() {
+                {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                }
+                });
+                c.AddSecurityDefinition("Token", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Token",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the Token scheme."
+                });
+                var path = Path.Combine(AppContext.BaseDirectory, "WebApi.xml");
+                c.IncludeXmlComments(path);
+
+            });
+            services.AddSwaggerGenNewtonsoftSupport(); // explicit opt-in - needs to be placed after AddSwaggerGen()
+
+            #endregion
+
+            #region Jwt
 
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
@@ -120,102 +186,32 @@ namespace WebApi
 
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+        
             services.AddAuthentication(x =>
-                     {
-                         x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                         x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                     })
-                    .AddJwtBearer(x =>
-                     {
-                         x.RequireHttpsMetadata = false;
-                         x.SaveToken = true;
-                         x.TokenValidationParameters = new TokenValidationParameters
-                         {
-                             ValidateIssuerSigningKey = true,
-                             IssuerSigningKey = new SymmetricSecurityKey(key),
-                             ValidateIssuer = false,
-                             ValidateAudience = false
-                         };
-                     });
-
-        #endregion
-
-        #region SwaggerGen
-
-            services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1",
-                             new OpenApiInfo
-                             {
-                                 Title = "Test API V1",
-                                 Version = "v1",
-                                 Description = "A sample API for testing Swashbuckle",
-                                 TermsOfService = new Uri("http://tempuri.org/terms")
-                             }
-                );
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            { 
 
-                c.OperationFilter<AssignOperationVendorExtensions>();
-
-                c.SchemaFilter<ExamplesSchemaFilter>();
-
-                c.DescribeAllParametersInCamelCase();
-
-                c.GeneratePolymorphicSchemas();
-                var path = Path.Combine(AppContext.BaseDirectory, "WebApi.xml");
-
-                c.IncludeXmlComments(path);
-
-                //c.EnableAnnotations();
-                //c.AddSecurityRequirement();
-
-                //c.AddSecurityDefinition("HuangLiAPP.Web", new ApiKeyScheme
-                //{
-                //    Description = @"JWT��Ȩ(���ݽ�������ͷ�н��д���) ֱ�����¿�������ð�ź���ַ�����Ϣ��token:token�ַ��� ",
-
-                //    Name = "token",//jwtĬ�ϵĲ�������
-                //    In = "header",//jwtĬ�ϴ��Authorization��Ϣ��λ��(����ͷ��)
-                //    Type = "apiKey"
-                //});
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = appSettings.JwtToken.Issuer,
+                    ValidAudience = appSettings.JwtToken.Issuer,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(appSettings.JwtToken.SecretKey)) 
+                };
             });
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v2",
-                             new OpenApiInfo
-                             {
-                                 Title = "Test API V1",
-                                 Version = "v1",
-                                 Description = "A sample API for testing Swashbuckle",
-                                 TermsOfService = new Uri("http://tempuri.org/terms")
-                             }
-                );
 
-                c.OperationFilter<AssignOperationVendorExtensions>();
+            #endregion
 
-                c.SchemaFilter<ExamplesSchemaFilter>();
 
-                c.DescribeAllParametersInCamelCase();
 
-                c.GeneratePolymorphicSchemas();
-                var path = Path.Combine(AppContext.BaseDirectory, "WebApi.xml");
-
-                c.IncludeXmlComments(path);
-
-                //c.EnableAnnotations();
-                //c.AddSecurityRequirement();
-
-                //c.AddSecurityDefinition("HuangLiAPP.Web", new ApiKeyScheme
-                //{
-                //    Description = @"JWT��Ȩ(���ݽ�������ͷ�н��д���) ֱ�����¿�������ð�ź���ַ�����Ϣ��token:token�ַ��� ",
-
-                //    Name = "token",//jwtĬ�ϵĲ�������
-                //    In = "header",//jwtĬ�ϴ��Authorization��Ϣ��λ��(����ͷ��)
-                //    Type = "apiKey"
-                //});
-            });
-            services.AddSwaggerGenNewtonsoftSupport(); // explicit opt-in - needs to be placed after AddSwaggerGen()
-
-        #endregion
         }
 
         /// <summary>
@@ -242,12 +238,12 @@ namespace WebApi
             app.UseCookiePolicy();
 
             app.UseRouting();
-            // global cors policy
-            app.UseCors(x => x
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader());
+         
 
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -257,39 +253,39 @@ namespace WebApi
                 endpoints.MapControllers();
 
 
-            #region Dynamic Controller Routing
+                #region Dynamic Controller Routing
 
                 //endpoints.MapDynamicControllerRoute<TranslationTransformer>("{language}/{controller}/{action}"); 
 
-            #endregion
+                #endregion
 
                 //endpoints.MapHub<ChatHub>("/chat");
                 //endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
 
 
-        #region Swagger
+            #region Swagger
 
             app.UseSwagger(c =>
             {
-                c.RouteTemplate = "api-docs/{documentName}/swagger.json";
-                c.PreSerializeFilters.Add((swagger, httpReq) =>
-                {
-                    swagger.Servers = new List<OpenApiServer>
-                    {
-                        new OpenApiServer {Url = $"{httpReq.Scheme}://{httpReq.Host.Value}"}
-                    };
-                });
+                //c.RouteTemplate = "api-docs/{documentName}/swagger.json";
+                //c.PreSerializeFilters.Add((swagger, httpReq) =>
+                //{
+                //    swagger.Servers = new List<OpenApiServer>
+                //    {
+                //        new OpenApiServer {Url = $"{httpReq.Scheme}://{httpReq.Host.Value}"}
+                //    };
+                //});
             });
             app.UseSwaggerUI(c =>
             {
                 c.RoutePrefix = string.Empty;
-                ; // serve the UI at root
+                // serve the UI at root
                 c.SwaggerEndpoint("swagger/v1/swagger.json", "V1 Docs");
                 c.SwaggerEndpoint("swagger/v2/swagger.json", "V2 Docs");
             });
 
-        #endregion
+            #endregion
         }
     }
 }

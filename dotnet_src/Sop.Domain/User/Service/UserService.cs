@@ -16,8 +16,7 @@ namespace Sop.Domain.Service
     /// <summary>
     /// </summary>
     public class UserService : IUserService
-    {
-        private readonly AppSettings _appSettings;
+    { 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUserAboutRepository _userAboutRepository;
         private readonly IUserFeaturesRepository _userFeaturesRepository;
@@ -33,8 +32,8 @@ namespace Sop.Domain.Service
                            IUserFeaturesRepository userFeaturesRepository,
                            IUserSkillRepository userSkillRepository,
                            IUserProjectRepository userProjectRepository,
-                           IUnitOfWork unitOfWork,
-                           IOptions<AppSettings> appSettings)
+                           IUnitOfWork unitOfWork
+                           )
         {
             _userRepository = userRepository;
             _userAboutRepository = userAboutRepository;
@@ -42,7 +41,7 @@ namespace Sop.Domain.Service
             _userFeaturesRepository = userFeaturesRepository;
             _userSkillRepository = userSkillRepository;
             _userProjectRepository = userProjectRepository;
-            _unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork; 
         }
 
         /// <summary>
@@ -91,7 +90,7 @@ namespace Sop.Domain.Service
             var userModel = new AuthenticateModel();
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes("ASDASDASDASDASDASDASDASDAS");
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
