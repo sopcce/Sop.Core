@@ -45,7 +45,7 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+      
             services.AddOptions();
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -55,8 +55,13 @@ namespace WebApi
             });
 
             var connectionString = Configuration.GetConnectionString("mysql");
+            // configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
 
-         
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+
             var loggerFactory = LoggerFactory.Create(builder =>
             {
                 builder
@@ -68,6 +73,7 @@ namespace WebApi
             });
             ILogger logger = loggerFactory.CreateLogger<Program>();
             logger.LogInformation("Example log message");
+            
 
             #region Dependency injection
 
@@ -180,12 +186,7 @@ namespace WebApi
 
             #region Jwt
 
-            // configure strongly typed settings objects
-            var appSettingsSection = Configuration.GetSection("AppSettings");
-            services.Configure<AppSettings>(appSettingsSection);
-
-            // configure jwt authentication
-            var appSettings = appSettingsSection.Get<AppSettings>();
+  
         
             services.AddAuthentication(x =>
             {

@@ -4,22 +4,22 @@
         <name>WebApi</name>
     </assembly>
     <members>
-        <member name="T:WebApi.Controllers.UsersController">
+        <member name="T:WebApi.Controllers.UserController">
             <summary>
             </summary>
         </member>
-        <member name="M:WebApi.Controllers.UsersController.#ctor(Sop.Domain.Service.IUserService)">
+        <member name="M:WebApi.Controllers.UserController.#ctor(Sop.Domain.Service.IUserService)">
             <summary>
             </summary>
             <param name="userService"></param>
         </member>
-        <member name="M:WebApi.Controllers.UsersController.Authenticate(Sop.Domain.VModel.AuthenticateModel)">
+        <member name="M:WebApi.Controllers.UserController.Login(Sop.Domain.VModel.LoginVm)">
             <summary>
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:WebApi.Controllers.UsersController.GetAll">
+        <member name="M:WebApi.Controllers.UserController.GetAll">
             <summary>
             </summary>
             <returns></returns>
@@ -110,33 +110,6 @@
             </summary>
             <param name="app"></param>
             <param name="env"></param>
-        </member>
-        <member name="T:WebApi.StartupConfig.AppSettings">
-            
-        </member>
-        <member name="P:WebApi.StartupConfig.AppSettings.Secret">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:WebApi.StartupConfig.AppSettings.JwtToken">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:WebApi.StartupConfig.JwtToken">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:WebApi.StartupConfig.JwtToken.Issuer">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:WebApi.StartupConfig.JwtToken.SecretKey">
-            <summary>
-            
-            </summary>
         </member>
         <member name="T:WebApi.StartupConfig.EfDbBaseDbContext">
             <summary>
