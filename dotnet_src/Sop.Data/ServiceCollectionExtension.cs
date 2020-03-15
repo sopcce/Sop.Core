@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class ServiceCollectionExtension
     {
-    #region private
+        #region private
 
         /// <summary>
         /// </summary>
@@ -42,9 +42,9 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped(typeof(IRepository<>), typeof(EfCoreRepository<>));
         }
 
-    #endregion
+        #endregion
 
-    #region ServiceCollectionExtension
+        #region ServiceCollectionExtension
 
         /// <summary>
         /// </summary>
@@ -109,6 +109,6 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
-    #endregion
+        #endregion
     }
 }
