@@ -5,16 +5,15 @@ using Sop.Core.Authorize;
 using Sop.Domain.Service;
 using Sop.Domain.VModel;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
     /// <summary>
     /// </summary>
-    [Authorize]
-    [ApiController]
-    [Route("api/[controller]/[action]")]
-    public class UserController : ControllerBase
+   
+    public class UserController : ApiBaseController
     {
         private readonly IUserService _userService;
 
@@ -47,8 +46,14 @@ namespace WebApi.Controllers
             //}
             //var userInfo = _userService.PasswordSignIn(model.UserName, model.PassWord,model.RememberMe);
 
-            string asdasdasd =  JwtTokenAuthorize.CreateToken(new JwtTokenVm() { UserName = "asdasd", Expires = DateTime.Now.AddDays(11) });
-
+            string asdasdasd = JwtTokenAuthorize.CreateToken(new JwtTokenVm()
+            {
+                UserName = "GUOJIAQIU",
+                Expires = DateTime.Now.AddDays(11),
+                Role = new string[] {
+                    "admin","people"
+                }
+            });
             var sdas = JwtTokenAuthorize.ReadToken(asdasdasd);
 
             //var user = _userService.Authenticate(model.UserName, model.PassWord);

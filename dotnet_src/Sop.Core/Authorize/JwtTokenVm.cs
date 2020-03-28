@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Sop.Core.Authorize
 {
@@ -11,7 +12,7 @@ namespace Sop.Core.Authorize
         /// <summary>
         /// 角色
         /// </summary>
-        public string Role { get; set; }
+        public string[] Role { get; set; }
         /// <summary>
         /// 
         /// </summary>

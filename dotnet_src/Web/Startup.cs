@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebApi.StartupConfig;
 
@@ -40,13 +41,8 @@ namespace Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            var connectionString = Configuration.GetConnectionString("mysql");
+            var connectionString = Configuration.GetConnectionString("mysql"); 
 
-            //IServiceCollection serviceCollection = new ServiceCollection();
-            //serviceCollection.AddLogging(builder => builder
-            //                                       .AddConsole()
-            //                                       .AddFilter(level => level >= LogLevel.Information)
-            //);
             var loggerFactory = LoggerFactory.Create(builder =>
             {
                 builder
@@ -102,8 +98,12 @@ namespace Web
             }
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

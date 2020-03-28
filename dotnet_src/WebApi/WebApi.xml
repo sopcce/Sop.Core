@@ -4,6 +4,68 @@
         <name>WebApi</name>
     </assembly>
     <members>
+        <member name="M:WebApi.Controllers.DemoController.GetById(System.Int32)">
+            <summary>
+            这是一个带参数的get请求
+            </summary>
+            <remarks>
+            例子:
+            Get api/Values/1
+            </remarks>
+            <param name="id">主键</param>
+            <returns>测试字符串</returns> 
+            <response code="201">返回value字符串</response>
+            <response code="400">如果id为空</response>  
+        </member>
+        <member name="M:WebApi.Controllers.DemoController.Get">
+            <summary>
+             GET:   这是注释 summary
+            </summary>
+            <remarks>
+             GET:  这是注释 remarks
+            </remarks>
+            <returns>这是注释 returns </returns>
+            <response code="200">这是注释 200 </response> 
+            <response code="404">Superhero not foundd</response>
+        </member>
+        <member name="M:WebApi.Controllers.DemoController.Get(System.Int32)">
+             <summary>
+              GET: api/Demo/5
+             </summary>
+             <param name="id"> id 这是注释</param>
+             <remarks>
+             
+             asdasdasdasd
+             
+             
+             
+             </remarks>
+             <example>
+             {
+            	"animals":{
+            	"dog":[
+            		{"name":"Rufus","breed":"labrador","count":1,"twoFeet":false},
+            		{"name":"Marty","breed":"whippet","count":1,"twoFeet":false}
+            	],
+            	"cat":{"name":"Matilda"}
+            }
+            }
+             </example>
+             <returns>这是注释</returns>
+        </member>
+        <member name="M:WebApi.Controllers.DemoController.Post(System.String)">
+            <summary>
+            POST: api/Demo 这是注释
+            </summary>
+            <param name="value">这是注释</param>
+        </member>
+        <member name="M:WebApi.Controllers.DemoController.Put(System.Int32,System.String)">
+            <summary>
+            这是注释   PUT: api/Demo/5
+            </summary>
+            <param name="id">这是注释</param>
+            <param name="value"> 这是注释</param>
+        </member>
         <member name="T:WebApi.Controllers.UserController">
             <summary>
             </summary>
@@ -21,23 +83,6 @@
         </member>
         <member name="M:WebApi.Controllers.UserController.GetAll">
             <summary>
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:WebApi.Controllers.WeatherForecastController">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:WebApi.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{WebApi.Controllers.WeatherForecastController})">
-            <summary>
-            
-            </summary>
-            <param name="logger"></param>
-        </member>
-        <member name="M:WebApi.Controllers.WeatherForecastController.Get">
-            <summary>
-            
             </summary>
             <returns></returns>
         </member>
