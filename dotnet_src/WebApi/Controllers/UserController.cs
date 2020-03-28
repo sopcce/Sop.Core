@@ -6,6 +6,7 @@ using Sop.Domain.Service;
 using Sop.Domain.VModel;
 using System;
 using System.Threading.Tasks;
+using WebApi.Models.ApiResult;
 
 namespace WebApi.Controllers
 {
@@ -35,9 +36,9 @@ namespace WebApi.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
-        public Task<ApiResult<string>> Login([FromBody] LoginVm model)
+        public Task<ApiResult<LoginResult>> Login([FromBody] LoginVm model)
         {
-            var apiResult = new ApiResult<string>();
+          
 
             //bool isok = Captcha.ValidateCheckCode(model.CaptchaCode);
             //if (!isok)
@@ -47,16 +48,14 @@ namespace WebApi.Controllers
             //}
             //var userInfo = _userService.PasswordSignIn(model.UserName, model.PassWord,model.RememberMe);
 
-            string asdasdasd =  JwtTokenAuthorize.CreateToken(new JwtTokenVm() { UserName = "asdasd", Expires = DateTime.Now.AddDays(11) });
+            var result = new ApiResult<LoginResult>();
 
-            var sdas = JwtTokenAuthorize.ReadToken(asdasdasd);
+            result.Code = Code.OK;
 
-            //var user = _userService.Authenticate(model.UserName, model.PassWord);
+            string asdasdasd =  JwtTokenAuthorize.CreateToken(new JwtTokenVm() { UserName = model.UserName, Expires = DateTime.Now.AddDays(11) });
+            result.Code
 
-            //if (user == null)
-            //    return BadRequest(new {message = "Username or password is incorrect"});
-
-            return Task.FromResult(apiResult);
+            return Task.FromResult(result); 
         }
 
         /// <summary>
