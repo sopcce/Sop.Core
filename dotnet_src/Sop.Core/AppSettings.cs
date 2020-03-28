@@ -2,13 +2,31 @@
 using Microsoft.Extensions.Configuration.Json;
 using System.IO;
 
-namespace WebApi.StartupConfig
+namespace Sop.Core
 {
     /// <summary>
     /// 
     /// </summary>
     public class AppSettings
     {
+        private static AppSettings _instance = null;
+        private static readonly object Padlock = new object();
+        public static AppSettings Instance
+        {
+            get
+            {
+                lock (Padlock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new AppSettings();
+                    }
+
+                }
+                return _instance;
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -17,13 +35,34 @@ namespace WebApi.StartupConfig
         /// 
         /// </summary>
         static AppSettings()
-        {  
+        {
             Configuration = new ConfigurationBuilder()
                  .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .Build();  
+                .Build();
         }
-       
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Get_JwtToken_Issuer
+        {
+            get
+            { 
+                return Configuration["AppSettings:JwtToken:Issuer"] ?? "null_null_null-null";
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Get_JwtToken_SecretKey
+        {
+            get
+            { 
+                return Configuration["AppSettings:JwtToken:SecretKey"] ?? "null_null_null-null";
+            }
+        }
+
+
 
         /// <summary>
         /// </summary>
@@ -33,7 +72,7 @@ namespace WebApi.StartupConfig
         /// </summary>
         public JwtToken JwtToken { get; set; }
     }
-    
+
     /// <summary>
     /// 
     /// </summary>

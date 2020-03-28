@@ -1,18 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using WebApi.StartupConfig;
 
 namespace Sop.Core.Authorize
 {
     public class JwtTokenAuthorize
-    { 
+    {
         /// <summary>
         /// 颁发JWT字符串
         /// </summary>
@@ -23,15 +19,11 @@ namespace Sop.Core.Authorize
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
 
-       
-
-           
-
-
-            var key = Encoding.ASCII.GetBytes("ASDASDASDASDASDASDASDASDAS");
+            var jweIssuer = AppSettings.Instance.Get_JwtToken_Issuer;
+            var key = Encoding.ASCII.GetBytes(jweIssuer);
             var sub = new ClaimsIdentity();
             sub.AddClaim(new Claim(ClaimTypes.Name, tokenVm.UserName, ""));
-
+            sub.AddClaim(new Claim(ClaimTypes.Role, string.Join(",", tokenVm.Role)));  
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = sub,
@@ -57,20 +49,13 @@ namespace Sop.Core.Authorize
         {
             var jwtHandler = new JwtSecurityTokenHandler();
             JwtSecurityToken jwtToken = jwtHandler.ReadJwtToken(jwtStr);
-            object role = new object();
-            try
-            {
-                jwtToken.Payload.TryGetValue(ClaimTypes.Role, out role);
-            }
-            catch (Exception e)
-            {
-
-
-            }
+            var role = new List<string>();
+            var value = new object();
+            var sdasda = jwtToken.Payload.TryGetValue(ClaimTypes.Role, out value); 
             var tm = new JwtTokenVm
             {
                 UserName = jwtToken.Id,
-                Role = role != null ? role.ToString() : "",
+                Role = new string[] { },
             };
             return tm;
         }

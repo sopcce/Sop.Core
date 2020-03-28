@@ -5,17 +5,15 @@ using Sop.Core.Authorize;
 using Sop.Domain.Service;
 using Sop.Domain.VModel;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using WebApi.Models.ApiResult;
 
 namespace WebApi.Controllers
 {
     /// <summary>
     /// </summary>
-    [Authorize]
-    [ApiController]
-    [Route("api/[controller]/[action]")]
-    public class UserController : ControllerBase
+   
+    public class UserController : ApiBaseController
     {
         private readonly IUserService _userService;
 
@@ -36,9 +34,9 @@ namespace WebApi.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
-        public Task<ApiResult<LoginResult>> Login([FromBody] LoginVm model)
+        public Task<ApiResult<string>> Login([FromBody] LoginVm model)
         {
-          
+            var apiResult = new ApiResult<string>();
 
             //bool isok = Captcha.ValidateCheckCode(model.CaptchaCode);
             //if (!isok)
@@ -48,14 +46,22 @@ namespace WebApi.Controllers
             //}
             //var userInfo = _userService.PasswordSignIn(model.UserName, model.PassWord,model.RememberMe);
 
-            var result = new ApiResult<LoginResult>();
+            string asdasdasd = JwtTokenAuthorize.CreateToken(new JwtTokenVm()
+            {
+                UserName = "GUOJIAQIU",
+                Expires = DateTime.Now.AddDays(11),
+                Role = new string[] {
+                    "admin","people"
+                }
+            });
+            var sdas = JwtTokenAuthorize.ReadToken(asdasdasd);
 
-            result.Code = Code.OK;
+            //var user = _userService.Authenticate(model.UserName, model.PassWord);
 
-            string asdasdasd =  JwtTokenAuthorize.CreateToken(new JwtTokenVm() { UserName = model.UserName, Expires = DateTime.Now.AddDays(11) });
-            result.Code
+            //if (user == null)
+            //    return BadRequest(new {message = "Username or password is incorrect"});
 
-            return Task.FromResult(result); 
+            return Task.FromResult(apiResult);
         }
 
         /// <summary>

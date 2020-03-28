@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Sop.Core;
 using System;
 using System.IO;
 using System.Linq;
@@ -116,8 +117,7 @@ namespace WebApi
             }
 
             #endregion
-
-
+ 
             #region Dynamic Controller Routing
 
             //services.AddSingleton<TranslationTransformer>();
@@ -169,7 +169,7 @@ namespace WebApi
                 });
                 c.AddSecurityDefinition("Token", new OpenApiSecurityScheme
                 {
-                    Name = "Authorization",
+                    Name = "Token",
                     Type = SecuritySchemeType.ApiKey,
                     Scheme = "Token",
                     BearerFormat = "JWT",

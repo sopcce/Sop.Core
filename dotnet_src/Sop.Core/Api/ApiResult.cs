@@ -5,7 +5,7 @@
         /// <summary>
         /// 响应CODE
         /// </summary>
-        public Code Code { get; set; } = Code.Success;
+        public Code Code { get; set; } = Code.ok;
         /// <summary>
         /// 
         /// </summary>
