@@ -22,17 +22,22 @@ namespace WebApi.Models.ApiResult
         public string MachineName { get; set; }
         public string OSVersion { get; set; }
         public string CurrentDirectory { get; set; }
- 
+
         public string SystemDirectory { get; set; }
         public string[] LogicalDrives { get; set; }
-        public List<LogicalDrivesInfo>  DrivesList { get; set; } = new List<LogicalDrivesInfo>();
+        public List<LogicalDrivesInfo> DrivesList { get; set; } = new List<LogicalDrivesInfo>();
     }
 
     public class LogicalDrivesInfo
     {
         public string Name { get; set; }
-        public DriveType DriveType { get; internal set; }
-        public long TotalSize { get; internal set; }
-        public long TotalFreeSpace { get; internal set; }
+        public DriveType DriveType { get; set; }
+        public long TotalSize { get; set; }
+        public long TotalFreeSpace { get; set; }
+        public string TotalSizeFriendlyFileSize { get; set; }
+        public string TotalFreeSpaceFriendlyFileSize { get; set; }
+
+        public string AvailableFreeSpaceFriendlyFileSize { get; set; }
+        public long AvailableFreeSpace { get; set; }
     }
 }

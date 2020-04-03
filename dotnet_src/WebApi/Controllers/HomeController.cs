@@ -19,7 +19,7 @@ namespace WebApi.Controllers
 
 
         [HttpGet]
-        public Task<ApiResult<PageResult<OrderListResult>>> GetList(int page = 1, int limit = 5)
+        public Task<ApiResult<PageResult<OrderListResult>>> GetList(int page = 1, int limit = 10)
         {
             var apiResult = new ApiResult<PageResult<OrderListResult>>();
 
@@ -78,17 +78,18 @@ namespace WebApi.Controllers
             {
                 var drivesInfo = new LogicalDrivesInfo();
                 drivesInfo.Name = item.Name;
-                drivesInfo.DriveType = item.DriveType; 
+                drivesInfo.DriveType = item.DriveType;
                 if (item.IsReady)
                 {
                     drivesInfo.TotalSize = item.TotalSize;
-                    drivesInfo.TotalSize = item.TotalSize;
+                    drivesInfo.TotalSizeFriendlyFileSize = item.TotalSize.ToFriendlyFileSize();
                     drivesInfo.TotalFreeSpace = item.TotalFreeSpace;
+                    drivesInfo.TotalFreeSpaceFriendlyFileSize = item.TotalFreeSpace.ToFriendlyFileSize();
+                    drivesInfo.AvailableFreeSpace = item.AvailableFreeSpace;
+                    drivesInfo.AvailableFreeSpaceFriendlyFileSize = item.AvailableFreeSpace.ToFriendlyFileSize();  
 
-                    
-
-
-                } 
+                }
+                info.DrivesList.Add(drivesInfo);
             }
             apiResult.Data = info;
             return Task.FromResult(apiResult);

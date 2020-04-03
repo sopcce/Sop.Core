@@ -7,17 +7,17 @@
         /// </summary>
         /// <param name="size"></param>
         /// <returns></returns>
-        public static string ToFriendlyFileSize(decimal size)
+        public static string ToFriendlyFileSize(this long size)
         {
             var units = new string[] { "B", "KB", "MB", "GB", "TB", "PB" };
-            decimal mod = 1024.0M;
+            long mod = 1024;
             int i = 0;
             while (size >= mod)
             {
                 size /= mod;
                 i++;
             }
-            return Math.Round(size) + units[i];
+            return size + units[i];
         }
 
     }
