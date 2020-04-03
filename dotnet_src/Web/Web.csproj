@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework> 
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sop.Core\Sop.Core.csproj" />
+    <ProjectReference Include="..\Sop.Data\Sop.Data.csproj" />
+    <ProjectReference Include="..\Sop.Domain\Sop.Domain.csproj">
+      <GlobalPropertiesToRemove>;WebPublishProfileFile</GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApi\WebApi.csproj" />
+  </ItemGroup>
+
+</Project>

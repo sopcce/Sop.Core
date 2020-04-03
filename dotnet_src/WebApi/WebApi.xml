@@ -1,0 +1,386 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:WebApi.Controllers.ArticleController.GetList(System.Int32,System.Int32)">
+            <summary>
+            GetInfo
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.DemoController.GetById(System.Int32)">
+            <summary>
+            这是一个带参数的get请求
+            </summary>
+            <remarks>
+            例子:
+            Get api/Values/1
+            </remarks>
+            <param name="id">主键</param>
+            <returns>测试字符串</returns> 
+            <response code="201">返回value字符串</response>
+            <response code="400">如果id为空</response>  
+        </member>
+        <member name="M:WebApi.Controllers.DemoController.Get">
+            <summary>
+             GET:   这是注释 summary
+            </summary>
+            <remarks>
+             GET:  这是注释 remarks
+            </remarks>
+            <returns>这是注释 returns </returns>
+            <response code="200">这是注释 200 </response> 
+            <response code="404">Superhero not foundd</response>
+        </member>
+        <member name="M:WebApi.Controllers.DemoController.Get(System.Int32)">
+            <summary>
+             GET: api/Demo/5
+            </summary>
+            <param name="id"> id 这是注释</param>
+            <remarks> 
+            这是注释 
+            </remarks> 
+            <returns>这是注释</returns>
+        </member>
+        <member name="M:WebApi.Controllers.DemoController.Post(System.String)">
+            <summary>
+            POST: api/Demo 这是注释
+            </summary>
+            <param name="value">这是注释</param>
+        </member>
+        <member name="M:WebApi.Controllers.DemoController.Put(System.Int32,System.String)">
+            <summary>
+            这是注释   PUT: api/Demo/5
+            </summary>
+            <param name="id">这是注释</param>
+            <param name="value"> 这是注释</param>
+        </member>
+        <member name="M:WebApi.Controllers.RoleController.Login(Sop.Domain.VModel.LoginVm)">
+            <summary>
+            Login
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.RoleController.GetInfo">
+            <summary>
+            GetInfo
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.Controllers.UserController">
+            <summary>
+            UserController
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.Login(Sop.Domain.VModel.LoginVm)">
+            <summary>
+            Login
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.GetInfo">
+            <summary>
+            GetInfo
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.Logout">
+            <summary>
+            Logout
+            </summary> 
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.Signin(System.String,System.String,System.String)">
+            <summary>
+            Signin
+            </summary>
+            <param name="type"></param>
+            <param name="code"></param>
+            <param name="redirect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.SearchUser(System.String,System.String,System.String)">
+            <summary>
+            SearchUser
+            </summary>
+            <param name="type"></param>
+            <param name="code"></param>
+            <param name="redirect"></param>
+            <returns></returns>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.ArticleListResult.type">
+            <summary>
+              'type|1': ['CN', 'US', 'JP', 'EU'],
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.ArticleListResult.status">
+            <summary>
+               'status|1': ['published', 'draft'],
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.ArticleListResult.platforms">
+            <summary>
+                platforms: ['a-platform']
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.OrderListResult.order_no">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.OrderListResult.timestamp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.OrderListResult.username">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.OrderListResult.price">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.OrderListResult.status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Roles">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.InfoResult.UserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.InfoResult.NickName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Mobile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Introduction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Avatar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.ApiResult.User.LoginResult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Userid">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Role">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Username">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Mobile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Token">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WebApi.WeatherForecast">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.Date">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.TemperatureC">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.TemperatureF">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.Summary">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WebApi.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.Program.Main(System.String[])">
+            <summary>
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:WebApi.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:WebApi.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:WebApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+                This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:WebApi.StartupConfig.EfDbBaseDbContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.EfDbBaseDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:WebApi.StartupConfig.EfDbBaseDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:WebApi.StartupConfig.Swagger.AssignOperationVendorExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.Swagger.AssignOperationVendorExtensions.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:WebApi.StartupConfig.Swagger.AuthOperationFilter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.Swagger.AuthOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:WebApi.StartupConfig.Swagger.AuthSchemaFilter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.Swagger.AuthSchemaFilter.Apply(Microsoft.OpenApi.Models.OpenApiSchema,Swashbuckle.AspNetCore.SwaggerGen.SchemaFilterContext)">
+            <summary>
+            
+            </summary>
+            <param name="schema"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:WebApi.StartupConfig.Swagger.AuthSchemaFilter.GetExampleOrNullFor(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.StartupConfig.TranslationDatabase">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.TranslationDatabase.Resolve(System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="lang"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.StartupConfig.TranslationTransformer">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:WebApi.StartupConfig.TranslationTransformer.#ctor(WebApi.StartupConfig.TranslationDatabase)">
+            <summary>
+            </summary>
+            <param name="translationDatabase"></param>
+        </member>
+        <member name="M:WebApi.StartupConfig.TranslationTransformer.TransformAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Routing.RouteValueDictionary)">
+            <summary>
+            </summary>
+            <param name="httpContext"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

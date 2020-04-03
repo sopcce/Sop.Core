@@ -1,0 +1,25 @@
+@model List<Sop.Domain.Entity.UserProject>
+
+<div id="fh5co-work" class="fh5co-bg-dark">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="m-auto p-5 text-center fh5co-heading">
+                <h2>Project</h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 text-center col-padding animate-box">
+                    <a href="#" class="work" style="background-image: url(images/portfolio-1.jpg);">
+                        <div class="desc">
+                            <h3>@item.ProjectName</h3>
+                            <span>@item.RoleName</span>
+                        </div>
+                    </a>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
