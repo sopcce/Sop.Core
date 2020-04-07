@@ -13,11 +13,11 @@ namespace Sop.Domain.Service
         User GetById(long id);
 
         /// <summary>
+        /// 
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
         ReadMeVm GetReadMeVmByUserId(long userId);
-
         /// <summary>
         /// 
         /// </summary>
@@ -25,11 +25,39 @@ namespace Sop.Domain.Service
         /// <param name="password"></param>
         /// <param name="RememberMe"></param>
         /// <returns></returns>
-        AuthenticateVm PasswordSignIn(string username, string password, bool RememberMe);
+        bool SignIn(string username, string password);
 
         /// <summary>
+        /// 
         /// </summary>
         /// <returns></returns>
         List<User> GetAll();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="register"></param>
+        /// <returns></returns>
+        bool Insert(RegisterVm register);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        bool ExistUserName(string userName);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mobilePhone"></param>
+        /// <returns></returns>
+        bool ExistMobilePhone(string mobilePhone);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        bool ExistEmail(string email);
     }
 }

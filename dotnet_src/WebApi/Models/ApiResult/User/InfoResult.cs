@@ -1,4 +1,4 @@
-﻿namespace WebApi.Models.ApiResult.User
+﻿namespace WebApi.Models.ApiResult
 {
     public class InfoResult
     {

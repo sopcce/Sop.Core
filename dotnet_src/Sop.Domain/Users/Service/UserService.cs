@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Sop.Core.Utility;
 using Sop.Data;
 using Sop.Domain.Entity;
 using Sop.Domain.Repository;
@@ -16,7 +17,7 @@ namespace Sop.Domain.Service
     /// <summary>
     /// </summary>
     public class UserService : IUserService
-    { 
+    {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUserAboutRepository _userAboutRepository;
         private readonly IUserFeaturesRepository _userFeaturesRepository;
@@ -41,7 +42,7 @@ namespace Sop.Domain.Service
             _userFeaturesRepository = userFeaturesRepository;
             _userSkillRepository = userSkillRepository;
             _userProjectRepository = userProjectRepository;
-            _unitOfWork = unitOfWork; 
+            _unitOfWork = unitOfWork;
         }
 
         /// <summary>
@@ -74,26 +75,120 @@ namespace Sop.Domain.Service
         }
 
         /// <summary>
+        /// 
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public AuthenticateVm Authenticate(string username, string password)
+        public bool SignIn(string username, string password)
         {
             var user = _userRepository.TableNoTracking.SingleOrDefault(
-                x => x.UserName == username && x.PassWord == password);
+                x => x.UserName == username);
 
             // return null if user not found
             if (user == null)
-                return null;
+                return false;
+            //º”√‹ 
+            var inputPass = EncryptionUtility.Sha512Encode(password + user.SecurityStamp);
 
-            var userModel = new AuthenticateVm();
-        
-
-
-          
-            return userModel;
+            if (user.PassWord == inputPass)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="register"></param>
+        /// <returns></returns>
+        public bool Insert(RegisterVm register)
+        {
+            var securityStamp = Guid.NewGuid().ToString("N");
+
+            var user = new User
+            {
+                UserId = Guid.NewGuid().ToString(),
+                UserName = register.UserName,
+                UrlToken = null,
+                Email = register.Email,
+                EmailConfirmed = 0,
+                MobilePhone = register.MobilePhone,
+                MobilePhoneConfirmed = 0,
+                PassWord = EncryptionUtility.Sha512Encode(register.PassWord + securityStamp),
+                SecurityStamp = securityStamp,
+                TrueName = null,
+                NickName = register.NickName,
+                Status = 0,
+                StatusNotes = null,
+                CreatedIP = null,
+                ActivityTime = DateTime.Now,
+                LastActivityTime = DateTime.Now,
+                ActivityIP = null,
+                LastActivityIP = null,
+                DateCreated = DateTime.Now,
+                DisplayOrder = 0,
+                LockoutEndDateUtc = DateTime.Now,
+                LockoutEnabled = 0,
+                AccessFailedCount = 0,
+                TwoFactorEnabled = 0
+            };
+
+            _userRepository.Insert(user);
+            _unitOfWork.SaveChanges();
+            return false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public bool ExistUserName(string userName)
+        {
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                return false;
+            }
+
+            var info = _userRepository.TableNoTracking?.FirstOrDefault(user => user.UserName == userName);
+            return info != null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mobilePhone"></param>
+        /// <returns></returns>
+        public bool ExistMobilePhone(string mobilePhone)
+        {
+            if (string.IsNullOrWhiteSpace(mobilePhone))
+            {
+                return false;
+            }
+            var info = _userRepository.TableNoTracking?.FirstOrDefault(user => user.MobilePhone == mobilePhone);
+            return info != null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public bool ExistEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return false;
+            }
+            var info = _userRepository.TableNoTracking?.FirstOrDefault(user => user.Email == email);
+            return info != null;
+        }
+
 
         /// <summary>
         ///     gets user list
@@ -104,19 +199,7 @@ namespace Sop.Domain.Service
             return _userRepository.TableNoTracking.ToList();
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <returns></returns>
-        public bool Authenticate(string username, object password)
-        {
-            throw new NotImplementedException();
-        }
 
-        public AuthenticateVm PasswordSignIn(string username, string password, bool RememberMe)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sop.Core.Api;
 using Sop.Domain.VModel;
-using WebApi.Models.ApiResult.User;
+using System;
+using System.Threading.Tasks;
+using WebApi.Models.ApiResult;
 
 namespace WebApi.Controllers
 {
-    
+
     public class RoleController : ApiBaseController
     {
         /// <summary>
@@ -24,10 +21,7 @@ namespace WebApi.Controllers
         public Task<ApiResult<LoginResult>> Login([FromBody] LoginVm model)
         {
             var apiResult = new ApiResult<LoginResult>(); 
-           
-
-
-
+            
             return Task.FromResult(apiResult);
         }
         /// <summary>
@@ -52,6 +46,26 @@ namespace WebApi.Controllers
             return Task.FromResult(apiResult);
 
         }
+
+        [HttpGet]
+        public Task<ApiResult<RouteDataResult>> GetRoutes()
+        {
+            var apiResult = new ApiResult<RouteDataResult>();
+
+            var data = new InfoResult();
+
+            data.Userid = Guid.NewGuid().ToString();
+            data.UserName = "guojiaqiu";
+            data.Mobile = "guojiaqiu";
+            data.Email = "15810803044";
+            data.Roles = new string[] {
+                    "admin"
+                };
+           
+            return Task.FromResult(apiResult);
+
+        }
+        
 
     }
 }

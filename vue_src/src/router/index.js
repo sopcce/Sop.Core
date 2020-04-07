@@ -138,7 +138,7 @@ export const asyncRoutes = [
     meta: {
       title: 'permission',
       icon: 'lock',
-      roles: ['admin', 'editor'] // you can set roles in root nav
+      roles: ['admin', 'editor'] // 可以在根导航中设置角色
     },
     children: [
       {
@@ -147,7 +147,7 @@ export const asyncRoutes = [
         name: 'PagePermission',
         meta: {
           title: 'pagePermission',
-          roles: ['admin'] // or you can only set roles in sub nav
+          roles: ['admin'] // 或者只能在子导航中设置角色
         }
       },
       {
@@ -155,8 +155,10 @@ export const asyncRoutes = [
         component: () => import('@/views/permission/directive'),
         name: 'DirectivePermission',
         meta: {
-          title: 'directivePermission'
-          // if do not set roles, means: this page does not require permission
+          title: 'directivePermission',
+          icon: 'size'
+
+          // 如果不设置角色，意味着:此页面不需要权限
         }
       },
       {
@@ -172,25 +174,6 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/icon',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/icons/index'),
-        name: 'Icons',
-        meta: { title: 'icons', icon: 'icon', noCache: true }
-      }
-    ]
-  },
-
-  /** when your routing map is too long, you can split it into small modules **/
-  componentsRouter,
-  chartsRouter,
-  nestedRouter,
-  tableRouter,
-
-  {
     path: '/example',
     component: Layout,
     redirect: '/example/list',
@@ -201,6 +184,12 @@ export const asyncRoutes = [
     },
     children: [
       {
+        path: 'index',
+        component: () => import('@/views/icons/index'),
+        name: 'Icons',
+        meta: { title: 'icons', icon: 'icon', noCache: true }
+      },
+      {
         path: 'create',
         component: () => import('@/views/example/create'),
         name: 'CreateArticle',
@@ -210,7 +199,11 @@ export const asyncRoutes = [
         path: 'edit/:id(\\d+)',
         component: () => import('@/views/example/edit'),
         name: 'EditArticle',
-        meta: { title: 'editArticle', noCache: true, activeMenu: '/example/list' },
+        meta: {
+          title: 'editArticle',
+          noCache: true,
+          activeMenu: '/example/list'
+        },
         hidden: true
       },
       {
@@ -218,22 +211,20 @@ export const asyncRoutes = [
         component: () => import('@/views/example/list'),
         name: 'ArticleList',
         meta: { title: 'articleList', icon: 'list' }
-      }
-    ]
-  },
-
-  {
-    path: '/tab',
-    component: Layout,
-    children: [
+      },
       {
-        path: 'index',
+        path: '/tab/index',
         component: () => import('@/views/tab/index'),
         name: 'Tab',
         meta: { title: 'tab', icon: 'tab' }
       }
     ]
   },
+  /** 当你的路由图太长时，你可以把它分成小模块 **/
+  componentsRouter,
+  chartsRouter,
+  nestedRouter,
+  tableRouter,
 
   {
     path: '/error',
@@ -246,13 +237,13 @@ export const asyncRoutes = [
     },
     children: [
       {
-        path: '401',
+        path: '/error/401',
         component: () => import('@/views/error-page/401'),
         name: 'Page401',
         meta: { title: 'page401', noCache: true }
       },
       {
-        path: '404',
+        path: '/error/404',
         component: () => import('@/views/error-page/404'),
         name: 'Page404',
         meta: { title: 'page404', noCache: true }
@@ -400,11 +391,12 @@ export const asyncRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
-const createRouter = () => new Router({
-  // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
+const createRouter = () =>
+  new Router({
+    // mode: 'history', // require service support
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes
+  })
 
 const router = createRouter()
 

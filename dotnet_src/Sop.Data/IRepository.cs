@@ -14,7 +14,7 @@ namespace Sop.Data
     [SuppressMessage("样式", "IDE1006:命名样式", Justification = "<挂起>")]
     public interface IRepository<TEntity> where TEntity : class
     {
-    #region Select/Get/Query
+        #region Select/Get/Query
 
         /// <summary>
         ///     GetById
@@ -40,9 +40,9 @@ namespace Sop.Data
         /// </summary>
         IQueryable<TEntity> TableNoTracking { get; }
 
-    #endregion
+        #endregion
 
-    #region Insert
+        #region Insert
 
         /// <summary>
         ///     Insert
@@ -68,9 +68,9 @@ namespace Sop.Data
         /// <param name="entities">Inserted entity</param>
         Task InsertAsync(IEnumerable<TEntity> entities);
 
-    #endregion
+        #endregion
 
-    #region Update
+        #region Update
 
         /// <summary>
         ///     Update
@@ -92,9 +92,9 @@ namespace Sop.Data
         /// <returns>Updated entity</returns>
         void Update(TEntity entity, params Expression<Func<TEntity, object>>[] properties);
 
-    #endregion
+        #endregion
 
-    #region Delete
+        #region Delete
 
         /// <summary>
         ///     Delete
@@ -116,6 +116,6 @@ namespace Sop.Data
         /// <param name="predicate">A condition to filter entities</param>
         void Delete(Expression<Func<TEntity, bool>> predicate);
 
-    #endregion
+        #endregion
     }
 }

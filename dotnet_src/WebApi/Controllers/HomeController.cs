@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Sop.Core.Api;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Sop.Core.Api;
 using WebApi.Models.ApiResult;
 
 
@@ -17,7 +16,12 @@ namespace WebApi.Controllers
     {
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="limit"></param>
+        /// <returns></returns>
         [HttpGet]
         public Task<ApiResult<PageResult<OrderListResult>>> GetList(int page = 1, int limit = 10)
         {
@@ -46,7 +50,10 @@ namespace WebApi.Controllers
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public Task<ApiResult<SystemConfigurationResult>> GetSysInfo()
         {
@@ -96,5 +103,8 @@ namespace WebApi.Controllers
 
         }
 
-    }
+      
+         
+
+}
 }

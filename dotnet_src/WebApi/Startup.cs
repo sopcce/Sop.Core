@@ -16,15 +16,13 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using WebApi.StartupConfig;
-using WebApi.StartupConfig.Swagger;
 
 namespace WebApi
 {
     /// <summary>
     /// 
     /// </summary>
-    public class Startup
+    public partial class Startup
     {
         /// <summary>
         /// 

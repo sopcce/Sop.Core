@@ -10,6 +10,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WebApi.Controllers.CommonlyController.Upload">
+            <summary>
+            Logout
+            </summary> 
+            <returns></returns>
+        </member>
         <member name="M:WebApi.Controllers.DemoController.GetById(System.Int32)">
             <summary>
             这是一个带参数的get请求
@@ -57,6 +63,20 @@
             <param name="id">这是注释</param>
             <param name="value"> 这是注释</param>
         </member>
+        <member name="M:WebApi.Controllers.HomeController.GetList(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="page"></param>
+            <param name="limit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.HomeController.GetSysInfo">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:WebApi.Controllers.RoleController.Login(Sop.Domain.VModel.LoginVm)">
             <summary>
             Login
@@ -93,6 +113,21 @@
             Logout
             </summary> 
             <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.Register(Sop.Domain.VModel.RegisterVm)">
+             <summary>
+             
+             </summary>
+             <remarks>
+             例子:
+             RegisterVm
+             {
+                 UserName：用户名称
+            
+             }
+             </remarks>
+             <param name="registerVm"></param>
+             <returns></returns>
         </member>
         <member name="M:WebApi.Controllers.UserController.Signin(System.String,System.String,System.String)">
             <summary>
@@ -152,102 +187,127 @@
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Userid">
+        <member name="T:WebApi.Models.ApiResult.SystemConfigurationResult">
+            <summary>
+            获取系统运行信息
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.SystemConfigurationResult.OSDescription">
+            <summary>
+            获取描述应用程序所运行的操作系统的字符串。
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.SystemConfigurationResult.FrameworkDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.ApiResult.LogicalDrivesInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.RouteChildren.Path">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.RouteChildren.Component">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.RouteDataResult.Path">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.RouteDataResult.Component">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.RouteDataResult.Hidden">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.RouteDataResult.Children">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult.InfoResult.Userid">
             <summary>
             用户ID
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Roles">
+        <member name="P:WebApi.Models.ApiResult.InfoResult.Roles">
             <summary>
             角色名称
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.InfoResult.UserName">
+        <member name="P:WebApi.Models.ApiResult.InfoResult.UserName">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.InfoResult.NickName">
+        <member name="P:WebApi.Models.ApiResult.InfoResult.NickName">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Mobile">
+        <member name="P:WebApi.Models.ApiResult.InfoResult.Mobile">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Email">
+        <member name="P:WebApi.Models.ApiResult.InfoResult.Email">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Introduction">
+        <member name="P:WebApi.Models.ApiResult.InfoResult.Introduction">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.InfoResult.Avatar">
+        <member name="P:WebApi.Models.ApiResult.InfoResult.Avatar">
             <summary>
             
             </summary>
         </member>
-        <member name="T:WebApi.Models.ApiResult.User.LoginResult">
+        <member name="T:WebApi.Models.ApiResult.LoginResult">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Userid">
+        <member name="P:WebApi.Models.ApiResult.LoginResult.Userid">
             <summary>
             用户ID
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Role">
+        <member name="P:WebApi.Models.ApiResult.LoginResult.Role">
             <summary>
             角色名称
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Username">
+        <member name="P:WebApi.Models.ApiResult.LoginResult.Username">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Mobile">
+        <member name="P:WebApi.Models.ApiResult.LoginResult.Mobile">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Email">
+        <member name="P:WebApi.Models.ApiResult.LoginResult.Email">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.User.LoginResult.Token">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:WebApi.WeatherForecast">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:WebApi.WeatherForecast.Date">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:WebApi.WeatherForecast.TemperatureC">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:WebApi.WeatherForecast.TemperatureF">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:WebApi.WeatherForecast.Summary">
+        <member name="P:WebApi.Models.ApiResult.LoginResult.Token">
             <summary>
             
             </summary>
@@ -297,85 +357,85 @@
             <param name="app"></param>
             <param name="env"></param>
         </member>
-        <member name="T:WebApi.StartupConfig.EfDbBaseDbContext">
+        <member name="T:WebApi.EfDbBaseDbContext">
             <summary>
             
             </summary>
         </member>
-        <member name="M:WebApi.StartupConfig.EfDbBaseDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+        <member name="M:WebApi.EfDbBaseDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
             <summary>
             </summary>
             <param name="options"></param>
         </member>
-        <member name="M:WebApi.StartupConfig.EfDbBaseDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:WebApi.EfDbBaseDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             </summary>
             <param name="modelBuilder"></param>
         </member>
-        <member name="T:WebApi.StartupConfig.Swagger.AssignOperationVendorExtensions">
+        <member name="T:WebApi.AssignOperationVendorExtensions">
             <summary>
             
             </summary>
         </member>
-        <member name="M:WebApi.StartupConfig.Swagger.AssignOperationVendorExtensions.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
-            <summary>
-            
-            </summary>
-            <param name="operation"></param>
-            <param name="context"></param>
-        </member>
-        <member name="T:WebApi.StartupConfig.Swagger.AuthOperationFilter">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:WebApi.StartupConfig.Swagger.AuthOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+        <member name="M:WebApi.AssignOperationVendorExtensions.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
             <summary>
             
             </summary>
             <param name="operation"></param>
             <param name="context"></param>
         </member>
-        <member name="T:WebApi.StartupConfig.Swagger.AuthSchemaFilter">
+        <member name="T:WebApi.AuthOperationFilter">
             <summary>
             
             </summary>
         </member>
-        <member name="M:WebApi.StartupConfig.Swagger.AuthSchemaFilter.Apply(Microsoft.OpenApi.Models.OpenApiSchema,Swashbuckle.AspNetCore.SwaggerGen.SchemaFilterContext)">
+        <member name="M:WebApi.AuthOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:WebApi.AuthSchemaFilter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.AuthSchemaFilter.Apply(Microsoft.OpenApi.Models.OpenApiSchema,Swashbuckle.AspNetCore.SwaggerGen.SchemaFilterContext)">
             <summary>
             
             </summary>
             <param name="schema"></param>
             <param name="context"></param>
         </member>
-        <member name="M:WebApi.StartupConfig.Swagger.AuthSchemaFilter.GetExampleOrNullFor(System.Type)">
+        <member name="M:WebApi.AuthSchemaFilter.GetExampleOrNullFor(System.Type)">
             <summary>
             
             </summary>
             <param name="type"></param>
             <returns></returns>
         </member>
-        <member name="T:WebApi.StartupConfig.TranslationDatabase">
+        <member name="T:WebApi.TranslationDatabase">
             <summary>
             </summary>
         </member>
-        <member name="M:WebApi.StartupConfig.TranslationDatabase.Resolve(System.String,System.String)">
+        <member name="M:WebApi.TranslationDatabase.Resolve(System.String,System.String)">
             <summary>
             </summary>
             <param name="lang"></param>
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="T:WebApi.StartupConfig.TranslationTransformer">
+        <member name="T:WebApi.TranslationTransformer">
             <summary>
             </summary>
         </member>
-        <member name="M:WebApi.StartupConfig.TranslationTransformer.#ctor(WebApi.StartupConfig.TranslationDatabase)">
+        <member name="M:WebApi.TranslationTransformer.#ctor(WebApi.TranslationDatabase)">
             <summary>
             </summary>
             <param name="translationDatabase"></param>
         </member>
-        <member name="M:WebApi.StartupConfig.TranslationTransformer.TransformAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Routing.RouteValueDictionary)">
+        <member name="M:WebApi.TranslationTransformer.TransformAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Routing.RouteValueDictionary)">
             <summary>
             </summary>
             <param name="httpContext"></param>

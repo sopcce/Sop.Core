@@ -23,7 +23,11 @@ namespace WebApi
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args)
-                       .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+                    
+                       .ConfigureWebHostDefaults(webBuilder =>
+                       {
+                           webBuilder.UseStartup<Startup>().CaptureStartupErrors(true).UseSetting("detailedErrors", "true");
+                       });
         }
     }
 }

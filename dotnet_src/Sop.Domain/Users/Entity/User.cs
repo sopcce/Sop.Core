@@ -13,12 +13,10 @@ namespace Sop.Domain.Entity
         ///     ID
         /// </Summary>
         public long Id { get; set; }
-
-        /// <Summary>
-        ///     用户ID
-        /// </Summary>
-        public long UserId { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        public string UserId { get;  set; }
         /// <Summary>
         ///     用户名称
         /// </Summary>
@@ -42,25 +40,20 @@ namespace Sop.Domain.Entity
         /// <Summary>
         ///     电话号码
         /// </Summary>
-        public string PhoneNumber { get; set; }
+        public string MobilePhone { get; set; }
 
         /// <Summary>
         ///     电话号码是否认证
         /// </Summary>
-        public int PhoneNumberConfirmed { get; set; }
-
-        /// <Summary>
-        ///     身份证号码
-        /// </Summary>
-        public string AccountIDcard { get; set; }
-
+        public int MobilePhoneConfirmed { get; set; } 
         /// <Summary>
         ///     密码
         /// </Summary>
         public string PassWord { get; set; }
 
         /// <Summary>
-        ///     时间戳
+        ///     安全戳
+        ///     
         /// </Summary>
         public string SecurityStamp { get; set; }
 
@@ -138,5 +131,6 @@ namespace Sop.Domain.Entity
         ///     二次授权启用
         /// </Summary>
         public int TwoFactorEnabled { get; set; }
+       
     }
 }

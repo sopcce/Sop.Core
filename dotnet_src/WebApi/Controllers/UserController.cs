@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Authentication.QQ;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sop.Core.Api;
 using Sop.Core.Authorize;
 using Sop.Domain.Service;
 using Sop.Domain.VModel;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using WebApi.Models.ApiResult.User;
+using WebApi.Models.ApiResult;
 
 namespace WebApi.Controllers
 {
@@ -24,7 +22,7 @@ namespace WebApi.Controllers
         public UserController(IUserService userService)
         {
             _userService = userService;
-        } 
+        }
         #endregion
         /// <summary>
         /// Login
@@ -40,13 +38,7 @@ namespace WebApi.Controllers
             apiResult.Code = Code.OK;
 
 
-            //bool isok = Captcha.ValidateCheckCode(model.CaptchaCode);
-            //if (!isok)
-            //{
-            //    //验证码输入错误 
-            //    return View(model);
-            //}
-            //var userInfo = _userService.PasswordSignIn(model.UserName, model.PassWord,model.RememberMe);
+            var isok = _userService.SignIn(model.UserName, model.PassWord);
 
             string token = JwtTokenAuthorize.CreateToken(new JwtTokenVm()
             {
@@ -109,7 +101,54 @@ namespace WebApi.Controllers
             apiResult.Code = Code.OK;
 
             return Task.FromResult(apiResult);
-        } 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 例子:
+        /// RegisterVm
+        /// {
+        ///     UserName：用户名称
+        ///
+        /// }
+        /// </remarks>
+        /// <param name="registerVm"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public Task<ApiResult<string>> Register(RegisterVm registerVm)
+        {
+            var apiResult = new ApiResult<string>
+            {
+                Code = Code.OK
+            };
+
+            registerVm.UserName = registerVm.UserName.Trim();
+            registerVm.PassWord = registerVm.PassWord.Trim();
+            if (_userService.ExistUserName(registerVm.UserName))
+            {
+                apiResult.Code = Code.BAD_REQUEST;
+                apiResult.Message = "用户名称存在";
+                return Task.FromResult(apiResult);
+            }
+            if (_userService.ExistEmail(registerVm.Email))
+            {
+                apiResult.Code = Code.BAD_REQUEST;
+                apiResult.Message = "用户邮箱存在";
+                return Task.FromResult(apiResult);
+            }
+            if (_userService.ExistMobilePhone(registerVm.MobilePhone))
+            {
+                apiResult.Code = Code.BAD_REQUEST;
+                apiResult.Message = "用户手机号码存在";
+                return Task.FromResult(apiResult);
+            }
+            apiResult.Message = "注册成功";
+            _userService.Insert(registerVm);  
+            return Task.FromResult(apiResult);
+        }
+
         /// <summary>
         /// Signin
         /// </summary>
@@ -121,10 +160,7 @@ namespace WebApi.Controllers
         [HttpGet("{type}")]
         public IActionResult Signin(string type, string code, string redirect)
         {
-
-
             return Redirect(redirect);
-
         }
         /// <summary>
         /// SearchUser
@@ -141,6 +177,6 @@ namespace WebApi.Controllers
             return Redirect(redirect);
 
         }
-         
+
     }
 }
