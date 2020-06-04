@@ -2,10 +2,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild> 
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>sopcce@hotmail.com;</Authors>
     <Copyright>MIT</Copyright>
     <PackageId>Sop.Data</PackageId>
@@ -21,39 +21,22 @@
     <Product>Sop.Data</Product>
     <PackageIcon>favicon.ico</PackageIcon>
     <PackageLicenseFile></PackageLicenseFile>
-  </PropertyGroup>
-  
-  
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup> 
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
-  </ItemGroup> 
-  <ItemGroup>
-    <Compile Remove="CronExpression.cs" />
-  </ItemGroup> 
-  <ItemGroup>
-    <None Remove="README.md" />
-    <None Remove="README.md" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.4" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Castle.Core" Version="4.4.0" />
     <PackageReference Include="Dapper" Version="1.60.6" />
+  </ItemGroup>  
  
-    <!--<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.0" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />--> 
-  </ItemGroup>
-
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-  </ItemGroup>
-
+  </ItemGroup> 
   <ItemGroup>
     <None Include="favicon.ico">
       <Pack>True</Pack>

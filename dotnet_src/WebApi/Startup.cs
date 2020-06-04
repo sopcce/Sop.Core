@@ -48,6 +48,8 @@ namespace WebApi
             {
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
             });
+            services.AddMvcCore()
+                .AddApiExplorer();
 
             services.AddOptions();
 
@@ -148,12 +150,23 @@ namespace WebApi
                         Title = "Test API v2",
                         Version = "v2",
                         Description = "A sample API for testing Swashbuckle",
-                        TermsOfService = new Uri("http://tempuri.org/terms")
+                        TermsOfService = new Uri("http://tempuri.org/terms"),
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Joe Developer",
+                            Email = "joe.developer@tempuri.org"
+                        },
+                        License = new OpenApiLicense
+                        {
+                            Name = "Apache 2.0",
+                            Url = new Uri("http://www.apache.org/licenses/LICENSE-2.0.html")
+                        }
                     }
+               
                 );
 
-                c.OperationFilter<AuthOperationFilter>();
-                c.SchemaFilter<AuthSchemaFilter>();
+                //c.OperationFilter<AuthOperationFilter>();
+                //c.SchemaFilter<AuthSchemaFilter>();
                 c.GeneratePolymorphicSchemas();
                 c.DescribeAllParametersInCamelCase();
                 //添加全局安全需求
@@ -179,9 +192,9 @@ namespace WebApi
                     In = ParameterLocation.Header,
                     Description = "JWT Authorization header using the Token scheme."
                 });
-                var path = Path.Combine(AppContext.BaseDirectory, "WebApi.xml");
-                c.IncludeXmlComments(path);
-
+                var combine = Path.Combine(AppContext.BaseDirectory, "WebApi.xml");
+                c.IncludeXmlComments(combine);
+                c.CustomSchemaIds(type => type.FullName);
             });
             services.AddSwaggerGenNewtonsoftSupport(); // explicit opt-in - needs to be placed after AddSwaggerGen()
 
@@ -264,8 +277,7 @@ namespace WebApi
 
                 //endpoints.MapDynamicControllerRoute<TranslationTransformer>("{language}/{controller}/{action}"); 
 
-                #endregion
-
+                #endregion 
                 //endpoints.MapHub<ChatHub>("/chat");
                 //endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
@@ -287,9 +299,13 @@ namespace WebApi
             app.UseSwaggerUI(c =>
             {
                 c.RoutePrefix = string.Empty;
+
+                //c.RoutePrefix = string.Empty;
                 // serve the UI at root
-                c.SwaggerEndpoint("swagger/v1/swagger.json", "V1 Docs");
-                c.SwaggerEndpoint("swagger/v2/swagger.json", "V2 Docs");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1 Docs");
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "V2 Docs");
+                //加载汉化的js文件，注意 swagger.js文件属性必须设置为“嵌入的资源”。
+                //c.InjectJavascript("/Scripts/swagger.js");
             });
 
             #endregion

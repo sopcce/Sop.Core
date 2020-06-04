@@ -10,24 +10,24 @@ namespace WebApi.Models.ApiResult
         /// <summary>
         /// 
         /// </summary>
-        public string order_no { get; set; }
+        public string OrderNo { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public long timestamp { get; set; }
+        public long Timestamp { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string username { get; set; }
+        public string Username { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public float price { get; set; }
+        public decimal Price { get; set; }
         /// <summary>
         /// 
         /// </summary>
 
-        public string status { get; set; }
+        public string Status { get; set; }
 
     }
 }

@@ -33,11 +33,11 @@ namespace WebApi.Controllers
                 var cc = new Random().Next(i * -100, i * 100);
                 data.Add(new OrderListResult()
                 {
-                    order_no = Guid.NewGuid().ToString(),
-                    timestamp = DateTime.Now.AddMinutes(cc).ConvertTime(),
-                    price = float.Parse($"{cc}.{i}"),
-                    status = "支付",
-                    username = $"测试人员-{i}",
+                    OrderNo = Guid.NewGuid().ToString(),
+                    Timestamp = DateTime.Now.AddMinutes(cc).ConvertTime(),
+                    Price = decimal.Parse($"{cc}.{i}"),
+                    Status = "支付",
+                    Username = $"测试人员-{i}",
                 });
             }
             apiResult.Data = new PageResult<OrderListResult>()

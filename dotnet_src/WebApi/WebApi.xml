@@ -4,16 +4,15 @@
         <name>WebApi</name>
     </assembly>
     <members>
+        <member name="F:WebApi.Controllers.ApiBaseController._token">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:WebApi.Controllers.ArticleController.GetList(System.Int32,System.Int32)">
             <summary>
             GetInfo
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:WebApi.Controllers.CommonlyController.Upload">
-            <summary>
-            Logout
-            </summary> 
             <returns></returns>
         </member>
         <member name="M:WebApi.Controllers.DemoController.GetById(System.Int32)">
@@ -63,6 +62,18 @@
             <param name="id">这是注释</param>
             <param name="value"> 这是注释</param>
         </member>
+        <member name="T:WebApi.Controllers.FilesController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.FilesController.Upload(Microsoft.AspNetCore.Http.IFormCollection)">
+            <summary>
+            
+            </summary>
+            <param name="formFiles"></param>
+            <returns></returns>
+        </member>
         <member name="M:WebApi.Controllers.HomeController.GetList(System.Int32,System.Int32)">
             <summary>
             
@@ -76,6 +87,11 @@
             
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:WebApi.Controllers.NavigationController">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:WebApi.Controllers.RoleController.Login(Sop.Domain.VModel.LoginVm)">
             <summary>
@@ -162,27 +178,27 @@
                 platforms: ['a-platform']
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.OrderListResult.order_no">
+        <member name="P:WebApi.Models.ApiResult.OrderListResult.OrderNo">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.OrderListResult.timestamp">
+        <member name="P:WebApi.Models.ApiResult.OrderListResult.Timestamp">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.OrderListResult.username">
+        <member name="P:WebApi.Models.ApiResult.OrderListResult.Username">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.OrderListResult.price">
+        <member name="P:WebApi.Models.ApiResult.OrderListResult.Price">
             <summary>
             
             </summary>
         </member>
-        <member name="P:WebApi.Models.ApiResult.OrderListResult.status">
+        <member name="P:WebApi.Models.ApiResult.OrderListResult.Status">
             <summary>
             
             </summary>
