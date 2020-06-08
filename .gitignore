@@ -254,3 +254,4 @@ dotnet_src/.idea
 /dotnet_src/.vs
 /vue_src/dist
 /vue_src/node_modules
+/vue-element-admin-master
