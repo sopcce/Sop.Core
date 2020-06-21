@@ -1,7 +1,8 @@
 <template>
   <div class="createPost-container">
     <el-form ref="postForm" :model="postForm" :rules="rules" class="form-container">
-      <sticky :class-name="'sub-navbar '+postForm.status" class="article-top-btn">
+
+      <sticky :z-index="10" :class-name="'sub-navbar '+postForm.status">
         <CommentDropdown v-model="postForm.comment_disabled" />
         <PlatformDropdown v-model="postForm.platforms" />
         <SourceUrlDropdown v-model="postForm.source_uri" />
@@ -42,7 +43,14 @@
 
                 <el-col :span="6">
                   <el-form-item label-width="90px" label="Importance:" class="postInfo-container-item">
-                    <el-rate v-model="postForm.importance" :max="3" :colors="[' #99A9BF', '#F7BA2A' , '#FF9900' ]" :low-threshold="1" :high-threshold="3" style="display:inline-block" />
+                    <el-rate
+                      v-model="postForm.importance"
+                      :max="3"
+                      :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
+                      :low-threshold="1"
+                      :high-threshold="3"
+                      style="display:inline-block"
+                    />
                   </el-form-item>
                 </el-col>
               </el-row>
@@ -101,7 +109,7 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     const validateRequire = (rule, value, callback) => {
       if (value === '') {
         this.$message({
@@ -142,26 +150,23 @@ export default {
     }
   },
   computed: {
-    contentShortLength () {
+    contentShortLength() {
       return this.postForm.content_short.length
-    },
-    lang () {
-      return this.$store.getters.language
     },
     displayTime: {
       // set and get is useful when the data
       // returned by the back end api is different from the front end
       // back end return => "2013-06-25 06:59:25"
       // front end need timestamp => 1372114765000
-      get () {
+      get() {
         return (+new Date(this.postForm.display_time))
       },
-      set (val) {
+      set(val) {
         this.postForm.display_time = new Date(val)
       }
     }
   },
-  created () {
+  created() {
     if (this.isEdit) {
       const id = this.$route.params && this.$route.params.id
       this.fetchData(id)
@@ -173,7 +178,7 @@ export default {
     this.tempRoute = Object.assign({}, this.$route)
   },
   methods: {
-    fetchData (id) {
+    fetchData(id) {
       fetchArticle(id).then(response => {
         this.postForm = response.data
 
@@ -190,16 +195,16 @@ export default {
         console.log(err)
       })
     },
-    setTagsViewTitle () {
-      const title = this.lang === 'zh' ? '编辑文章' : 'Edit Article'
+    setTagsViewTitle() {
+      const title = 'Edit Article'
       const route = Object.assign({}, this.tempRoute, { title: `${title}-${this.postForm.id}` })
       this.$store.dispatch('tagsView/updateVisitedView', route)
     },
-    setPageTitle () {
+    setPageTitle() {
       const title = 'Edit Article'
       document.title = `${title} - ${this.postForm.id}`
     },
-    submitForm () {
+    submitForm() {
       console.log(this.postForm)
       this.$refs.postForm.validate(valid => {
         if (valid) {
@@ -218,7 +223,7 @@ export default {
         }
       })
     },
-    draftForm () {
+    draftForm() {
       if (this.postForm.content.length === 0 || this.postForm.title.length === 0) {
         this.$message({
           message: '请填写必要的标题和内容',
@@ -234,7 +239,7 @@ export default {
       })
       this.postForm.status = 'draft'
     },
-    getRemoteUserList (query) {
+    getRemoteUserList(query) {
       searchUser(query).then(response => {
         if (!response.data.items) return
         this.userListOptions = response.data.items.map(v => v.name)
@@ -272,7 +277,7 @@ export default {
   }
 }
 
-.article-textarea /deep/ {
+.article-textarea ::v-deep {
   textarea {
     padding-right: 40px;
     resize: none;
@@ -280,12 +285,5 @@ export default {
     border-radius: 0px;
     border-bottom: 1px solid #bfcbd9;
   }
-}
-.article-top-btn {
-  z-index: 8;
-  height: 50px;
-  position: fixed;
-  right: 0px;
-  width: 100%;
 }
 </style>

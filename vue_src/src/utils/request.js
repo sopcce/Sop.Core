@@ -5,11 +5,11 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: window._CONFIG['domianURL'], // url = base url + request url
+  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
-// console.log(service)
+
 // request interceptor
 service.interceptors.request.use(
   config => {
@@ -35,7 +35,7 @@ service.interceptors.response.use(
   /**
    * If you want to get http information such as headers or status
    * Please return  response => response
-   */
+  */
 
   /**
    * Determine the request status by custom code
@@ -46,33 +46,21 @@ service.interceptors.response.use(
     const res = response.data
 
     // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 200) {
+    if (res.code !== 20000) {
       Message({
         message: res.message || 'Error',
         type: 'error',
         duration: 5 * 1000
       })
 
-      // 请求成功  OK = 200,
-      // 创建成功 CREATED = 201,
-      // 删除成功   DELETED = 204,
-      // 请求的地址不存在或者包含不支持的参数    BAD_REQUEST    = 400,
-      // 未授权 UNAUTHORIZED = 401,
-      // 被禁止访问 FORBIDDEN = 403,
-      // 请求的资源不存在 NOT_FOUND  = 404,
-      // [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误  Unprocesable_Entity = 422,
-      // 内部错误 INTERNAL_SERVER_ERROR = 500,
-      if (res.code === 401 || res.code === 403) {
+      // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
+      if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         // to re-login
-        MessageBox.confirm(
-          'You have been logged out, you can cancel to stay on this page, or log in again',
-          'Confirm logout',
-          {
-            confirmButtonText: 'Re-Login',
-            cancelButtonText: 'Cancel',
-            type: 'warning'
-          }
-        ).then(() => {
+        MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
+          confirmButtonText: 'Re-Login',
+          cancelButtonText: 'Cancel',
+          type: 'warning'
+        }).then(() => {
           store.dispatch('user/resetToken').then(() => {
             location.reload()
           })

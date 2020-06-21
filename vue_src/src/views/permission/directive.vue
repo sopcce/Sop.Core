@@ -36,7 +36,7 @@
 
     <div :key="'checkPermission'+key" style="margin-top:60px;">
       <aside>
-        {{ $t('permission.tips') }}
+        In some cases, using v-permission will have no effect. For example: Element-UI's Tab component or el-table-column and other scenes that dynamically render dom. You can only do this with v-if.
         <br> e.g.
       </aside>
 
@@ -91,7 +91,7 @@ export default {
 
 <style lang="scss" scoped>
 .app-container {
-  /deep/ .permission-alert {
+  ::v-deep .permission-alert {
     width: 320px;
     margin-top: 15px;
     background-color: #f0f9eb;
@@ -100,10 +100,10 @@ export default {
     border-radius: 4px;
     display: inline-block;
   }
-  /deep/ .permission-sourceCode {
+  ::v-deep .permission-sourceCode {
     margin-left: 15px;
   }
-  /deep/ .permission-tag {
+  ::v-deep .permission-tag {
     background-color: #ecf5ff;
   }
 }
