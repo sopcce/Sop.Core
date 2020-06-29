@@ -74,6 +74,14 @@
             <param name="formFiles"></param>
             <returns></returns>
         </member>
+        <member name="M:WebApi.Controllers.FilesController.ShortUrl(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="code"></param>
+            <param name="shortUrl"></param>
+            <returns></returns>
+        </member>
         <member name="M:WebApi.Controllers.HomeController.GetList(System.Int32,System.Int32)">
             <summary>
             
@@ -328,6 +336,12 @@
             
             </summary>
         </member>
+        <member name="M:WebApi.Models.CaptchaHelper.GetCaptcha">
+            <summary>
+            Image
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:WebApi.Program">
             <summary>
             
@@ -337,12 +351,6 @@
             <summary>
             </summary>
             <param name="args"></param>
-        </member>
-        <member name="M:WebApi.Program.CreateHostBuilder(System.String[])">
-            <summary>
-            </summary>
-            <param name="args"></param>
-            <returns></returns>
         </member>
         <member name="T:WebApi.Startup">
             <summary>

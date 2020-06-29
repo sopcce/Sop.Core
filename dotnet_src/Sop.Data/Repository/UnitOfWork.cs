@@ -91,14 +91,14 @@ namespace Sop.Data.Repository
                 query =
                     $" select top {pageSize} * from ( select row_number() over(order by {orderBySql}) as row_number,* from ( {sql}) as u) temp_row where row_number>{tempPageIndex}  ";
 
-        #region SQ
+            #region SQ
 
             // SELECT* FROM(select row_number() over(order by PersonnelId) as row_number,* from PE_Model_Personnel) AS u   WHERE row_number BETWEEN 10 AND 1000 
             // SELECT ROW_NUMBER() OVER(ORDER BY[PersonnelId] DESC) AS num,* FROM PE_Model_Personnel  ORDER BY num DESC 
             //OFFSET 10 ROWS FETCH NEXT 1000 ROWS ONLY
             // select top 10 * from ( select row_number() over(order by PersonnelId) as row_number,* from ( ) as u) temp_row where row_number>(22-1)*10;
 
-        #endregion
+            #endregion
 
             var items = await connection.QueryAsync<TEntity>(query, param);
             var pagedList = new PageList<TEntity>(items.AsQueryable(), pageIndex - 1, pageSize);

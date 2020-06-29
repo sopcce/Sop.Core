@@ -19,7 +19,8 @@ namespace Sop.Core.Authorize
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
 
-            var jweIssuer = AppSettings.Instance.Get_JwtToken_Issuer;
+            var jweIssuer = ConfigurationManager.GetAppSettings().JwtToken.Issuer;
+           
             var key = Encoding.ASCII.GetBytes(jweIssuer);
             var sub = new ClaimsIdentity();
             sub.AddClaim(new Claim(ClaimTypes.Name, tokenVm.UserName, ""));

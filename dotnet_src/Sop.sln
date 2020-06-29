@@ -8,9 +8,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sop.Domain", "Sop.Domain\So
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sop.Core", "Sop.Core\Sop.Core.csproj", "{F4F93D39-D22D-4391-B748-31F1A25B148A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{FDF40902-68E7-42E8-B696-338BA5F80DD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{FDF40902-68E7-42E8-B696-338BA5F80DD4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sop.Data", "Sop.Data\Sop.Data.csproj", "{A207056A-3933-4DF0-A1E1-9F35EE6E175A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5E1ED1A7-AE1D-4043-947B-A43D6A6BA350}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
