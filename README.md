@@ -1,7 +1,3 @@
-[TOC]
-
-
-
 ## 一、前端简介
 
 <p align="center">
@@ -19,20 +15,9 @@
   <a href="https://travis-ci.org/PanJiaChen/vue-element-admin" rel="nofollow">
     <img src="https://travis-ci.org/PanJiaChen/vue-element-admin.svg?branch=master" alt="Build Status">
   </a>
-  <a href="https://github.com/PanJiaChen/vue-element-admin/blob/master/LICENSE">
+  <a href="https://github.com/Sopcce/sop-dotnet-com/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
   </a>
-  <a href="https://github.com/PanJiaChen/vue-element-admin/releases">
-    <img src="https://img.shields.io/github/release/PanJiaChen/vue-element-admin.svg" alt="GitHub release">
-  </a>
-  <a href="https://gitter.im/vue-element-admin/discuss">
-    <img src="https://badges.gitter.im/Join%20Chat.svg" alt="gitter">
-  </a>
-  <a href="https://panjiachen.gitee.io/vue-element-admin-site/zh/donate">
-    <img src="https://img.shields.io/badge/%24-donate-ff69b4.svg" alt="donate">
-  </a>
-</p>
-
  [简体中文](https://github.com/PanJiaChen/vue-element-admin/blob/master/README.zh-CN.md) | [English](https://github.com/PanJiaChen/vue-element-admin/blob/master/README.md) | [日本語](https://github.com/PanJiaChen/vue-element-admin/blob/master/README.ja.md) | [Spanish](https://github.com/PanJiaChen/vue-element-admin/blob/master/README.es.md)
 
 
@@ -45,9 +30,7 @@
 
 - [使用文档](https://panjiachen.github.io/vue-element-admin-site/zh/)
 
-- Typescript 版: [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) (鸣谢: [@Armour](https://github.com/Armour))
-
-**该项目不支持低版本浏览器(如 IE)，有需求请自行添加 polyfill [详情](https://github.com/PanJiaChen/vue-element-admin/wiki#babel-polyfill)**
+- Typescript 版: [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) 
 
 **目前版本为 `v4.0+` 基于 `vue-cli` 进行构建，若发现问题，欢迎提原框架作者下[issue](https://github.com/PanJiaChen/vue-element-admin/issues/new)**
 
@@ -88,9 +71,12 @@ npm run dev
 
 Modern browsers and Internet Explorer 11+.
 
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](https://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](https://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](https://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](https://godban.github.io/browsers-support-badges/)</br>Safari |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| IE11, Edge                                                   | last 2 versions                                              | last 2 versions                                              | last 2 versions                                              |
+
+
+| IE / Edge  | Firefox         | Chrome          | Safar           |
+| ---------- | --------------- | --------------- | --------------- |
+| IE11, Edge | last 2 versions | last 2 versions | last 2 versions |
+
 
 
 ## 二、后端介绍
@@ -101,4 +87,4 @@ Modern browsers and Internet Explorer 11+.
 
 
 ##  DD
- 
+
